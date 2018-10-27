@@ -10,6 +10,7 @@ h2 {
 .vertical-alignment-helper {
     height: 100vh;
     background-image: url("/assets/Images/hd-wallpaper-website.jpg");
+    display: flex;
 }
 
 a:focus,
@@ -540,6 +541,7 @@ body .modal-dialog .form-control:focus {
     .nav-links.container-fixed {
         width: 100%;
     }
+
 }
 
 @media (max-width: 480px) {
@@ -547,4 +549,8 @@ body .modal-dialog .form-control:focus {
         width: 320px;
     }
 }
-
+.vertical-alignment-helper .modal-dialog{
+    width: 470px;
+    margin: 30px auto;
+    align-self: center;
+}
