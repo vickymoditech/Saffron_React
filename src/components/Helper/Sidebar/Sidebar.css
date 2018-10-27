@@ -1,0 +1,26 @@
+.side-menu .sidebar-list i{
+    font-size: 30px;
+    color: #ffffff;
+}
+.side-menu .link:hover .sidebar-list i {
+    color: #FFD401;
+}
+.side-menu .link:hover .sidebar-list .link-hover{
+    color: #FFD401;
+}
+.side-menu .link .sidebar-list .link-hover{
+    color: #ffffff;
+}
+.menu-drawer {
+
+}
+.menu-drawer .logout-list {
+    padding: 0 !important;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+.menu-left {
+    overflow: auto;
+    height: calc(100vh - 165px);
+}
