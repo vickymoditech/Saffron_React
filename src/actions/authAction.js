@@ -4,6 +4,7 @@ import {
     INVALID_USER,
     AUTHENTICATION_INPROGRESS,
     IS_AUTHENTICATED,
+    UNAUTHORIZED_USER
 } from '../constants/actionTypes';
 
 export const loginUser = (credentials) => {
@@ -11,23 +12,35 @@ export const loginUser = (credentials) => {
 
         return (dispatch) => {
             const loginDetails = {
-                "userName": credentials.email,
+                "userId": credentials.email,
                 "password": credentials.password
             };
             dispatch({type: AUTHENTICATION_INPROGRESS});
-            setTimeout(function () {
-                if (loginDetails.userName === 'admin' && loginDetails.password === 'admin') {
+            axios.post(ENVIRONMENT_VARIABLES.API_URL + "/oauths/login", loginDetails).then((response) => {
+                if (response.status === 200) {
                     dispatch({
                         type: IS_AUTHENTICATED,
-                        data: {accessToken: 'demoAccessTokens', userProfile: 'UserProfile'}
+                        data: {accessToken: response.data.accessToken}
                     });
-                } else
-                    dispatch({type: INVALID_USER, data: {error_msg: 'Invalid User Login'}});
-
-            }, 3000);
+                }
+            }).catch((error) => {
+                if (error.response) {
+                    dispatch({type: INVALID_USER, data: {error_msg: error.response.data.user_msg}});
+                }
+            });
         }
     } catch (error) {
-        // GyGLog.writeLog(GyGLog.eLogLevel.debug,"","Auth Action loginuser : " + error.message);
     }
 
+};
+
+export const loggedOut = () => {
+    try {
+        return (dispatch) => {
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("userProfile");
+            dispatch({type: UNAUTHORIZED_USER});
+        }
+    } catch (error) {
+    }
 };

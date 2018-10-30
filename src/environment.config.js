@@ -1,9 +1,9 @@
 const ENVIRONMENT_DEVELOPMENT = {
-    API_URL:"http://dev.driveby.guzmanygomez.com:8181/api"
+    API_URL: "http://192.168.200.18:9000/api"
 };
 
 const ENVIRONMENT_PRODUCTION = {
-    API_URL:"http://dev.driveby.guzmanygomez.com:8181/api"
+    API_URL: "http://192.168.200.18:9000/api"
 };
 let ENVIRONMENT_VARIABLES;
 if (process.env.NODE_ENV === "development") {

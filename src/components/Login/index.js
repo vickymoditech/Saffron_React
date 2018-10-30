@@ -86,7 +86,7 @@ class Login extends Component {
                                                             <i className="fa fa-user"></i>
                                                         </span>
                                                             <input type="text" value={this.state.credentials.email}
-                                                                   name="email" placeholder="Username"
+                                                                   name="email" placeholder="Mobile Number"
                                                                    className="form-control"
                                                                    onChange={this.handleChange}/>
                                                         </div>

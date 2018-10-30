@@ -3,10 +3,11 @@ import {Drawer, List, ListItem, Divider} from 'material-ui';
 import {Link} from 'react-router';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import decode from 'jwt-decode';
 //import NotificationSystem from 'react-notification-system';
 
 //import ChangePasswordModal from '../../Home/ChangePasswordModal';
-//import * as authAction from '../../../actions/authAction';
+import * as authAction from '../../../actions/authAction';
 
 import './Sidebar.css';
 
@@ -43,9 +44,13 @@ class Sidebar extends Component {
         };
     }
 
+    handleLogout = () => {
+        this.props.actions.auth.loggedOut();
+    };
+
     render() {
-        //const userProfile = this.props.userProfile;
-        //const userRole = userProfile && userProfile.roleOrder;
+        const userProfile = decode(localStorage.getItem("accessToken"));
+        const userRole = userProfile.user && userProfile.user.role;
         return (
             <div className="side-menu">
                 <Drawer
@@ -63,7 +68,7 @@ class Sidebar extends Component {
                             <Link to="/Dashboard" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-home"/>
-                                    <div style={{marginTop: 10}} className="link-hover">DDS Home</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Home</div>
                                 </ListItem>
                             </Link>
                             <Divider/>
@@ -71,7 +76,7 @@ class Sidebar extends Component {
                     </List>
                     <Divider/>
                     <List className="logout-list">
-                        <Link to="/Login" className="link">
+                        <Link onClick={this.handleLogout} className="link">
                             <ListItem className="sidebar-list" style={ListStyles.style}>
                                 <i className="fa fa-power-off"/>
                                 <div style={{marginTop: 10}} className="link-hover">Logout</div>
@@ -84,4 +89,11 @@ class Sidebar extends Component {
     }
 }
 
-export default Sidebar;
+
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        auth: bindActionCreators(authAction, dispatch)
+    }
+});
+
+export default connect(null, mapDispatchToProps)(Sidebar)
