@@ -4,7 +4,8 @@ import {
     INVALID_USER,
     AUTHENTICATION_INPROGRESS,
     IS_AUTHENTICATED,
-    UNAUTHORIZED_USER
+    UNAUTHORIZED_USER,
+    CONNECTION_ERROR
 } from '../constants/actionTypes';
 import _ from 'lodash';
 
@@ -41,6 +42,9 @@ export default function authReducer(state = initialState.authReducer, action) {
             localStorage.removeItem('userAvatar');
             browserHistory.push('/login');
             return Object.assign({}, initialState, {loading: false});
+
+        case CONNECTION_ERROR:
+            return Object.assign({}, state, {invalidUser: true, loading: false, error_msg: action.data.error_msg});
 
         default:
             return state;

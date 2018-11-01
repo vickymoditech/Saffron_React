@@ -4,9 +4,9 @@ import {Link} from 'react-router';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import decode from 'jwt-decode';
-//import NotificationSystem from 'react-notification-system';
+import NotificationSystem from 'react-notification-system';
 
-//import ChangePasswordModal from '../../Home/ChangePasswordModal';
+import ChangePasswordModal from '../ChangePasswordModal';
 import * as authAction from '../../../actions/authAction';
 
 import './Sidebar.css';
@@ -41,6 +41,8 @@ class Sidebar extends Component {
         super(props);
         this.state = {
             open: props.open,
+            changePasswordDialog: false,
+            notificationSystem: null,
         };
     }
 
@@ -48,11 +50,38 @@ class Sidebar extends Component {
         this.props.actions.auth.loggedOut();
     };
 
+    handleOpen = () => {
+        this.setState({changePasswordDialog: true});
+    };
+
+    handleClose = () => {
+        this.setState({changePasswordDialog: false});
+    };
+
+    addNotification = (message, level) => {
+        this.state.notificationSystem.addNotification({
+            message: message,
+            level: level,
+            autoDismiss: 3
+        });
+    };
+
+    componentDidMount() {
+        this.setState({notificationSystem: this.refs.notificationSystem});
+    };
+
+
     render() {
         const userProfile = decode(localStorage.getItem("accessToken"));
         const userRole = userProfile.user && userProfile.user.role;
         return (
             <div className="side-menu">
+                {this.state.changePasswordDialog && <ChangePasswordModal
+                    handleClose={this.handleClose}
+                    isOpen={this.state.changePasswordDialog}
+                    notify={this.addNotification}
+                />}
+                <NotificationSystem ref="notificationSystem"/>
                 <Drawer
                     className="menu-drawer"
                     open={this.state.open} containerStyle={stylesDrawer.containerStyle} docked={false}
@@ -69,6 +98,13 @@ class Sidebar extends Component {
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-home"/>
                                     <div style={{marginTop: 10}} className="link-hover">Home</div>
+                                </ListItem>
+                            </Link>
+                            <Divider/>
+                            <Link onClick={this.handleOpen} className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-unlock-alt"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Change Password</div>
                                 </ListItem>
                             </Link>
                             <Divider/>

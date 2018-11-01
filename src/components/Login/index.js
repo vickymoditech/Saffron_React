@@ -63,7 +63,7 @@ class Login extends Component {
                     type="default"
                     autoClose={6000}
                     hideProgressBar={false}
-                    newestOnTop={false}
+                    newestOnTop={true}
                     closeOnClick
                     pauseOnHover
                 />
