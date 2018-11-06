@@ -58,7 +58,8 @@ class Sidebar extends Component {
         this.setState({changePasswordDialog: false});
     };
 
-    addNotification = (message, level) => {
+    addNotifications = (message, level) => {
+        debugger;
         this.state.notificationSystem.addNotification({
             message: message,
             level: level,
@@ -79,7 +80,7 @@ class Sidebar extends Component {
                 {this.state.changePasswordDialog && <ChangePasswordModal
                     handleClose={this.handleClose}
                     isOpen={this.state.changePasswordDialog}
-                    notify={this.addNotification}
+                    notify={this.addNotifications}
                 />}
                 <NotificationSystem ref="notificationSystem"/>
                 <Drawer

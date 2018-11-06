@@ -5,10 +5,13 @@ import {
     AUTHENTICATION_INPROGRESS,
     IS_AUTHENTICATED,
     UNAUTHORIZED_USER,
-    CONNECTION_ERROR
+    CONNECTION_ERROR,
+    PASSWORD_CHANGE_INPROGRESS,
+    PASSWORD_CHANGE_NOT_SUCCESS,
+    PASSWORD_CHANGE_SUCCESS,
+    PASSWORD_CONNECTION_ERROR
 } from '../constants/actionTypes';
 import _ from 'lodash';
-
 
 import initialState from './initialState';
 
@@ -45,6 +48,43 @@ export default function authReducer(state = initialState.authReducer, action) {
 
         case CONNECTION_ERROR:
             return Object.assign({}, state, {invalidUser: true, loading: false, error_msg: action.data.error_msg});
+
+        case PASSWORD_CHANGE_INPROGRESS:
+            return Object.assign({}, state, {changePasswordLoading: true});
+
+
+        case PASSWORD_CHANGE_NOT_SUCCESS:
+            return Object.assign({}, state, {
+                isPasswordChanged: false,
+                errMsg: action.data.user_msg,
+                changePasswordLoading: false
+            });
+
+        case PASSWORD_CHANGE_SUCCESS:
+
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('userProfile');
+            localStorage.removeItem('userAvatar');
+
+            userProfile = decode(action.data.accessToken);
+            userAvatar = userProfile.user.image_url;
+
+            localStorage.setItem("accessToken", action.data.accessToken);
+            localStorage.setItem("userProfile", JSON.stringify(userProfile.user));
+            localStorage.setItem("userAvatar", userAvatar);
+
+            return Object.assign({}, state, {
+                isPasswordChanged: true,
+                successMsg: action.data.result,
+                changePasswordLoading: false
+            });
+
+        case PASSWORD_CONNECTION_ERROR:
+            return Object.assign({}, state, {
+                isPasswordChanged: false,
+                errMsg: action.data.error_msg,
+                changePasswordLoading: false
+            });
 
         default:
             return state;

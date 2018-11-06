@@ -5,7 +5,11 @@ import {
     AUTHENTICATION_INPROGRESS,
     IS_AUTHENTICATED,
     UNAUTHORIZED_USER,
-    CONNECTION_ERROR
+    CONNECTION_ERROR,
+    PASSWORD_CHANGE_INPROGRESS,
+    PASSWORD_CHANGE_SUCCESS,
+    PASSWORD_CHANGE_NOT_SUCCESS,
+    PASSWORD_CONNECTION_ERROR
 } from '../constants/actionTypes';
 
 export const loginUser = (credentials) => {
@@ -46,41 +50,55 @@ export const loggedOut = () => {
     }
 };
 
-/*export const changePassword = (changePasswordData) => {
-    try{
-        return (dispatch) => {
-            const token = 'Bearer ' + localStorage.getItem('accessToken');
-            const first_name = localStorage.getItem('userProfile').first_name;
-            const first_name = localStorage.getItem('userProfile').first_name;
-            const first_name = localStorage.getItem('userProfile').first_name;
+export const changePassword = (changePasswordData) => {
+        try {
+            return (dispatch) => {
 
-            const changePasswordDetail = {
-                "first_name":"demo",
-                "last_name":"demo",
-                "mobile_number":"8401060121",
-                "password":"demo123",
-                "confirm_password":"demo123",
-                "block": false,
-                "oldPassword": changePasswordData.currentPassword,
-                "newPassword": changePasswordData.newPassword
-            };
-            const api = {
-                method: 'put',
-                url: ENVIRONMENT_VARIABLES.API_URL + "/oauths",
-                data: changePasswordDetail,
-                headers: {'Authorization': token}
-            };
-            axios(api).then((response) => {
-                if (response.status === 200) {
-                    dispatch({type: PASSWORD_CHANGE_SUCCESS, data: response.data});
+                dispatch({type: PASSWORD_CHANGE_INPROGRESS});
+
+                const token = "Bearer " + localStorage.getItem('accessToken');
+                let userProfile = JSON.parse(localStorage.getItem('userProfile'));
+
+                const first_name = userProfile.first_name;
+                const last_name = userProfile.last_name;
+                const contact_no = userProfile.userId;
+                const password = userProfile.password;
+
+                if (password.toString() === changePasswordData.currentPassword.toString()) {
+                    const changePasswordDetail = {
+                        "first_name": first_name,
+                        "last_name": last_name,
+                        "mobile_number": contact_no,
+                        "password": changePasswordData.newPassword,
+                        "confirm_password": changePasswordData.newPassword,
+                        "block": false,
+                    };
+                    const api = {
+                        method: 'PUT',
+                        headers: {'Authorization': token},
+                        url: ENVIRONMENT_VARIABLES.API_URL + "/oauths",
+                        data: changePasswordDetail,
+                    };
+                    axios(api).then((response) => {
+                        if (response.status === 200) {
+                            dispatch({type: PASSWORD_CHANGE_SUCCESS, data: response.data});
+                        }
+                    }).catch((error) => {
+                        if (error && error.response && error.response.status === 400) {
+                            dispatch({type: PASSWORD_CHANGE_NOT_SUCCESS, data: error.response.data});
+                        } else {
+                            dispatch({type: PASSWORD_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
+                        }
+                    });
+                } else {
+                    debugger;
+                    dispatch({type: PASSWORD_CHANGE_NOT_SUCCESS, data: {user_msg: 'Current Password is Invalid'}});
                 }
-            }).catch((error) => {
-                if (error.response.status === 400) {
-                    dispatch({type: PASSWORD_CHANGE_NOT_SUCCESS, data: error.response.data});
-                }
-            });
+            }
         }
-    }catch (error){
+        catch
+            (error) {
 
+        }
     }
-};*/
+;

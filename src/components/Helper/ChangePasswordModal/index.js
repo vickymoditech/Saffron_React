@@ -6,25 +6,6 @@ import * as authAction from '../../../actions/authAction';
 import Loader from "../Loader/index";
 
 
-const leftCloseButton = {
-        //borderRadius: '50%',
-        boxShadow: 'transparent',
-        float: 'right',
-        backgroundColor: 'transparent',
-        //width: 43,
-        //height: 43,
-        //fontSize: 25,
-        //fontFamily: 'FontAwesome',
-        color: '#c53140',
-        //marginTop: '-6px',
-        //padding: "9px 12px"
-};
-
-const customContentStyle = {
-    backgroundColor:'transparent',
-    boxShadow:'transparent'
-};
-
 class ChangePasswordModal extends Component {
     constructor(props) {
         super(props);
@@ -45,16 +26,6 @@ class ChangePasswordModal extends Component {
         const changePasswordData = this.state.changePasswordData;
         changePasswordData[field] = event.target.value;
         return this.setState({changePasswordData: changePasswordData});
-    };
-
-    handleClose = () => {
-        let initData = {
-            currentPassword: "",
-            newPassword: "",
-            confirmPassword: ""
-        };
-        this.setState({changePasswordData: initData});
-        this.props.handleClose();
     };
 
     handleSubmit = () => {
@@ -82,17 +53,19 @@ class ChangePasswordModal extends Component {
         if (!this.state.isOpen) this.setState({changePasswordData: initData});
         this.setState({changePasswordLoading: nextProps.changePasswordLoading});
         if (nextProps.isPasswordChanged) {
-
+            debugger;
             this.setState({isOpen: false});
-        }
-        if (nextProps.isPasswordChanged) {
+            this.props.handleClose();
             this.props.notify(nextProps.successMsg, 'success');
             this.setState({changePasswordData: initData});
-            this.setState({isOpen: false})
-        } else if (nextProps.isPasswordChanged === false && nextProps.errMsg) {
-            this.props.notify(nextProps.errMsg, 'error');
+        } else if (!nextProps.changePasswordLoading && nextProps.isPasswordChanged === false && nextProps.errMsg) {
+            let message = nextProps.errMsg.toString().split(",");
+            for (let i = 0; i < message.length; i++) {
+                this.props.notify(message[i], 'error');
+            }
         }
     };
+
 
     render() {
         return (
@@ -184,10 +157,10 @@ const mapStateToProps = (state) => {
     const {authReducer} = state;
     return {
         changePasswordLoading: authReducer.changePasswordLoading,
-        isPasswordChanged:authReducer.isPasswordChanged,
-        successMsg:authReducer.successMsg,
-        errMsg:authReducer.errMsg
-    }
+        isPasswordChanged: authReducer.isPasswordChanged,
+        successMsg: authReducer.successMsg,
+        errMsg: authReducer.errMsg,
+    };
 };
 
 const mapDispatchToProps = dispatch => ({
