@@ -22,6 +22,11 @@ import NotFound from '../src/components/NotFound';
 import Home from '../src/components/Home';
 import Login from '../src/components/Login';
 
+//Admin
+import AdminHome from './components/Admin/Home';
+import ManageUser from './components/Admin/ManageUser';
+
+
 const composeEnhancers = composeWithDevTools({});
 //const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(promise, logger)));
 const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(thunk, promise, logger)));
@@ -96,7 +101,8 @@ ReactDOM.render(<Provider store={store}>
     <MuiThemeProvider>
         <Router history={browserHistory}>
             <Route component={DashBoard} path="/Dashboard">
-                <IndexRoute component={Home} onEnter={requireAuth}/>
+                <IndexRoute component={AdminHome} onEnter={requireAuth}/>
+                <Route path="/Dashboard/ManageUser" component={ManageUser} onEnter={requireAuth} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
             <Route path="/Login" component={Login} onEnter={checkLoggedIn} exact={true}/>

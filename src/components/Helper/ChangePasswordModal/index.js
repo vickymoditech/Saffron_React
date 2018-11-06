@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as authAction from '../../../actions/authAction';
 import Loader from "../Loader/index";
+import './changePassword.css';
 
 
 class ChangePasswordModal extends Component {
@@ -53,7 +54,6 @@ class ChangePasswordModal extends Component {
         if (!this.state.isOpen) this.setState({changePasswordData: initData});
         this.setState({changePasswordLoading: nextProps.changePasswordLoading});
         if (nextProps.isPasswordChanged) {
-            debugger;
             this.setState({isOpen: false});
             this.props.handleClose();
             this.props.notify(nextProps.successMsg, 'success');

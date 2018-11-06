@@ -15,6 +15,10 @@ export default {
     authReducer: {
         loading: false,
         userProfile: userProfile || [],
-        userAvatar: localStorage.getItem('userAvatar')
+        userAvatar: localStorage.getItem('userAvatar'),
+    },
+    manageUserReducer: {
+        loading: false,
+        userList: []
     }
 }

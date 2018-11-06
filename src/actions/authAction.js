@@ -91,13 +91,11 @@ export const changePassword = (changePasswordData) => {
                         }
                     });
                 } else {
-                    debugger;
                     dispatch({type: PASSWORD_CHANGE_NOT_SUCCESS, data: {user_msg: 'Current Password is Invalid'}});
                 }
             }
         }
-        catch
-            (error) {
+        catch (error) {
 
         }
     }
