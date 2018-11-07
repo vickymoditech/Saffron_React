@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Conv_DriveBy_Icons';
+    src: url('/assets/fonts/DriveByIcons.eot');
+    src: url('/assets/fonts/DriveByIcons.ttf') format('truetype'),url('/assets/fonts/DriveByIconsMac.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.drive-through-icon {
+    font-family: 'Conv_DriveBy_Icons';
+    font-size: 78px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 35%;
+}
+
+.user-img.drive-through-icon {
+    top: 0;
+}
+
+.user-img.drive-through-icon span {
+    font-size: 80px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -20px;
+}
+
+@media screen and (max-width: 480px) {
+    .drive-widget.recent-runner .drive-details .icon .drive-through-icon {
+        font-size: 40px !important;
+    }
+    .drive-through-icon {
+        font-size: 50px;
+    }
+}

@@ -70,8 +70,7 @@ function isTokenExpired(token) {
 function checkUserRole(token) {
     const userProfile = decode(token);
     const userRole = userProfile.user && userProfile.user.role;
-    debugger;
-    if (userRole === "Admin") {
+    if (userRole === "Admin" || userRole === "Employee") {
         return true;
     } else {
         return false;
