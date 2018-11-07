@@ -5,6 +5,7 @@ import {
     AUTHENTICATION_INPROGRESS,
     IS_AUTHENTICATED,
     UNAUTHORIZED_USER,
+    LOGOUT_USER,
     CONNECTION_ERROR,
     PASSWORD_CHANGE_INPROGRESS,
     PASSWORD_CHANGE_NOT_SUCCESS,
@@ -39,11 +40,17 @@ export default function authReducer(state = initialState.authReducer, action) {
             return Object.assign({}, state, isAuthenticated);
 
         case UNAUTHORIZED_USER:
-
             localStorage.removeItem('accessToken');
             localStorage.removeItem('userProfile');
             localStorage.removeItem('userAvatar');
-            browserHistory.push('/login');
+            browserHistory.push('/Login');
+            return Object.assign({}, initialState, {loading: false});
+
+        case LOGOUT_USER:
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('userProfile');
+            localStorage.removeItem('userAvatar');
+            browserHistory.push('/');
             return Object.assign({}, initialState, {loading: false});
 
         case CONNECTION_ERROR:

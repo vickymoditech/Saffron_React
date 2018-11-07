@@ -10,6 +10,7 @@ import Loader from '../Helper/Loader';
 import * as authAction from '../../actions/authAction';
 
 import './login.css';
+import decode from "jwt-decode";
 
 
 class Login extends Component {
@@ -51,7 +52,13 @@ class Login extends Component {
             this.setState({toastId: toastId});
         }
         if (nextProps.isAuthenticated) {
-            browserHistory.push('/Dashboard');
+            const userProfile = decode(localStorage.getItem("accessToken"));
+            const userRole = userProfile.user && userProfile.user.role;
+            if (userRole === "Admin") {
+                browserHistory.push('/Dashboard');
+            } else {
+                browserHistory.push('/');
+            }
         }
     }
 
@@ -73,7 +80,7 @@ class Login extends Component {
                         <div className="modal-body">
                             <div className="row login-form">
                                 <div className="col-xs-12 text-center">
-                                    <h2 style={{margin:'10px'}}>User Authentication</h2>
+                                    <h2 style={{margin: '10px'}}>User Authentication</h2>
                                 </div>
                                 <div className="panel-body">
                                     <div className="row">

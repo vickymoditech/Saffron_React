@@ -18,7 +18,8 @@ export default {
         userAvatar: localStorage.getItem('userAvatar'),
     },
     manageUserReducer: {
-        loading: false,
-        userList: []
+        Loading: false,
+        userList: [],
+        error_msg: null
     }
 }

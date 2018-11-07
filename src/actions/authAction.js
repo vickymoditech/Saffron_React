@@ -5,6 +5,7 @@ import {
     AUTHENTICATION_INPROGRESS,
     IS_AUTHENTICATED,
     UNAUTHORIZED_USER,
+    LOGOUT_USER,
     CONNECTION_ERROR,
     PASSWORD_CHANGE_INPROGRESS,
     PASSWORD_CHANGE_SUCCESS,
@@ -44,7 +45,7 @@ export const loggedOut = () => {
         return (dispatch) => {
             localStorage.removeItem("accessToken");
             localStorage.removeItem("userProfile");
-            dispatch({type: UNAUTHORIZED_USER});
+            dispatch({type: LOGOUT_USER});
         }
     } catch (error) {
     }

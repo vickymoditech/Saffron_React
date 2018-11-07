@@ -9,6 +9,7 @@ import Loader from '../../Helper/Loader';
 
 
 import './manage-user.css';
+import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
 class ManageUser extends Component {
 
@@ -30,7 +31,9 @@ class ManageUser extends Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        debugger;
+        if (!nextProps.Loading && nextProps.error_msg) {
+            this.addNotifications(nextProps.error_msg, "error");
+        }
         this.setState({loading: nextProps.Loading, userList: nextProps.userList || []});
 
     }
@@ -40,7 +43,6 @@ class ManageUser extends Component {
     };
 
     componentWillMount() {
-        //Todo Action call here
         this.props.actions.userManageAction.UserList();
     }
 
@@ -70,7 +72,7 @@ class ManageUser extends Component {
                                 </tr>
                                 {userList && userList.map((value, index) => (
                                     <tr key={index}>
-                                        <td>{value.image_url}</td>
+                                        <td><img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px" height="100px"/></td>
                                         <td>{value.first_name}</td>
                                         <td>{value.last_name}</td>
                                         <td>{value.contact_no}</td>
@@ -80,7 +82,6 @@ class ManageUser extends Component {
                                         <td style={{textAlign: "center"}}>
                                             <Switch value={value.block || false}
                                                     circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
-                                                    labels={{on: 'Enable', off: 'Disable'}}
                                                     switchStyles={{width: 95}}
                                                     locked/>
                                         </td>
@@ -96,7 +97,7 @@ class ManageUser extends Component {
                     </div>
                     }
                 </div>
-                {this.props.loading && <Loader/>}
+                {this.props.Loading && <Loader/>}
             </div>
 
         );
@@ -106,12 +107,11 @@ class ManageUser extends Component {
 }
 
 const mapStateToProps = (state) => {
-    debugger;
     const {manageUserReducer} = state;
+    debugger;
     return {
         Loading: manageUserReducer.Loading,
         error_msg: manageUserReducer.error_msg,
-        successMsg: manageUserReducer.successMsg,
         userList: manageUserReducer.userList
     };
 };

@@ -28,7 +28,7 @@ export default class Header extends Component {
                     <div className="row">
                         <div className="col-md-12">
                             <div className="header-logo">
-                                {!this.props.isNotFound && <a onClick={this.openNav}><i className="fa fa-bars fa-2x" style={{color: '#fff', padding: '5px 10px', verticalAlign: 'middle'}}/></a>}
+                                {!this.props.isNotFound && <a onClick={this.openNav}><i className="fa fa-bars fa-2x" style={{color: '#fff', padding: '5px 10px', verticalAlign: 'middle',cursor: 'pointer'}}/></a>}
                                 <img src="/assets/Images/DB_Logo.png" alt="" style={{width:120}}/>
                             </div>
                         </div>

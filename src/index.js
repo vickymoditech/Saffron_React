@@ -19,7 +19,7 @@ import DashBoard from './DashBoard';
 import rootReducer from './reducers';
 import initialState from '../src/reducers/initialState';
 import NotFound from '../src/components/NotFound';
-import Home from '../src/components/Home';
+import Home from './components/Website/Home';
 import Login from '../src/components/Login';
 
 //Admin
@@ -37,9 +37,16 @@ function requireAuth(nextState, replace) {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("userProfile");
         replace({
-            pathname: '/login',
+            pathname: '/',
             state: {nextPathname: nextState.location.pathname}
         })
+    } else {
+        if (!checkUserRole(getAccessToken())) {
+            replace({
+                pathname: '/',
+                state: {nextPathname: nextState.location.pathname}
+            })
+        }
     }
 }
 
@@ -58,6 +65,17 @@ function isTokenExpired(token) {
         clearAccessToken();
     }
     return expirationDate < new Date();
+}
+
+function checkUserRole(token) {
+    const userProfile = decode(token);
+    const userRole = userProfile.user && userProfile.user.role;
+    debugger;
+    if (userRole === "Admin") {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 
