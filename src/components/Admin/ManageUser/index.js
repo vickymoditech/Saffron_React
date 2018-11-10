@@ -64,7 +64,6 @@ class ManageUser extends Component {
                                     <th style={{cursor: 'context-menu'}}>First Name</th>
                                     <th style={{cursor: 'context-menu'}}>Last Name</th>
                                     <th style={{cursor: 'context-menu'}}>Contact</th>
-                                    <th style={{cursor: 'context-menu'}}>Email</th>
                                     <th style={{cursor: 'context-menu'}}>Role</th>
                                     <th style={{cursor: 'context-menu'}}>UserId</th>
                                     <th style={{cursor: 'context-menu'}}>Block</th>
@@ -76,7 +75,6 @@ class ManageUser extends Component {
                                         <td>{value.first_name}</td>
                                         <td>{value.last_name}</td>
                                         <td>{value.contact_no}</td>
-                                        <td>{value.email_id}</td>
                                         <td>{value.role}</td>
                                         <td>{value.userId}</td>
                                         <td style={{textAlign: "center"}}>

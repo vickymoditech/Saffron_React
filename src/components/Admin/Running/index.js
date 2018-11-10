@@ -6,8 +6,8 @@ export default class Running extends Component {
 
     constructor(props) {
         super(props);
-        this.state={
-            currentTicket:0
+        this.state = {
+            currentTicket: 0
         }
 
     }
@@ -79,22 +79,120 @@ export default class Running extends Component {
         return (
             <div className="col-lg-4 col-sm-12 col-md-6 card here-now">
                 <div className="card-header"><span
-                    className="item-number">{(sortedData && sortedData.length) || 0}</span>
+                    className="item-number">{13 || 0}</span>
                     <h3 className="sub-title">Running!</h3></div>
                 <div className="card-body here-now-scroll">
                     <ul id="here-now">
-                        {
-                            sortedData && sortedData.map((requests, index) => (
-                                <Order/>
-                            ))
-                        }
+
+                        <Order
+                            key="0"
+                            status="waiting"
+                            column="here now"
+                            currentElement="0"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="1"
+                            status="waiting"
+                            column="here now"
+                            currentElement="1"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="2"
+                            status="waiting"
+                            column="here now"
+                            currentElement="2"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="3"
+                            status="waiting"
+                            column="here now"
+                            currentElement="3"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="4"
+                            status="waiting"
+                            column="here now"
+                            currentElement="4"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="5"
+                            status="waiting"
+                            column="here now"
+                            currentElement="5"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="6"
+                            status="waiting"
+                            column="here now"
+                            currentElement="6"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="7"
+                            status="waiting"
+                            column="here now"
+                            currentElement="7"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="8"
+                            status="waiting"
+                            column="here now"
+                            currentElement="8"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="9"
+                            status="waiting"
+                            column="here now"
+                            currentElement="9"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="10"
+                            status="waiting"
+                            column="here now"
+                            currentElement="10"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="11"
+                            status="waiting"
+                            column="here now"
+                            currentElement="11"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="12"
+                            status="waiting"
+                            column="here now"
+                            currentElement="12"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
+                        <Order
+                            key="13"
+                            status="waiting"
+                            column="here now"
+                            currentElement="13"
+                            handleChangeTicket={this.handleChangeTicket}
+                        />
                     </ul>
                 </div>
             </div>
         );
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
+        this.setTicket(this.state.currentTicket);
+    }
+
+    componentDidMount(){
         this.setTicket(this.state.currentTicket);
     }
 

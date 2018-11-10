@@ -1,6 +1,3 @@
-import {browserHistory} from 'react-router';
-import decode from 'jwt-decode';
-import _ from 'lodash';
 import {
     USER_INPROGRESS,
     USER_CHANGE_NOT_SUCCESS,
@@ -31,7 +28,8 @@ export default function manageUserReducer(state = initialState.manageUserReducer
         case USER_SUCCESS:
             return Object.assign({}, state, {
                 userList: action.data,
-                Loading: false
+                Loading: false,
+                error_msg: null
             });
 
         default:
