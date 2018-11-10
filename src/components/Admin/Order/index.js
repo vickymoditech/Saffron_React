@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
 
-import CarIcons from '../DriveThroughIcons/CarIcons';
-import MotorcycleIcon from '../DriveThroughIcons/MotorcycleIcon';
-import FootIcon from '../DriveThroughIcons/FootIcon';
-import BicycleIcon from '../DriveThroughIcons/BicycleIcon';
-import BurroIcon from '../DriveThroughIcons/BurroIcon';
-
-
 export default class Order extends Component {
     constructor(props) {
         super(props);
@@ -23,33 +16,24 @@ export default class Order extends Component {
     render() {
         const {column, status} = this.props;
         const time = "12";
-        const pickupTime = "123";
+        const orderTime = "12:50";
         const orderNo = "1234";
-        const modeOfTransport = "car";
+        const modeOfTransport = "user";
         const color = "#12232d";
-        const licensePlateNumber = "gj-5";
         let driveThroughColor = "#F3D250";
-        if(column === "here now"){
+        if (column === "running") {
             driveThroughColor = "#61892F";
-        }else if(column === "running late"){
+        } else if (column === "running late") {
             driveThroughColor = "#f76C6C";
         }
-        const userAvatar = "";
-        const deliveryInProgressDate = "1234";
+        const userAvatar = "http://192.168.0.5:9000/images/UserAvatar/demo.png";
         let classes = ['small-box'];
-        const transportMode = {
-            bicycle: <BicycleIcon color={color}/>,
-            car: <CarIcons color={color}/>,
-            motorbike: <MotorcycleIcon color={color}/>,
-            onfoot: <FootIcon color={color}/>,
-            burro: <BurroIcon color={color}/>,
-        };
-        const transport = transportMode[modeOfTransport];
-        if (column === "here now") {
+
+        if (column === "running") {
             classes = ['small-box', 'w3-animate-right'];
         } else if (column === "running late") {
             classes = ['small-box', 'w3-animate-left'];
-        } else if (column === "on the way") {
+        } else if (column === "recent orders") {
             classes = ['small-box', 'w3-animate-top'];
         }
         return (
@@ -65,21 +49,22 @@ export default class Order extends Component {
                         <div className="min text-uppercase">min</div>
                     </div>
                     {
-                        deliveryInProgressDate ?
-                            <div className="status in-progress" style={{backgroundColor: driveThroughColor}}>delivery in
-                                progress...
-                            </div> : <div className="status pickup">Pick up - {pickupTime}
+                        column === "running" ?
+                            <div className="status in-progress" style={{backgroundColor: driveThroughColor}}>in
+                                progress... #{orderNo}
+                            </div> : <div className="status pickup">Order No - #{orderNo}
                             </div>
                     }
                     <div className="box-right">
-                        <div className="number">#{orderNo[0]}</div>
-                        <div className="icon">{transport}
+                        <div className="number">{orderTime}</div>
+                        <div className="icon">
+                            <button>click</button>
                             <p className="color">
-                                {licensePlateNumber}
+                                #{orderNo}
                             </p>
                         </div>
-                        <div className="image">
-                            {userAvatar && <img src={userAvatar} className="img-responsive" alt=""/>}
+                         <div className="image">
+                            {userAvatar && <img src={userAvatar} className="img-responsive" style={{border:"none"}} alt=""/>}
                         </div>
                     </div>
                 </div>

@@ -83,98 +83,98 @@ export default class RunningLate extends Component {
                     <ul id="runningLate">
                         <Order
                             key="0"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="0"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="1"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="1"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="2"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="2"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="3"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="3"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="4"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="4"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="5"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="5"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="6"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="6"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="7"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="7"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="8"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="8"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="9"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="9"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="10"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="10"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="11"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="11"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="12"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="12"
                             handleChangeTicket={this.handleChangeTicket}
                         />
                         <Order
                             key="13"
-                            status="waiting"
+                            status="Late"
                             column="running late"
                             currentElement="13"
                             handleChangeTicket={this.handleChangeTicket}
