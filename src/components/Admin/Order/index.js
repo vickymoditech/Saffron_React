@@ -105,13 +105,13 @@ export default class Order extends Component {
                     }
                     <div className="box-right">
                         <div className="number">{HHMM[0]}:{HHMM[1]}</div>
-                        <div className="icon">
+                        <div className="icon icon-btn-save">
                             <button type="submit" onClick={this.orderDialogOpen} className="btn btn-save" style={{
                                 minWidth: "none",
                                 minHeight: "none",
                                 padding: "4px 0px",
                                 height: "40px",
-                                width: "108px",
+                                width: "88px",
                                 backgroundSize: "none"
                             }}>Show
                             </button>
