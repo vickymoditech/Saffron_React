@@ -17,7 +17,6 @@ class ManageUser extends Component {
         super(props);
         this.state = {
             userList: [],
-            loading: null,
             notificationSystem: null,
         }
     }
@@ -34,8 +33,7 @@ class ManageUser extends Component {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
         }
-        this.setState({loading: nextProps.Loading, userList: nextProps.userList || []});
-
+        this.setState({userList: nextProps.userList || []});
     }
 
     componentDidMount() {
@@ -71,7 +69,8 @@ class ManageUser extends Component {
                                 </tr>
                                 {userList && userList.map((value, index) => (
                                     <tr key={index}>
-                                        <td><img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px" height="100px"/></td>
+                                        <td><img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
+                                                 height="100px"/></td>
                                         <td>{value.first_name}</td>
                                         <td>{value.last_name}</td>
                                         <td>{value.contact_no}</td>

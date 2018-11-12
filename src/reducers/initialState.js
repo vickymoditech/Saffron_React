@@ -21,5 +21,12 @@ export default {
         Loading: false,
         userList: [],
         error_msg: null
+    },
+    saffronOrdersDisplayReducer: {
+        Loading: false,
+        error_msg: null,
+        runningOrder: [],
+        runningLate: [],
+        recentOrders: []
     }
 }

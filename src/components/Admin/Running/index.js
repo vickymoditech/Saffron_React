@@ -75,113 +75,26 @@ export default class Running extends Component {
     };
 
     render() {
-        const sortedData = this.props.orders;
+        const Orders = this.props.orders;
         return (
             <div className="col-lg-4 col-sm-12 col-md-6 card here-now">
                 <div className="card-header"><span
-                    className="item-number">{13 || 0}</span>
+                    className="item-number">{Orders && Orders.length || 0}</span>
                     <h3 className="sub-title">Running!</h3></div>
                 <div className="card-body here-now-scroll">
                     <ul id="here-now">
-
-                        <Order
-                            key="0"
-                            status="Process"
-                            column="running"
-                            currentElement="0"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="1"
-                            status="Process"
-                            column="running"
-                            currentElement="1"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="2"
-                            status="Process"
-                            column="running"
-                            currentElement="2"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="3"
-                            status="Process"
-                            column="running"
-                            currentElement="3"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="4"
-                            status="Process"
-                            column="running"
-                            currentElement="4"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="5"
-                            status="Process"
-                            column="running"
-                            currentElement="5"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="6"
-                            status="Process"
-                            column="running"
-                            currentElement="6"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="7"
-                            status="Process"
-                            column="running"
-                            currentElement="7"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="8"
-                            status="Process"
-                            column="running"
-                            currentElement="8"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="9"
-                            status="Process"
-                            column="running"
-                            currentElement="9"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="10"
-                            status="Process"
-                            column="running"
-                            currentElement="10"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="11"
-                            status="Process"
-                            column="running"
-                            currentElement="11"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="12"
-                            status="Process"
-                            column="running"
-                            currentElement="12"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="13"
-                            status="Process"
-                            column="running"
-                            currentElement="13"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
+                        {Orders && Orders.map((data,key) => (
+                            <Order
+                                key={key}
+                                status={data.status}
+                                column={data.column}
+                                orderTime={data.orderTime}
+                                orderStartTime={data.orderStartTime}
+                                orderNo={data.orderNo}
+                                currentElement={data.currentElement}
+                                handleChangeTicket={this.handleChangeTicket}
+                            />
+                        ))}
                     </ul>
                 </div>
             </div>
@@ -189,10 +102,6 @@ export default class Running extends Component {
     }
 
     componentDidUpdate() {
-        this.setTicket(this.state.currentTicket);
-    }
-
-    componentDidMount(){
         this.setTicket(this.state.currentTicket);
     }
 

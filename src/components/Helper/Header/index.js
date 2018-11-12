@@ -10,7 +10,7 @@ export default class Header extends Component {
         super(props);
         this.state={
             open:false,
-            time:"",
+            time:"Loading....",
             timeZone:'IST'
         }
     }

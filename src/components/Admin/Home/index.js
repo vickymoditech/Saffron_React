@@ -1,49 +1,91 @@
 import React, {Component} from 'react';
 import Loader from '../../Helper/Loader';
 import NotificationSystem from 'react-notification-system';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import './layout.css';
 import Running from '../Running';
 import Recent from '../Recent';
 import RunningLate from '../RunningLate';
+import * as saffronOrdersDisplayAction from '../../../actions/saffronOrdersDisplayAction';
 
 class Home extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            hereNow: [],
+            runningOrder: [],
             runningLate: [],
-            onTheWay: [],
-            isResetOpen: false
+            recentOrders: [],
+            isResetOpen: false,
+            notificationSystem: null
         }
     }
 
+    addNotifications = (message, level) => {
+        this.state.notificationSystem.addNotification({
+            message: message,
+            level: level,
+            autoDismiss: 5
+        });
+    };
+
+    componentWillReceiveProps(nextProps) {
+        if (!nextProps.Loading && nextProps.error_msg) {
+            this.addNotifications(nextProps.error_msg, "error");
+        } else {
+            this.setState({
+                runningOrder: nextProps.runningOrder || [],
+                runningLate: nextProps.runningLate || [],
+                recentOrders: nextProps.recentOrders || []
+            });
+        }
+    }
+
+    componentWillMount() {
+        this.props.actions.saffronOrdersDisplayAction.OrdersList();
+    }
+
+    componentDidMount() {
+        this.setState({notificationSystem: this.refs.notificationSystem});
+    };
+
     render() {
-
         return (
-
             <div className="drive-by myClass">
                 <NotificationSystem ref="notificationSystem"/>
                 <section className={this.state.isResetOpen ? "drive-widget recent-runner" : "drive-widget"}>
                     <div className="drive-details">
-                        <Running orders={this.state.hereNow}/>
-                        <Recent orders={this.state.onTheWay}/>
+                        <Running orders={this.state.runningOrder}/>
+                        <Recent orders={this.state.recentOrders}/>
                         <RunningLate orders={this.state.runningLate}/>
                     </div>
-                    {/*<RecentOrder recentOrderData={this.state.recentOrder}*/}
-                    {/*isLoading={this.props.startupData.loadRecentOrder} timeZone={this.state.timeZone}*/}
-                    {/*storeInfo={this.state.storeInformation} storeName={this.state.storeName}*/}
-                    {/*isResetOpen={this.state.isResetOpen}/>*/}
                 </section>
-                {this.state.loading && <Loader/>}
+                {this.props.Loading && <Loader/>}
             </div>
-
         );
-
     }
-
 }
 
-export default Home;
+
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        saffronOrdersDisplayAction: bindActionCreators(saffronOrdersDisplayAction, dispatch)
+    }
+});
+
+const mapStateToProps = (state) => {
+    const {saffronOrdersDisplayReducer} = state;
+    return {
+        Loading: saffronOrdersDisplayReducer.Loading,
+        error_msg: saffronOrdersDisplayReducer.error_msg,
+        runningOrder: saffronOrdersDisplayReducer.runningOrder,
+        runningLate: saffronOrdersDisplayReducer.runningLate,
+        recentOrders: saffronOrdersDisplayReducer.recentOrders
+    };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 

@@ -75,112 +75,27 @@ export default class Recent extends Component {
     };
 
     render() {
-        const sortedData = this.props.orders;
+        const orders = this.props.orders;
         return (
             <div className="col-lg-4 col-sm-12 col-md-6 card on-the-way">
                 <div className="card-header"><span
-                    className="item-number">{(sortedData && sortedData.length) || 0}</span>
+                    className="item-number">{(orders && orders.length) || 0}</span>
                     <h3 className="sub-title">Recent All Orders</h3></div>
                 <div className="card-body on-the-way-scroll">
                     <ul id="onTheWay">
-                        <Order
-                            key="0"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="0"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="1"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="1"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="2"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="2"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="3"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="3"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="4"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="4"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="5"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="5"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="6"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="6"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="7"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="7"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="8"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="8"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="9"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="9"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="10"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="10"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="11"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="11"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="12"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="12"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
-                        <Order
-                            key="13"
-                            status="waiting"
-                            column="recent orders"
-                            currentElement="13"
-                            handleChangeTicket={this.handleChangeTicket}
-                        />
+                        {orders && orders.map((data, key) => (
+                            <Order
+                                key={key}
+                                status={data.status}
+                                column={data.column}
+                                orderTime={data.orderTime}
+                                orderStartTime={data.orderStartTime}
+                                orderNo={data.orderNo}
+                                currentElement={data.currentElement}
+                                handleChangeTicket={this.handleChangeTicket}
+                            />
+                        ))
+                        }
                     </ul>
                 </div>
             </div>
@@ -188,10 +103,6 @@ export default class Recent extends Component {
     }
 
     componentDidUpdate() {
-        this.setTicket(this.state.currentTicket);
-    }
-
-    componentDidMount(){
         this.setTicket(this.state.currentTicket);
     }
 
