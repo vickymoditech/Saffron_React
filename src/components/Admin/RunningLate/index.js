@@ -12,7 +12,6 @@ export default class RunningLate extends Component {
     }
 
     setTicket = (activeTicket) => {
-        let windowWidth = jQuery(window).width();
         let windowHeight = jQuery(window).height() - 130; //130 px for header part
         let lengthoful = document.getElementById("runningLate") && document.getElementById("runningLate").getElementsByTagName("li").length;
         let liHeight = jQuery("#runningLate")[0] && jQuery("#runningLate li").height();
@@ -81,15 +80,11 @@ export default class RunningLate extends Component {
                     <h3 className="sub-title">Running late</h3></div>
                 <div className="card-body running-late running-late-scroll">
                     <ul id="runningLate">
-                        {Orders && Orders.map((data, key) => (
+                        {Orders && Orders.map((data, index) => (
                             <Order
-                                key={key}
-                                status={data.status}
-                                column={data.column}
-                                orderTime={data.orderTime}
-                                orderStartTime={data.orderStartTime}
-                                orderNo={data.orderNo}
-                                currentElement={data.currentElement}
+                                key={index}
+                                order={data}
+                                currentElement={index}
                                 handleChangeTicket={this.handleChangeTicket}
                             />
                         ))}

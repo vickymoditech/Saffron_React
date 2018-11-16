@@ -13,7 +13,6 @@ export default class Running extends Component {
     }
 
     setTicket = (activeTicket) => {
-        let windowWidth = jQuery(window).width();
         let windowHeight = jQuery(window).height() - 130; //130 px for header part
         let lengthoful = document.getElementById("here-now") && document.getElementById("here-now").getElementsByTagName("li").length;
         let liHeight = jQuery("#here-now")[0] && jQuery("#here-now li").height();
@@ -79,19 +78,15 @@ export default class Running extends Component {
         return (
             <div className="col-lg-4 col-sm-12 col-md-6 card here-now">
                 <div className="card-header"><span
-                    className="item-number">{Orders && Orders.length || 0}</span>
+                    className="item-number">{Orders && (Orders.length || 0)}</span>
                     <h3 className="sub-title">Running!</h3></div>
                 <div className="card-body here-now-scroll">
                     <ul id="here-now">
-                        {Orders && Orders.map((data,key) => (
+                        {Orders && Orders.map((data, index) => (
                             <Order
-                                key={key}
-                                status={data.status}
-                                column={data.column}
-                                orderTime={data.orderTime}
-                                orderStartTime={data.orderStartTime}
-                                orderNo={data.orderNo}
-                                currentElement={data.currentElement}
+                                key={index}
+                                order={data}
+                                currentElement={index}
                                 handleChangeTicket={this.handleChangeTicket}
                             />
                         ))}

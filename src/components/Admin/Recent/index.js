@@ -12,7 +12,6 @@ export default class Recent extends Component {
     }
 
     setTicket = (activeTicket) => {
-        let windowWidth = jQuery(window).width();
         let windowHeight = jQuery(window).height() - 130; //130 px for header part
         let lengthoful = document.getElementById("onTheWay") && document.getElementById("onTheWay").getElementsByTagName("li").length;
         let liHeight = jQuery("#onTheWay")[0] && jQuery("#onTheWay li").height();
@@ -83,15 +82,11 @@ export default class Recent extends Component {
                     <h3 className="sub-title">Recent All Orders</h3></div>
                 <div className="card-body on-the-way-scroll">
                     <ul id="onTheWay">
-                        {orders && orders.map((data, key) => (
+                        {orders && orders.map((data, index) => (
                             <Order
-                                key={key}
-                                status={data.status}
-                                column={data.column}
-                                orderTime={data.orderTime}
-                                orderStartTime={data.orderStartTime}
-                                orderNo={data.orderNo}
-                                currentElement={data.currentElement}
+                                key={index}
+                                order={data}
+                                currentElement={index}
                                 handleChangeTicket={this.handleChangeTicket}
                             />
                         ))

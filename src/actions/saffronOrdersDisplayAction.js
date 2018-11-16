@@ -1,10 +1,13 @@
 //import axios from 'axios';
 //import ENVIRONMENT_VARIABLES from '../environment.config';
+import moment from 'moment';
 import {
     SOD_INPROGRESS,
     SOD_NOT_SUCCESS,
     SOD_SUCCESS,
-    SOD_CONNECTION_ERROR
+    SOD_CONNECTION_ERROR,
+    SOD_RECENT_MOVE_TO_PROGRESS,
+    SOD_RUNNING_LATE_MOVE_TO_PROGRESS
 } from '../constants/actionTypes';
 
 export const OrdersList = () => {
@@ -34,109 +37,83 @@ export const OrdersList = () => {
             setTimeout(function () {
                 dispatch({
                     type: SOD_SUCCESS, runningOrder: [{
-                        key: 0,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 0
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }, {
-                        key: 1,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 1
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }, {
-                        key: 2,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 2
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }, {
-                        key: 3,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 3
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }, {
-                        key: 4,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 4
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }, {
-                        key: 5,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 5
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }, {
-                        key: 6,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 6
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }, {
-                        key: 7,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 7
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }, {
-                        key: 8,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 8
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }, {
-                        key: 9,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 9
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }, {
-                        key: 10,
                         status: "process",
                         column: "running",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "12345",
-                        currentElement: 10
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "12345"
                     }], runningLate: [{
-                        key: 0,
                         status: "late",
                         column: "running late",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "123",
-                        currentElement: 0
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "123"
                     }], recentOrders: [{
-                        key: 0,
                         status: "waiting",
                         column: "recent orders",
-                        orderTime: "12-11-2018 19:42:01",
-                        orderStartTime: "12-11-2018 16:27:01",
-                        orderNo: "123456",
-                        currentElement: 0
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "123456"
                     }]
                 });
 
@@ -146,3 +123,32 @@ export const OrdersList = () => {
         alert(error.message.toString());
     }
 };
+
+export const MoveToProgress = (order) => {
+    try {
+        return (dispatch) => {
+            let column = order.column;
+            //update Order from the api
+            order.status = "process";
+            order.column = "running";
+            order.orderStartTime = Date.now();
+
+            if (column === "running late") {
+                dispatch({
+                    type: SOD_RUNNING_LATE_MOVE_TO_PROGRESS,
+                    order
+                });
+            } else {
+                //update Order from the api
+                dispatch({
+                    type: SOD_RECENT_MOVE_TO_PROGRESS,
+                    order
+                });
+            }
+        }
+
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+

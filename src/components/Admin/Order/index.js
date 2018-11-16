@@ -7,7 +7,6 @@ export default class Order extends Component {
         super(props);
         this.state = {
             isDialogOpen: false,
-            timeZone: 'IST',
             Time: 0
         };
     }
@@ -17,7 +16,7 @@ export default class Order extends Component {
     };
 
     componentDidMount() {
-        if (this.props.column !== "running late") {
+        if (this.props.order.column !== "running late") {
             let audio = this.refs.audio;
             audio && audio.play();
         }
@@ -37,24 +36,22 @@ export default class Order extends Component {
 
 
     tick() {
-        let currentTime = new Date(this.getDateGMTChangeStore(this.state.timeZone));
+        let currentTime = new Date();
         let timeDiff = 0;
-        if (this.props.column === "running" || this.props.column === "running late") {
-            let OrderTime = new Date(this.props.orderStartTime);
+        if (this.props.order.column === "running" || this.props.order.column === "running late") {
+            let OrderTime = new Date(this.props.order.orderStartTime);
             timeDiff = Math.abs(Math.round(((currentTime.getTime() - OrderTime.getTime()) / 1000) / 60));
         } else {
-            let OrderTime = new Date(this.props.orderTime);
+            let OrderTime = new Date(this.props.order.orderTime);
             timeDiff = Math.abs(Math.round(((OrderTime.getTime() - currentTime.getTime()) / 1000) / 60));
         }
 
         this.setState({
             Time: timeDiff || 0
         });
+
     }
 
-    getDateGMTChangeStore = (timeZone) => {
-        return moment(Date.now()).utcOffset(timeZone).format("DD-MM-YYYY HH:mm:ss");
-    };
 
     componentWillUnmount() {
         clearInterval(this.timerID);
@@ -62,18 +59,18 @@ export default class Order extends Component {
 
 
     render() {
-        const {column, status} = this.props;
+        const {column, status} = this.props.order;
         const time = this.state.Time;
-        const orderTime = this.props.orderTime.split(" ");
+        const orderTime = (moment(this.props.order.orderTime).utcOffset('IST').format("DD-MM-YYYY HH:mm:ss")).toString().split(" ");
         const HHMM = orderTime[1].toString().split(":");
-        const orderNo = this.props.orderNo;
+        const orderNo = this.props.order.orderNo;
         let Color = "#F3D250";
         if (column === "running") {
             Color = "#61892F";
         } else if (column === "running late") {
             Color = "#f76C6C";
         }
-        const userAvatar = "http://192.168.200.18:9000/images/UserAvatar/demo.png";
+        const userAvatar = "http://192.168.200.18:9000/images/UserAvatar/demo1.png";
         let classes = ['small-box'];
 
         if (column === "running") {
@@ -86,11 +83,13 @@ export default class Order extends Component {
         return (
             <li onClick={this.handleChangeTicket} style={{cursor: 'pointer'}}>
                 {this.state.isDialogOpen &&
-                <OrderDialog handleClose={this.orderDialogClose} isOpen={this.state.isDialogOpen} column={column}/>}
+                <OrderDialog handleClose={this.orderDialogClose} isOpen={this.state.isDialogOpen} column={column}
+                             order={this.props.order}/>}
                 <div className={classes.join(' ')}>
+                    {column !== "running" &&
                     <audio ref="audio">
                         <source src="/assets/store_door.mp3" type="audio/mpeg"/>
-                    </audio>
+                    </audio>}
                     <div className="waiting-details" style={{backgroundColor: Color}}>
                         <div className="drive-status">{status}</div>
                         <div className="pickup-time">{time}</div>

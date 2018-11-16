@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import {Dialog} from 'material-ui';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as saffronOrderDisplayAction from '../../../actions/saffronOrdersDisplayAction';
+
 //import Loader from "../Loader/index";
 
 const style = {
@@ -32,14 +36,18 @@ class OrderDialog extends Component {
         super(props);
         this.state = {
             isOpen: props.isOpen,
-            column: props.column
+            column: props.column,
+            order: props.order
         };
     }
 
-    handleSubmit = () => {
-        alert("submit");
+    handleMoveToProgress = () => {
+        this.props.actions.saffronOrderDisplayAction.MoveToProgress(this.state.order);
     };
 
+    handleDone = () => {
+        alert("Handle Done");
+    };
 
     render() {
         return (
@@ -72,11 +80,12 @@ class OrderDialog extends Component {
                                                             {this.state.column && (this.state.column === "running late" || this.state.column === "recent orders") ?
                                                                 < button type="button" className="btn btn-save"
                                                                          style={{margin: '12px 10px 0 0'}}
-                                                                         onClick={this.handleSubmit}>Move to Progress
+                                                                         onClick={this.handleMoveToProgress}>Move to
+                                                                    Progress
                                                                 </button> :
                                                                 < button type="button" className="btn btn-save"
                                                                          style={{margin: '12px 10px 0 0'}}
-                                                                         onClick={this.handleSubmit}>Done
+                                                                         onClick={this.handleDone}>Done
                                                                 </button>}
                                                             <button type="button" className="btn btn-save"
                                                                     style={{margin: '12px 10px 0 0'}}
@@ -98,5 +107,10 @@ class OrderDialog extends Component {
     }
 }
 
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        saffronOrderDisplayAction: bindActionCreators(saffronOrderDisplayAction, dispatch)
+    }
+});
 
-export default OrderDialog;
+export default connect(null, mapDispatchToProps)(OrderDialog);
