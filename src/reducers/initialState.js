@@ -28,5 +28,10 @@ export default {
         runningOrder: [],
         runningLate: [],
         recentOrders: []
+    },
+    websiteReducer: {
+        Loading: false,
+        error_msg: null,
+        teamList: []
     }
 }

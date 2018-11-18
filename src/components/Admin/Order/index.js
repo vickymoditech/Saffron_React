@@ -70,7 +70,7 @@ export default class Order extends Component {
         } else if (column === "running late") {
             Color = "#f76C6C";
         }
-        const userAvatar = "http://192.168.200.18:9000/images/UserAvatar/demo1.png";
+        const userAvatar = "http://192.168.0.8:9000/images/UserAvatar/demo.png";
         let classes = ['small-box'];
 
         if (column === "running") {

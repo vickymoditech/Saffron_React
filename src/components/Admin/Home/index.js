@@ -15,9 +15,6 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            runningOrder: [],
-            runningLate: [],
-            recentOrders: [],
             isResetOpen: false,
             notificationSystem: null
         }
@@ -34,18 +31,9 @@ class Home extends Component {
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
-        } else {
-            this.setState({
-                runningOrder: nextProps.runningOrder || [],
-                runningLate: nextProps.runningLate || [],
-                recentOrders: nextProps.recentOrders || []
-            });
         }
     }
 
-    componentWillMount() {
-        this.props.actions.saffronOrdersDisplayAction.OrdersList();
-    }
 
     componentDidMount() {
         this.setState({notificationSystem: this.refs.notificationSystem});
@@ -57,9 +45,9 @@ class Home extends Component {
                 <NotificationSystem ref="notificationSystem"/>
                 <section className={this.state.isResetOpen ? "drive-widget recent-runner" : "drive-widget"}>
                     <div className="drive-details">
-                        <Running orders={this.state.runningOrder}/>
-                        <Recent orders={this.state.recentOrders}/>
-                        <RunningLate orders={this.state.runningLate}/>
+                        <Running orders={this.props.runningOrder}/>
+                        <Recent orders={this.props.recentOrders}/>
+                        <RunningLate orders={this.props.runningLate}/>
                     </div>
                 </section>
                 {this.props.Loading && <Loader/>}

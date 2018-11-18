@@ -43,6 +43,8 @@ class OrderDialog extends Component {
 
     handleMoveToProgress = () => {
         this.props.actions.saffronOrderDisplayAction.MoveToProgress(this.state.order);
+        //change logic here
+        this.props.handleClose();
     };
 
     handleDone = () => {

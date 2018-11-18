@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import Header from '../src/components/Helper/Header';
 import $ from "jquery";
+import * as saffronOrdersDisplayAction from "./actions/saffronOrdersDisplayAction";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
 
 class App extends Component {
+
     componentWillMount() {
         // eslint-disable-next-line
         let ua = navigator.userAgent.toLowerCase();
@@ -17,6 +21,9 @@ class App extends Component {
         if (isSafari) {
             $('body').addClass("iosSafari");
         }
+
+        this.props.actions.saffronOrdersDisplayAction.OrdersList();
+
     }
 
     render() {
@@ -29,4 +36,10 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        saffronOrdersDisplayAction: bindActionCreators(saffronOrdersDisplayAction, dispatch)
+    }
+});
+
+export default connect(null, mapDispatchToProps)(App);

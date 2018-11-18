@@ -41,79 +41,97 @@ export const OrdersList = () => {
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "1"
                     }, {
                         status: "process",
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "2"
                     }, {
                         status: "process",
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "3"
                     }, {
                         status: "process",
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "4"
                     }, {
                         status: "process",
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "5"
                     }, {
                         status: "process",
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "6"
                     }, {
                         status: "process",
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "7"
                     }, {
                         status: "process",
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "8"
                     }, {
                         status: "process",
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "9"
                     }, {
                         status: "process",
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "10"
                     }, {
                         status: "process",
                         column: "running",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "12345"
+                        orderNo: "11"
                     }], runningLate: [{
                         status: "late",
                         column: "running late",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "123"
+                        orderNo: "1"
+                    },{
+                        status: "late",
+                        column: "running late",
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "2"
+                    },{
+                        status: "late",
+                        column: "running late",
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "3"
                     }], recentOrders: [{
                         status: "waiting",
                         column: "recent orders",
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
-                        orderNo: "123456"
+                        orderNo: "1"
+                    },{
+                        status: "waiting",
+                        column: "recent orders",
+                        orderTime: Date.now(),
+                        orderStartTime: Date.now(),
+                        orderNo: "2"
                     }]
                 });
 
