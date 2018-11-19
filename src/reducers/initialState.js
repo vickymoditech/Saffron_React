@@ -32,6 +32,8 @@ export default {
     websiteReducer: {
         Loading: false,
         error_msg: null,
-        teamList: []
+        teamList: [],
+        galleryList: [],
+        serviceList: []
     }
 }

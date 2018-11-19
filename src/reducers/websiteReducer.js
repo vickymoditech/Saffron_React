@@ -2,7 +2,9 @@ import {
     WEBSITE_INPROGRESS,
     TEAM_SUCCESS,
     WEBSITE_NOT_SUCCESS,
-    WEBSITE_CONNECTION_ERROR
+    WEBSITE_CONNECTION_ERROR,
+    GALLERY_SUCCESS,
+    SERVICE_SUCCESS
 } from '../constants/actionTypes';
 
 
@@ -18,7 +20,6 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
             return Object.assign({}, state, {Loading: false, error_msg: action.data.error_msg});
 
         case WEBSITE_NOT_SUCCESS:
-            debugger;
             return Object.assign({}, state, {
                 error_msg: action.data.error_msg,
                 Loading: false
@@ -27,6 +28,20 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
         case TEAM_SUCCESS:
             return Object.assign({}, state, {
                 teamList: action.data,
+                Loading: false,
+                error_msg: null
+            });
+
+        case GALLERY_SUCCESS:
+            return Object.assign({}, state, {
+                galleryList: action.data,
+                Loading: false,
+                error_msg: null
+            });
+
+        case SERVICE_SUCCESS:
+            return Object.assign({}, state, {
+                serviceList: action.data,
                 Loading: false,
                 error_msg: null
             });

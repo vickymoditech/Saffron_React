@@ -18,7 +18,6 @@ export default function manageUserReducer(state = initialState.manageUserReducer
             return Object.assign({}, state, {userList: [], Loading: false, error_msg: action.data.error_msg});
 
         case USER_CHANGE_NOT_SUCCESS:
-            debugger;
             return Object.assign({}, state, {
                 userList: [],
                 error_msg: action.data.error_msg,

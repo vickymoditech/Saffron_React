@@ -7,8 +7,10 @@ import NotificationSystem from 'react-notification-system';
 import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
 
-import './websiteCss/Team.css';
 import './websiteCss/Service.css';
+import './websiteCss/MiddleCard.css';
+import './websiteCss/3dimages.css';
+import './websiteCss/Team.css';
 
 class App extends Component {
 
@@ -52,7 +54,9 @@ class App extends Component {
             $('body').addClass("iosSafari");
         }
 
+        this.props.actions.websiteAction.getServiceList();
         this.props.actions.websiteAction.getTeamList();
+        this.props.actions.websiteAction.getGallerys();
 
     }
 
@@ -85,7 +89,6 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     const {websiteReducer} = state;
-    debugger;
     return {
         Loading: websiteReducer.Loading,
         error_msg: websiteReducer.error_msg

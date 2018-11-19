@@ -1,6 +1,6 @@
 const ENVIRONMENT_DEVELOPMENT = {
-    API_URL: "http://192.168.0.8:9000/api",
-    PHOTO_URL: "http://192.168.0.8:9000/"
+    API_URL: "http://192.168.200.18:9000/api",
+    PHOTO_URL: "http://192.168.200.18:9000/"
 };
 
 const ENVIRONMENT_PRODUCTION = {

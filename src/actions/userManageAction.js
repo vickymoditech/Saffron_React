@@ -23,7 +23,6 @@ export const UserList = () => {
                     dispatch({type: USER_SUCCESS, data: response.data});
                 }
             }).catch((error) => {
-                debugger;
                 if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {
                     dispatch({type: USER_CHANGE_NOT_SUCCESS, data: {error_msg: error.response.data.user_msg}});
                 } else {
