@@ -1,4 +1,5 @@
 import React from 'react';
+import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
 class ImageGrid extends React.Component {
     constructor(props) {
@@ -10,15 +11,14 @@ class ImageGrid extends React.Component {
             <div>
                 <div class="container1">
                     <div id="carousel">
-                        {this.props.galleryList.map((image, index) => (
+                        {this.props.galleryList.map((gallery, index) => (
                             <figure key={index}>
-                                <img src={image.src} alt="" style={{height: "100%", width: "100%"}}/>
+                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url} alt=""
+                                     style={{height: "100%", width: "100%"}}/>
                             </figure>
                         ))}
                     </div>
                 </div>
-
-
             </div>
         );
     }

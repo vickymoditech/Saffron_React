@@ -12,8 +12,6 @@ import MainSlider from './slider';
 import ServiceGrid from './serviceGrid';
 import MiddleCard from './middleCard';
 import Team from './team';
-import ENVIRONMENT_VARIABLES from "../../../environment.config";
-
 
 class Home extends Component {
 
@@ -25,22 +23,6 @@ class Home extends Component {
         browserHistory.push('/Login');
     };
 
-    changeImageArrayFormate = (GalleryImages) => {
-        let galleryList = [];
-        GalleryImages.map((image, index) => {
-            let dataSchema = {
-                src: ENVIRONMENT_VARIABLES.PHOTO_URL + image.image_url,
-                thumbnail: ENVIRONMENT_VARIABLES.PHOTO_URL + image.image_url,
-                thumbnailWidth: 320,
-                thumbnailHeight: 213,
-                tags: [{value: image.description, title: "Nature"}],
-                caption: image.description
-            };
-            galleryList.push(dataSchema);
-        });
-        return galleryList;
-    };
-
 
     render() {
         return (
@@ -49,7 +31,7 @@ class Home extends Component {
                 <MainSlider/>
                 <ServiceGrid serviceList={this.props.serviceList}/>
                 <MiddleCard/>
-                <ImageGrid galleryList={this.changeImageArrayFormate(this.props.galleryList)}/>
+                <ImageGrid galleryList={this.props.galleryList}/>
                 <Team teamList={this.props.teamList}/>
 
                 {isLoggedIn() ?
