@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import './websiteCss/MiddleCard.css';
 class MiddleCard extends Component {
 
     constructor(props) {

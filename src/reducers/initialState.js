@@ -34,6 +34,7 @@ export default {
         error_msg: null,
         teamList: [],
         galleryList: [],
-        serviceList: []
+        serviceList: [],
+        allGalleryList: []
     }
 }

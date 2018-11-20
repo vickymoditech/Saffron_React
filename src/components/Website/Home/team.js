@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
-
+import './websiteCss/Team.css';
 class Team extends Component {
 
     constructor(props) {

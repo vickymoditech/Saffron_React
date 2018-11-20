@@ -7,10 +7,6 @@ import NotificationSystem from 'react-notification-system';
 import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
 
-import './websiteCss/Service.css';
-import './websiteCss/MiddleCard.css';
-import './websiteCss/3dimages.css';
-import './websiteCss/Team.css';
 
 class App extends Component {
 

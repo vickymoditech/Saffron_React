@@ -4,7 +4,8 @@ import {
     WEBSITE_NOT_SUCCESS,
     WEBSITE_CONNECTION_ERROR,
     GALLERY_SUCCESS,
-    SERVICE_SUCCESS
+    SERVICE_SUCCESS,
+    ALL_GALLERY_SUCCESS
 } from '../constants/actionTypes';
 
 
@@ -42,6 +43,14 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
         case SERVICE_SUCCESS:
             return Object.assign({}, state, {
                 serviceList: action.data,
+                Loading: false,
+                error_msg: null
+            });
+
+        case ALL_GALLERY_SUCCESS:
+            debugger;
+            return Object.assign({}, state, {
+                allGalleryList: action.data,
                 Loading: false,
                 error_msg: null
             });

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import Slider from "react-slick";
+import './websiteCss/Service.css';
 
 class ServiceGrid extends Component {
 

@@ -21,6 +21,7 @@ import initialState from '../src/reducers/initialState';
 import NotFound from '../src/components/NotFound';
 import Home from './components/Website/Home';
 import Login from '../src/components/Login';
+import Gallery from './components/Website/Gallery/gallery';
 
 //Admin
 import AdminHome from './components/Admin/Home';
@@ -125,6 +126,7 @@ ReactDOM.render(<Provider store={store}>
             <Route path="/Login" component={Login} onEnter={checkLoggedIn} exact={true}/>
             <Route component={Website} path="/">
                 <IndexRoute component={Home}/>
+                <Route path="/Gallery" component={Gallery} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
         </Router>

@@ -1,5 +1,6 @@
 import React from 'react';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import './websiteCss/ImageGrid.css';
 
 class ImageGrid extends React.Component {
     constructor(props) {
