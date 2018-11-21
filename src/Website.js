@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
+import {isLoggedIn} from './index';
 
 import $ from "jquery";
 import NotificationSystem from 'react-notification-system';
 import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
+import * as authAction from './actions/authAction';
+import {browserHistory} from 'react-router';
+import io from 'socket.io-client';
 
+const socket = io('http://localhost:9000');
 
 class App extends Component {
 
@@ -56,6 +62,15 @@ class App extends Component {
 
     }
 
+    handleLogout = () => {
+        socket.emit('test', "Data pass here");
+        //this.props.actions.authAction.loggedOut();
+    };
+
+    handleLogin = () => {
+        //browserHistory.push('/Login');
+    };
+
     render() {
         return (
             <div>
@@ -65,15 +80,22 @@ class App extends Component {
                         <img src="assets/Images/DB_Logo.png" class="d-inline-block align-top" alt=""/>
                     </a>
                         <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="" style={{color:"white"}}>Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="" style={{color:"white"}}>Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="" style={{color:"white"}}>Pricing</a>
-                            </li>
+                            <Link to="/" >
+                                Home
+                            </Link> |
+                            <Link to="/Gallery" >
+                                Gallery
+                            </Link> |
+                            <Link to="/VideoGallery" >
+                                VideoGallery
+                            </Link> |
+                            {isLoggedIn() ?
+                                (<Link onClick={this.handleLogout}>
+                                    Logout
+                                </Link> ) :
+                                (<Link onClick={this.handleLogin}>
+                                    Login
+                                </Link>)}
                         </ul>
                 </nav>
                 {this.props.Loading && <Loader/>}
@@ -93,7 +115,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        websiteAction: bindActionCreators(websiteAction, dispatch)
+        websiteAction: bindActionCreators(websiteAction, dispatch),
+        authAction: bindActionCreators(authAction, dispatch)
     }
 });
 

@@ -21,12 +21,13 @@ import initialState from '../src/reducers/initialState';
 import NotFound from '../src/components/NotFound';
 import Home from './components/Website/Home';
 import Login from '../src/components/Login';
-import Gallery from './components/Website/Gallery/gallery';
+import Gallery from './components/Website/Gallery';
+import VideoGallery from './components/Website/VideoGallery';
 
 //Admin
 import AdminHome from './components/Admin/Home';
 import ManageUser from './components/Admin/ManageUser';
-
+import './socket';
 
 const composeEnhancers = composeWithDevTools({});
 //const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(promise, logger)));
@@ -127,6 +128,7 @@ ReactDOM.render(<Provider store={store}>
             <Route component={Website} path="/">
                 <IndexRoute component={Home}/>
                 <Route path="/Gallery" component={Gallery} exact={true}/>
+                <Route path="/VideoGallery" component={VideoGallery} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
         </Router>
