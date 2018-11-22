@@ -27,7 +27,6 @@ import VideoGallery from './components/Website/VideoGallery';
 //Admin
 import AdminHome from './components/Admin/Home';
 import ManageUser from './components/Admin/ManageUser';
-import './socket';
 
 const composeEnhancers = composeWithDevTools({});
 //const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(promise, logger)));

@@ -11,6 +11,7 @@ import Loader from '././components/Helper/Loader';
 import * as authAction from './actions/authAction';
 import {browserHistory} from 'react-router';
 import io from 'socket.io-client';
+import {subscribeToTimer} from './socket';
 
 const socket = io('http://localhost:9000');
 
@@ -60,6 +61,12 @@ class App extends Component {
         this.props.actions.websiteAction.getTeamList();
         this.props.actions.websiteAction.getGallerys();
 
+        subscribeToTimer((err, data) => {
+            debugger;
+            console.log(data);
+        });
+
+
     }
 
     handleLogout = () => {
@@ -68,6 +75,7 @@ class App extends Component {
     };
 
     handleLogin = () => {
+        socket.emit('test', "Data pass here");
         //browserHistory.push('/Login');
     };
 
