@@ -22,7 +22,8 @@ import NotFound from '../src/components/NotFound';
 import Home from './components/Website/Home';
 import Login from '../src/components/Login';
 import Gallery from './components/Website/Gallery';
-import VideoGallery from './components/Website/VideoGallery';
+import VideoGalleryMain from './components/Website/VideoGallery';
+import VideoGallery from './components/Website/VideoGallery/index1';
 
 //Admin
 import AdminHome from './components/Admin/Home';
@@ -118,16 +119,18 @@ function checkLoggedIn(nextState, replace) {
 ReactDOM.render(<Provider store={store}>
     <MuiThemeProvider>
         <Router history={browserHistory}>
-            <Route component={DashBoard} path="/Dashboard">
+            <Route component={DashBoard} path="/Dashboard" exact={true}>
                 <IndexRoute component={AdminHome} onEnter={requireAuth}/>
                 <Route path="/Dashboard/ManageUser" component={ManageUser} onEnter={requireAuth} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
             <Route path="/Login" component={Login} onEnter={checkLoggedIn} exact={true}/>
-            <Route component={Website} path="/">
+            <Route component={Website} path="/" exact={true}>
                 <IndexRoute component={Home}/>
                 <Route path="/Gallery" component={Gallery} exact={true}/>
-                <Route path="/VideoGallery" component={VideoGallery} exact={true}/>
+                <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}>
+                    <Route path="/VideoGallery/demo" component={VideoGallery}/>
+                </Route>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
         </Router>

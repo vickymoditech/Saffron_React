@@ -59,10 +59,7 @@ class App extends Component {
             $('body').addClass("iosSafari");
         }
 
-        this.props.actions.websiteAction.getAllSliderImages();
-        this.props.actions.websiteAction.getServiceList();
-        this.props.actions.websiteAction.getGallerys();
-        this.props.actions.websiteAction.getTeamList();
+        this.props.actions.websiteAction.getWebsiteHome();
 
         subscribeToTimer((err, data) => {
             debugger;
@@ -101,10 +98,10 @@ class App extends Component {
                                 VideoGallery
                             </Link> |
                             {isLoggedIn() ?
-                                (<Link onClick={this.handleLogout}>
+                                (<Link onClick={this.handleLogout} style={{cursor: "pointer"}}>
                                     Logout
                                 </Link> ) :
-                                (<Link onClick={this.handleLogin}>
+                                (<Link onClick={this.handleLogin} style={{cursor: "pointer"}}>
                                     Login
                                 </Link>)}
                         </ul>

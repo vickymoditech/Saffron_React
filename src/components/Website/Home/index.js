@@ -15,7 +15,7 @@ class Home extends Component {
         return (
             <div>
 
-                <MainSlider sliderList={this.props.sliderList}/>
+                {this.props.sliderList.length > 0 && <MainSlider sliderList={this.props.sliderList}/>}
                 <ServiceGrid serviceList={this.props.serviceList}/>
                 <MiddleCard/>
                 <ImageGrid galleryList={this.props.galleryList}/>

@@ -6,7 +6,8 @@ import {
     GALLERY_SUCCESS,
     SERVICE_SUCCESS,
     ALL_GALLERY_SUCCESS,
-    ALL_SLIDER_SUCCESS
+    ALL_SLIDER_SUCCESS,
+    WEBSITE_HOME,
 } from '../constants/actionTypes';
 
 
@@ -27,27 +28,6 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
                 Loading: false
             });
 
-        case TEAM_SUCCESS:
-            return Object.assign({}, state, {
-                teamList: action.data,
-                Loading: false,
-                error_msg: null
-            });
-
-        case GALLERY_SUCCESS:
-            return Object.assign({}, state, {
-                galleryList: action.data,
-                Loading: false,
-                error_msg: null
-            });
-
-        case SERVICE_SUCCESS:
-            return Object.assign({}, state, {
-                serviceList: action.data,
-                Loading: false,
-                error_msg: null
-            });
-
         case ALL_GALLERY_SUCCESS:
             return Object.assign({}, state, {
                 allGalleryList: action.data,
@@ -55,9 +35,12 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
                 error_msg: null
             });
 
-        case ALL_SLIDER_SUCCESS:
+        case WEBSITE_HOME:
             return Object.assign({}, state, {
-                sliderList: action.data,
+                sliderList: action.SliderList,
+                serviceList: action.ServicesList,
+                galleryList: action.GalleryList,
+                teamList: action.TeamList,
                 Loading: false,
                 error_msg: null
             });

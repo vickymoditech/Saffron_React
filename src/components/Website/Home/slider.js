@@ -15,13 +15,12 @@ class MainSlider extends Component {
             <div>
                 <Carousel infiniteLoop={true} showThumbs={false} autoPlay={true} stopOnHover={false} interval={3000}>
                     {this.props.sliderList.map((Slider, index) => (
-                        <div>
-                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + Slider.image_url} alt="" key={index}/>
+                        <div key={index}>
+                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + Slider.image_url} alt=""/>
                         </div>
                     ))}
                 </Carousel>
             </div>
-
         );
 
     }
