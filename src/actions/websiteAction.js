@@ -7,7 +7,8 @@ import {
     WEBSITE_NOT_SUCCESS,
     GALLERY_SUCCESS,
     SERVICE_SUCCESS,
-    ALL_GALLERY_SUCCESS
+    ALL_GALLERY_SUCCESS,
+    ALL_SLIDER_SUCCESS
 } from '../constants/actionTypes';
 
 export const getTeamList = () => {
@@ -115,4 +116,32 @@ export const getAllGallerys = () => {
     }
 
 };
+
+export const getAllSliderImages = () => {
+    try {
+        return (dispatch) => {
+
+            dispatch({type: WEBSITE_INPROGRESS});
+            const api = {
+                method: 'GET',
+                url: ENVIRONMENT_VARIABLES.API_URL + "/SliderImages"
+            };
+            axios(api).then((response) => {
+                if (response.status === 200) {
+                    dispatch({type: ALL_SLIDER_SUCCESS, data: response.data});
+                }
+            }).catch((error) => {
+                if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {
+                    dispatch({type: WEBSITE_NOT_SUCCESS, data: {error_msg: error.response.data.user_msg}});
+                } else {
+                    dispatch({type: WEBSITE_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
+                }
+            });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+
+};
+
 

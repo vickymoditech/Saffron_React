@@ -25,7 +25,6 @@ class Gallery extends Component {
             };
             GalleryList.push(single);
         });
-        debugger;
         return GalleryList;
     }
 

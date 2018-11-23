@@ -12,8 +12,10 @@ import * as authAction from './actions/authAction';
 import {browserHistory} from 'react-router';
 import io from 'socket.io-client';
 import {subscribeToTimer} from './socket';
+import ENVIRONMENT_VARIABLES from "./environment.config";
 
-const socket = io('http://localhost:9000');
+const socket = io(ENVIRONMENT_VARIABLES.SOCKET_URL);
+
 
 class App extends Component {
 
@@ -57,9 +59,10 @@ class App extends Component {
             $('body').addClass("iosSafari");
         }
 
+        this.props.actions.websiteAction.getAllSliderImages();
         this.props.actions.websiteAction.getServiceList();
-        this.props.actions.websiteAction.getTeamList();
         this.props.actions.websiteAction.getGallerys();
+        this.props.actions.websiteAction.getTeamList();
 
         subscribeToTimer((err, data) => {
             debugger;
@@ -71,23 +74,23 @@ class App extends Component {
 
     handleLogout = () => {
         socket.emit('test', "Data pass here");
-        //this.props.actions.authAction.loggedOut();
+        this.props.actions.authAction.loggedOut();
     };
 
     handleLogin = () => {
         socket.emit('test', "Data pass here");
-        //browserHistory.push('/Login');
+        browserHistory.push('/Login');
     };
 
     render() {
         return (
             <div>
                 <NotificationSystem ref="notificationSystem"/>
-                <nav class="navbar navbar-light bg-dark" style={{height:"61px"}}>
-                    <a class="navbar-brand" href="">
-                        <img src="assets/Images/DB_Logo.png" class="d-inline-block align-top" alt=""/>
+                <nav className="navbar navbar-light bg-dark" style={{height:"61px"}}>
+                    <a className="navbar-brand" href="">
+                        <img src="assets/Images/DB_Logo.png" className="d-inline-block align-top" alt=""/>
                     </a>
-                        <ul class="navbar-nav">
+                        <ul className="navbar-nav">
                             <Link to="/" >
                                 Home
                             </Link> |

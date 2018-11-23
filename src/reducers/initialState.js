@@ -35,6 +35,7 @@ export default {
         teamList: [],
         galleryList: [],
         serviceList: [],
-        allGalleryList: []
+        allGalleryList: [],
+        sliderList: []
     }
 }

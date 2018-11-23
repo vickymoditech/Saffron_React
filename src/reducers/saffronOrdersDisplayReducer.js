@@ -36,7 +36,6 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             });
 
         case SOD_RUNNING_LATE_MOVE_TO_PROGRESS:
-            debugger;
             //Add into Running Order
             let runningOrders = [...state.runningOrder, action.order];
 
@@ -53,7 +52,6 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             });
 
         case SOD_RECENT_MOVE_TO_PROGRESS:
-            debugger;
             //Add into Running Order
             runningOrders = [...state.runningOrder, action.order];
 

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Carousel} from 'react-responsive-carousel';
+import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
 class MainSlider extends Component {
 
@@ -12,19 +13,12 @@ class MainSlider extends Component {
         return (
 
             <div>
-                <Carousel infiniteLoop={true} showThumbs={false} autoPlay={true} stopOnHover={false} interval={7000}>
-                    <div>
-                        <img src="assets/Images/01.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img src="assets/Images/01.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img src="assets/Images/01.jpg" alt=""/>
-                    </div>
-                    <div>
-                        <img src="assets/Images/01.jpg" alt=""/>
-                    </div>
+                <Carousel infiniteLoop={true} showThumbs={false} autoPlay={true} stopOnHover={false} interval={3000}>
+                    {this.props.sliderList.map((Slider, index) => (
+                        <div>
+                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + Slider.image_url} alt="" key={index}/>
+                        </div>
+                    ))}
                 </Carousel>
             </div>
 

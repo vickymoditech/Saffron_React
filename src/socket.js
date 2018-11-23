@@ -1,12 +1,10 @@
 import io from 'socket.io-client';
-const socket = io('http://localhost:9000');
+import ENVIRONMENT_VARIABLES from "./environment.config";
 
-// socket.on("new test", (data) => {
-//     debugger;
-//     console.log("new test",data);
-// });
+const socket = io(ENVIRONMENT_VARIABLES.SOCKET_URL);
 
 function subscribeToTimer(cb) {
     socket.on('new test', data => cb(null, data));
 }
-export { subscribeToTimer };
+
+export {subscribeToTimer};

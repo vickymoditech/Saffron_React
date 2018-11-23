@@ -105,7 +105,6 @@ class ManageUser extends Component {
 
 const mapStateToProps = (state) => {
     const {manageUserReducer} = state;
-    debugger;
     return {
         Loading: manageUserReducer.Loading,
         error_msg: manageUserReducer.error_msg,

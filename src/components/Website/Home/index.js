@@ -15,7 +15,7 @@ class Home extends Component {
         return (
             <div>
 
-                <MainSlider/>
+                <MainSlider sliderList={this.props.sliderList}/>
                 <ServiceGrid serviceList={this.props.serviceList}/>
                 <MiddleCard/>
                 <ImageGrid galleryList={this.props.galleryList}/>
@@ -32,7 +32,8 @@ const mapStateToProps = (state) => {
     return {
         teamList: websiteReducer.teamList,
         serviceList: websiteReducer.serviceList,
-        galleryList: websiteReducer.galleryList
+        galleryList: websiteReducer.galleryList,
+        sliderList: websiteReducer.sliderList
     };
 };
 

@@ -10,7 +10,7 @@ class ImageGrid extends React.Component {
     render() {
         return (
             <div>
-                <div class="container1">
+                <div className="container1">
                     <div id="carousel">
                         {this.props.galleryList.map((gallery, index) => (
                             <figure key={index}>

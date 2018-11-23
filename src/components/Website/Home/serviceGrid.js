@@ -22,17 +22,17 @@ class ServiceGrid extends Component {
         return (
             <div>
                 <div>
-                    <div class="container mt-40">
-                        <h3 class="text-center"></h3>
-                        <div class="row mt-30">
+                    <div className="container mt-40">
+                        <h3 className="text-center"></h3>
+                        <div className="row mt-30">
                             <Slider {...settings}>
                                 {this.props.serviceList.map((service, index) => (
-                                    <div class="col-md-4 col-sm-6" key={index}>
-                                        <div class="box16">
+                                    <div className="col-md-4 col-sm-6" key={index}>
+                                        <div className="box16">
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + service.image_url}/>
-                                            <div class="box-content">
-                                                <h3 class="title">{service.name}</h3>
-                                                <span class="post">{service.description}</span>
+                                            <div className="box-content">
+                                                <h3 className="title">{service.name}</h3>
+                                                <span className="post">{service.description}</span>
                                             </div>
                                         </div>
                                     </div>
