@@ -4,20 +4,22 @@ import {
     INVALID_USER,
     AUTHENTICATION_INPROGRESS,
     IS_AUTHENTICATED,
-    UNAUTHORIZED_USER,
     LOGOUT_USER,
     CONNECTION_ERROR,
     PASSWORD_CHANGE_INPROGRESS,
     PASSWORD_CHANGE_SUCCESS,
     PASSWORD_CHANGE_NOT_SUCCESS,
-    PASSWORD_CONNECTION_ERROR
+    PASSWORD_CONNECTION_ERROR,
+    REGISTRATION_INPROGRESS,
+    REGISTRATION_NOT_SUCCESS,
+    REGISTRATION_SUCCESS
 } from '../constants/actionTypes';
 
 export const loginUser = (credentials) => {
     try {
         return (dispatch) => {
             const loginDetails = {
-                "userId": credentials.email,
+                "userId": credentials.mobile_number,
                 "password": credentials.password
             };
             dispatch({type: AUTHENTICATION_INPROGRESS});
@@ -46,6 +48,39 @@ export const loggedOut = () => {
             localStorage.removeItem("accessToken");
             localStorage.removeItem("userProfile");
             dispatch({type: LOGOUT_USER});
+        }
+    } catch (error) {
+    }
+};
+
+
+export const registrationUser = (credentials) => {
+    try {
+        return (dispatch) => {
+            const RegistrationDetails = {
+                "first_name": credentials.first_name,
+                "last_name": credentials.last_name,
+                "mobile_number": credentials.mobile_number,
+                "password": credentials.password,
+                "confirm_password": credentials.confirm_password,
+                "email": "",
+                "role": "user"
+            };
+            dispatch({type: REGISTRATION_INPROGRESS});
+            axios.post(ENVIRONMENT_VARIABLES.API_URL + "/oauths/register", RegistrationDetails).then((response) => {
+                if (response.status === 200) {
+                    dispatch({
+                        type: REGISTRATION_SUCCESS,
+                        data: {accessToken: response.data.accessToken}
+                    });
+                }
+            }).catch((error) => {
+                if (error.response) {
+                    dispatch({type: REGISTRATION_NOT_SUCCESS, data: {error_msg: error.response.data.user_msg}});
+                } else {
+                    dispatch({type: REGISTRATION_NOT_SUCCESS, data: {error_msg: error.message.toString()}});
+                }
+            });
         }
     } catch (error) {
     }

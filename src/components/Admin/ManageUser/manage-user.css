@@ -1,6 +1,8 @@
 html, body {
     height: 100%;
     display: block;
+    font-family: "Josefin Sans", Arial, sans-serif;
+
 }
 .pr-0 {
     padding-right: 0;

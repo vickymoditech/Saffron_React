@@ -101,9 +101,16 @@ class App extends Component {
                                 (<Link onClick={this.handleLogout} style={{cursor: "pointer"}}>
                                     Logout
                                 </Link> ) :
-                                (<Link onClick={this.handleLogin} style={{cursor: "pointer"}}>
-                                    Login
-                                </Link>)}
+                                (
+                                    <span>
+                                        <Link onClick={this.handleLogin} style={{cursor: "pointer"}}>
+                                            Login
+                                        </Link> |
+                                        <Link to="/Registration">
+                                            Registration
+                                        </Link>
+                                    </span>
+                                )}
                         </ul>
                 </nav>
                 {this.props.Loading && <Loader/>}

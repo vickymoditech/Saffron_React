@@ -16,7 +16,7 @@ import decode from "jwt-decode";
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {credentials: {email: '', password: ''}, isEmpty: false, invalidUser: false, toastId: ""}
+        this.state = {credentials: {mobile_number: '', password: ''}, isEmpty: false, invalidUser: false, toastId: ""}
     }
 
     notify = (message) => toast.error(message);
@@ -38,7 +38,7 @@ class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.state.toastId && this.removeToaster(this.state.toastId);
-        if (this.state.credentials.email.trim() !== "" && this.state.credentials.password.trim() !== "") {
+        if (this.state.credentials.mobile_number.trim() !== "" && this.state.credentials.password.trim() !== "") {
             this.props.actions.auth.loginUser(this.state.credentials);
         } else {
             let toastId = this.notify("Please Enter Username and Password");
@@ -93,7 +93,7 @@ class Login extends Component {
                                                             <i className="fa fa-user"></i>
                                                         </span>
                                                             <input type="text" value={this.state.credentials.email}
-                                                                   name="email" placeholder="Mobile Number"
+                                                                   name="mobile_number" placeholder="Mobile Number"
                                                                    className="form-control"
                                                                    onChange={this.handleChange}/>
                                                         </div>

@@ -21,6 +21,7 @@ import initialState from '../src/reducers/initialState';
 import NotFound from '../src/components/NotFound';
 import Home from './components/Website/Home';
 import Login from '../src/components/Login';
+import Registration from '../src/components/Registration';
 import Gallery from './components/Website/Gallery';
 import VideoGalleryMain from './components/Website/VideoGallery';
 import VideoGallery from './components/Website/VideoGallery/index1';
@@ -104,9 +105,14 @@ function checkLoggedIn(nextState, replace) {
     if (accessToken) {
         try {
             const decodedToken = decode(accessToken);
-            if (decodedToken) {
+            if (decodedToken.user.role === "Admin" || decodedToken.user.role === "Employee") {
                 replace({
                     pathname: '/Dashboard',
+                    state: {nextPathname: nextState.location.pathname}
+                });
+            } else {
+                replace({
+                    pathname: '/',
                     state: {nextPathname: nextState.location.pathname}
                 });
             }
@@ -125,6 +131,7 @@ ReactDOM.render(<Provider store={store}>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
             <Route path="/Login" component={Login} onEnter={checkLoggedIn} exact={true}/>
+            <Route path="/Registration" component={Registration} onEnter={checkLoggedIn} exact={true}/>
             <Route component={Website} path="/" exact={true}>
                 <IndexRoute component={Home}/>
                 <Route path="/Gallery" component={Gallery} exact={true}/>
