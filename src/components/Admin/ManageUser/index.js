@@ -18,7 +18,9 @@ class ManageUser extends Component {
         this.state = {
             userList: [],
             notificationSystem: null,
-        }
+            isFirstAvailability: false
+        };
+        this.onchangeDemo = this.onchangeDemo.bind(this);
     }
 
     addNotifications = (message, level) => {
@@ -34,6 +36,9 @@ class ManageUser extends Component {
             this.addNotifications(nextProps.error_msg, "error");
         }
         this.setState({userList: nextProps.userList || []});
+        if (this.props.reRender) {
+            this.setState({isFirstAvailability: true});
+        }
     }
 
     componentDidMount() {
@@ -44,11 +49,22 @@ class ManageUser extends Component {
         this.props.actions.userManageAction.UserList();
     }
 
+    onchangeDemo(active, contact_no) {
+        if (!this.state.isFirstAvailability) {
+            const userDetails = {
+                "mobile_number": contact_no,
+                "block": active
+            };
+            this.setState({isFirstAvailability: true});
+            this.props.actions.userManageAction.changeUserBlockStatus(userDetails);
+        } else {
+            this.setState({isFirstAvailability: false});
+        }
+    };
+
 
     render() {
-
         const {userList} = this.state;
-
         return (
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
@@ -65,40 +81,41 @@ class ManageUser extends Component {
                                     <th style={{cursor: 'context-menu'}}>Role</th>
                                     <th style={{cursor: 'context-menu'}}>UserId</th>
                                     <th style={{cursor: 'context-menu'}}>Block</th>
-                                    <th style={{cursor: 'context-menu'}}>Action</th>
                                 </tr>
                                 {userList && userList.map((value, index) => (
                                     <tr key={index}>
-                                        <td><img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
-                                                 height="100px"/></td>
+                                        <td>{value.image_url !== undefined ? (
+                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
+                                                 height="100px"/>) : (
+                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
+                                                 width="150px"
+                                                 height="100px"/>)}</td>
                                         <td>{value.first_name}</td>
                                         <td>{value.last_name}</td>
                                         <td>{value.contact_no}</td>
                                         <td>{value.role}</td>
                                         <td>{value.userId}</td>
                                         <td style={{textAlign: "center"}}>
-                                            <Switch value={value.block || false}
+                                            <Switch value={value.block}
                                                     circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
                                                     switchStyles={{width: 95}}
-                                                    locked/>
-                                        </td>
-                                        <td style={{textAlign: "center"}}>
-                                            Action
+                                                    onChange={(e) => {
+                                                        this.onchangeDemo(!value.block, value.contact_no);
+                                                    }}/>
                                         </td>
                                     </tr>
                                 ))
                                 }
                                 </tbody>
                             </table>
+                            <
+                            /div>
                         </div>
-                    </div>
-                    }
+                        }
                 </div>
                 {this.props.Loading && <Loader/>}
             </div>
-
         );
-
     }
 
 }
@@ -108,7 +125,8 @@ const mapStateToProps = (state) => {
     return {
         Loading: manageUserReducer.Loading,
         error_msg: manageUserReducer.error_msg,
-        userList: manageUserReducer.userList
+        userList: manageUserReducer.userList,
+        reRender: true
     };
 };
 
