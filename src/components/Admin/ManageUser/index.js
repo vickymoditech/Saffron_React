@@ -20,7 +20,7 @@ class ManageUser extends Component {
             notificationSystem: null,
             isFirstAvailability: false
         };
-        this.onchangeDemo = this.onchangeDemo.bind(this);
+        this.onchangeBlock = this.onchangeBlock.bind(this);
     }
 
     addNotifications = (message, level) => {
@@ -49,7 +49,7 @@ class ManageUser extends Component {
         this.props.actions.userManageAction.UserList();
     }
 
-    onchangeDemo(active, contact_no) {
+    onchangeBlock(active, contact_no) {
         if (!this.state.isFirstAvailability) {
             const userDetails = {
                 "mobile_number": contact_no,
@@ -100,7 +100,7 @@ class ManageUser extends Component {
                                                     circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
                                                     switchStyles={{width: 95}}
                                                     onChange={(e) => {
-                                                        this.onchangeDemo(!value.block, value.contact_no);
+                                                        this.onchangeBlock(!value.block, value.contact_no);
                                                     }}/>
                                         </td>
                                     </tr>
@@ -108,8 +108,7 @@ class ManageUser extends Component {
                                 }
                                 </tbody>
                             </table>
-                            <
-                            /div>
+                            </div>
                         </div>
                         }
                 </div>

@@ -45,7 +45,6 @@ export default function manageUserReducer(state = initialState.manageUserReducer
             state.userList.map((userList, index) => {
                 if (userList.contact_no.toString() === action.data.data.contact_no.toString()) {
                     userList.block = action.data.data.block;
-                    console.log("match");
                 }
             });
             return Object.assign({}, state, {

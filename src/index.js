@@ -25,6 +25,8 @@ import Registration from '../src/components/Registration';
 import Gallery from './components/Website/Gallery';
 import VideoGalleryMain from './components/Website/VideoGallery';
 import VideoGallery from './components/Website/VideoGallery/index1';
+import Profile from './components/Helper/Profile';
+
 
 //Admin
 import AdminHome from './components/Admin/Home';
@@ -80,6 +82,11 @@ function checkUserRole(token) {
     }
 }
 
+export function GetLocalUderData() {
+    const accessToken = getAccessToken();
+    return decode(accessToken);
+}
+
 
 function getTokenExpirationDate(encodedToken) {
     try {
@@ -128,6 +135,7 @@ ReactDOM.render(<Provider store={store}>
             <Route component={DashBoard} path="/Dashboard" exact={true}>
                 <IndexRoute component={AdminHome} onEnter={requireAuth}/>
                 <Route path="/Dashboard/ManageUser" component={ManageUser} onEnter={requireAuth} exact={true}/>
+                <Route path="/Dashboard/Profile" component={Profile} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
             <Route path="/Login" component={Login} onEnter={checkLoggedIn} exact={true}/>
@@ -135,6 +143,7 @@ ReactDOM.render(<Provider store={store}>
             <Route component={Website} path="/" exact={true}>
                 <IndexRoute component={Home}/>
                 <Route path="/Gallery" component={Gallery} exact={true}/>
+                <Route path="/Profile" component={Profile} exact={true}/>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}>
                     <Route path="/VideoGallery/demo" component={VideoGallery}/>
                 </Route>

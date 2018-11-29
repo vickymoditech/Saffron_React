@@ -98,9 +98,14 @@ class App extends Component {
                                 VideoGallery
                             </Link> |
                             {isLoggedIn() ?
-                                (<Link onClick={this.handleLogout} style={{cursor: "pointer"}}>
+                                ( <span>
+                                    <Link onClick={this.handleLogout} style={{cursor: "pointer"}}>
                                     Logout
-                                </Link> ) :
+                                    </Link> |
+                                    <Link to="/Profile">
+                                    Profile
+                                    </Link>
+                                </span>  ) :
                                 (
                                     <span>
                                         <Link onClick={this.handleLogin} style={{cursor: "pointer"}}>
