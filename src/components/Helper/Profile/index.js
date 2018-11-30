@@ -1,29 +1,55 @@
 import React, {Component} from 'react';
 import NotificationSystem from 'react-notification-system';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import {GetLocalUderData} from '../../../index';
+import * as authAction from '../../../actions/authAction';
+import Loader from "../Loader/index";
+import ChangePasswordModal from '../ChangePasswordModal';
 
 class Profile extends Component {
 
     constructor(props) {
         super(props);
         const userProfile = GetLocalUderData().user;
-        console.log(userProfile);
         this.state = {
             userDetails: {
-                firstName: userProfile.first_name,
-                lastName: userProfile.last_name,
-                mobile_number: userProfile.contact_no,
+                userId: userProfile.userId,
+                first_name: userProfile.first_name,
+                last_name: userProfile.last_name,
+                mobile_number: userProfile.contact_no.toString(),
                 emailAddress: userProfile.email_id,
                 password: userProfile.password,
                 confirm_password: userProfile.password,
-                block: userProfile.block
+                block: userProfile.block,
+                image_url: userProfile.image_url,
+                role: userProfile.role
             },
             notificationSystem: null
         };
     }
 
+    reagainFeelData = () => {
+        const userProfile = GetLocalUderData().user;
+        this.setState({
+            userDetails: {
+                userId: userProfile.userId,
+                first_name: userProfile.first_name,
+                last_name: userProfile.last_name,
+                mobile_number: userProfile.contact_no.toString(),
+                emailAddress: userProfile.email_id,
+                password: userProfile.password,
+                confirm_password: userProfile.password,
+                block: userProfile.block,
+                image_url: userProfile.image_url,
+                role: userProfile.role
+            },
+            changePasswordDialog: false
+        });
+    };
+
     handleEditConfirm = () => {
-        alert("Edit Confirm");
+        this.props.actions.authAction.updateUserProfile(this.state.userDetails);
     };
 
 
@@ -34,8 +60,12 @@ class Profile extends Component {
         return this.setState({userDetails: userDetails});
     };
 
-    handleClear = () => {
-        alert("clear");
+    handleClose = () => {
+        this.setState({changePasswordDialog: false});
+    };
+
+    handleOpen = () => {
+        this.setState({changePasswordDialog: true});
     };
 
     addNotifications = (message, level) => {
@@ -50,11 +80,29 @@ class Profile extends Component {
         this.setState({notificationSystem: this.refs.notificationSystem});
     };
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isPasswordChanged) {
+            this.addNotifications(nextProps.successMsg, 'success');
+            this.reagainFeelData();
+
+        } else if (!nextProps.changePasswordLoading && nextProps.isPasswordChanged === false && nextProps.errMsg) {
+            let message = nextProps.errMsg.toString().split(",");
+            for (let i = 0; i < message.length; i++) {
+                this.addNotifications(message[i], 'error');
+            }
+        }
+    }
 
     render() {
-        const {emailAddress, mobile_number, firstName, lastName} = this.state.userDetails;
+        const {emailAddress, mobile_number, first_name, last_name, userId, role} = this.state.userDetails;
         return (
             <div className="bg-burrito-image autofill-background store-user-config">
+                {this.state.changePasswordDialog && <ChangePasswordModal
+                    handleClose={this.handleClose}
+                    isOpen={this.state.changePasswordDialog}
+                    notify={this.addNotifications}
+                    userRole={role.toLowerCase()}
+                />}
                 <NotificationSystem ref="notificationSystem"/>
                 <div className="container tab-bg-container">
                     <div className="row">
@@ -66,28 +114,39 @@ class Profile extends Component {
                                             <div className="col-sm-6">
                                                 <span className="store-config-icon" title="First Name"> <img
                                                     src="/assets/Images/username.png" alt=""/> </span>
-                                                <input type="text" className="form-control" name="firstName"
-                                                       value={firstName}
+                                                <input type="text" className="form-control" name="first_name"
+                                                       value={first_name}
                                                        placeholder="First Name" onChange={this.handleChange}/>
                                             </div>
                                             <div className="col-sm-6">
                                                 <span className="store-config-icon" title="Last Name"> <img
                                                     src="/assets/Images/username.png" alt=""/> </span>
-                                                <input type="text" className="form-control" name="lastName"
-                                                       value={lastName} placeholder="Last Name"
+                                                <input type="text" className="form-control" name="last_name"
+                                                       value={last_name} placeholder="Last Name"
                                                        onChange={this.handleChange}/>
                                             </div>
                                         </div>
+
+                                        <br/>
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <span className="store-config-icon" title="UserId"> <img
+                                                    src="/assets/Images/username.png" alt=""/> </span>
+                                                <input type="text" className="form-control" name="userId"
+                                                       value={userId}
+                                                       placeholder="userId" disabled/>
+                                            </div>
+                                            <div className="col-sm-6">
+                                                <span className="store-config-icon" title="mobile_number"> <img
+                                                    src="/assets/Images/username.png" alt=""/> </span>
+                                                <input type="text" className="form-control" name="mobile_number"
+                                                       value={mobile_number} placeholder="Contact No"
+                                                       onChange={this.handleChange}/>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-                                {/*<div className="form-group">*/}
-                                {/*<div className="col-sm-12">*/}
-                                {/*<span className="store-config-icon" title="User Name"> <img*/}
-                                {/*src="/assets/Images/username.png" alt=""/> </span>*/}
-                                {/*<input type="text" className="form-control" value={userName}*/}
-                                {/*name="userName" placeholder="User Name" onChange={this.handleChange}/>*/}
-                                {/*</div>*/}
-                                {/*</div>*/}
                                 <div className="form-group">
                                     <div className="col-sm-12">
                                         <span className="store-config-icon" title="Email"> <img
@@ -100,18 +159,35 @@ class Profile extends Component {
                                     <div className="col-sm-12 text-right button-div">
                                         <a className="btn btn-save" onClick={this.handleEditConfirm}
                                            style={{cursor: 'pointer', marginRight: 10}}>Update User</a>
-                                        <a className="btn btn-save" onClick={this.handleClear}
-                                           style={{cursor: 'pointer', float: 'right'}}>Clear</a>
+                                        {(role.toLowerCase() !== "admin" && role.toLowerCase() !== "employee") &&
+                                        <a className="btn btn-save" onClick={this.handleOpen}
+                                           style={{cursor: 'pointer', float: 'right'}}>Change Password</a>}
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+                {this.props.changePasswordLoading && <Loader/>}
             </div>
         )
     }
 }
 
+const mapStateToProps = (state) => {
+    const {authReducer} = state;
+    return {
+        changePasswordLoading: authReducer.changePasswordLoading,
+        isPasswordChanged: authReducer.isPasswordChanged,
+        successMsg: authReducer.successMsg,
+        errMsg: authReducer.errMsg,
+    };
+};
 
-export default Profile;
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        authAction: bindActionCreators(authAction, dispatch)
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

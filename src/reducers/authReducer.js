@@ -60,7 +60,7 @@ export default function authReducer(state = initialState.authReducer, action) {
             return Object.assign({}, state, {invalidUser: true, loading: false, error_msg: action.data.error_msg});
 
         case PASSWORD_CHANGE_INPROGRESS:
-            return Object.assign({}, state, {changePasswordLoading: true});
+            return Object.assign({}, state, {isPasswordChanged: false, changePasswordLoading: true});
 
         case PASSWORD_CHANGE_NOT_SUCCESS:
             return Object.assign({}, state, {

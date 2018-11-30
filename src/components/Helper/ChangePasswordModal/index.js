@@ -42,7 +42,8 @@ class ChangePasswordModal extends Component {
             },
             changePasswordLoading: false,
             isPasswordChanged: false,
-            isOpen: props.isOpen
+            isOpen: props.isOpen,
+            userRole: props.userRole
         };
     }
 
@@ -76,16 +77,18 @@ class ChangePasswordModal extends Component {
         };
         if (this.state.isOpen !== nextProps.isOpen) this.setState({isOpen: nextProps.isOpen});
         if (!this.state.isOpen) this.setState({changePasswordData: initData});
-        this.setState({changePasswordLoading: nextProps.changePasswordLoading});
-        if (nextProps.isPasswordChanged) {
-            this.setState({isOpen: false});
-            this.props.handleClose();
-            this.props.notify(nextProps.successMsg, 'success');
-            this.setState({changePasswordData: initData});
-        } else if (!nextProps.changePasswordLoading && nextProps.isPasswordChanged === false && nextProps.errMsg) {
-            let message = nextProps.errMsg.toString().split(",");
-            for (let i = 0; i < message.length; i++) {
-                this.props.notify(message[i], 'error');
+        if (this.state.userRole !== "user") {
+            this.setState({changePasswordLoading: nextProps.changePasswordLoading});
+            if (nextProps.isPasswordChanged) {
+                this.setState({isOpen: false});
+                this.props.handleClose();
+                this.props.notify(nextProps.successMsg, 'success');
+                this.setState({changePasswordData: initData});
+            } else if (!nextProps.changePasswordLoading && nextProps.isPasswordChanged === false && nextProps.errMsg) {
+                let message = nextProps.errMsg.toString().split(",");
+                for (let i = 0; i < message.length; i++) {
+                    this.props.notify(message[i], 'error');
+                }
             }
         }
     };
@@ -98,7 +101,7 @@ class ChangePasswordModal extends Component {
                     titleStyle={style.titleStyle}
                     contentStyle={style.contentStyle}
                     modal={true}
-                    bodyStyle={{padding:0}}
+                    bodyStyle={{padding: 0}}
                     open={this.state.isOpen}
                     onRequestClose={this.props.handleClose}
                     paperClassName="change-password"

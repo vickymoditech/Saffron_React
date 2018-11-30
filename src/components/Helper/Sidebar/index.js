@@ -80,6 +80,7 @@ class Sidebar extends Component {
                     handleClose={this.handleClose}
                     isOpen={this.state.changePasswordDialog}
                     notify={this.addNotifications}
+                    userRole={userRole.toLowerCase()}
                 />}
                 <NotificationSystem ref="notificationSystem"/>
                 <Drawer
@@ -108,7 +109,7 @@ class Sidebar extends Component {
                                 </ListItem>
                             </Link>
                             <Divider/>
-                            { userRole === "Admin" &&
+                            {userRole.toLowerCase() === "admin" &&
                             <span><Link to="/Dashboard/ManageUser" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-user"/>
