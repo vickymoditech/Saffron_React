@@ -8,7 +8,6 @@ import $ from "jquery";
 import NotificationSystem from 'react-notification-system';
 import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
-import * as authAction from './actions/authAction';
 import {browserHistory} from 'react-router';
 import io from 'socket.io-client';
 import {subscribeToTimer} from './socket';
@@ -71,7 +70,7 @@ class App extends Component {
 
     handleLogout = () => {
         socket.emit('test', "Data pass here");
-        this.props.actions.authAction.loggedOut();
+        this.props.actions.websiteAction.loggedOut();
     };
 
     handleLogin = () => {
@@ -99,11 +98,11 @@ class App extends Component {
                             </Link> |
                             {isLoggedIn() ?
                                 ( <span>
-                                    <Link onClick={this.handleLogout} style={{cursor: "pointer"}}>
-                                    Logout
-                                    </Link> |
                                     <Link to="/Profile">
                                     Profile
+                                    </Link> |
+                                    <Link onClick={this.handleLogout} style={{cursor: "pointer"}}>
+                                    Logout
                                     </Link>
                                 </span>  ) :
                                 (
@@ -135,8 +134,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        websiteAction: bindActionCreators(websiteAction, dispatch),
-        authAction: bindActionCreators(authAction, dispatch)
+        websiteAction: bindActionCreators(websiteAction, dispatch)
     }
 });
 

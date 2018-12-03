@@ -42,18 +42,6 @@ export const loginUser = (credentials) => {
     }
 };
 
-export const loggedOut = () => {
-    try {
-        return (dispatch) => {
-            localStorage.removeItem("accessToken");
-            localStorage.removeItem("userProfile");
-            dispatch({type: LOGOUT_USER});
-        }
-    } catch (error) {
-    }
-};
-
-
 export const registrationUser = (credentials) => {
     try {
         return (dispatch) => {

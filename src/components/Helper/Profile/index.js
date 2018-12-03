@@ -72,7 +72,7 @@ class Profile extends Component {
         this.state.notificationSystem.addNotification({
             message: message,
             level: level,
-            autoDismiss: 5
+            autoDismiss: 3
         });
     };
 
@@ -96,12 +96,11 @@ class Profile extends Component {
     render() {
         const {emailAddress, mobile_number, first_name, last_name, userId, role} = this.state.userDetails;
         return (
-            <div className="bg-burrito-image autofill-background store-user-config">
+            <div>
                 {this.state.changePasswordDialog && <ChangePasswordModal
                     handleClose={this.handleClose}
                     isOpen={this.state.changePasswordDialog}
                     notify={this.addNotifications}
-                    userRole={role.toLowerCase()}
                 />}
                 <NotificationSystem ref="notificationSystem"/>
                 <div className="container tab-bg-container">
@@ -159,9 +158,8 @@ class Profile extends Component {
                                     <div className="col-sm-12 text-right button-div">
                                         <a className="btn btn-save" onClick={this.handleEditConfirm}
                                            style={{cursor: 'pointer', marginRight: 10}}>Update User</a>
-                                        {(role.toLowerCase() !== "admin" && role.toLowerCase() !== "employee") &&
                                         <a className="btn btn-save" onClick={this.handleOpen}
-                                           style={{cursor: 'pointer', float: 'right'}}>Change Password</a>}
+                                           style={{cursor: 'pointer', float: 'right'}}>Change Password</a>
                                     </div>
                                 </div>
                             </form>

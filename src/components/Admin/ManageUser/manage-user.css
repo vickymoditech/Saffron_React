@@ -135,7 +135,7 @@ html, body {
     margin-bottom: 0;
 }
 .data-display .table-responsive {
-    /*max-height: 260px;*/
+    max-height: 260px;
 }
 .data-display .table td, .data-display .table th {
     border: 1px solid #6f6f6f;

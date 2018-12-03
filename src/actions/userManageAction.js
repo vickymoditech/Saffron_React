@@ -9,17 +9,28 @@ import {
     USER_BLOCK_NOT_SUCCESS
 } from '../constants/actionTypes';
 
-export const UserList = () => {
+export const UserList = (contactNo = null) => {
     try {
         return (dispatch) => {
             dispatch({type: USER_INPROGRESS});
             const token = "Bearer " + localStorage.getItem('accessToken');
 
-            const api = {
-                method: 'GET',
-                headers: {'Authorization': token},
-                url: ENVIRONMENT_VARIABLES.API_URL + "/oauths"
-            };
+            let api;
+
+            if (contactNo === null) {
+                api = {
+                    method: 'GET',
+                    headers: {'Authorization': token},
+                    url: ENVIRONMENT_VARIABLES.API_URL + "/oauths"
+                };
+            } else {
+                api = {
+                    method: 'GET',
+                    headers: {'Authorization': token},
+                    url: ENVIRONMENT_VARIABLES.API_URL + "/oauths/" + contactNo
+                };
+            }
+
             axios(api).then((response) => {
                 if (response.status === 200) {
                     dispatch({type: USER_SUCCESS, data: response.data});

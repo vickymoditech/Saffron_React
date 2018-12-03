@@ -1,3 +1,4 @@
+import {browserHistory} from 'react-router';
 import {
     WEBSITE_INPROGRESS,
     TEAM_SUCCESS,
@@ -8,6 +9,7 @@ import {
     ALL_GALLERY_SUCCESS,
     ALL_SLIDER_SUCCESS,
     WEBSITE_HOME,
+    LOGOUT_USER
 } from '../constants/actionTypes';
 
 
@@ -44,6 +46,14 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
                 Loading: false,
                 error_msg: null
             });
+
+        case LOGOUT_USER:
+            browserHistory.push('/');
+            setTimeout(function () {
+                return Object.assign({}, state, {
+                    Loading: false,
+                });
+            }, 1000);
 
         default:
             return state;

@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import decode from 'jwt-decode';
 import NotificationSystem from 'react-notification-system';
 
-import ChangePasswordModal from '../ChangePasswordModal';
 import * as authAction from '../../../actions/authAction';
 
 import './Sidebar.css';
@@ -41,21 +40,12 @@ class Sidebar extends Component {
         super(props);
         this.state = {
             open: props.open,
-            changePasswordDialog: false,
             notificationSystem: null,
         };
     }
 
     handleLogout = () => {
         this.props.actions.auth.loggedOut();
-    };
-
-    handleOpen = () => {
-        this.setState({changePasswordDialog: true});
-    };
-
-    handleClose = () => {
-        this.setState({changePasswordDialog: false});
     };
 
     addNotifications = (message, level) => {
@@ -76,12 +66,6 @@ class Sidebar extends Component {
         const userRole = userProfile.user && userProfile.user.role;
         return (
             <div className="side-menu">
-                {this.state.changePasswordDialog && <ChangePasswordModal
-                    handleClose={this.handleClose}
-                    isOpen={this.state.changePasswordDialog}
-                    notify={this.addNotifications}
-                    userRole={userRole.toLowerCase()}
-                />}
                 <NotificationSystem ref="notificationSystem"/>
                 <Drawer
                     className="menu-drawer"
@@ -102,24 +86,63 @@ class Sidebar extends Component {
                                 </ListItem>
                             </Link>
                             <Divider/>
-                            <Link onClick={this.handleOpen} className="link">
+                            {userRole.toLowerCase() === "admin" &&
+                            <span>
+                                <Link to="/Dashboard/ManageUser" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <i className="fa fa-unlock-alt"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Change Password</div>
+                                    <i className="fa fa-address-book"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Users</div>
+                                </ListItem>
+                            </Link> <Divider/>
+                                <Link to="/Dashboard/ManageUser" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-cog"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Service</div>
+                                </ListItem>
+                            </Link> <Divider/>
+                                <Link to="/Dashboard/ManageUser" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-cogs"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Gallery</div>
+                                </ListItem>
+                            </Link> <Divider/>
+                                <Link to="/Dashboard/ManageUser" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-caret-square-o-right"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Videos</div>
+                                </ListItem>
+                            </Link> <Divider/>
+                                <Link to="/Dashboard/ManageUser" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-users"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Team</div>
+                                </ListItem>
+                            </Link> <Divider/>
+                                <Link to="/Dashboard/ManageUser" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-database"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Product</div>
+                                </ListItem>
+                            </Link> <Divider/>
+                                <Link to="/Dashboard/ManageUser" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-calendar"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Time Schedule</div>
+                                </ListItem>
+                            </Link> <Divider/>
+                                </span>}
+                            <Link to="/Dashboard" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-pie-chart"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Analisys</div>
                                 </ListItem>
                             </Link>
                             <Divider/>
-                            {userRole.toLowerCase() === "admin" &&
-                            <span><Link to="/Dashboard/ManageUser" className="link">
-                                <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <i className="fa fa-user"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Manage Users</div>
-                                </ListItem>
-                            </Link> <Divider/></span>}
+
                             <Link to="/Dashboard/Profile" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-user"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Profile</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Setting</div>
                                 </ListItem>
                             </Link>
                             <Divider/>

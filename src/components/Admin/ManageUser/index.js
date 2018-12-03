@@ -18,7 +18,8 @@ class ManageUser extends Component {
         this.state = {
             userList: [],
             notificationSystem: null,
-            isFirstAvailability: false
+            isFirstAvailability: false,
+            search: ""
         };
         this.onchangeBlock = this.onchangeBlock.bind(this);
     }
@@ -62,13 +63,30 @@ class ManageUser extends Component {
         }
     };
 
+    handleChange = (event) => {
+        return this.setState({search: event.target.value});
+    };
+
+    searchData = () => {
+        this.props.actions.userManageAction.UserList(this.state.search);
+    };
 
     render() {
-        const {userList} = this.state;
+        const {userList, search} = this.state;
         return (
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
                 <div className="container tab-bg-container">
+                    <div className="form-group text-center row">
+                        <div className="col-xs-12 text-center">
+                            <input type="text" className="form-control" name="mobile_number"
+                                   value={search} placeholder="Search (8401060120)" onChange={this.handleChange}/>
+                            <button type="button" className="btn btn-save"
+                                    style={{margin: '12px 10px 0 0'}}
+                                    onClick={this.searchData}>Search
+                            </button>
+                        </div>
+                    </div>
                     {userList.length > 0 && <div className="data-display col-sm-12">
                         <div className="table-responsive overflow-scroll">
                             <table width="100%" className="table">
@@ -108,9 +126,9 @@ class ManageUser extends Component {
                                 }
                                 </tbody>
                             </table>
-                            </div>
                         </div>
-                        }
+                    </div>
+                    }
                 </div>
                 {this.props.Loading && <Loader/>}
             </div>

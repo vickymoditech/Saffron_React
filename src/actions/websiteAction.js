@@ -5,7 +5,8 @@ import {
     WEBSITE_CONNECTION_ERROR,
     WEBSITE_NOT_SUCCESS,
     ALL_GALLERY_SUCCESS,
-    WEBSITE_HOME
+    WEBSITE_HOME,
+    LOGOUT_USER
 } from '../constants/actionTypes';
 
 export const getWebsiteHome = () => {
@@ -68,4 +69,16 @@ export const getAllGallerys = () => {
 
 };
 
+export const loggedOut = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: WEBSITE_INPROGRESS});
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('userProfile');
+            localStorage.removeItem('userAvatar');
+            dispatch({type: LOGOUT_USER});
+        }
+    } catch (error) {
+    }
+};
 

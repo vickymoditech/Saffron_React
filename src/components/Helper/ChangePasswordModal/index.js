@@ -42,8 +42,7 @@ class ChangePasswordModal extends Component {
             },
             changePasswordLoading: false,
             isPasswordChanged: false,
-            isOpen: props.isOpen,
-            userRole: props.userRole
+            isOpen: props.isOpen
         };
     }
 
@@ -77,19 +76,18 @@ class ChangePasswordModal extends Component {
         };
         if (this.state.isOpen !== nextProps.isOpen) this.setState({isOpen: nextProps.isOpen});
         if (!this.state.isOpen) this.setState({changePasswordData: initData});
-        if (this.state.userRole !== "user") {
-            this.setState({changePasswordLoading: nextProps.changePasswordLoading});
-            if (nextProps.isPasswordChanged) {
-                this.setState({isOpen: false});
-                this.props.handleClose();
-                this.props.notify(nextProps.successMsg, 'success');
-                this.setState({changePasswordData: initData});
-            } else if (!nextProps.changePasswordLoading && nextProps.isPasswordChanged === false && nextProps.errMsg) {
-                let message = nextProps.errMsg.toString().split(",");
-                for (let i = 0; i < message.length; i++) {
-                    this.props.notify(message[i], 'error');
-                }
+        this.setState({changePasswordLoading: nextProps.changePasswordLoading});
+        if (nextProps.isPasswordChanged) {
+            this.setState({isOpen: false});
+            this.props.handleClose();
+            this.props.notify(nextProps.successMsg, 'success');
+            this.setState({changePasswordData: initData});
+        } else if (!nextProps.changePasswordLoading && nextProps.isPasswordChanged === false && nextProps.errMsg) {
+            let message = nextProps.errMsg.toString().split(",");
+            for (let i = 0; i < message.length; i++) {
+                this.props.notify(message[i], 'error');
             }
+
         }
     };
 
