@@ -41,6 +41,7 @@ function requireAuth(nextState, replace) {
     if (!isLoggedIn()) {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("userProfile");
+        localStorage.removeItem("userAvatar");
         replace({
             pathname: '/',
             state: {nextPathname: nextState.location.pathname}

@@ -49,11 +49,9 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
 
         case LOGOUT_USER:
             browserHistory.push('/');
-            setTimeout(function () {
-                return Object.assign({}, state, {
-                    Loading: false,
-                });
-            }, 1000);
+            return Object.assign({}, state, {
+                Loading: false,
+            });
 
         default:
             return state;

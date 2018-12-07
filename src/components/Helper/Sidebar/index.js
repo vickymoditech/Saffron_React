@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import decode from 'jwt-decode';
 import NotificationSystem from 'react-notification-system';
 
-import * as authAction from '../../../actions/authAction';
+import * as websiteAction from '../../../actions/websiteAction';
 
 import './Sidebar.css';
 
@@ -45,7 +45,7 @@ class Sidebar extends Component {
     }
 
     handleLogout = () => {
-        this.props.actions.auth.loggedOut();
+        this.props.actions.websiteAction.loggedOut();
     };
 
     addNotifications = (message, level) => {
@@ -166,7 +166,7 @@ class Sidebar extends Component {
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        auth: bindActionCreators(authAction, dispatch)
+        websiteAction: bindActionCreators(websiteAction, dispatch)
     }
 });
 

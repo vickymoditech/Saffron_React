@@ -79,6 +79,7 @@ class App extends Component {
     };
 
     render() {
+        let userProfile = localStorage.getItem('userAvatar');
         return (
             <div>
                 <NotificationSystem ref="notificationSystem"/>
@@ -104,6 +105,7 @@ class App extends Component {
                                     <Link onClick={this.handleLogout} style={{cursor: "pointer"}}>
                                     Logout
                                     </Link>
+                                    <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile}  style={{borderRadius: "100%",height:45,width:45}} alt="Avatar"/>
                                 </span>  ) :
                                 (
                                     <span>
