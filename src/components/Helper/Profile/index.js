@@ -12,6 +12,7 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         const userProfile = GetLocalUderData().user;
+        console.log(userProfile);
         this.state = {
             userDetails: {
                 userId: userProfile.userId,
@@ -31,6 +32,7 @@ class Profile extends Component {
 
     reagainFeelData = () => {
         const userProfile = GetLocalUderData().user;
+        console.log(userProfile);
         this.setState({
             userDetails: {
                 userId: userProfile.userId,

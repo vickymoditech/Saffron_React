@@ -22,6 +22,18 @@ export default {
         userList: [],
         error_msg: null
     },
+    manageServiceReducer: {
+        Loading: false,
+        serviceList: [],
+        error_msg: null,
+        success_msg: null,
+    },
+    manageTeamReducer: {
+        Loading: false,
+        teamList: [],
+        error_msg: null,
+        success_msg: null,
+    },
     saffronOrdersDisplayReducer: {
         Loading: false,
         error_msg: null,
@@ -37,5 +49,5 @@ export default {
         serviceList: [],
         allGalleryList: [],
         sliderList: []
-    }
+    },
 }

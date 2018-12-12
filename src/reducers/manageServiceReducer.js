@@ -1,57 +1,59 @@
 import {
-    USER_INPROGRESS,
-    USER_CHANGE_NOT_SUCCESS,
-    USER_SUCCESS,
-    USER_CONNECTION_ERROR,
-    USER_BLOCK_SUCCESS,
-    USER_BLOCK_NOT_SUCCESS
+    SERVICE_INPROGRESS,
+    SERVICE_NOT_SUCCESS,
+    SERVICE_SUCCESS,
+    SERVICE_DELETE_SUCCESS,
+    SERVICE_CONNECTION_ERROR
 } from '../constants/actionTypes';
 
 
 import initialState from './initialState';
 
-export default function manageUserReducer(state = initialState.manageUserReducer, action) {
+export default function manageServiceReducer(state = initialState.manageServiceReducer, action) {
     switch (action.type) {
 
-        case USER_INPROGRESS:
-            return Object.assign({}, state, {Loading: true});
+        case SERVICE_INPROGRESS:
+            return Object.assign({}, state, {Loading: true, error_msg: null, success_msg: null});
 
-        case USER_CONNECTION_ERROR:
-            return Object.assign({}, state, {userList: [], Loading: false, error_msg: action.data.error_msg});
-
-        case USER_CHANGE_NOT_SUCCESS:
+        case SERVICE_CONNECTION_ERROR:
             return Object.assign({}, state, {
-                userList: [],
+                serviceList: [],
+                Loading: false,
                 error_msg: action.data.error_msg,
-                Loading: false
+                success_msg: null
             });
 
-        case USER_SUCCESS:
+        case SERVICE_NOT_SUCCESS:
             return Object.assign({}, state, {
-                userList: action.data,
+                serviceList: [],
+                error_msg: action.data.error_msg,
                 Loading: false,
-                error_msg: null
+                success_msg: null,
             });
 
-        case USER_BLOCK_NOT_SUCCESS:
+        case SERVICE_SUCCESS:
             return Object.assign({}, state, {
+                serviceList: action.data,
                 Loading: false,
-                error_msg: action.data.error_msg
+                error_msg: null,
+                success_msg: null,
             });
 
-        case USER_BLOCK_SUCCESS:
+        case SERVICE_DELETE_SUCCESS:
 
-            //update Block status
-            state.userList.map((userList, index) => {
-                if (userList.contact_no.toString() === action.data.data.contact_no.toString()) {
-                    userList.block = action.data.data.block;
-                }
+            let removeService = state.serviceList.find(function (services) {
+                return services.id === action.data.id;
             });
+            let index = state.serviceList.indexOf(removeService);
+            state.serviceList.splice(index, 1);
+
             return Object.assign({}, state, {
-                userList: state.userList,
+                serviceList: state.serviceList,
                 Loading: false,
-                error_msg: null
+                error_msg: null,
+                success_msg: action.data.result
             });
+
 
         default:
             return state;

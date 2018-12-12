@@ -83,25 +83,27 @@ export const changePassword = (changePasswordData) => {
             const token = "Bearer " + localStorage.getItem('accessToken');
             let userProfile = JSON.parse(localStorage.getItem('userProfile'));
 
-            const first_name = userProfile.first_name;
-            const last_name = userProfile.last_name;
-            const contact_no = userProfile.userId;
+            let userDetails = {
+                userId: userProfile.userId,
+                first_name: userProfile.first_name,
+                last_name: userProfile.last_name,
+                mobile_number: userProfile.contact_no.toString(),
+                emailAddress: userProfile.email_id,
+                password: changePasswordData.newPassword,
+                confirm_password: changePasswordData.newPassword,
+                block: userProfile.block,
+                image_url: userProfile.image_url,
+                role: userProfile.role
+            };
+
             const password = userProfile.password;
 
             if (password.toString() === changePasswordData.currentPassword.toString()) {
-                const changePasswordDetail = {
-                    "first_name": first_name,
-                    "last_name": last_name,
-                    "mobile_number": contact_no,
-                    "password": changePasswordData.newPassword,
-                    "confirm_password": changePasswordData.newPassword,
-                    "block": false,
-                };
                 const api = {
                     method: 'PUT',
                     headers: {'Authorization': token},
                     url: ENVIRONMENT_VARIABLES.API_URL + "/oauths",
-                    data: changePasswordDetail,
+                    data: userDetails,
                 };
                 axios(api).then((response) => {
                     if (response.status === 200) {

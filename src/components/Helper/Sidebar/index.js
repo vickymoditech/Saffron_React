@@ -94,16 +94,16 @@ class Sidebar extends Component {
                                     <div style={{marginTop: 10}} className="link-hover">Manage Users</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                <Link to="/Dashboard/ManageUser" className="link">
+                                <Link to="/Dashboard/ManageService" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-cog"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Manage Service</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Services</div>
                                 </ListItem>
                             </Link> <Divider/>
                                 <Link to="/Dashboard/ManageUser" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-cogs"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Manage Gallery</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Gallery's</div>
                                 </ListItem>
                             </Link> <Divider/>
                                 <Link to="/Dashboard/ManageUser" className="link">
@@ -112,22 +112,22 @@ class Sidebar extends Component {
                                     <div style={{marginTop: 10}} className="link-hover">Manage Videos</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                <Link to="/Dashboard/ManageUser" className="link">
+                                <Link to="/Dashboard/ManageTeam" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-users"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Manage Team</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Teams</div>
                                 </ListItem>
                             </Link> <Divider/>
                                 <Link to="/Dashboard/ManageUser" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-database"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Manage Product</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Products</div>
                                 </ListItem>
                             </Link> <Divider/>
                                 <Link to="/Dashboard/ManageUser" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-calendar"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Manage Time Schedule</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Time Schedules</div>
                                 </ListItem>
                             </Link> <Divider/>
                                 </span>}

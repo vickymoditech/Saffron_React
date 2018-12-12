@@ -87,6 +87,7 @@ class ManageUser extends Component {
                             </button>
                         </div>
                     </div>
+                    <h2> Manage Users </h2>
                     {userList.length > 0 && <div className="data-display col-sm-12">
                         <div className="table-responsive overflow-scroll">
                             <table width="100%" className="table">

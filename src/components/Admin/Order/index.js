@@ -70,7 +70,8 @@ export default class Order extends Component {
         } else if (column === "running late") {
             Color = "#f76C6C";
         }
-        const userAvatar = "http://192.168.0.8:9000/images/UserAvatar/demo.png";
+        //TODO change product images.
+        const productImg = "http://192.168.0.8:9000/images/UserAvatar/demo.png";
         let classes = ['small-box'];
 
         if (column === "running") {
@@ -119,8 +120,8 @@ export default class Order extends Component {
                             </p>
                         </div>
                         <div className="image">
-                            {userAvatar &&
-                            <img src={userAvatar} className="img-responsive" style={{border: "none", height: "50px"}}
+                            {productImg &&
+                            <img src={productImg} className="img-responsive" style={{border: "none", height: "50px"}}
                                  alt=""/>}
                         </div>
                     </div>

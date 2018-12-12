@@ -25,8 +25,20 @@ class ServiceGrid extends Component {
                     <div className="container mt-40">
                         <h3 className="text-center"></h3>
                         <div className="row mt-30">
-                            <Slider {...settings}>
-                                {this.props.serviceList.map((service, index) => (
+                            {this.props.serviceList.length > 3 ? <Slider {...settings}>
+                                    {this.props.serviceList.map((service, index) => (
+                                        <div className="col-md-4 col-sm-6" key={index}>
+                                            <div className="box16">
+                                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + service.image_url}/>
+                                                <div className="box-content">
+                                                    <h3 className="title">{service.name}</h3>
+                                                    <span className="post">{service.description}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </Slider> :
+                                this.props.serviceList.map((service, index) => (
                                     <div className="col-md-4 col-sm-6" key={index}>
                                         <div className="box16">
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + service.image_url}/>
@@ -36,8 +48,8 @@ class ServiceGrid extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                ))}
-                            </Slider>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>

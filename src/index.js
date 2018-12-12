@@ -31,6 +31,8 @@ import Profile from './components/Helper/Profile';
 //Admin
 import AdminHome from './components/Admin/Home';
 import ManageUser from './components/Admin/ManageUser';
+import ManageService from './components/Admin/ManageService';
+import ManageTeam from './components/Admin/ManageTeam';
 
 const composeEnhancers = composeWithDevTools({});
 //const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(promise, logger)));
@@ -136,7 +138,9 @@ ReactDOM.render(<Provider store={store}>
             <Route component={DashBoard} path="/Dashboard" exact={true}>
                 <IndexRoute component={AdminHome} onEnter={requireAuth}/>
                 <Route path="/Dashboard/ManageUser" component={ManageUser} onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/Profile" component={Profile} exact={true}/>
+                <Route path="/Dashboard/Profile" component={Profile} onEnter={requireAuth} exact={true}/>
+                <Route path="/Dashboard/ManageService" component={ManageService} onEnter={requireAuth} exact={true}/>
+                <Route path="/Dashboard/ManageTeam" component={ManageTeam} onEnter={requireAuth} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
             <Route path="/Login" component={Login} onEnter={checkLoggedIn} exact={true}/>

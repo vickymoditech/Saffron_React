@@ -3,7 +3,6 @@ import {Dialog} from 'material-ui';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as authAction from '../../../actions/authAction';
-import Loader from "../Loader/index";
 import './changePassword.css';
 
 const style = {
@@ -178,7 +177,6 @@ class ChangePasswordModal extends Component {
                         </div>
                     </div>
                 </Dialog>
-                {this.state.changePasswordLoading && <Loader/>}
             </div>
         )
     }
