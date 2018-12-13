@@ -83,7 +83,7 @@ class App extends Component {
         return (
             <div>
                 <NotificationSystem ref="notificationSystem"/>
-                <nav className="navbar navbar-light bg-dark" style={{height:"61px"}}>
+                <nav className="navbar navbar-light" style={{height:"61px",backgroundColor:"#263238"}}>
                     <a className="navbar-brand" href="">
                         <img src="assets/Images/DB_Logo.png" className="d-inline-block align-top" alt=""/>
                     </a>

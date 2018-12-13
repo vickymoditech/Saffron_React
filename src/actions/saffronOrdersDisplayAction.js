@@ -60,73 +60,31 @@ export const OrdersList = () => {
                         orderTime: Date.now(),
                         orderStartTime: Date.now(),
                         orderNo: "4"
-                    }, {
-                        status: "process",
-                        column: "running",
-                        orderTime: Date.now(),
-                        orderStartTime: Date.now(),
-                        orderNo: "5"
-                    }, {
-                        status: "process",
-                        column: "running",
-                        orderTime: Date.now(),
-                        orderStartTime: Date.now(),
-                        orderNo: "6"
-                    }, {
-                        status: "process",
-                        column: "running",
-                        orderTime: Date.now(),
-                        orderStartTime: Date.now(),
-                        orderNo: "7"
-                    }, {
-                        status: "process",
-                        column: "running",
-                        orderTime: Date.now(),
-                        orderStartTime: Date.now(),
-                        orderNo: "8"
-                    }, {
-                        status: "process",
-                        column: "running",
-                        orderTime: Date.now(),
-                        orderStartTime: Date.now(),
-                        orderNo: "9"
-                    }, {
-                        status: "process",
-                        column: "running",
-                        orderTime: Date.now(),
-                        orderStartTime: Date.now(),
-                        orderNo: "10"
-                    }, {
-                        status: "process",
-                        column: "running",
-                        orderTime: Date.now(),
-                        orderStartTime: Date.now(),
-                        orderNo: "11"
                     }], runningLate: [{
                         status: "late",
                         column: "running late",
-                        orderTime: Date.now(),
+                        orderTime: new Date(new Date().getTime() - 30 * 60000),
                         orderStartTime: Date.now(),
                         orderNo: "1"
-                    },{
+                    }, {
                         status: "late",
                         column: "running late",
-                        orderTime: Date.now(),
+                        orderTime: new Date(new Date().getTime() - 20 * 60000),
                         orderStartTime: Date.now(),
                         orderNo: "2"
-                    },{
+                    }, {
                         status: "late",
                         column: "running late",
-                        orderTime: Date.now(),
+                        orderTime: new Date(new Date().getTime() - 10 * 60000),
                         orderStartTime: Date.now(),
                         orderNo: "3"
                     }], recentOrders: [{
                         status: "waiting",
                         column: "recent orders",
-                        orderTime: Date.now(),
+                        orderTime: new Date(new Date().getTime() + 10 * 60000),
                         orderStartTime: Date.now(),
                         orderNo: "1"
-                    },{
+                    }, {
                         status: "waiting",
                         column: "recent orders",
                         orderTime: Date.now(),

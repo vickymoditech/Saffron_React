@@ -3,7 +3,7 @@ import {
     SERVICE_NOT_SUCCESS,
     SERVICE_SUCCESS,
     SERVICE_DELETE_SUCCESS,
-    SERVICE_CONNECTION_ERROR
+    SERVICE_CONNECTION_ERROR, SERVICE_ADD_SUCCESS
 } from '../constants/actionTypes';
 
 
@@ -25,7 +25,6 @@ export default function manageServiceReducer(state = initialState.manageServiceR
 
         case SERVICE_NOT_SUCCESS:
             return Object.assign({}, state, {
-                serviceList: [],
                 error_msg: action.data.error_msg,
                 Loading: false,
                 success_msg: null,
@@ -49,6 +48,22 @@ export default function manageServiceReducer(state = initialState.manageServiceR
 
             return Object.assign({}, state, {
                 serviceList: state.serviceList,
+                Loading: false,
+                error_msg: null,
+                success_msg: action.data.result
+            });
+
+        case SERVICE_ADD_SUCCESS:
+            let service = {
+                id: action.data.data.id,
+                image_url: action.data.data.image_url,
+                title: action.data.data.title,
+                description: action.data.data.description,
+                displayOrder: action.data.data.displayOrder,
+            };
+            let serviceList = [...state.serviceList, service];
+            return Object.assign({}, state, {
+                serviceList: serviceList,
                 Loading: false,
                 error_msg: null,
                 success_msg: action.data.result

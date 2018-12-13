@@ -7,6 +7,7 @@ import * as serviceAction from '../../../actions/serviceAction';
 import Loader from '../../Helper/Loader';
 import {confirmAlert} from 'react-confirm-alert';
 import './react-confirm-alert.css'
+import ProductDialog from '../Helper/AddCommonDialog';
 
 import './manage-service.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
@@ -17,8 +18,10 @@ class ManageService extends Component {
         super(props);
         this.state = {
             serviceList: [],
-            notificationSystem: null
-        };
+            notificationSystem: null,
+            isDialogOpen: false
+        }
+        ;
     }
 
     addNotifications = (message, level) => {
@@ -34,6 +37,8 @@ class ManageService extends Component {
             this.addNotifications(nextProps.error_msg, "error");
         } else if (!nextProps.Loading && nextProps.success_msg) {
             this.addNotifications(nextProps.success_msg, "success");
+            this.setState({serviceList: nextProps.serviceList || []});
+            this.setState({isDialogOpen: false});
         } else {
             this.setState({serviceList: nextProps.serviceList || []});
         }
@@ -69,13 +74,28 @@ class ManageService extends Component {
         })
     };
 
+    addNewService = () => {
+        this.setState({isDialogOpen: true});
+    };
+
+    newProductClose = () => {
+        this.setState({isDialogOpen: false});
+    };
+
+
     render() {
         const {serviceList} = this.state;
         return (
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
+                {this.state.isDialogOpen &&
+                <ProductDialog handleClose={this.newProductClose} isOpen={this.state.isDialogOpen}
+                               notify={this.addNotifications} status={"service"}/>}
                 <div className="container tab-bg-container">
                     <h2> Manage Service </h2>
+                    <button type="button" className="btn btn-primary"
+                            onClick={this.addNewService}>Add Service
+                    </button>
                     {serviceList.length > 0 && <div className="data-display col-sm-12">
                         <div className="table-responsive overflow-scroll">
                             <table width="100%" className="table">
@@ -142,5 +162,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ManageService);
-
-

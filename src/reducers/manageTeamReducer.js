@@ -3,6 +3,7 @@ import {
     TEAM_NOT_SUCCESS,
     TEAM_SUCCESS,
     TEAM_DELETE_SUCCESS,
+    TEAM_ADD_SUCCESS,
     TEAM_CONNECTION_ERROR,
 } from '../constants/actionTypes';
 
@@ -46,6 +47,22 @@ export default function manageTeamReducer(state = initialState.manageTeamReducer
                 error_msg: null,
                 success_msg: action.data.result
             });
+
+        case TEAM_ADD_SUCCESS:
+            let team = {
+                id: action.data.data.id,
+                image_url: action.data.data.image_url,
+                name: action.data.data.name,
+                description: action.data.data.description,
+            };
+            let teamList = [...state.teamList, team];
+            return Object.assign({}, state, {
+                teamList: teamList,
+                Loading: false,
+                error_msg: null,
+                success_msg: action.data.result
+            });
+
 
         default:
             return state;

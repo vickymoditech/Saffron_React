@@ -5,9 +5,11 @@ import {connect} from 'react-redux';
 import NotificationSystem from 'react-notification-system';
 import * as teamAction from '../../../actions/teamAction';
 import Loader from '../../Helper/Loader';
+import ProductDialog from '../Helper/AddCommonDialog';
 
 import {confirmAlert} from 'react-confirm-alert';
 import './react-confirm-alert.css'
+
 
 import './manage-team.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
@@ -19,7 +21,8 @@ class ManageTeam extends Component {
         this.state = {
             teamList: [],
             notificationSystem: null,
-            isFirstAvailability: false
+            isFirstAvailability: false,
+            isDialogOpen: false
         };
     }
 
@@ -36,6 +39,8 @@ class ManageTeam extends Component {
             this.addNotifications(nextProps.error_msg, "error");
         } else if (!nextProps.Loading && nextProps.success_msg) {
             this.addNotifications(nextProps.success_msg, "success");
+            this.setState({teamList: nextProps.teamList || []});
+            this.setState({isDialogOpen: false});
         } else {
             this.setState({teamList: nextProps.teamList || []});
         }
@@ -71,14 +76,27 @@ class ManageTeam extends Component {
         })
     };
 
+    addNewTeam = () => {
+        this.setState({isDialogOpen: true});
+    };
+
+    newProductClose = () => {
+        this.setState({isDialogOpen: false});
+    };
 
     render() {
         const {teamList} = this.state;
         return (
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
+                {this.state.isDialogOpen &&
+                <ProductDialog handleClose={this.newProductClose} isOpen={this.state.isDialogOpen}
+                               notify={this.addNotifications} status={"team"} />}
                 <div className="container tab-bg-container">
                     <h2> Manage Teams Member </h2>
+                    <button type="button" className="btn btn-primary"
+                            onClick={this.addNewTeam}>Add team member
+                    </button>
                     {teamList.length > 0 && <div className="data-display col-sm-12">
                         <div className="table-responsive overflow-scroll">
                             <table width="100%" className="table">
@@ -130,9 +148,11 @@ class ManageTeam extends Component {
 
 const mapStateToProps = (state) => {
     const {manageTeamReducer} = state;
+    debugger;
     return {
         Loading: manageTeamReducer.Loading,
         error_msg: manageTeamReducer.error_msg,
+        success_msg: manageTeamReducer.success_msg,
         teamList: manageTeamReducer.teamList,
         reRender: true
     };
