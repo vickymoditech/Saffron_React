@@ -14,23 +14,30 @@ export default function manageTeamReducer(state = initialState.manageTeamReducer
     switch (action.type) {
 
         case TEAM_INPROGRESS:
-            return Object.assign({}, state, {Loading: true});
+            return Object.assign({}, state, {Loading: true, error_msg: null, success_msg: null});
 
         case TEAM_CONNECTION_ERROR:
-            return Object.assign({}, state, {teamList: [], Loading: false, error_msg: action.data.error_msg});
+            return Object.assign({}, state, {
+                teamList: [],
+                Loading: false,
+                error_msg: action.data.error_msg,
+                success_msg: null
+            });
 
         case TEAM_NOT_SUCCESS:
             return Object.assign({}, state, {
                 teamList: [],
                 error_msg: action.data.error_msg,
-                Loading: false
+                Loading: false,
+                success_msg: null
             });
 
         case TEAM_SUCCESS:
             return Object.assign({}, state, {
                 teamList: action.data,
                 Loading: false,
-                error_msg: null
+                error_msg: null,
+                success_msg: null
             });
 
         case TEAM_DELETE_SUCCESS:
@@ -62,7 +69,6 @@ export default function manageTeamReducer(state = initialState.manageTeamReducer
                 error_msg: null,
                 success_msg: action.data.result
             });
-
 
         default:
             return state;

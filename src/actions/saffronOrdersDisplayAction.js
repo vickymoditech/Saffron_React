@@ -64,31 +64,31 @@ export const OrdersList = () => {
                         status: "late",
                         column: "running late",
                         orderTime: new Date(new Date().getTime() - 30 * 60000),
-                        orderStartTime: Date.now(),
+                        orderStartTime: new Date(new Date().getTime() - 30 * 60000),
                         orderNo: "1"
                     }, {
                         status: "late",
                         column: "running late",
                         orderTime: new Date(new Date().getTime() - 20 * 60000),
-                        orderStartTime: Date.now(),
+                        orderStartTime: new Date(new Date().getTime() - 20 * 60000),
                         orderNo: "2"
                     }, {
                         status: "late",
                         column: "running late",
                         orderTime: new Date(new Date().getTime() - 10 * 60000),
-                        orderStartTime: Date.now(),
+                        orderStartTime: new Date(new Date().getTime() - 10 * 60000),
                         orderNo: "3"
                     }], recentOrders: [{
                         status: "waiting",
                         column: "recent orders",
                         orderTime: new Date(new Date().getTime() + 10 * 60000),
-                        orderStartTime: Date.now(),
+                        orderStartTime: new Date(new Date().getTime() + 10 * 60000),
                         orderNo: "1"
                     }, {
                         status: "waiting",
                         column: "recent orders",
-                        orderTime: Date.now(),
-                        orderStartTime: Date.now(),
+                        orderTime: new Date(new Date().getTime() + 20 * 60000),
+                        orderStartTime: new Date(new Date().getTime() + 20 * 60000),
                         orderNo: "2"
                     }]
                 });

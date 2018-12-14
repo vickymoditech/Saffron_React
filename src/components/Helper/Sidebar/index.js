@@ -131,7 +131,7 @@ class Sidebar extends Component {
                                 </ListItem>
                             </Link> <Divider/>
                                 </span>}
-                            <Link to="/Dashboard" className="link">
+                            <Link to="/Dashboard/Analytics" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-pie-chart"/>
                                     <div style={{marginTop: 10}} className="link-hover">Analisys</div>
