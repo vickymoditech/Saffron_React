@@ -40,11 +40,11 @@ class Analytics extends Component {
                     </div>
                 </div>
                 <div className="dashboard-main">
-                    <AverageWaitTimeReport loading={true}/>
-                    <AverageWaitTimeReport loading={true}/>
-                    <AverageWaitTimeReport loading={true}/>
-                    <AverageWaitTimeReport loading={true}/>
-                    <AverageWaitTimeReport loading={true}/>
+                    <AverageWaitTimeReport loading={false}/>
+                    <AverageWaitTimeReport loading={false}/>
+                    <AverageWaitTimeReport loading={false}/>
+                    <AverageWaitTimeReport loading={false}/>
+                    <AverageWaitTimeReport loading={false}/>
                 </div>
             </div>
         );

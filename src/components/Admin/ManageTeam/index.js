@@ -6,6 +6,7 @@ import NotificationSystem from 'react-notification-system';
 import * as teamAction from '../../../actions/teamAction';
 import Loader from '../../Helper/Loader';
 import ProductDialog from '../Helper/AddCommonDialog';
+import EditDialog from './editDialog';
 
 import {confirmAlert} from 'react-confirm-alert';
 import './react-confirm-alert.css'
@@ -22,6 +23,8 @@ class ManageTeam extends Component {
             teamList: [],
             notificationSystem: null,
             isFirstAvailability: false,
+            isEditDialogOpen: false,
+            selectedTeamId: null,
             isDialogOpen: false
         };
     }
@@ -41,6 +44,7 @@ class ManageTeam extends Component {
             this.addNotifications(nextProps.success_msg, "success");
             this.setState({teamList: nextProps.teamList || []});
             this.setState({isDialogOpen: false});
+            this.setState({isEditDialogOpen: false});
         } else {
             this.setState({teamList: nextProps.teamList || []});
         }
@@ -55,7 +59,7 @@ class ManageTeam extends Component {
     }
 
     getSpecificTeam = (teamId) => {
-        alert(teamId);
+        this.setState({isEditDialogOpen: true, selectedTeamId: teamId});
     };
 
     removeSpecificTeam = (teamId) => {
@@ -84,14 +88,25 @@ class ManageTeam extends Component {
         this.setState({isDialogOpen: false});
     };
 
+    editDialogClose = () => {
+        this.setState({isEditDialogOpen: false});
+    };
+
     render() {
         const {teamList} = this.state;
+        const team = teamList.find((team) => team.id === this.state.selectedTeamId);
+
         return (
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
                 {this.state.isDialogOpen &&
                 <ProductDialog handleClose={this.newProductClose} isOpen={this.state.isDialogOpen}
-                               notify={this.addNotifications} status={"team"} />}
+                               notify={this.addNotifications} status={"team"}/>}
+
+                {this.state.isEditDialogOpen &&
+                <EditDialog handleClose={this.editDialogClose} isOpen={this.state.isEditDialogOpen}
+                            notify={this.addNotifications} team={team}/>}
+
                 <div className="container tab-bg-container">
                     <h2> Manage Teams Member </h2>
                     <button type="button" className="btn btn-primary"
@@ -148,7 +163,6 @@ class ManageTeam extends Component {
 
 const mapStateToProps = (state) => {
     const {manageTeamReducer} = state;
-    debugger;
     return {
         Loading: manageTeamReducer.Loading,
         error_msg: manageTeamReducer.error_msg,

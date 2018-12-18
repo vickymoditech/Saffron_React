@@ -4,6 +4,7 @@ import {
     TEAM_SUCCESS,
     TEAM_DELETE_SUCCESS,
     TEAM_ADD_SUCCESS,
+    TEAM_EDIT_SUCCESS,
     TEAM_CONNECTION_ERROR,
 } from '../constants/actionTypes';
 
@@ -65,6 +66,24 @@ export default function manageTeamReducer(state = initialState.manageTeamReducer
             let teamList = [...state.teamList, team];
             return Object.assign({}, state, {
                 teamList: teamList,
+                Loading: false,
+                error_msg: null,
+                success_msg: action.data.result
+            });
+
+        case TEAM_EDIT_SUCCESS:
+            console.log(action.data);
+            state.teamList.map((team, index) => {
+                if (team.id === action.data.data.id) {
+                    team.name = action.data.data.name;
+                    team.description = action.data.data.description;
+                    if (action.data.data.image_url !== undefined) {
+                        team.image_url = action.data.data.image_url;
+                    }
+                }
+            });
+            return Object.assign({}, state, {
+                teamList: state.teamList,
                 Loading: false,
                 error_msg: null,
                 success_msg: action.data.result

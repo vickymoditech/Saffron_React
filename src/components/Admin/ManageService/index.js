@@ -8,6 +8,7 @@ import Loader from '../../Helper/Loader';
 import {confirmAlert} from 'react-confirm-alert';
 import './react-confirm-alert.css'
 import ProductDialog from '../Helper/AddCommonDialog';
+import EditDialog from './editDialog';
 
 import './manage-service.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
@@ -19,7 +20,9 @@ class ManageService extends Component {
         this.state = {
             serviceList: [],
             notificationSystem: null,
-            isDialogOpen: false
+            isDialogOpen: false,
+            isEditDialogOpen: false,
+            selectedServiceId: null,
         }
         ;
     }
@@ -39,6 +42,7 @@ class ManageService extends Component {
             this.addNotifications(nextProps.success_msg, "success");
             this.setState({serviceList: nextProps.serviceList || []});
             this.setState({isDialogOpen: false});
+            this.setState({isEditDialogOpen: false});
         } else {
             this.setState({serviceList: nextProps.serviceList || []});
         }
@@ -53,7 +57,7 @@ class ManageService extends Component {
     }
 
     getSpecificService = (serviceId) => {
-        alert(serviceId);
+        this.setState({isEditDialogOpen: true, selectedServiceId: serviceId});
     };
 
     removeSpecificService = (serviceId) => {
@@ -82,15 +86,24 @@ class ManageService extends Component {
         this.setState({isDialogOpen: false});
     };
 
+    editDialogClose = () => {
+        this.setState({isEditDialogOpen: false});
+    };
+
 
     render() {
         const {serviceList} = this.state;
+        const selected_service = serviceList.find((service) => service.id === this.state.selectedServiceId);
+
         return (
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
                 {this.state.isDialogOpen &&
                 <ProductDialog handleClose={this.newProductClose} isOpen={this.state.isDialogOpen}
                                notify={this.addNotifications} status={"service"}/>}
+                {this.state.isEditDialogOpen &&
+                <EditDialog handleClose={this.editDialogClose} isOpen={this.state.isEditDialogOpen}
+                            notify={this.addNotifications} service={selected_service}/>}
                 <div className="container tab-bg-container">
                     <h2> Manage Service </h2>
                     <button type="button" className="btn btn-primary"

@@ -3,6 +3,7 @@ import {
     SERVICE_NOT_SUCCESS,
     SERVICE_SUCCESS,
     SERVICE_DELETE_SUCCESS,
+    SERVICE_EDIT_SUCCESS,
     SERVICE_CONNECTION_ERROR, SERVICE_ADD_SUCCESS
 } from '../constants/actionTypes';
 
@@ -69,6 +70,23 @@ export default function manageServiceReducer(state = initialState.manageServiceR
                 success_msg: action.data.result
             });
 
+        case SERVICE_EDIT_SUCCESS:
+            console.log(action.data);
+            state.serviceList.map((service, index) => {
+                if (service.id === action.data.data.id) {
+                    service.title = action.data.data.title;
+                    service.description = action.data.data.description;
+                    if (action.data.data.image_url !== undefined) {
+                        service.image_url = action.data.data.image_url;
+                    }
+                }
+            });
+            return Object.assign({}, state, {
+                serviceList: state.serviceList,
+                Loading: false,
+                error_msg: null,
+                success_msg: action.data.result
+            });
 
         default:
             return state;
