@@ -100,7 +100,7 @@ class Sidebar extends Component {
                                     <div style={{marginTop: 10}} className="link-hover">Manage Services</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                <Link to="/Dashboard/ManageUser" className="link">
+                                <Link to="/Dashboard/ManageGallery" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-cogs"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Gallery's</div>

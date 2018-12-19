@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import {Dialog} from 'material-ui';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as serviceAction from '../../../../actions/serviceAction';
-import * as teamAction from '../../../../actions/teamAction';
-
+import * as serviceAction from '../../../actions/serviceAction';
+import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
 const style = {
     titleStyle: {
@@ -31,18 +30,17 @@ const style = {
     }
 };
 
-class ProductDialog extends Component {
+class EditDialog extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isOpen: props.isOpen,
-            image_url: null,
-            title1: this.props.status.toLowerCase() === "service" ? "Service Title" : "Team Member Name",
-            title2: this.props.status.toLowerCase() === "service" ? "Service Description" : "Team Member Detail",
+            image_url: ENVIRONMENT_VARIABLES.PHOTO_URL + this.props.service.image_url,
             commonData: {
                 filetoupload: "",
-                title: "",
-                description: "",
+                title: this.props.service.title,
+                id: this.props.service.id,
+                description: this.props.service.description,
                 displayOrder: 1
             }
         };
@@ -62,12 +60,8 @@ class ProductDialog extends Component {
     };
 
     handleSave = () => {
-        if (this.state.commonData.filetoupload !== "" && this.state.commonData.filetoupload !== null && this.state.commonData.description !== "" && this.state.commonData.title !== "") {
-            if (this.props.status.toLowerCase() === "service") {
-                this.props.actions.serviceAction.AddService(this.state.commonData);
-            } else {
-                this.props.actions.teamAction.AddTeam(this.state.commonData);
-            }
+        if (this.state.commonData.description !== "" && this.state.commonData.title !== "") {
+            this.props.actions.serviceAction.EditService(this.state.commonData);
         } else {
             this.props.notify("All the fields are required", 'error');
         }
@@ -92,15 +86,19 @@ class ProductDialog extends Component {
                             <div className="modal-body">
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
-                                        <h2>Add New {this.props.status}</h2>
+                                        <h2>Edit Service</h2>
                                         <br/>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
                                             <div className="col-md-offset-1 col-md-10">
-                                                {this.state.image_url !== undefined && this.state.image_url !== null && (
+                                                {this.state.image_url !== undefined ? (
                                                     <img
                                                         src={this.state.image_url}
+                                                        width="150px"
+                                                        height="100px"/>) : (
+                                                    <img
+                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
                                                         width="150px"
                                                         height="100px"/>)}
                                                 <input type="file" onChange={this.handleselectedFile}/>
@@ -112,7 +110,7 @@ class ProductDialog extends Component {
                                                                     <i className="fa fa-lock"/>
                                                                 </span>
                                                                 <input type="text" name="title"
-                                                                       placeholder={this.state.title1}
+                                                                       placeholder="Service Title"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.title}/>
@@ -124,7 +122,7 @@ class ProductDialog extends Component {
                                                                     <i className="fa fa-key"/>
                                                                 </span>
                                                                 <input type="text" name="description"
-                                                                       placeholder={this.state.title2}
+                                                                       placeholder="Service Description"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.description}/>
@@ -161,10 +159,9 @@ class ProductDialog extends Component {
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        serviceAction: bindActionCreators(serviceAction, dispatch),
-        teamAction: bindActionCreators(teamAction, dispatch)
+        serviceAction: bindActionCreators(serviceAction, dispatch)
     }
 });
 
 
-export default connect(null, mapDispatchToProps)(ProductDialog);
+export default connect(null, mapDispatchToProps)(EditDialog);

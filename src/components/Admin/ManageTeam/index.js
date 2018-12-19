@@ -101,7 +101,7 @@ class ManageTeam extends Component {
                 <NotificationSystem ref="notificationSystem"/>
                 {this.state.isDialogOpen &&
                 <ProductDialog handleClose={this.newProductClose} isOpen={this.state.isDialogOpen}
-                               notify={this.addNotifications} status={"team"}/>}
+                               notify={this.addNotifications} status={"Team Member"}/>}
 
                 {this.state.isEditDialogOpen &&
                 <EditDialog handleClose={this.editDialogClose} isOpen={this.state.isEditDialogOpen}

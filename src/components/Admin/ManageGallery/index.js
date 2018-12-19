@@ -10,10 +10,10 @@ import './react-confirm-alert.css'
 import ProductDialog from '../Helper/AddCommonDialog';
 import EditDialog from './editDialog';
 
-import './manage-service.css';
+import './manage-gallery.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
-class ManageService extends Component {
+class ManageGallery extends Component {
 
     constructor(props) {
         super(props);
@@ -174,4 +174,4 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageService);
+export default connect(mapStateToProps, mapDispatchToProps)(ManageGallery);

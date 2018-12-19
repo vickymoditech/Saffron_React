@@ -33,6 +33,7 @@ import AdminHome from './components/Admin/Home';
 import ManageUser from './components/Admin/ManageUser';
 import ManageService from './components/Admin/ManageService';
 import ManageTeam from './components/Admin/ManageTeam';
+import ManageGallery from './components/Admin/ManageGallery';
 import Analytics from './components/Admin/Analytics';
 
 const composeEnhancers = composeWithDevTools({});
@@ -142,6 +143,7 @@ ReactDOM.render(<Provider store={store}>
                 <Route path="/Dashboard/Profile" component={Profile} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageService" component={ManageService} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageTeam" component={ManageTeam} onEnter={requireAuth} exact={true}/>
+                <Route path="/Dashboard/ManageGallery" component={ManageGallery} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/Analytics" component={Analytics} onEnter={requireAuth} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
