@@ -3,7 +3,6 @@ import {Dialog} from 'material-ui';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as galleryAction from '../../../actions/galleryAction';
-import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import {Dropdown} from 'semantic-ui-react';
 import {RadioGroup, RadioButton} from 'react-radio-buttons';
 
@@ -32,19 +31,21 @@ const style = {
     }
 };
 
-class EditDialog extends Component {
+class AddDialog extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isOpen: props.isOpen,
-            image_url: ENVIRONMENT_VARIABLES.PHOTO_URL + this.props.gallery.image_url,
+            image_url: null,
+            selectedServiceId: null,
+            selectedSex: null,
             commonData: {
                 filetoupload: "",
-                title: this.props.gallery.title,
-                id: this.props.gallery.id,
-                description: this.props.gallery.description,
-                service_id: this.props.gallery.service_id,
-                sex: this.props.gallery.sex,
+                title: "",
+                description: "",
+                displayOrder: 1,
+                service_id: null,
+                sex: null,
                 selectedServiceId: this.props.selectedServiceId
             }
         };
@@ -64,17 +65,11 @@ class EditDialog extends Component {
     };
 
     handleSave = () => {
-        if (this.state.commonData.description !== "" && this.state.commonData.title !== "" && this.state.commonData.service_id !== null && this.state.commonData.sex !== null) {
-            this.props.actions.galleryAction.EditGallery(this.state.commonData);
+        if (this.state.commonData.filetoupload !== "" && this.state.commonData.filetoupload !== null && this.state.commonData.description !== "" && this.state.commonData.title !== "" && this.state.commonData.service_id !== null && this.state.commonData.sex !== null) {
+            this.props.actions.galleryAction.AddGallery(this.state.commonData);
         } else {
             this.props.notify("All the fields are required", 'error');
         }
-    };
-
-    onChange = (value) => {
-        const commonData = this.state.commonData;
-        commonData['sex'] = value;
-        this.setState({commonData: commonData});
     };
 
     handleChangeService = (event, {value}) => {
@@ -85,6 +80,11 @@ class EditDialog extends Component {
         }
     };
 
+    onChange = (value) => {
+        const commonData = this.state.commonData;
+        commonData['sex'] = value;
+        this.setState({commonData: commonData});
+    };
 
     render() {
         return (
@@ -105,19 +105,15 @@ class EditDialog extends Component {
                             <div className="modal-body">
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
-                                        <h2>Edit Service</h2>
+                                        <h2>Add New Gallery</h2>
                                         <br/>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
                                             <div className="col-md-offset-1 col-md-10">
-                                                {this.state.image_url !== undefined ? (
+                                                {this.state.image_url !== undefined && this.state.image_url !== null && (
                                                     <img
                                                         src={this.state.image_url}
-                                                        width="150px"
-                                                        height="100px"/>) : (
-                                                    <img
-                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
                                                         width="150px"
                                                         height="100px"/>)}
                                                 <input type="file" onChange={this.handleselectedFile}/>
@@ -126,7 +122,6 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <Dropdown placeholder="Select Service" fluid selection
-                                                                          defaultValue={this.state.commonData.service_id}
                                                                           options={this.props.serviceList}
                                                                           onChange={this.handleChangeService}/>
                                                             </div>
@@ -137,10 +132,22 @@ class EditDialog extends Component {
                                                                     <i className="fa fa-lock"/>
                                                                 </span>
                                                                 <input type="text" name="title"
-                                                                       placeholder="Service Title"
+                                                                       placeholder="Gallery Title"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.title}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <div className="input-group">
+                                                                <span className="input-group-addon">
+                                                                    <i className="fa fa-key"/>
+                                                                </span>
+                                                                <input type="text" name="description"
+                                                                       placeholder="Description"
+                                                                       className="form-control"
+                                                                       onChange={this.handleChange}
+                                                                       value={this.state.commonData.description}/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
@@ -153,18 +160,6 @@ class EditDialog extends Component {
                                                                         Female
                                                                     </RadioButton>
                                                                 </RadioGroup>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group">
-                                                            <div className="input-group">
-                                                                <span className="input-group-addon">
-                                                                    <i className="fa fa-key"/>
-                                                                </span>
-                                                                <input type="text" name="description"
-                                                                       placeholder="Service Description"
-                                                                       className="form-control"
-                                                                       onChange={this.handleChange}
-                                                                       value={this.state.commonData.description}/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
@@ -198,9 +193,9 @@ class EditDialog extends Component {
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        galleryAction: bindActionCreators(galleryAction, dispatch)
+        galleryAction: bindActionCreators(galleryAction, dispatch),
     }
 });
 
 
-export default connect(null, mapDispatchToProps)(EditDialog);
+export default connect(null, mapDispatchToProps)(AddDialog);

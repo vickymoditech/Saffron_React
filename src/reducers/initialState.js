@@ -28,6 +28,12 @@ export default {
         error_msg: null,
         success_msg: null,
     },
+    manageGalleryReducer: {
+        Loading: false,
+        galleryList: [],
+        error_msg: null,
+        success_msg: null,
+    },
     manageTeamReducer: {
         Loading: false,
         teamList: [],

@@ -7,6 +7,7 @@ import saffronOrdersDisplayReducer from './saffronOrdersDisplayReducer';
 import websiteReducer from './websiteReducer';
 import manageServiceReducer from './manageServiceReducer';
 import manageTeamReducer from './manageTeamReducer';
+import manageGalleryReducer from './manageGalleryReducer';
 
 const rootReducer = combineReducers({
     authReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     websiteReducer,
     manageServiceReducer,
     manageTeamReducer,
+    manageGalleryReducer,
     routing: routerReducer
 });
 

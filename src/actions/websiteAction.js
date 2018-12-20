@@ -43,13 +43,13 @@ export const getWebsiteHome = () => {
 };
 
 
-export const getAllGallerys = () => {
+export const getAllGallerys = (ServiceId) => {
     try {
         return (dispatch) => {
             dispatch({type: WEBSITE_INPROGRESS});
             const api = {
                 method: 'GET',
-                url: ENVIRONMENT_VARIABLES.API_URL + "/Gallerys/All"
+                url: ENVIRONMENT_VARIABLES.API_URL + "/Gallerys/All/" + ServiceId
             };
             axios(api).then((response) => {
                 if (response.status === 200) {

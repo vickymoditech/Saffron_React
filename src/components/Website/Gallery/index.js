@@ -13,12 +13,19 @@ class Gallery extends Component {
         super(props);
         this.state = {
             current_service: null,
-            photos: []
+            photos: [],
+            loadThisPage: false
         }
     }
 
     componentWillMount() {
-        this.props.actions.websiteAction.getAllGallerys();
+        if (this.props.serviceList.length > 0) {
+            this.props.actions.websiteAction.getAllGallerys(this.props.serviceList[0].id);
+        } else {
+            this.setState({loadThisPage: true}, () => {
+                this.props.actions.websiteAction.getWebsiteHome();
+            });
+        }
     }
 
     requestConvertToResponse(galleryList) {
@@ -34,25 +41,22 @@ class Gallery extends Component {
     }
 
 
-
     componentWillReceiveProps(nextProps) {
-        if (this.state.current_service !== null) {
-            let findAllGalleryList = this.props.allGalleryList.filter((data) => data.service_id === this.state.current_service);
-            this.setState({photos: this.requestConvertToResponse(findAllGalleryList)});
-        } else
-            this.setState({photos: this.requestConvertToResponse(nextProps.allGalleryList)});
+        if (nextProps.serviceList.length > 0 && this.state.loadThisPage) {
+            this.setState({loadThisPage: false}, () => {
+                this.props.actions.websiteAction.getAllGallerys(this.props.serviceList[0].id);
+            });
+        }
+        this.setState({photos: this.requestConvertToResponse(nextProps.allGalleryList)});
     }
 
 
-    handleChangeStore = (event, {value}) => {
+    handleChangeService = (event, {value}) => {
         this.setState({current_service: value});
         if (value !== null) {
-            let findAllGalleryList = this.props.allGalleryList.filter((data) => data.service_id === value);
-            this.setState({photos: this.requestConvertToResponse(findAllGalleryList)});
-        } else
-            this.setState({photos: this.requestConvertToResponse(this.props.allGalleryList)});
+            this.props.actions.websiteAction.getAllGallerys(value);
+        }
     };
-
 
     render() {
         const photos = this.state.photos;
@@ -64,11 +68,13 @@ class Gallery extends Component {
             };
             options.push(option);
         });
+        let placeHolder = options.length > 1 ? options[0].text : "Service Loading...";
+
         return (
             <div>
                 <div>
-                    <Dropdown placeholder='Select Service' fluid selection options={options}
-                              onChange={this.handleChangeStore}/>
+                    <Dropdown placeholder={placeHolder} fluid selection options={options}
+                              onChange={this.handleChangeService}/>
                 </div>
                 <PhotoGrid columns={4} photos={photos}/>
             </div>
