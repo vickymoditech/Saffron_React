@@ -96,11 +96,11 @@ class EditDialog extends Component {
                                                     <img
                                                         src={this.state.image_url}
                                                         width="150px"
-                                                        height="100px"/>) : (
+                                                        height="150px"/>) : (
                                                     <img
                                                         src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
                                                         width="150px"
-                                                        height="100px"/>)}
+                                                        height="150px"/>)}
                                                 <input type="file" onChange={this.handleselectedFile}/>
                                                 <form>
                                                     <div id="loginForm">

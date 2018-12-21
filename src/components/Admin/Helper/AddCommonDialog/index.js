@@ -48,7 +48,7 @@ class ProductDialog extends Component {
         };
     }
 
-    handleselectedFile = (event) => {
+    handleSelectedFile = (event) => {
         const commonData = this.state.commonData;
         commonData['filetoupload'] = event.target.files[0];
         this.setState({commonData: commonData, image_url: URL.createObjectURL(event.target.files[0])});
@@ -102,8 +102,8 @@ class ProductDialog extends Component {
                                                     <img
                                                         src={this.state.image_url}
                                                         width="150px"
-                                                        height="100px"/>)}
-                                                <input type="file" onChange={this.handleselectedFile}/>
+                                                        height="150px"/>)}
+                                                <input type="file" onChange={this.handleSelectedFile}/>
                                                 <form>
                                                     <div id="loginForm">
                                                         <div className="form-group">

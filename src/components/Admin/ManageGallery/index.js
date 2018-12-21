@@ -171,10 +171,10 @@ class ManageGallery extends Component {
                                     <tr key={index}>
                                         <td>{value.image_url !== undefined ? (
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
-                                                 height="100px"/>) : (
+                                                 height="150px"/>) : (
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
                                                  width="150px"
-                                                 height="100px"/>)}</td>
+                                                 height="150px"/>)}</td>
                                         <td>{value.title}</td>
                                         <td>{value.description}</td>
                                         <td>{value.sex}</td>

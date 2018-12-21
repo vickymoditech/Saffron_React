@@ -133,23 +133,72 @@ export const updateUserProfile = (userProfile) => {
             dispatch({type: PASSWORD_CHANGE_INPROGRESS});
             const token = "Bearer " + localStorage.getItem('accessToken');
 
-            const api = {
+            let api = {
                 method: 'PUT',
                 headers: {'Authorization': token},
                 url: ENVIRONMENT_VARIABLES.API_URL + "/oauths",
                 data: userProfile,
             };
-            axios(api).then((response) => {
-                if (response.status === 200) {
-                    dispatch({type: PASSWORD_CHANGE_SUCCESS, data: response.data});
-                }
-            }).catch((error) => {
-                if (error && error.response && error.response.status === 400) {
-                    dispatch({type: PASSWORD_CHANGE_NOT_SUCCESS, data: error.response.data});
-                } else {
-                    dispatch({type: PASSWORD_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
-                }
-            });
+
+            if (userProfile.filetoupload !== "" && userProfile.filetoupload !== null && userProfile.filetoupload !== undefined) {
+                let bodyFormData = new FormData();
+                bodyFormData.append('filetoupload', userProfile.filetoupload);
+
+                let apiUserAvatar = {
+                    method: 'POST',
+                    headers: {'Authorization': token},
+                    url: ENVIRONMENT_VARIABLES.API_URL + "/oauths/userAvatar",
+                    data: bodyFormData,
+                    config: {headers: {'Content-Type': 'multipart/form-data'}}
+                };
+
+                axios(apiUserAvatar).then((response) => {
+                    if (response.status === 200) {
+                        userProfile.image_url = response.data.data;
+                        api = {
+                            method: 'PUT',
+                            headers: {'Authorization': token},
+                            url: ENVIRONMENT_VARIABLES.API_URL + "/oauths",
+                            data: userProfile,
+                        };
+                        axios(api).then((response) => {
+                            if (response.status === 200) {
+                                dispatch({type: PASSWORD_CHANGE_SUCCESS, data: response.data});
+                            }
+                        }).catch((error) => {
+                            if (error && error.response && error.response.status === 400) {
+                                dispatch({type: PASSWORD_CHANGE_NOT_SUCCESS, data: error.response.data});
+                            } else {
+                                dispatch({
+                                    type: PASSWORD_CONNECTION_ERROR,
+                                    data: {error_msg: error.message.toString()}
+                                });
+                            }
+                        });
+                    }
+                }).catch((error) => {
+                    if (error && error.response && error.response.status === 400) {
+                        dispatch({type: PASSWORD_CHANGE_NOT_SUCCESS, data: error.response.data});
+                    } else {
+                        dispatch({type: PASSWORD_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
+                    }
+                });
+            } else {
+                axios(api).then((response) => {
+                    if (response.status === 200) {
+                        dispatch({type: PASSWORD_CHANGE_SUCCESS, data: response.data});
+                    }
+                }).catch((error) => {
+                    if (error && error.response && error.response.status === 400) {
+                        dispatch({type: PASSWORD_CHANGE_NOT_SUCCESS, data: error.response.data});
+                    } else {
+                        dispatch({
+                            type: PASSWORD_CONNECTION_ERROR,
+                            data: {error_msg: error.message.toString()}
+                        });
+                    }
+                });
+            }
         }
     } catch (error) {
         alert("contact to your developer");

@@ -88,12 +88,6 @@ class Sidebar extends Component {
                             <Divider/>
                             {userRole.toLowerCase() === "admin" &&
                             <span>
-                                <Link to="/Dashboard/ManageUser" className="link">
-                                <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <i className="fa fa-address-book"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Manage Users</div>
-                                </ListItem>
-                            </Link> <Divider/>
                                 <Link to="/Dashboard/ManageService" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-cog"/>
@@ -116,6 +110,18 @@ class Sidebar extends Component {
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-users"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Teams</div>
+                                </ListItem>
+                            </Link> <Divider/>
+                                <Link to="/Dashboard/ManageUser" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-address-book"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Users</div>
+                                </ListItem>
+                            </Link> <Divider/>
+                                <Link to="/Dashboard/ManageSliderImage" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-address-book"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Slider</div>
                                 </ListItem>
                             </Link> <Divider/>
                                 <Link to="/Dashboard/ManageUser" className="link">

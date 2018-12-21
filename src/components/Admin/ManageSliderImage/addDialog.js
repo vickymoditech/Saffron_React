@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {Dialog} from 'material-ui';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as serviceAction from '../../../actions/serviceAction';
-import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import * as sliderAction from '../../../actions/sliderAction';
 
 const style = {
     titleStyle: {
@@ -30,23 +29,19 @@ const style = {
     }
 };
 
-class EditDialog extends Component {
+class AddDialog extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isOpen: props.isOpen,
-            image_url: ENVIRONMENT_VARIABLES.PHOTO_URL + this.props.service.image_url,
+            image_url: null,
             commonData: {
                 filetoupload: "",
-                title: this.props.service.title,
-                id: this.props.service.id,
-                description: this.props.service.description,
-                displayOrder: 1
             }
         };
     }
 
-    handleselectedFile = (event) => {
+    handleSelectedFile = (event) => {
         const commonData = this.state.commonData;
         commonData['filetoupload'] = event.target.files[0];
         this.setState({commonData: commonData, image_url: URL.createObjectURL(event.target.files[0])});
@@ -60,12 +55,13 @@ class EditDialog extends Component {
     };
 
     handleSave = () => {
-        if (this.state.commonData.description !== "" && this.state.commonData.title !== "") {
-            this.props.actions.serviceAction.EditService(this.state.commonData);
+        if (this.state.commonData.filetoupload !== "" && this.state.commonData.filetoupload !== null) {
+            this.props.actions.sliderAction.AddSlider(this.state.commonData);
         } else {
-            this.props.notify("All the fields are required", 'error');
+            this.props.notify("Image file is required", 'error');
         }
     };
+
 
     render() {
         return (
@@ -86,48 +82,20 @@ class EditDialog extends Component {
                             <div className="modal-body">
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
-                                        <h2>Edit Service</h2>
+                                        <h2>Add New Slider</h2>
                                         <br/>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
                                             <div className="col-md-offset-1 col-md-10">
-                                                {this.state.image_url !== undefined ? (
+                                                {this.state.image_url !== undefined && this.state.image_url !== null && (
                                                     <img
                                                         src={this.state.image_url}
-                                                        width="150px"
-                                                        height="150px"/>) : (
-                                                    <img
-                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                        width="150px"
+                                                        width="350px"
                                                         height="150px"/>)}
-                                                <input type="file" onChange={this.handleselectedFile}/>
+                                                <input type="file" onChange={this.handleSelectedFile}/>
                                                 <form>
                                                     <div id="loginForm">
-                                                        <div className="form-group">
-                                                            <div className="input-group">
-                                                                <span className="input-group-addon">
-                                                                    <i className="fa fa-lock"/>
-                                                                </span>
-                                                                <input type="text" name="title"
-                                                                       placeholder="Service Title"
-                                                                       className="form-control"
-                                                                       onChange={this.handleChange}
-                                                                       value={this.state.commonData.title}/>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group">
-                                                            <div className="input-group">
-                                                                <span className="input-group-addon">
-                                                                    <i className="fa fa-key"/>
-                                                                </span>
-                                                                <input type="text" name="description"
-                                                                       placeholder="Service Description"
-                                                                       className="form-control"
-                                                                       onChange={this.handleChange}
-                                                                       value={this.state.commonData.description}/>
-                                                            </div>
-                                                        </div>
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center">
@@ -159,9 +127,9 @@ class EditDialog extends Component {
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        serviceAction: bindActionCreators(serviceAction, dispatch)
+        sliderAction: bindActionCreators(sliderAction, dispatch),
     }
 });
 
 
-export default connect(null, mapDispatchToProps)(EditDialog);
+export default connect(null, mapDispatchToProps)(AddDialog);

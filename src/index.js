@@ -23,6 +23,7 @@ import Home from './components/Website/Home';
 import Login from '../src/components/Login';
 import Registration from '../src/components/Registration';
 import Gallery from './components/Website/Gallery';
+import ProductList from './components/Website/ProductList';
 import VideoGalleryMain from './components/Website/VideoGallery';
 import VideoGallery from './components/Website/VideoGallery/index1';
 import Profile from './components/Helper/Profile';
@@ -34,6 +35,8 @@ import ManageUser from './components/Admin/ManageUser';
 import ManageService from './components/Admin/ManageService';
 import ManageTeam from './components/Admin/ManageTeam';
 import ManageGallery from './components/Admin/ManageGallery';
+import ManageSliderImage from './components/Admin/ManageSliderImage';
+
 import Analytics from './components/Admin/Analytics';
 
 const composeEnhancers = composeWithDevTools({});
@@ -144,6 +147,7 @@ ReactDOM.render(<Provider store={store}>
                 <Route path="/Dashboard/ManageService" component={ManageService} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageTeam" component={ManageTeam} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageGallery" component={ManageGallery} onEnter={requireAuth} exact={true}/>
+                <Route path="/Dashboard/ManageSliderImage" component={ManageSliderImage} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/Analytics" component={Analytics} onEnter={requireAuth} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
@@ -153,6 +157,7 @@ ReactDOM.render(<Provider store={store}>
                 <IndexRoute component={Home}/>
                 <Route path="/Gallery" component={Gallery} exact={true}/>
                 <Route path="/Profile" component={Profile} exact={true}/>
+                <Route path="/ProductList" component={Profile} exact={true}/>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}>
                     <Route path="/VideoGallery/demo" component={VideoGallery}/>
                 </Route>

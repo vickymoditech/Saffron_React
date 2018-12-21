@@ -2,17 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="540af639-36dd-40a2-be4a-bc640a0adb71" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/actions/galleryAction.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Admin/ManageGallery/addDialog.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/reducers/manageGalleryReducer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/actions/sliderAction.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Admin/ManageSliderImage/addDialog.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Admin/ManageSliderImage/editDialog.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Admin/ManageSliderImage/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Admin/ManageSliderImage/manage-slider.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Admin/ManageSliderImage/react-confirm-alert.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/Website/ProductList/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/reducers/manageSliderReducer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/websiteAction.js" afterPath="$PROJECT_DIR$/src/actions/websiteAction.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Website.js" afterPath="$PROJECT_DIR$/src/Website.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actions/authAction.js" afterPath="$PROJECT_DIR$/src/actions/authAction.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Admin/Helper/AddCommonDialog/index.js" afterPath="$PROJECT_DIR$/src/components/Admin/Helper/AddCommonDialog/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Admin/ManageGallery/addDialog.js" afterPath="$PROJECT_DIR$/src/components/Admin/ManageGallery/addDialog.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Admin/ManageGallery/editDialog.js" afterPath="$PROJECT_DIR$/src/components/Admin/ManageGallery/editDialog.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Admin/ManageGallery/index.js" afterPath="$PROJECT_DIR$/src/components/Admin/ManageGallery/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Website/Gallery/index.js" afterPath="$PROJECT_DIR$/src/components/Website/Gallery/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Admin/ManageService/editDialog.js" afterPath="$PROJECT_DIR$/src/components/Admin/ManageService/editDialog.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Admin/ManageService/index.js" afterPath="$PROJECT_DIR$/src/components/Admin/ManageService/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Admin/ManageTeam/editDialog.js" afterPath="$PROJECT_DIR$/src/components/Admin/ManageTeam/editDialog.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Admin/ManageTeam/index.js" afterPath="$PROJECT_DIR$/src/components/Admin/ManageTeam/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Admin/ManageUser/index.js" afterPath="$PROJECT_DIR$/src/components/Admin/ManageUser/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Helper/Profile/index.js" afterPath="$PROJECT_DIR$/src/components/Helper/Profile/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Helper/Sidebar/index.js" afterPath="$PROJECT_DIR$/src/components/Helper/Sidebar/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/constants/actionTypes.js" afterPath="$PROJECT_DIR$/src/constants/actionTypes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducers/authReducer.js" afterPath="$PROJECT_DIR$/src/reducers/authReducer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducers/index.js" afterPath="$PROJECT_DIR$/src/reducers/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/reducers/initialState.js" afterPath="$PROJECT_DIR$/src/reducers/initialState.js" />
     </list>
@@ -26,34 +42,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Website/Gallery/index.js">
+        <entry file="file://$PROJECT_DIR$/src/components/Helper/Sidebar/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="289">
+              <caret line="122" column="58" lean-forward="false" selection-start-line="122" selection-start-column="58" selection-end-line="122" selection-end-column="58" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="websiteAction.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/websiteAction.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageGallery/index.js">
+        <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageSliderImage/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="61" column="9" lean-forward="true" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+            <state relative-caret-position="340">
+              <caret line="94" column="38" lean-forward="false" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -61,23 +65,53 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editDialog.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageGallery/editDialog.js">
+      <file leaf-file-name="Website.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Website.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="48" column="13" lean-forward="true" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+              <caret line="100" column="39" lean-forward="false" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <marker date="1545389193028" expanded="true" signature="2349:4704" ph="{...}" />
+                <marker date="1545389193028" expanded="true" signature="2364:4702" ph="{...}" />
+                <marker date="1545389193028" expanded="true" signature="2444:4685" ph="&lt;div/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="2529:4578" ph="&lt;nav/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="2637:2805" ph="&lt;a/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="2830:4555" ph="&lt;ul/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="2886:2973" ph="&lt;Link/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="3004:3101" ph="&lt;Link/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="3132:3239" ph="&lt;Link/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="3270:3372" ph="&lt;Link/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="3453:3991" ph="&lt;span/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="3496:3604" ph="&lt;Link/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="3643:3792" ph="&lt;Link/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="4067:4490" ph="&lt;span/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="4114:4273" ph="&lt;Link/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="4316:4446" ph="&lt;Link/&gt;" />
+                <marker date="1545389193028" expanded="true" signature="4741:4940" ph="{...}" />
+                <marker date="1545389193028" expanded="true" signature="4802:4937" ph="{&quot;Loading&quot;: websiteReducer.Loading...}" />
+                <marker date="1545389193028" expanded="true" signature="4983:5074" ph="{...}" />
+                <marker date="1545389193028" expanded="true" signature="4998:5072" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editDialog.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageService/editDialog.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Website/ProductList/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+            <state relative-caret-position="255">
+              <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addDialog.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageSliderImage/addDialog.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="85" column="23" lean-forward="false" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -89,7 +123,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageService/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="95" column="108" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="108" />
+              <caret line="104" column="22" lean-forward="false" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="22" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -97,49 +131,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addDialog.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageGallery/addDialog.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageGallery/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="60" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="60" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="galleryAction.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/galleryAction.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="134" column="12" lean-forward="false" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
+            <state relative-caret-position="118">
+              <caret line="25" column="59" lean-forward="false" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#1259#1307#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manageGalleryReducer.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/reducers/manageGalleryReducer.js">
+      <file leaf-file-name="manageSliderReducer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reducers/manageSliderReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="88" column="17" lean-forward="true" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+            <state relative-caret-position="634">
+              <caret line="64" column="1" lean-forward="false" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
               <folding>
-                <element signature="e#0#222#0" expanded="true" />
+                <element signature="e#0#190#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="saffronOrdersDisplayReducer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/saffronOrdersDisplayReducer.js">
+      <file leaf-file-name="sliderAction.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/sliderAction.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="46" column="47" lean-forward="true" selection-start-line="42" selection-start-column="12" selection-end-line="46" selection-end-column="47" />
+              <caret line="90" column="33" lean-forward="false" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
               <folding>
-                <element signature="e#0#198#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -149,8 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>notify</find>
-      <find>vertical-align-center</find>
       <find>model</find>
       <find>modal-dialo</find>
       <find>.modal-dialog</find>
@@ -174,9 +205,13 @@
       <find>esli</find>
       <find>SERVICE_SUCCESS</find>
       <find>ServiceList</find>
-      <find>SERVICE_CONNECTION_ERROR</find>
       <find>SERVICE_INPROGRESS</find>
       <find>serviceNotFound</find>
+      <find>SERVICE_CONNECTION_ERROR</find>
+      <find>reRender</find>
+      <find>isFirstAvailability</find>
+      <find>selectedSliderId</find>
+      <find>isEditDialogOpen</find>
     </findStrings>
     <replaceStrings>
       <replace>Color</replace>
@@ -193,6 +228,10 @@
       <replace>GALLERY_EDIT_SUCCESS</replace>
       <replace>GALLERY_CONNECTION_ERROR</replace>
       <replace>GALLERY_INPROGRESS</replace>
+      <replace>SLIDER_INPROGRESS</replace>
+      <replace>SLIDER_SUCCESS</replace>
+      <replace>SLIDER_NOT_SUCCESS</replace>
+      <replace>SLIDER_CONNECTION_ERROR</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -206,32 +245,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/Website/Home/imageGrid.js" />
-        <option value="$PROJECT_DIR$/src/components/Website/Home/team.js" />
-        <option value="$PROJECT_DIR$/src/components/Website/Footer/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Website/Home/slider.js" />
-        <option value="$PROJECT_DIR$/src/components/Website/VideoGallery/index1.js" />
         <option value="$PROJECT_DIR$/src/components/Website/VideoGallery/index.js" />
         <option value="$PROJECT_DIR$/src/components/Admin/ManageUser/manage-user.css" />
         <option value="$PROJECT_DIR$/src/components/Login/index.js" />
         <option value="$PROJECT_DIR$/src/components/Registration/index.js" />
         <option value="$PROJECT_DIR$/src/actions/userManageAction.js" />
         <option value="$PROJECT_DIR$/src/reducers/manageUserReducer.js" />
-        <option value="$PROJECT_DIR$/src/reducers/authReducer.js" />
         <option value="$PROJECT_DIR$/src/components/Website/Home/index.js" />
         <option value="$PROJECT_DIR$/src/environment.config.js" />
         <option value="$PROJECT_DIR$/src/reducers/websiteReducer.js" />
-        <option value="$PROJECT_DIR$/src/components/Helper/Profile/index.js" />
         <option value="$PROJECT_DIR$/src/components/Helper/ChangePasswordModal/index.js" />
-        <option value="$PROJECT_DIR$/src/actions/authAction.js" />
         <option value="$PROJECT_DIR$/src/actions/serviceManageAction.js" />
         <option value="$PROJECT_DIR$/src/reducers/manageService.js" />
         <option value="$PROJECT_DIR$/src/components/Admin/ManageService/manage-service.css" />
         <option value="$PROJECT_DIR$/src/components/Admin/Order/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/ManageUser/index.js" />
         <option value="$PROJECT_DIR$/src/components/Admin/ManageService/react-confirm-alert.css" />
         <option value="$PROJECT_DIR$/src/components/Website/Home/serviceGrid.js" />
-        <option value="$PROJECT_DIR$/src/Website.js" />
         <option value="$PROJECT_DIR$/src/components/Admin/ManageService/productDialog.js" />
         <option value="$PROJECT_DIR$/src/actions/saffronOrdersDisplayAction.js" />
         <option value="$PROJECT_DIR$/src/components/Admin/Analytics/index.js" />
@@ -240,23 +269,33 @@
         <option value="$PROJECT_DIR$/src/reducers/manageTeamReducer.js" />
         <option value="$PROJECT_DIR$/src/actions/teamAction.js" />
         <option value="$PROJECT_DIR$/src/actions/serviceAction.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/ManageTeam/editDialog.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/ManageService/editDialog.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/ManageService/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/ManageTeam/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/Helper/AddCommonDialog/index.js" />
-        <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Helper/Sidebar/index.js" />
-        <option value="$PROJECT_DIR$/src/constants/actionTypes.js" />
-        <option value="$PROJECT_DIR$/src/reducers/initialState.js" />
-        <option value="$PROJECT_DIR$/src/reducers/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/ManageGallery/addDialog.js" />
         <option value="$PROJECT_DIR$/src/actions/websiteAction.js" />
         <option value="$PROJECT_DIR$/src/components/Website/Gallery/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/ManageGallery/editDialog.js" />
         <option value="$PROJECT_DIR$/src/actions/galleryAction.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/ManageGallery/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/manageGalleryReducer.js" />
+        <option value="$PROJECT_DIR$/src/actions/authAction.js" />
+        <option value="$PROJECT_DIR$/src/reducers/authReducer.js" />
+        <option value="$PROJECT_DIR$/src/components/Helper/Profile/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/ManageTeam/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/ManageService/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/ManageGallery/addDialog.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/ManageGallery/editDialog.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/ManageService/editDialog.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/ManageTeam/editDialog.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/Helper/AddCommonDialog/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/ManageUser/index.js" />
+        <option value="$PROJECT_DIR$/src/constants/actionTypes.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/ManageGallery/index.js" />
+        <option value="$PROJECT_DIR$/src/reducers/initialState.js" />
+        <option value="$PROJECT_DIR$/src/reducers/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Helper/Sidebar/index.js" />
+        <option value="$PROJECT_DIR$/src/actions/sliderAction.js" />
+        <option value="$PROJECT_DIR$/src/reducers/manageSliderReducer.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/ManageSliderImage/addDialog.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/ManageSliderImage/index.js" />
+        <option value="$PROJECT_DIR$/src/Website.js" />
+        <option value="$PROJECT_DIR$/src/components/Website/ProductList/index.js" />
+        <option value="$PROJECT_DIR$/src/index.js" />
       </list>
     </option>
   </component>
@@ -341,29 +380,6 @@
               <item name="React_Saffron" type="cbb8eebc:String" user="React_Saffron" />
               <item name="src" type="cbb8eebc:String" user="src" />
               <item name="components" type="cbb8eebc:String" user="components" />
-              <item name="Admin" type="cbb8eebc:String" user="Admin" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="React_Saffron" type="cbb8eebc:String" user="React_Saffron" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-              <item name="Admin" type="cbb8eebc:String" user="Admin" />
-              <item name="ManageGallery" type="cbb8eebc:String" user="ManageGallery" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="React_Saffron" type="cbb8eebc:String" user="React_Saffron" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-              <item name="Admin" type="cbb8eebc:String" user="Admin" />
-              <item name="ManageService" type="cbb8eebc:String" user="ManageService" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="React_Saffron" type="cbb8eebc:String" user="React_Saffron" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="components" type="cbb8eebc:String" user="components" />
               <item name="Website" type="cbb8eebc:String" user="Website" />
             </path>
             <path>
@@ -372,13 +388,7 @@
               <item name="src" type="cbb8eebc:String" user="src" />
               <item name="components" type="cbb8eebc:String" user="components" />
               <item name="Website" type="cbb8eebc:String" user="Website" />
-              <item name="Gallery" type="cbb8eebc:String" user="Gallery" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="React_Saffron" type="cbb8eebc:String" user="React_Saffron" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="constants" type="cbb8eebc:String" user="constants" />
+              <item name="ProductList" type="cbb8eebc:String" user="ProductList" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
@@ -407,11 +417,11 @@
       <recent name="D:\GyGApps\React_Saffron\src\components\Website\Home" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GyGApps\React_Saffron\src\components\Admin\ManageSliderImage" />
       <recent name="D:\GyGApps\React_Saffron\src\components\Admin\ManageGallery" />
       <recent name="D:\GyGApps\React_Saffron\src\components\Admin\ManageTeam" />
       <recent name="D:\GyGApps\React_Saffron\src\components\Admin\Analytics" />
       <recent name="D:\GyGApps\React_Saffron\src\components\Admin\Helper" />
-      <recent name="D:\GyGApps\React_Saffron\src\components\Admin\ManageService" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -551,12 +561,12 @@
       <workItem from="1544170511749" duration="22522000" />
       <workItem from="1544526074495" duration="2604000" />
       <workItem from="1544606197864" duration="42781000" />
-      <workItem from="1545032139750" duration="43634000" />
+      <workItem from="1545032139750" duration="63128000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="392039000" />
+    <option name="totallyTimeSpent" value="411533000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -569,15 +579,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
-    <editor active="true" />
     <layout>
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20342205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.49746513" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.50253487" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.49746513" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50133336" sideWeight="0.49746513" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50133336" sideWeight="0.49746513" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -640,86 +650,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/Recent/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="44" column="36" lean-forward="false" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/Running/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageUser/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="120" column="33" lean-forward="true" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-confirm-alert/src/react-confirm-alert.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageTeam/react-confirm-alert.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageService/react-confirm-alert.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Helper/Header/Header.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Helper/Header/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-561">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Website/Home/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Admin/OrderDailog/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
@@ -756,16 +686,6 @@
           <caret line="78" column="17" lean-forward="true" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
           <folding>
             <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/authReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1372">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#44#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -885,42 +805,138 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageTeam/editDialog.js">
+    <entry file="file://$PROJECT_DIR$/src/actions/websiteAction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="51" column="100" lean-forward="true" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="100" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageTeam/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="105" column="47" lean-forward="true" selection-start-line="105" selection-start-column="47" selection-end-line="105" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="145" column="53" lean-forward="false" selection-start-line="145" selection-start-column="29" selection-end-line="145" selection-end-column="53" />
+        <state relative-caret-position="187">
+          <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="27" />
           <folding>
             <element signature="e#0#26#0" expanded="false" />
-            <element signature="e#584#616#0" expanded="false" />
-            <element signature="e#1199#1247#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Helper/Sidebar/index.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Website/Gallery/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="102" column="66" lean-forward="false" selection-start-line="102" selection-start-column="66" selection-end-line="102" selection-end-column="66" />
+        <state relative-caret-position="255">
+          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/saffronOrdersDisplayReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="46" column="47" lean-forward="false" selection-start-line="42" selection-start-column="12" selection-end-line="46" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#198#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/manageGalleryReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="68" column="62" lean-forward="false" selection-start-line="68" selection-start-column="62" selection-end-line="68" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#222#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/galleryAction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="89" column="14" lean-forward="true" selection-start-line="83" selection-start-column="12" selection-end-line="89" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/registerServiceWorker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/authAction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="174" column="28" lean-forward="true" selection-start-line="174" selection-start-column="28" selection-end-line="174" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Helper/Profile/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="139" column="9" lean-forward="true" selection-start-line="139" selection-start-column="9" selection-end-line="139" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageGallery/addDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="115" column="45" lean-forward="false" selection-start-line="115" selection-start-column="45" selection-end-line="115" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageGallery/editDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="119" column="36" lean-forward="false" selection-start-line="119" selection-start-column="36" selection-end-line="119" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageService/editDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="101" column="36" lean-forward="true" selection-start-line="101" selection-start-column="36" selection-end-line="101" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/Helper/AddCommonDialog/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="31" column="2" lean-forward="true" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageUser/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="56" column="44" lean-forward="true" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageTeam/editDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="98" column="38" lean-forward="false" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
           <folding>
             <element signature="e#0#39#0" expanded="false" />
           </folding>
@@ -929,18 +945,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/serviceAction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/authAction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="119">
+          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
           <folding>
             <element signature="e#0#26#0" expanded="false" />
           </folding>
@@ -949,74 +955,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/constants/actionTypes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/manageServiceReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state relative-caret-position="345">
+          <caret line="34" column="42" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
           <folding>
-            <element signature="e#0#217#0" expanded="true" />
+            <element signature="e#0#217#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/initialState.js">
+    <entry file="file://$PROJECT_DIR$/src/reducers/authReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/Helper/AddCommonDialog/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="116" column="15" lean-forward="false" selection-start-line="116" selection-start-column="15" selection-end-line="116" selection-end-column="15" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#44#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Website.js">
+    <entry file="file://$PROJECT_DIR$/src/reducers/initialState.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-918">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="391">
+          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageTeam/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="30" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/websiteAction.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Helper/Sidebar/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Website/Gallery/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="289">
+          <caret line="122" column="58" lean-forward="false" selection-start-line="122" selection-start-column="58" selection-end-line="122" selection-end-column="58" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -1026,79 +1022,114 @@
     <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageService/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="95" column="108" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="108" />
+          <caret line="104" column="22" lean-forward="false" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="22" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageService/editDialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageGallery/addDialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="60" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/saffronOrdersDisplayReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="46" column="47" lean-forward="true" selection-start-line="42" selection-start-column="12" selection-end-line="46" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#198#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageGallery/editDialog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="48" column="13" lean-forward="true" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/galleryAction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="134" column="12" lean-forward="false" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageGallery/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="61" column="9" lean-forward="true" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
+        <state relative-caret-position="170">
+          <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/sliderAction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="90" column="33" lean-forward="false" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/manageSliderReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="64" column="1" lean-forward="false" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageSliderImage/addDialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="85" column="23" lean-forward="false" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/manageGalleryReducer.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/ManageSliderImage/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="88" column="17" lean-forward="true" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+        <state relative-caret-position="340">
+          <caret line="94" column="38" lean-forward="false" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
           <folding>
-            <element signature="e#0#222#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/react/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="512" column="8" lean-forward="false" selection-start-line="512" selection-start-column="8" selection-end-line="512" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Website.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="100" column="39" lean-forward="false" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <marker date="1545389193028" expanded="true" signature="2349:4704" ph="{...}" />
+            <marker date="1545389193028" expanded="true" signature="2364:4702" ph="{...}" />
+            <marker date="1545389193028" expanded="true" signature="2444:4685" ph="&lt;div/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="2529:4578" ph="&lt;nav/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="2637:2805" ph="&lt;a/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="2830:4555" ph="&lt;ul/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="2886:2973" ph="&lt;Link/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="3004:3101" ph="&lt;Link/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="3132:3239" ph="&lt;Link/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="3270:3372" ph="&lt;Link/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="3453:3991" ph="&lt;span/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="3496:3604" ph="&lt;Link/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="3643:3792" ph="&lt;Link/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="4067:4490" ph="&lt;span/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="4114:4273" ph="&lt;Link/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="4316:4446" ph="&lt;Link/&gt;" />
+            <marker date="1545389193028" expanded="true" signature="4741:4940" ph="{...}" />
+            <marker date="1545389193028" expanded="true" signature="4802:4937" ph="{&quot;Loading&quot;: websiteReducer.Loading...}" />
+            <marker date="1545389193028" expanded="true" signature="4983:5074" ph="{...}" />
+            <marker date="1545389193028" expanded="true" signature="4998:5072" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Website/ProductList/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="25" column="59" lean-forward="false" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#1259#1307#0" expanded="true" />
           </folding>
         </state>
       </provider>

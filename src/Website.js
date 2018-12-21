@@ -79,7 +79,7 @@ class App extends Component {
     };
 
     render() {
-        let userProfile = localStorage.getItem('userAvatar');
+        let userProfile = this.props.userAvatar;
         return (
             <div>
                 <NotificationSystem ref="notificationSystem"/>
@@ -96,6 +96,9 @@ class App extends Component {
                             </Link> |
                             <Link to="/VideoGallery" >
                                 VideoGallery
+                            </Link> |
+                            <Link to="/VideoGallery" >
+                                Stepper
                             </Link> |
                             {isLoggedIn() ?
                                 ( <span>
@@ -127,10 +130,11 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const {websiteReducer} = state;
+    const {websiteReducer,authReducer} = state;
     return {
         Loading: websiteReducer.Loading,
-        error_msg: websiteReducer.error_msg
+        error_msg: websiteReducer.error_msg,
+        userAvatar:authReducer.userAvatar
     };
 };
 

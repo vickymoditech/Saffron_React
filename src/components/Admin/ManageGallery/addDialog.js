@@ -115,7 +115,7 @@ class AddDialog extends Component {
                                                     <img
                                                         src={this.state.image_url}
                                                         width="150px"
-                                                        height="100px"/>)}
+                                                        height="150px"/>)}
                                                 <input type="file" onChange={this.handleselectedFile}/>
                                                 <form>
                                                     <div id="loginForm">

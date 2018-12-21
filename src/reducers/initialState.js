@@ -5,7 +5,7 @@ let userProfile;
 
 if (accessToken) {
     try {
-        userProfile = decode(accessToken);
+        userProfile = decode(accessToken).user;
     } catch (error) {
         userProfile = []
     }
@@ -25,6 +25,12 @@ export default {
     manageServiceReducer: {
         Loading: false,
         serviceList: [],
+        error_msg: null,
+        success_msg: null,
+    },
+    manageSliderReducer: {
+        Loading: false,
+        sliderList: [],
         error_msg: null,
         success_msg: null,
     },

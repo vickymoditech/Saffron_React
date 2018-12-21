@@ -19,7 +19,8 @@ class ManageUser extends Component {
             userList: [],
             notificationSystem: null,
             isFirstAvailability: false,
-            search: ""
+            search: "",
+            setTimeoutObj: "",
         };
         this.onchangeBlock = this.onchangeBlock.bind(this);
     }
@@ -64,11 +65,13 @@ class ManageUser extends Component {
     };
 
     handleChange = (event) => {
+        clearTimeout(this.state.setTimeoutObj);
+        this.setState({
+            setTimeoutObj: setTimeout(() => {
+                this.props.actions.userManageAction.UserList(this.state.search);
+            }, 1000)
+        });
         return this.setState({search: event.target.value});
-    };
-
-    searchData = () => {
-        this.props.actions.userManageAction.UserList(this.state.search);
     };
 
     render() {
@@ -81,10 +84,6 @@ class ManageUser extends Component {
                         <div className="col-xs-12 text-center">
                             <input type="text" className="form-control" name="mobile_number"
                                    value={search} placeholder="Search (8401060120)" onChange={this.handleChange}/>
-                            <button type="button" className="btn btn-save"
-                                    style={{margin: '12px 10px 0 0'}}
-                                    onClick={this.searchData}>Search
-                            </button>
                         </div>
                     </div>
                     <h2> Manage Users </h2>
@@ -105,10 +104,10 @@ class ManageUser extends Component {
                                     <tr key={index}>
                                         <td>{value.image_url !== undefined ? (
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
-                                                 height="100px"/>) : (
+                                                 height="150px"/>) : (
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
                                                  width="150px"
-                                                 height="100px"/>)}</td>
+                                                 height="150px"/>)}</td>
                                         <td>{value.first_name}</td>
                                         <td>{value.last_name}</td>
                                         <td>{value.contact_no}</td>

@@ -6,15 +6,16 @@ import {GetLocalUderData} from '../../../index';
 import * as authAction from '../../../actions/authAction';
 import Loader from "../Loader/index";
 import ChangePasswordModal from '../ChangePasswordModal';
+import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
 class Profile extends Component {
 
     constructor(props) {
         super(props);
         const userProfile = GetLocalUderData().user;
-        console.log(userProfile);
         this.state = {
             userDetails: {
+                filetoupload: "",
                 userId: userProfile.userId,
                 first_name: userProfile.first_name,
                 last_name: userProfile.last_name,
@@ -26,15 +27,16 @@ class Profile extends Component {
                 image_url: userProfile.image_url,
                 role: userProfile.role
             },
+            image_url: ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url,
             notificationSystem: null
         };
     }
 
     reagainFeelData = () => {
         const userProfile = GetLocalUderData().user;
-        console.log(userProfile);
         this.setState({
             userDetails: {
+                filetoupload: "",
                 userId: userProfile.userId,
                 first_name: userProfile.first_name,
                 last_name: userProfile.last_name,
@@ -46,6 +48,7 @@ class Profile extends Component {
                 image_url: userProfile.image_url,
                 role: userProfile.role
             },
+            image_url: ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url,
             changePasswordDialog: false
         });
     };
@@ -93,7 +96,14 @@ class Profile extends Component {
                 this.addNotifications(message[i], 'error');
             }
         }
-    }
+    };
+
+    handleSelectedFile = (event) => {
+        const userDetails = this.state.userDetails;
+        userDetails['filetoupload'] = event.target.files[0];
+        this.setState({userDetails: userDetails, image_url: URL.createObjectURL(event.target.files[0])});
+    };
+
 
     render() {
         const {emailAddress, mobile_number, first_name, last_name, userId, role} = this.state.userDetails;
@@ -111,6 +121,22 @@ class Profile extends Component {
                             <form className="form-horizontal">
                                 <div className="form-group">
                                     <div className="col-sm-12">
+
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                {this.state.image_url !== undefined && this.state.image_url !== null && this.state.image_url !== "" ? (
+                                                    <img
+                                                        src={this.state.image_url}
+                                                        width="150px"
+                                                        height="150px"/>) : (
+                                                    <img
+                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
+                                                        width="150px"
+                                                        height="150px"/>)}
+                                                <input type="file" onChange={this.handleSelectedFile}/>
+                                            </div>
+                                        </div>
+
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <span className="store-config-icon" title="First Name"> <img

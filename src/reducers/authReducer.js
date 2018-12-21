@@ -78,7 +78,9 @@ export default function authReducer(state = initialState.authReducer, action) {
             return Object.assign({}, state, {
                 isPasswordChanged: true,
                 successMsg: action.data.result,
-                changePasswordLoading: false
+                changePasswordLoading: false,
+                userProfile: userProfile.user,
+                userAvatar: userAvatar,
             });
 
         case PASSWORD_CONNECTION_ERROR:
