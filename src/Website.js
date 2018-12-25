@@ -97,7 +97,7 @@ class App extends Component {
                             <Link to="/VideoGallery" >
                                 VideoGallery
                             </Link> |
-                            <Link to="/VideoGallery" >
+                            <Link to="/ProductList" >
                                 Stepper
                             </Link> |
                             {isLoggedIn() ?

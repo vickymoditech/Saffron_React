@@ -157,7 +157,7 @@ ReactDOM.render(<Provider store={store}>
                 <IndexRoute component={Home}/>
                 <Route path="/Gallery" component={Gallery} exact={true}/>
                 <Route path="/Profile" component={Profile} exact={true}/>
-                <Route path="/ProductList" component={Profile} exact={true}/>
+                <Route path="/ProductList" component={ProductList} exact={true}/>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}>
                     <Route path="/VideoGallery/demo" component={VideoGallery}/>
                 </Route>

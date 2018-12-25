@@ -106,7 +106,6 @@ class AddDialog extends Component {
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
                                         <h2>Add New Gallery</h2>
-                                        <br/>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
