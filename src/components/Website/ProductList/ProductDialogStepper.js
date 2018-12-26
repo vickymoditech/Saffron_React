@@ -76,9 +76,11 @@ class ProductDialogStepper extends Component {
                     <form method="get">
                         <div className="form-group">
                             {this.props.teamList.length > 0 && this.props.teamList.map((value, index) => (
-                                <div className="col-md-3" key={index}><label className={value.id === this.state.teamMemberSelect ? "btn btn-success" : "btn btn-warning"}><img
+                                <div className="col-md-3" key={index}><label
+                                    className={value.id === this.state.teamMemberSelect ? "btn btn-success" : "btn btn-warning"}><img
                                     src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}
-                                    alt="..." className={value.id === this.state.teamMemberSelect ? "img-thumbnail check" : "img-thumbnail img-check"}/>
+                                    alt="..."
+                                    className={value.id === this.state.teamMemberSelect ? "img-thumbnail check" : "img-thumbnail img-check"}/>
                                     <input type="checkbox" name={value.id} id="item4" value="val1" className="hidden"
                                            autoComplete="off" onClick={this.selectImage}/></label></div>
                             ))}
@@ -90,17 +92,12 @@ class ProductDialogStepper extends Component {
                     <h2> Time Schedule </h2>
                 </div>;
             case 2:
-                return <div> <h2> Time Schedule </h2> </div>;
+                return <div><h2> Time Schedule </h2></div>;
             default:
                 return 'You\'re a long way from home sonny jim!';
         }
     };
 
-    onPick = (image) => {
-        this.setState({image}, () => {
-            console.log(image)
-        });
-    };
 
     render() {
 
@@ -135,14 +132,13 @@ class ProductDialogStepper extends Component {
                                                 <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
                                                     <Stepper activeStep={stepIndex}>
                                                         <Step>
-                                                            <StepLabel>Choose Your's Hair Cutter
-                                                                Boy!</StepLabel>
+                                                            <StepLabel> Demo - select any one </StepLabel>
                                                         </Step>
                                                         <Step>
-                                                            <StepLabel>How Many Seats?</StepLabel>
+                                                            <StepLabel> Demo - select </StepLabel>
                                                         </Step>
                                                         <Step>
-                                                            <StepLabel>Booking Information</StepLabel>
+                                                            <StepLabel>Information</StepLabel>
                                                         </Step>
                                                     </Stepper>
                                                     <div style={contentStyle}>
@@ -159,6 +155,7 @@ class ProductDialogStepper extends Component {
                                                                     <RaisedButton
                                                                         label={stepIndex === 2 ? 'Booking' : 'Next'}
                                                                         primary={true}
+                                                                        disabled={this.state.teamMemberSelect === null}
                                                                         onClick={this.handleNext}
                                                                     />
                                                                 </div>

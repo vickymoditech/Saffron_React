@@ -35,6 +35,7 @@ import ManageUser from './components/Admin/ManageUser';
 import ManageService from './components/Admin/ManageService';
 import ManageTeam from './components/Admin/ManageTeam';
 import ManageGallery from './components/Admin/ManageGallery';
+import ManageTeamMemberProduct from './components/Admin/ManageTeamMemberProduct';
 import ManageSliderImage from './components/Admin/ManageSliderImage';
 
 import Analytics from './components/Admin/Analytics';
@@ -148,6 +149,7 @@ ReactDOM.render(<Provider store={store}>
                 <Route path="/Dashboard/ManageTeam" component={ManageTeam} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageGallery" component={ManageGallery} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageSliderImage" component={ManageSliderImage} onEnter={requireAuth} exact={true}/>
+                <Route path="/Dashboard/ManageTeamMemberProduct" component={ManageTeamMemberProduct} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/Analytics" component={Analytics} onEnter={requireAuth} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>

@@ -37,7 +37,7 @@ class ProductList extends Component {
 
         return (
 
-            <div className="bg-burrito-image autofill-background">
+            <div>
                 <NotificationSystem ref="notificationSystem"/>
                 {this.state.isDialogOpen &&
                 <ProductDialogStepper handleClose={this.DialogClose} isOpen={this.state.isDialogOpen}

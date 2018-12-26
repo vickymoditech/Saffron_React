@@ -34,6 +34,13 @@ export default {
         error_msg: null,
         success_msg: null,
     },
+    manageTeamProductReducer: {
+        Loading: false,
+        teamProductList: [],
+        allProductList: [],
+        error_msg: null,
+        success_msg: null,
+    },
     manageGalleryReducer: {
         Loading: false,
         galleryList: [],
