@@ -70,7 +70,14 @@ class ManageTeamMemberProduct extends Component {
     }
 
     componentWillMount() {
-        this.props.actions.teamProductManageAction.ProductList();
+
+        if (this.props.allProductList.length === 0) {
+            this.props.actions.teamProductManageAction.ProductList();
+        }
+        else {
+            this.setState({items: this.props.allProductList || []});
+        }
+
     }
 
     id2List = {
@@ -225,6 +232,7 @@ class ManageTeamMemberProduct extends Component {
                         )}
                     </Droppable>
                 </DragDropContext>
+                {this.props.Loading && <Loader/>}
             </div>
         );
     }

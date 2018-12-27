@@ -123,11 +123,17 @@ class Sidebar extends Component {
                                     <i className="fa fa-address-book"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Slider</div>
                                 </ListItem>
+                            </Link><Divider/>
+                                <Link to="/Dashboard/ManageProducts" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <i className="fa fa-database"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Products</div>
+                                </ListItem>
                             </Link> <Divider/>
                                 <Link to="/Dashboard/ManageTeamMemberProduct" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-database"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Manage Products</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage TeamMember Products</div>
                                 </ListItem>
                             </Link> <Divider/>
                                 <Link to="/Dashboard/ManageUser" className="link">
