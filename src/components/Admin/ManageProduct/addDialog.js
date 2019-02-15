@@ -115,16 +115,11 @@ class AddDialog extends Component {
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
                                         <h2>Add New Gallery</h2>
+                                        <hr/>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
                                             <div className="col-md-offset-1 col-md-10">
-                                                {this.state.image_url !== undefined && this.state.image_url !== null && (
-                                                    <img
-                                                        src={this.state.image_url}
-                                                        width="150px"
-                                                        height="150px"/>)}
-                                                <input type="file" onChange={this.handleselectedFile}/>
                                                 <form>
                                                     <div id="loginForm">
                                                         <div className="form-group">
@@ -137,7 +132,7 @@ class AddDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-lock"/>
+                                                                    <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="title"
                                                                        placeholder="Gallery Title"
@@ -149,7 +144,7 @@ class AddDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-key"/>
+                                                                    <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Description"
@@ -161,7 +156,7 @@ class AddDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-key"/>
+                                                                    <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="price"
                                                                        placeholder="price"
@@ -173,7 +168,7 @@ class AddDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-key"/>
+                                                                    <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="offerPrice"
                                                                        placeholder="offerPrice"
@@ -194,6 +189,14 @@ class AddDialog extends Component {
                                                                 </RadioGroup>
                                                             </div>
                                                         </div>
+
+                                                        {this.state.image_url !== undefined && this.state.image_url !== null && (
+                                                            <img
+                                                                src={this.state.image_url}
+                                                                width="150px"
+                                                                height="150px"/>)}
+                                                        <input type="file" onChange={this.handleselectedFile}/>
+
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center">

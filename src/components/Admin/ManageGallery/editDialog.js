@@ -46,7 +46,7 @@ class EditDialog extends Component {
                 service_id: this.props.gallery.service_id,
                 sex: this.props.gallery.sex,
                 selectedServiceId: this.props.selectedServiceId
-            }
+            },
         };
     }
 
@@ -87,6 +87,8 @@ class EditDialog extends Component {
 
 
     render() {
+        const {sex} = this.state.commonData;
+
         return (
             <div>
                 <Dialog
@@ -105,24 +107,15 @@ class EditDialog extends Component {
                             <div className="modal-body">
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
-                                        <h2>Edit Service</h2>
+                                        <h2>Edit Gallery</h2>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
                                             <div className="col-md-offset-1 col-md-10">
-                                                {this.state.image_url !== undefined ? (
-                                                    <img
-                                                        src={this.state.image_url}
-                                                        width="150px"
-                                                        height="150px"/>) : (
-                                                    <img
-                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                        width="150px"
-                                                        height="150px"/>)}
-                                                <input type="file" onChange={this.handleSelectedFile}/>
                                                 <form>
                                                     <div id="loginForm">
                                                         <div className="form-group">
+                                                            &nbsp;
                                                             <div className="input-group">
                                                                 <Dropdown placeholder="Select Service" fluid selection
                                                                           defaultValue={this.state.commonData.service_id}
@@ -133,7 +126,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-lock"/>
+                                                                    <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="title"
                                                                        placeholder="Service Title"
@@ -145,10 +138,11 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <RadioGroup onChange={this.onChange} horizontal>
-                                                                    <RadioButton value="male">
+                                                                    <RadioButton value="male" checked={sex === 'male'}>
                                                                         Male
                                                                     </RadioButton>
-                                                                    <RadioButton value="female">
+                                                                    <RadioButton value="female"
+                                                                                 checked={sex === 'female'}>
                                                                         Female
                                                                     </RadioButton>
                                                                 </RadioGroup>
@@ -157,7 +151,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-key"/>
+                                                                    <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Service Description"
@@ -166,6 +160,18 @@ class EditDialog extends Component {
                                                                        value={this.state.commonData.description}/>
                                                             </div>
                                                         </div>
+
+                                                        {this.state.image_url !== undefined ? (
+                                                            <img
+                                                                src={this.state.image_url}
+                                                                width="150px"
+                                                                height="150px"/>) : (
+                                                            <img
+                                                                src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
+                                                                width="150px"
+                                                                height="150px"/>)}
+                                                        <input type="file" onChange={this.handleSelectedFile}/>
+
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center">

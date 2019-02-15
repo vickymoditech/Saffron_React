@@ -149,9 +149,11 @@ ReactDOM.render(<Provider store={store}>
                 <Route path="/Dashboard/ManageService" component={ManageService} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageTeam" component={ManageTeam} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageGallery" component={ManageGallery} onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/ManageSliderImage" component={ManageSliderImage} onEnter={requireAuth} exact={true}/>
+                <Route path="/Dashboard/ManageSliderImage" component={ManageSliderImage} onEnter={requireAuth}
+                       exact={true}/>
                 <Route path="/Dashboard/ManageProducts" component={ManageProduct} onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/ManageTeamMemberProduct" component={ManageTeamMemberProduct} onEnter={requireAuth} exact={true}/>
+                <Route path="/Dashboard/ManageTeamMemberProduct" component={ManageTeamMemberProduct}
+                       onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/Analytics" component={Analytics} onEnter={requireAuth} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
@@ -165,8 +167,8 @@ ReactDOM.render(<Provider store={store}>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}>
                     <Route path="/VideoGallery/demo" component={VideoGallery}/>
                 </Route>
-                <Route path="*" component={NotFound} exact={true}/>
             </Route>
+            <Route path="*" component={NotFound} exact={true}/>
         </Router>
     </MuiThemeProvider>
 </Provider>, document.getElementById('root'));

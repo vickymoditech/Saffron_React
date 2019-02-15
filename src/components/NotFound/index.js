@@ -16,11 +16,8 @@ export default class NotFound extends Component {
 
                 <div className="error-page">
                     <div className="error-404">
-                        <div className="logo-404">
-                            <img src="/assets/Images/404-icon.png" alt="404 Logo"/>
-                        </div>
                         <div className="text-404">
-                            <span>SORRY, THE DISH PAGE YOR ARE LOOKING FOR NOT FOUND !!!</span>
+                            <span>SORRY, THIS PAGE IS NOT FOUND !!!</span>
                         </div>
                         <div className="home-btn-404">
                             <button className="btn btn-save" onClick={this.moveHome}>Go to Homepage</button>

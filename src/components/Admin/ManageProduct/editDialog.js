@@ -106,20 +106,11 @@ class EditDialog extends Component {
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
                                         <h2>Edit Service</h2>
+                                        <hr/>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
                                             <div className="col-md-offset-1 col-md-10">
-                                                {this.state.image_url !== undefined ? (
-                                                    <img
-                                                        src={this.state.image_url}
-                                                        width="150px"
-                                                        height="150px"/>) : (
-                                                    <img
-                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                        width="150px"
-                                                        height="150px"/>)}
-                                                <input type="file" onChange={this.handleSelectedFile}/>
                                                 <form>
                                                     <div id="loginForm">
                                                         <div className="form-group">
@@ -133,7 +124,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-lock"/>
+                                                                    <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="title"
                                                                        placeholder="Service Title"
@@ -157,7 +148,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-key"/>
+                                                                    <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Service Description"
@@ -166,6 +157,18 @@ class EditDialog extends Component {
                                                                        value={this.state.commonData.description}/>
                                                             </div>
                                                         </div>
+
+                                                        {this.state.image_url !== undefined ? (
+                                                            <img
+                                                                src={this.state.image_url}
+                                                                width="150px"
+                                                                height="150px"/>) : (
+                                                            <img
+                                                                src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
+                                                                width="150px"
+                                                                height="150px"/>)}
+                                                        <input type="file" onChange={this.handleSelectedFile}/>
+
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center">
