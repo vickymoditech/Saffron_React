@@ -64,6 +64,7 @@ export default function manageTeamProductReducer(state = initialState.manageTeam
                 price: action.data.data.price,
                 offerPrice: action.data.data.offerPrice,
                 service_id: action.data.data.service_id,
+                sex: action.data.data.sex,
                 service_title: action.data.data.service_title,
             };
             let productList = [...state.allProductList, product];

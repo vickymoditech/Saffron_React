@@ -4,6 +4,7 @@ import $ from "jquery";
 import * as saffronOrdersDisplayAction from "./actions/saffronOrdersDisplayAction";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {testingOrderList} from './socket';
 
 class App extends Component {
 
@@ -22,7 +23,11 @@ class App extends Component {
             $('body').addClass("iosSafari");
         }
 
-        this.props.actions.saffronOrdersDisplayAction.OrdersList();
+        testingOrderList((err, data) => {
+            debugger;
+            console.log(data);
+            this.props.actions.saffronOrdersDisplayAction.OrdersList();
+        });
 
     }
 

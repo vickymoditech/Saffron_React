@@ -10,7 +10,7 @@ import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
 import {browserHistory} from 'react-router';
 import io from 'socket.io-client';
-import {subscribeToTimer} from './socket';
+//import {subscribeToTimer} from './socket';
 import ENVIRONMENT_VARIABLES from "./environment.config";
 
 const socket = io(ENVIRONMENT_VARIABLES.SOCKET_URL);
@@ -60,10 +60,10 @@ class App extends Component {
 
         this.props.actions.websiteAction.getWebsiteHome();
 
-        subscribeToTimer((err, data) => {
-            debugger;
-            console.log(data);
-        });
+        // subscribeToTimer((err, data) => {
+        //     debugger;
+        //     console.log(data);
+        // });
 
 
     }

@@ -114,8 +114,7 @@ class AddDialog extends Component {
                             <div className="modal-body">
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
-                                        <h2>Add New Gallery</h2>
-                                        <hr/>
+                                        <h2>Add New Product</h2>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
@@ -126,6 +125,7 @@ class AddDialog extends Component {
                                                             <div className="input-group">
                                                                 <Dropdown placeholder="Select Service" fluid selection
                                                                           options={this.props.serviceList}
+                                                                          style={{width: '342px'}}
                                                                           onChange={this.handleChangeService}/>
                                                             </div>
                                                         </div>
@@ -135,7 +135,7 @@ class AddDialog extends Component {
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="title"
-                                                                       placeholder="Gallery Title"
+                                                                       placeholder="Product Title"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.title}/>
@@ -159,7 +159,7 @@ class AddDialog extends Component {
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="price"
-                                                                       placeholder="price"
+                                                                       placeholder="Price"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.price}/>
@@ -171,7 +171,7 @@ class AddDialog extends Component {
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="offerPrice"
-                                                                       placeholder="offerPrice"
+                                                                       placeholder="Offer Price"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.offerPrice}/>
@@ -193,9 +193,9 @@ class AddDialog extends Component {
                                                         {this.state.image_url !== undefined && this.state.image_url !== null && (
                                                             <img
                                                                 src={this.state.image_url}
-                                                                width="150px"
-                                                                height="150px"/>)}
-                                                        <input type="file" onChange={this.handleselectedFile}/>
+                                                                width="100px"
+                                                                height="100px"/>)}
+                                                        <input type="file" onChange={this.handleselectedFile} />
 
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">

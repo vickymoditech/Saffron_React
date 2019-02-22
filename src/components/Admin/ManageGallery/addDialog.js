@@ -117,6 +117,7 @@ class AddDialog extends Component {
                                                             <div className="input-group">
                                                                 <Dropdown placeholder="Select Service" fluid selection
                                                                           options={this.props.serviceList}
+                                                                          style={{width: '342px'}}
                                                                           onChange={this.handleChangeService}/>
                                                             </div>
                                                         </div>
