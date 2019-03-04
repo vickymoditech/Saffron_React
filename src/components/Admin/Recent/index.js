@@ -79,7 +79,7 @@ export default class Recent extends Component {
             <div className="col-lg-4 col-sm-12 col-md-6 card on-the-way">
                 <div className="card-header"><span
                     className="item-number">{(orders && orders.length) || 0}</span>
-                    <h3 className="sub-title">Recent All Orders</h3></div>
+                    <h3 className="sub-title">Recent All Booking</h3></div>
                 <div className="card-body on-the-way-scroll">
                     <ul id="onTheWay">
                         {orders && orders.map((data, index) => (

@@ -4,6 +4,7 @@ import {
     PRODUCT_INPROGRESS,
     PRODUCT_NOT_SUCCESS,
     PRODUCT_SUCCESS,
+    TEAM_MEMBER_PRODUCT_SUCCESS,
     PRODUCT_DELETE_SUCCESS,
     PRODUCT_ADD_SUCCESS,
     PRODUCT_CONNECTION_ERROR,
@@ -24,6 +25,35 @@ export const ProductList = () => {
             axios(api).then((response) => {
                 if (response.status === 200) {
                     dispatch({type: PRODUCT_SUCCESS, data: response.data});
+                }
+            }).catch((error) => {
+                if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {
+                    dispatch({type: PRODUCT_NOT_SUCCESS, data: {error_msg: error.response.data.user_msg}});
+                } else {
+                    dispatch({type: PRODUCT_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
+                }
+            });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
+export const TeamMemberProductList = (teamMemberId) => {
+    try {
+        return (dispatch) => {
+            dispatch({type: PRODUCT_INPROGRESS});
+            const token = "Bearer " + localStorage.getItem('accessToken');
+
+            let api = {
+                method: 'GET',
+                headers: {'Authorization': token},
+                url: ENVIRONMENT_VARIABLES.API_URL + "/Teams/teamMemberProductsList/" + teamMemberId
+            };
+
+            axios(api).then((response) => {
+                if (response.status === 200) {
+                    dispatch({type: TEAM_MEMBER_PRODUCT_SUCCESS, data: response.data});
                 }
             }).catch((error) => {
                 if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {

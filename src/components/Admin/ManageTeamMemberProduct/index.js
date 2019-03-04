@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Loader from '../../Helper/Loader';
-
-import {confirmAlert} from 'react-confirm-alert';
+import _ from 'lodash';
+import {Dropdown} from 'semantic-ui-react';
 import './react-confirm-alert.css'
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import * as teamProductManageAction from '../../../actions/teamProductManageAction'
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import NotificationSystem from 'react-notification-system';
+import * as teamAction from '../../../actions/teamAction';
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -36,7 +37,7 @@ const move = (source, destination, droppableSource, droppableDestination) => {
     return result;
 };
 
-const grid = 8;
+const grid = 10;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
@@ -66,18 +67,13 @@ class ManageTeamMemberProduct extends Component {
             items: [],
             selected: [],
             notificationSystem: null,
+            selectedTeamId: null
         };
     }
 
     componentWillMount() {
-
-        if (this.props.allProductList.length === 0) {
-            this.props.actions.teamProductManageAction.ProductList();
-        }
-        else {
-            this.setState({items: this.props.allProductList || []});
-        }
-
+        this.props.actions.teamMemberListAction.TeamList();
+        this.props.actions.teamProductManageAction.ProductList();
     }
 
     id2List = {
@@ -124,6 +120,12 @@ class ManageTeamMemberProduct extends Component {
         }
     };
 
+    handleChangeStore = (event, {value}) => {
+        this.setState({selectedTeamId: value});
+        this.props.actions.teamProductManageAction.TeamMemberProductList(value);
+    };
+
+
     addNotifications = (message, level) => {
         this.state.notificationSystem.addNotification({
             message: message,
@@ -139,119 +141,146 @@ class ManageTeamMemberProduct extends Component {
 
 
     componentWillReceiveProps(nextProps) {
-        if (!nextProps.Loading && nextProps.error_msg) {
+        if ((!nextProps.Loading && nextProps.error_msg) || (!nextProps.teamListLoader && nextProps.teamListError_msg)) {
             this.addNotifications(nextProps.error_msg, "error");
-        } else if (!nextProps.Loading && nextProps.success_msg) {
+        } else if (!nextProps.Loading && nextProps.success_msg !== 'Successfully fetched') {
             this.addNotifications(nextProps.success_msg, "success");
-            this.setState({items: nextProps.allProductList || []});
-        } else {
-            this.setState({items: nextProps.allProductList || []});
         }
+        var AllProductList = _.cloneDeep(nextProps.allProductList);
+        nextProps.teamProductList.map((teamProduct) => {
+            let removeProduct = AllProductList.find(function (product) {
+                return product.id === teamProduct.id;
+            });
+            let index = AllProductList.indexOf(removeProduct);
+            AllProductList.splice(index, 1)
+        });
+        this.setState({items: AllProductList || []});
+        this.setState({selected: nextProps.teamProductList || []});
     }
 
 
     render() {
+        let options = [];
+        this.props.teamList.map((team, index) => {
+            let option = {
+                text: team.name,
+                value: team.id
+            };
+            options.push(option);
+        });
+        //let defaultValue = options.length > 0 ? options[0].value : "";
 
         return (
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
-                <DragDropContext onDragEnd={this.onDragEnd}>
-                    <Droppable droppableId="droppable">
-                        {(provided, snapshot) => (
-                            <div
-                                ref={provided.innerRef}
-                                style={getListStyle(snapshot.isDraggingOver)}>
-                                {this.state.items.map((item, index) => (
-                                    <Draggable
-                                        key={item.id}
-                                        draggableId={item.id}
-                                        index={index}>
-                                        {(provided, snapshot) => (
-                                            <div
-                                                ref={provided.innerRef}
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                                style={getItemStyle(
-                                                    snapshot.isDragging,
-                                                    provided.draggableProps.style
-                                                )}>
-                                                {item.image_url !== undefined ? (
-                                                    <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}
-                                                         width="50px"
-                                                         height="50px"/>) : (
-                                                    <img
-                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                        width="50px"
-                                                        height="50px"/>)}
-                                                {item.title}
-                                            </div>
-                                        )}
-                                    </Draggable>
-                                ))}
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
+                {options.length > 0 && <div className="container tab-bg-container">
+                    <h2> Manage products for team </h2>
+                    <Dropdown placeholder={"Select Team member"} fluid selection
+                              options={options}
+                              onChange={this.handleChangeStore}/>
 
-                    <br/><br/>
+                    <DragDropContext onDragEnd={this.onDragEnd}>
+                        <Droppable droppableId="droppable">
+                            {(provided, snapshot) => (
+                                <div
+                                    ref={provided.innerRef}
+                                    style={getListStyle(snapshot.isDraggingOver)}>
+                                    {this.state.items.map((item, index) => (
+                                        <Draggable
+                                            key={item.id}
+                                            draggableId={item.id}
+                                            index={index}>
+                                            {(provided, snapshot) => (
+                                                <div
+                                                    ref={provided.innerRef}
+                                                    {...provided.draggableProps}
+                                                    {...provided.dragHandleProps}
+                                                    style={getItemStyle(
+                                                        snapshot.isDragging,
+                                                        provided.draggableProps.style
+                                                    )}>
+                                                    {item.image_url !== undefined ? (
+                                                        <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}
+                                                             width="60px"
+                                                             height="60px"/>) : (
+                                                        <img
+                                                            src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
+                                                            width="60px"
+                                                            height="60px"/>)}
+                                                    {item.title}
+                                                </div>
+                                            )}
+                                        </Draggable>
+                                    ))}
+                                    {provided.placeholder}
+                                </div>
+                            )}
+                        </Droppable>
 
-                    <Droppable droppableId="droppable2">
-                        {(provided, snapshot) => (
-                            <div
-                                ref={provided.innerRef}
-                                style={getListStyle(snapshot.isDraggingOver)}>
-                                {this.state.selected.map((item, index) => (
-                                    <Draggable
-                                        key={item.id}
-                                        draggableId={item.id}
-                                        index={index}>
-                                        {(provided, snapshot) => (
-                                            <div
-                                                ref={provided.innerRef}
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                                style={getItemStyle(
-                                                    snapshot.isDragging,
-                                                    provided.draggableProps.style
-                                                )}>
-                                                {item.image_url !== undefined ? (
-                                                    <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}
-                                                         width="50px"
-                                                         height="50px"/>) : (
-                                                    <img
-                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                        width="50px"
-                                                        height="50px"/>)}
-                                                {item.title}
-                                            </div>
-                                        )}
-                                    </Draggable>
-                                ))}
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
-                </DragDropContext>
-                {this.props.Loading && <Loader/>}
+                        <br/><br/>
+
+                        <Droppable droppableId="droppable2">
+                            {(provided, snapshot) => (
+                                <div
+                                    ref={provided.innerRef}
+                                    style={getListStyle(snapshot.isDraggingOver)}>
+                                    {this.state.selected.map((item, index) => (
+                                        <Draggable
+                                            key={item.id}
+                                            draggableId={item.id}
+                                            index={index}>
+                                            {(provided, snapshot) => (
+                                                <div
+                                                    ref={provided.innerRef}
+                                                    {...provided.draggableProps}
+                                                    {...provided.dragHandleProps}
+                                                    style={getItemStyle(
+                                                        snapshot.isDragging,
+                                                        provided.draggableProps.style
+                                                    )}>
+                                                    {item.image_url !== undefined ? (
+                                                        <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}
+                                                             width="50px"
+                                                             height="50px"/>) : (
+                                                        <img
+                                                            src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
+                                                            width="50px"
+                                                            height="50px"/>)}
+                                                    {item.title}
+                                                </div>
+                                            )}
+                                        </Draggable>
+                                    ))}
+                                    {provided.placeholder}
+                                </div>
+                            )}
+                        </Droppable>
+                    </DragDropContext>
+                </div>}
+                {(this.props.Loading || this.props.teamListLoader) && <Loader/>}
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    const {manageTeamProductReducer} = state;
+    const {manageTeamProductReducer, manageTeamReducer} = state;
     return {
         Loading: manageTeamProductReducer.Loading,
         error_msg: manageTeamProductReducer.error_msg,
         success_msg: manageTeamProductReducer.success_msg,
         teamProductList: manageTeamProductReducer.teamProductList,
+        teamList: manageTeamReducer.teamList,
+        teamListLoader: manageTeamReducer.Loading,
+        teamListError_msg: manageTeamReducer.error_msg,
         allProductList: manageTeamProductReducer.allProductList
     };
 };
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        teamProductManageAction: bindActionCreators(teamProductManageAction, dispatch)
+        teamProductManageAction: bindActionCreators(teamProductManageAction, dispatch),
+        teamMemberListAction: bindActionCreators(teamAction, dispatch),
     }
 });
 

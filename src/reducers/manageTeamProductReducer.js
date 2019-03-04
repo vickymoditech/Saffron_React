@@ -2,6 +2,7 @@ import {
     PRODUCT_INPROGRESS,
     PRODUCT_NOT_SUCCESS,
     PRODUCT_SUCCESS,
+    TEAM_MEMBER_PRODUCT_SUCCESS,
     PRODUCT_ADD_SUCCESS,
     PRODUCT_DELETE_SUCCESS,
     PRODUCT_CONNECTION_ERROR,
@@ -36,7 +37,15 @@ export default function manageTeamProductReducer(state = initialState.manageTeam
                 allProductList: action.data,
                 Loading: false,
                 error_msg: null,
-                success_msg: null,
+                success_msg: 'Successfully fetched',
+            });
+
+        case TEAM_MEMBER_PRODUCT_SUCCESS:
+            return Object.assign({}, state, {
+                teamProductList: action.data,
+                Loading: false,
+                error_msg: null,
+                success_msg: 'Successfully fetched',
             });
 
         case PRODUCT_DELETE_SUCCESS:
