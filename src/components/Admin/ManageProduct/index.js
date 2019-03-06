@@ -45,7 +45,7 @@ class ManageProduct extends Component {
         else if (!nextProps.product_Loading && nextProps.product_Error_msg) {
             this.addNotifications(nextProps.product_Error_msg, "error");
         }
-        else if (!nextProps.product_Loading && nextProps.success_msg) {
+        else if (!nextProps.product_Loading && nextProps.success_msg.toString().toLowerCase() !== 'successfully fetched') {
             this.addNotifications(nextProps.success_msg, "success");
             this.setState({isDialogOpen: false});
             this.setState({isEditDialogOpen: false});
@@ -84,8 +84,8 @@ class ManageProduct extends Component {
     }
 
 
-    getSpecificService = (galleryId) => {
-        this.setState({isEditDialogOpen: true, selectedGalleryId: galleryId});
+    getSpecificService = (prductId) => {
+        this.setState({isEditDialogOpen: true, selectedProductId: prductId});
     };
 
     removeSpecificProduct = (ProductId) => {
@@ -154,10 +154,10 @@ class ManageProduct extends Component {
                 <AddDialog handleClose={this.newProductClose} isOpen={this.state.isDialogOpen} serviceList={options}
                            notify={this.addNotifications}/>}
 
-                {/*{this.state.isEditDialogOpen &&*/}
-                {/*<EditDialog handleClose={this.editDialogClose} isOpen={this.state.isEditDialogOpen}*/}
-                {/*notify={this.addNotifications} gallery={selected_gallery} serviceList={options}*/}
-                {/*selectedServiceId={this.state.selectedServiceId}/>}*/}
+                {this.state.isEditDialogOpen &&
+                <EditDialog handleClose={this.editDialogClose} isOpen={this.state.isEditDialogOpen}
+                            notify={this.addNotifications} product={selected_product} serviceList={options}
+                            selectedServiceId={this.state.selectedServiceId}/>}
 
                 {options.length > 0 && <div className="container tab-bg-container">
                     <h2> Manage Products </h2>

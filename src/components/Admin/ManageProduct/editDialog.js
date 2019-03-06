@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Dialog} from 'material-ui';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as galleryAction from '../../../actions/galleryAction';
+import * as teamProductManageAction from '../../../actions/teamProductManageAction';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import {Dropdown} from 'semantic-ui-react';
 import {RadioGroup, RadioButton} from 'react-radio-buttons';
@@ -37,14 +37,16 @@ class EditDialog extends Component {
         super(props);
         this.state = {
             isOpen: props.isOpen,
-            image_url: ENVIRONMENT_VARIABLES.PHOTO_URL + this.props.gallery.image_url,
+            image_url: ENVIRONMENT_VARIABLES.PHOTO_URL + this.props.product.image_url,
             commonData: {
                 filetoupload: "",
-                title: this.props.gallery.title,
-                id: this.props.gallery.id,
-                description: this.props.gallery.description,
-                service_id: this.props.gallery.service_id,
-                sex: this.props.gallery.sex,
+                title: this.props.product.title,
+                id: this.props.product.id,
+                description: this.props.product.description,
+                service_id: this.props.product.service_id,
+                sex: this.props.product.sex,
+                price: this.props.product.price,
+                offerPrice: this.props.product.offerPrice,
                 selectedServiceId: this.props.selectedServiceId
             }
         };
@@ -64,8 +66,8 @@ class EditDialog extends Component {
     };
 
     handleSave = () => {
-        if (this.state.commonData.description !== "" && this.state.commonData.title !== "" && this.state.commonData.service_id !== null && this.state.commonData.sex !== null) {
-            this.props.actions.galleryAction.EditGallery(this.state.commonData);
+        if (this.state.commonData.description !== "" && this.state.commonData.title !== "" && this.state.commonData.service_id !== null && this.state.commonData.sex !== null && this.state.commonData.price !== "" && this.state.commonData.offerPrice !== "") {
+            this.props.actions.teamProductManageAction.EditProduct(this.state.commonData);
         } else {
             this.props.notify("All the fields are required", 'error');
         }
@@ -87,6 +89,7 @@ class EditDialog extends Component {
 
 
     render() {
+        const {sex} = this.state.commonData;
         return (
             <div>
                 <Dialog
@@ -127,22 +130,10 @@ class EditDialog extends Component {
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="title"
-                                                                       placeholder="Service Title"
+                                                                       placeholder="Product Title"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.title}/>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group">
-                                                            <div className="input-group">
-                                                                <RadioGroup onChange={this.onChange} horizontal>
-                                                                    <RadioButton value="male">
-                                                                        Male
-                                                                    </RadioButton>
-                                                                    <RadioButton value="female">
-                                                                        Female
-                                                                    </RadioButton>
-                                                                </RadioGroup>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
@@ -151,13 +142,49 @@ class EditDialog extends Component {
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="description"
-                                                                       placeholder="Service Description"
+                                                                       placeholder="Product Description"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.description}/>
                                                             </div>
                                                         </div>
-
+                                                        <div className="form-group">
+                                                            <div className="input-group">
+                                                                <span className="input-group-addon">
+                                                                    <i className="fa fa-pencil"/>
+                                                                </span>
+                                                                <input type="text" name="price"
+                                                                       placeholder="Price"
+                                                                       className="form-control"
+                                                                       onChange={this.handleChange}
+                                                                       value={this.state.commonData.price}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <div className="input-group">
+                                                                <span className="input-group-addon">
+                                                                    <i className="fa fa-pencil"/>
+                                                                </span>
+                                                                <input type="text" name="offerPrice"
+                                                                       placeholder="offerPrice"
+                                                                       className="form-control"
+                                                                       onChange={this.handleChange}
+                                                                       value={this.state.commonData.offerPrice}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <div className="input-group">
+                                                                <RadioGroup onChange={this.onChange} horizontal>
+                                                                    <RadioButton value="male" checked={sex === 'male'}>
+                                                                        Male
+                                                                    </RadioButton>
+                                                                    <RadioButton value="female"
+                                                                                 checked={sex === 'female'}>
+                                                                        Female
+                                                                    </RadioButton>
+                                                                </RadioGroup>
+                                                            </div>
+                                                        </div>
                                                         {this.state.image_url !== undefined ? (
                                                             <img
                                                                 src={this.state.image_url}
@@ -200,7 +227,7 @@ class EditDialog extends Component {
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        galleryAction: bindActionCreators(galleryAction, dispatch)
+        teamProductManageAction: bindActionCreators(teamProductManageAction, dispatch)
     }
 });
 

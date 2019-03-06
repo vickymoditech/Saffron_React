@@ -3,6 +3,7 @@ import {
     PRODUCT_NOT_SUCCESS,
     PRODUCT_SUCCESS,
     TEAM_MEMBER_PRODUCT_SUCCESS,
+    PRODUCT_EDIT_SUCCESS,
     PRODUCT_ADD_SUCCESS,
     PRODUCT_DELETE_SUCCESS,
     PRODUCT_CONNECTION_ERROR,
@@ -85,6 +86,28 @@ export default function manageTeamProductReducer(state = initialState.manageTeam
                 success_msg: action.data.result
             });
 
+        case PRODUCT_EDIT_SUCCESS:
+            state.allProductList.map((product, index) => {
+                if (product.id === action.data.data.id) {
+                    product.title = action.data.data.title;
+                    product.description = action.data.data.description;
+                    product.sex = action.data.data.sex;
+                    product.service_id = action.data.data.service_id;
+                    product.price = action.data.data.price;
+                    product.offerPrice = action.data.data.offerPrice;
+                    if (action.data.data.image_url !== undefined) {
+                        product.image_url = action.data.data.image_url;
+                    }
+                }
+            });
+
+            debugger;
+            return Object.assign({}, state, {
+                allProductList: state.allProductList,
+                Loading: false,
+                error_msg: null,
+                success_msg: action.data.result
+            });
 
         default:
             return state;
