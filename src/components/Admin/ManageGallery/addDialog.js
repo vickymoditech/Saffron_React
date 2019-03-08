@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as galleryAction from '../../../actions/galleryAction';
 import {Dropdown} from 'semantic-ui-react';
-import {RadioGroup, RadioButton} from 'react-radio-buttons';
 
 const style = {
     titleStyle: {
@@ -45,7 +44,7 @@ class AddDialog extends Component {
                 description: "",
                 displayOrder: 1,
                 service_id: null,
-                sex: null,
+                sex: 'male',
                 selectedServiceId: this.props.selectedServiceId
             }
         };
@@ -80,13 +79,14 @@ class AddDialog extends Component {
         }
     };
 
-    onChange = (value) => {
+    onChange = (event) => {
         const commonData = this.state.commonData;
-        commonData['sex'] = value;
+        commonData['sex'] = event.target.value;
         this.setState({commonData: commonData});
     };
 
     render() {
+        const {sex} = this.state.commonData;
         return (
             <div>
                 <Dialog
@@ -106,7 +106,6 @@ class AddDialog extends Component {
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
                                         <h2>Add New Gallery</h2>
-                                        <hr/>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
@@ -147,14 +146,14 @@ class AddDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <RadioGroup onChange={this.onChange} horizontal>
-                                                                    <RadioButton value="male">
-                                                                        Male
-                                                                    </RadioButton>
-                                                                    <RadioButton value="female">
-                                                                        Female
-                                                                    </RadioButton>
-                                                                </RadioGroup>
+                                                                <input type="radio" name="gender" value="male"
+                                                                       onClick={this.onChange}
+                                                                       checked={sex === 'male'}/> <b
+                                                                style={{'cursor': 'default'}}> Male </b> &nbsp;
+                                                                <input type="radio" name="gender" value="female"
+                                                                       onClick={this.onChange}
+                                                                       checked={sex === 'female'}/> <b
+                                                                style={{'cursor': 'default'}}> Female </b>
                                                             </div>
                                                         </div>
 
@@ -163,8 +162,8 @@ class AddDialog extends Component {
                                                         {this.state.image_url !== undefined && this.state.image_url !== null && (
                                                             <img
                                                                 src={this.state.image_url}
-                                                                width="150px"
-                                                                height="150px"/>)}
+                                                                width="90px"
+                                                                height="90px"/>)}
 
 
                                                         <div className="form-group">

@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import * as galleryAction from '../../../actions/galleryAction';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import {Dropdown} from 'semantic-ui-react';
-import {RadioGroup, RadioButton} from 'react-radio-buttons';
 
 const style = {
     titleStyle: {
@@ -71,9 +70,9 @@ class EditDialog extends Component {
         }
     };
 
-    onChange = (value) => {
+    onChange = (event) => {
         const commonData = this.state.commonData;
-        commonData['sex'] = value;
+        commonData['sex'] = event.target.value;
         this.setState({commonData: commonData});
     };
 
@@ -138,15 +137,14 @@ class EditDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <RadioGroup onChange={this.onChange} horizontal>
-                                                                    <RadioButton value="male" checked={sex === 'male'}>
-                                                                        Male
-                                                                    </RadioButton>
-                                                                    <RadioButton value="female"
-                                                                                 checked={sex === 'female'}>
-                                                                        Female
-                                                                    </RadioButton>
-                                                                </RadioGroup>
+                                                                <input type="radio" name="gender" value="male"
+                                                                       onClick={this.onChange}
+                                                                       checked={sex === 'male'}/> <b
+                                                                style={{'cursor': 'default'}}> Male </b> &nbsp;
+                                                                <input type="radio" name="gender" value="female"
+                                                                       onClick={this.onChange}
+                                                                       checked={sex === 'female'}/> <b
+                                                                style={{'cursor': 'default'}}> Female </b>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
@@ -165,12 +163,12 @@ class EditDialog extends Component {
                                                         {this.state.image_url !== undefined ? (
                                                             <img
                                                                 src={this.state.image_url}
-                                                                width="150px"
-                                                                height="150px"/>) : (
+                                                                width="90px"
+                                                                height="90px"/>) : (
                                                             <img
                                                                 src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                                width="150px"
-                                                                height="150px"/>)}
+                                                                width="90px"
+                                                                height="90px"/>)}
                                                         <input type="file" onChange={this.handleSelectedFile}/>
 
                                                         <div className="form-group">

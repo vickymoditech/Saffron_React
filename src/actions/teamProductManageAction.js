@@ -163,7 +163,6 @@ export const EditProduct = (Product) => {
                 data: bodyFormData,
                 config: {headers: {'Content-Type': 'multipart/form-data'}}
             };
-            debugger;
 
             axios(api).then((response) => {
                 if (response.status === 200) {
@@ -181,6 +180,23 @@ export const EditProduct = (Product) => {
                 }
             });
         }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
+export const TeamMemberProductAdd = (Product, action) => {
+    try {
+        return (dispatch) => {
+            let token = "Bearer " + localStorage.getItem('accessToken');
+            let api = {
+                method: 'POST',
+                headers: {'Authorization': token},
+                data: Product,
+                url: ENVIRONMENT_VARIABLES.API_URL + "/Teams/" + action
+            };
+            return axios(api);
+        };
     } catch (error) {
         alert(error.message.toString());
     }

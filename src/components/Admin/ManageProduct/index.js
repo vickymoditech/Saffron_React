@@ -11,6 +11,7 @@ import './react-confirm-alert.css'
 import AddDialog from './addDialog';
 import EditDialog from './editDialog';
 import {Dropdown} from 'semantic-ui-react';
+import Switch from 'react-flexible-switch';
 
 import './manage-product.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
@@ -27,6 +28,7 @@ class ManageProduct extends Component {
             isEditDialogOpen: false,
             selectedServiceId: null,
             selectedProductId: null,
+            isOfferProduct: false,
         };
     }
 
@@ -122,10 +124,13 @@ class ManageProduct extends Component {
         this.setState({selectedServiceId: value});
     };
 
+    onchangeBlock(isOfferProductValue) {
+        this.setState({isOfferProduct: isOfferProductValue});
+    };
 
     render() {
 
-        const {allProductList, selectedProductId, selectedServiceId} = this.state;
+        const {allProductList, selectedProductId, selectedServiceId, isOfferProduct} = this.state;
         let displayProduct = [];
         let options = [];
         this.props.serviceList.map((service, index) => {
@@ -140,8 +145,12 @@ class ManageProduct extends Component {
 
         if (defaultValue !== null && defaultValue !== "") {
             allProductList.map((product, index) => {
-                if (product.service_id === selectedServiceId)
-                    displayProduct.push(product);
+                if (product.service_id === selectedServiceId) {
+                    if (isOfferProduct && product.offerPrice > 0)
+                        displayProduct.push(product);
+                    else if (!isOfferProduct)
+                        displayProduct.push(product);
+                }
             });
         } else
             displayProduct = allProductList;
@@ -161,13 +170,22 @@ class ManageProduct extends Component {
 
                 {options.length > 0 && <div className="container tab-bg-container">
                     <h2> Manage Products </h2>
-                    <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
-                              options={options}
-                              onChange={this.handleChangeStore}/>
+
+                    <Switch value={isOfferProduct}
+                            circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
+                            switchStyles={{width: 95}}
+                            onChange={(e) => {
+                                this.onchangeBlock(!isOfferProduct);
+                            }}/>
 
                     <button type="button" className="btn btn-primary"
                             onClick={this.addNewService}>Add new Product
                     </button>
+
+                    <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
+                              options={options}
+                              onChange={this.handleChangeStore}/>
+
                     {displayProduct.length > 0 && <div className="data-display col-sm-12">
                         <div className="table-responsive overflow-scroll">
                             <table width="100%" className="table">

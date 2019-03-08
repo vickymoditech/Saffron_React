@@ -93,7 +93,6 @@ class ProductDialog extends Component {
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
                                         <h2>Add New {this.props.status}</h2>
-                                        <hr/>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">

@@ -36,6 +36,7 @@ export default function manageTeamProductReducer(state = initialState.manageTeam
         case PRODUCT_SUCCESS:
             return Object.assign({}, state, {
                 allProductList: action.data,
+                teamProductList: [],
                 Loading: false,
                 error_msg: null,
                 success_msg: 'Successfully fetched',

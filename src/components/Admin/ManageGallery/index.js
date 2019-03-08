@@ -149,13 +149,13 @@ class ManageGallery extends Component {
 
                 {options.length > 0 && <div className="container tab-bg-container">
                     <h2> Manage Gallery </h2>
-                    <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
-                              options={options}
-                              onChange={this.handleChangeStore}/>
-
                     <button type="button" className="btn btn-primary"
                             onClick={this.addNewService}>Add New Gallery
                     </button>
+
+                    <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
+                              options={options}
+                              onChange={this.handleChangeStore}/>
                     {galleryList.length > 0 && <div className="data-display col-sm-12">
                         <div className="table-responsive overflow-scroll">
                             <table width="100%" className="table">

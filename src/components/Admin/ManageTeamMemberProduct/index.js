@@ -24,6 +24,7 @@ const reorder = (list, startIndex, endIndex) => {
  * Moves an item from one list to another list.
  */
 const move = (source, destination, droppableSource, droppableDestination) => {
+
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const [removed] = sourceClone.splice(droppableSource.index, 1);
@@ -36,6 +37,7 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 
     return result;
 };
+
 
 const grid = 10;
 
@@ -67,7 +69,8 @@ class ManageTeamMemberProduct extends Component {
             items: [],
             selected: [],
             notificationSystem: null,
-            selectedTeamId: null
+            selectedTeamId: null,
+            moveProductMove: false,
         };
     }
 
@@ -82,6 +85,35 @@ class ManageTeamMemberProduct extends Component {
     };
 
     getList = id => this.state[this.id2List[id]];
+
+    productAddRemove = (source, destination, droppableSource, droppableDestination) => {
+        this.setState({moveProductMove: true});
+        let product = source[droppableSource.index];
+        let requestData = {
+            id: this.state.selectedTeamId,
+            product_id: product.id
+        };
+        let action = "addTeamProduct";
+
+        if (droppableSource.droppableId === "droppable2") {
+            action = "removeTeamProduct";
+        }
+
+        return this.props.actions.teamProductManageAction.TeamMemberProductAdd(requestData, action).then((response) => {
+            var a = move(source, destination, droppableSource, droppableDestination);
+            this.setState({moveProductMove: false});
+            this.addNotifications(response.data.result, "success");
+            return new Promise(function (resolve, reject) {
+                resolve(a);
+            });
+        }).catch((err) => {
+            this.setState({moveProductMove: false});
+            this.addNotifications(err.message.toString(), "error");
+            return new Promise(function (resolve, reject) {
+                reject("fail");
+            });
+        });
+    };
 
     onDragEnd = result => {
         const {source, destination} = result;
@@ -106,16 +138,17 @@ class ManageTeamMemberProduct extends Component {
 
             this.setState(state);
         } else {
-            const result = move(
+            var _this = this;
+            this.productAddRemove(
                 this.getList(source.droppableId),
                 this.getList(destination.droppableId),
                 source,
                 destination
-            );
-
-            this.setState({
-                items: result.droppable,
-                selected: result.droppable2
+            ).then((result) => {
+                _this.setState({
+                    items: result.droppable,
+                    selected: result.droppable2
+                });
             });
         }
     };
@@ -168,7 +201,6 @@ class ManageTeamMemberProduct extends Component {
             };
             options.push(option);
         });
-        //let defaultValue = options.length > 0 ? options[0].value : "";
 
         return (
             <div className="bg-burrito-image autofill-background">
@@ -257,7 +289,7 @@ class ManageTeamMemberProduct extends Component {
                         </Droppable>
                     </DragDropContext>
                 </div>}
-                {(this.props.Loading || this.props.teamListLoader) && <Loader/>}
+                {(this.props.Loading || this.props.teamListLoader || this.state.moveProductMove) && <Loader/>}
             </div>
         );
     }
