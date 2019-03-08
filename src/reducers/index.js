@@ -10,6 +10,7 @@ import manageTeamReducer from './manageTeamReducer';
 import manageGalleryReducer from './manageGalleryReducer';
 import manageSliderReducer from './manageSliderReducer';
 import manageTeamProductReducer from './manageTeamProductReducer';
+import manageVideoReducer from './manageVideoReducer';
 
 const rootReducer = combineReducers({
     authReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
     manageGalleryReducer,
     manageSliderReducer,
     manageTeamProductReducer,
+    manageVideoReducer,
     routing: routerReducer
 });
 

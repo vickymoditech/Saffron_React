@@ -47,6 +47,12 @@ export default {
         error_msg: null,
         success_msg: null,
     },
+    manageVideoReducer: {
+        Loading: false,
+        videoList: [],
+        error_msg: null,
+        success_msg: null,
+    },
     manageTeamReducer: {
         Loading: false,
         teamList: [],
