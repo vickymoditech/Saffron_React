@@ -49,7 +49,7 @@ export const TeamMemberProductList = (teamMemberId) => {
             let api = {
                 method: 'GET',
                 headers: {'Authorization': token},
-                url: ENVIRONMENT_VARIABLES.API_URL + "/Teams/teamMemberProductsList/" + teamMemberId
+                url: ENVIRONMENT_VARIABLES.API_URL + "/TeamMemberProducts/" + teamMemberId
             };
 
             axios(api).then((response) => {
@@ -185,7 +185,7 @@ export const EditProduct = (Product) => {
     }
 };
 
-export const TeamMemberProductAdd = (Product, action) => {
+export const TeamMemberProductAddRemove = (Product, action) => {
     try {
         return (dispatch) => {
             let token = "Bearer " + localStorage.getItem('accessToken');
@@ -193,7 +193,7 @@ export const TeamMemberProductAdd = (Product, action) => {
                 method: 'POST',
                 headers: {'Authorization': token},
                 data: Product,
-                url: ENVIRONMENT_VARIABLES.API_URL + "/Teams/" + action
+                url: ENVIRONMENT_VARIABLES.API_URL + "/TeamMemberProducts/" + action
             };
             return axios(api);
         };

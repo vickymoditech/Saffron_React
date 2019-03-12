@@ -99,7 +99,7 @@ class ManageTeamMemberProduct extends Component {
             action = "removeTeamProduct";
         }
 
-        return this.props.actions.teamProductManageAction.TeamMemberProductAdd(requestData, action).then((response) => {
+        return this.props.actions.teamProductManageAction.TeamMemberProductAddRemove(requestData, action).then((response) => {
             var a = move(source, destination, droppableSource, droppableDestination);
             this.setState({moveProductMove: false});
             this.addNotifications(response.data.result, "success");
@@ -163,7 +163,7 @@ class ManageTeamMemberProduct extends Component {
         this.state.notificationSystem.addNotification({
             message: message,
             level: level,
-            autoDismiss: 5
+            autoDismiss: 1
         });
     };
 
