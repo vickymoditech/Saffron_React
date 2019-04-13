@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 import OrderDialog from '../OrderDailog';
+import ENVIRONMENT_VARIABLES from '../../../environment.config';
 
 export default class Order extends Component {
     constructor(props) {
@@ -39,10 +40,10 @@ export default class Order extends Component {
         let currentTime = new Date();
         let timeDiff = 0;
         if (this.props.order.column === "running" || this.props.order.column === "running late") {
-            let OrderTime = new Date(this.props.order.orderStartTime);
+            let OrderTime = new Date(this.props.order.statusDateTime);
             timeDiff = Math.abs(Math.round(((currentTime.getTime() - OrderTime.getTime()) / 1000) / 60));
         } else {
-            let OrderTime = new Date(this.props.order.orderTime);
+            let OrderTime = new Date(this.props.order.bookingStartTime);
             timeDiff = Math.abs(Math.round(((OrderTime.getTime() - currentTime.getTime()) / 1000) / 60));
         }
 
@@ -61,9 +62,11 @@ export default class Order extends Component {
     render() {
         const {column, status} = this.props.order;
         const time = this.state.Time;
-        const orderTime = (moment(this.props.order.orderTime).utcOffset('IST').format("DD-MM-YYYY HH:mm:ss")).toString().split(" ");
+        const orderTime = (moment(this.props.order.bookingStartTime).utcOffset('IST').format("DD-MM-YYYY HH:mm:ss")).toString().split(" ");
         const HHMM = orderTime[1].toString().split(":");
-        const orderNo = this.props.order.orderNo;
+        const orderNo = this.props.order.id;
+        const customerName = this.props.order.customerName;
+
         let Color = "#F3D250";
         if (column === "running") {
             Color = "#61892F";
@@ -71,7 +74,7 @@ export default class Order extends Component {
             Color = "#f76C6C";
         }
         //TODO change product images.
-        const productImg = "http://192.168.0.8:9000/images/UserAvatar/demo.png";
+        const productImg = ENVIRONMENT_VARIABLES.PRODUCT_IMAGE;
         let classes = ['small-box'];
 
         if (column === "running") {
@@ -99,8 +102,8 @@ export default class Order extends Component {
                     {
                         column === "running" ?
                             <div className="status in-progress" style={{backgroundColor: Color}}>in
-                                progress... #{orderNo}
-                            </div> : <div className="status pickup">Order No - #{orderNo}
+                                progress... #{customerName}
+                            </div> : <div className="status pickup">{customerName}
                             </div>
                     }
                     <div className="box-right">
@@ -115,9 +118,9 @@ export default class Order extends Component {
                                 backgroundSize: "none"
                             }}>Show
                             </button>
-                            <p className="color">
-                                #{orderNo}
-                            </p>
+                            {/*<p className="color">*/}
+                            {/*#{customerName}*/}
+                            {/*</p>*/}
                         </div>
                         <div className="image">
                             {productImg &&

@@ -1,7 +1,8 @@
 const ENVIRONMENT_DEVELOPMENT = {
-    API_URL: "https://192.168.200.160:9000/api",
-    PHOTO_URL: "https://192.168.200.160:9000/",
-    SOCKET_URL: "https://192.168.200.160:9000"
+    API_URL: "https://192.168.200.17:9000/api",
+    PHOTO_URL: "https://192.168.200.17:9000/",
+    SOCKET_URL: "https://192.168.200.17:9000",
+    PRODUCT_IMAGE:"http://192.168.200.17:9000/images/UserAvatar/demo.png"
 };
 
 const ENVIRONMENT_PRODUCTION = {

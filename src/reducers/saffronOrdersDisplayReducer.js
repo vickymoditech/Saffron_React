@@ -4,11 +4,15 @@ import {
     SOD_SUCCESS,
     SOD_CONNECTION_ERROR,
     SOD_RUNNING_LATE_MOVE_TO_PROGRESS,
-    SOD_RECENT_MOVE_TO_PROGRESS
+    SOD_RECENT_MOVE_TO_PROGRESS,
+    SOD_RECENT_NEW_ORDER,
+    SOD_MOVE_TO_RUNNING_LATE
 } from '../constants/actionTypes';
 
 
 import initialState from './initialState';
+
+let moment = require('moment-timezone');
 
 export default function saffronOrdersDisplayReducer(state = initialState.saffronOrdersDisplayReducer, action) {
     switch (action.type) {
@@ -27,10 +31,38 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             });
 
         case SOD_SUCCESS:
+
+            action.data.recentOrders.forEach((OrderSingle) => {
+                let BookingDateTime = moment.tz(OrderSingle.bookingDateTime, 'Asia/Kolkata').format();
+                let BookingStartTime = moment.tz(OrderSingle.bookingStartTime, 'Asia/Kolkata').format();
+                let BookingEndTime = moment.tz(OrderSingle.bookingEndTime, 'Asia/Kolkata').format();
+                OrderSingle.bookingDateTime = new Date(BookingDateTime);
+                OrderSingle.bookingStartTime = new Date(BookingStartTime);
+                OrderSingle.bookingEndTime = new Date(BookingEndTime);
+            });
+
+            action.data.runningOrder.forEach((OrderSingle) => {
+                let BookingDateTime = moment.tz(OrderSingle.bookingDateTime, 'Asia/Kolkata').format();
+                let BookingStartTime = moment.tz(OrderSingle.bookingStartTime, 'Asia/Kolkata').format();
+                let BookingEndTime = moment.tz(OrderSingle.bookingEndTime, 'Asia/Kolkata').format();
+                OrderSingle.bookingDateTime = new Date(BookingDateTime);
+                OrderSingle.bookingStartTime = new Date(BookingStartTime);
+                OrderSingle.bookingEndTime = new Date(BookingEndTime);
+            });
+
+            action.data.runningLate.forEach((OrderSingle) => {
+                let BookingDateTime = moment.tz(OrderSingle.bookingDateTime, 'Asia/Kolkata').format();
+                let BookingStartTime = moment.tz(OrderSingle.bookingStartTime, 'Asia/Kolkata').format();
+                let BookingEndTime = moment.tz(OrderSingle.bookingEndTime, 'Asia/Kolkata').format();
+                OrderSingle.bookingDateTime = new Date(BookingDateTime);
+                OrderSingle.bookingStartTime = new Date(BookingStartTime);
+                OrderSingle.bookingEndTime = new Date(BookingEndTime);
+            });
+
             return Object.assign({}, state, {
-                runningOrder: action.runningOrder,
-                runningLate: action.runningLate,
-                recentOrders: action.recentOrders,
+                runningOrder: action.data.runningOrder,
+                runningLate: action.data.runningLate,
+                recentOrders: action.data.recentOrders,
                 Loading: false,
                 error_msg: null
             });
@@ -41,7 +73,7 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
 
             //remove Running Late Order
             let removeOrder = state.runningLate.find(function (runningLateOrder) {
-                return runningLateOrder.orderNo === action.order.orderNo;
+                return runningLateOrder.id === action.order.id;
             });
             let index = state.runningLate.indexOf(removeOrder);
             state.runningLate.splice(index, 1);
@@ -57,13 +89,45 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
 
             //remove Recent Order
             removeOrder = state.recentOrders.find(function (recentOrder) {
-                return recentOrder.orderNo === action.order.orderNo;
+                return recentOrder.id === action.order.id;
             });
             index = state.recentOrders.indexOf(removeOrder);
             state.recentOrders.splice(index, 1);
 
             return Object.assign({}, state, {
                 runningOrder: runningOrders,
+                recentOrders: state.recentOrders
+            });
+
+        case SOD_RECENT_NEW_ORDER:
+
+            let BookingDateTime = moment.tz(action.order.bookingDateTime, 'Asia/Kolkata').format();
+            let BookingStartTime = moment.tz(action.order.bookingStartTime, 'Asia/Kolkata').format();
+            let BookingEndTime = moment.tz(action.order.bookingEndTime, 'Asia/Kolkata').format();
+            action.order.bookingDateTime = new Date(BookingDateTime);
+            action.order.bookingStartTime = new Date(BookingStartTime);
+            action.order.bookingEndTime = new Date(BookingEndTime);
+
+            let recentOrders = [...state.recentOrders, action.order];
+
+            return Object.assign({}, state, {
+                recentOrders: recentOrders
+            });
+
+        case SOD_MOVE_TO_RUNNING_LATE:
+
+            let runningLateOrders = [...state.runningLate, action.order];
+            console.log('action', action.order);
+
+            //remove Recent Order
+            removeOrder = state.recentOrders.find(function (recentOrder) {
+                return recentOrder.id === action.order.id;
+            });
+            index = state.recentOrders.indexOf(removeOrder);
+            state.recentOrders.splice(index, 1);
+
+            return Object.assign({}, state, {
+                runningLate: runningLateOrders,
                 recentOrders: state.recentOrders
             });
 
