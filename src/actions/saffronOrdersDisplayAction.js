@@ -1,6 +1,5 @@
 import axios from 'axios';
 import ENVIRONMENT_VARIABLES from '../environment.config';
-import moment from 'moment';
 
 import {
     SOD_INPROGRESS,
@@ -11,6 +10,8 @@ import {
     SOD_RUNNING_LATE_MOVE_TO_PROGRESS,
     SOD_RECENT_NEW_ORDER,
     SOD_MOVE_TO_RUNNING_LATE,
+    SOD_MOVE_TO_PROCESSS_SUCCESS,
+    SOD_RECENT_MOVE_TO_FINISH,
 } from '../constants/actionTypes';
 
 export const OrdersList = () => {
@@ -36,67 +37,6 @@ export const OrdersList = () => {
                     dispatch({type: SOD_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
                 }
             });
-
-            // setTimeout(function () {
-            //     dispatch({
-            //         type: SOD_SUCCESS, runningOrder: [{
-            //             status: "process",
-            //             column: "running",
-            //             orderTime: Date.now(),
-            //             orderStartTime: Date.now(),
-            //             orderNo: "1"
-            //         }, {
-            //             status: "process",
-            //             column: "running",
-            //             orderTime: Date.now(),
-            //             orderStartTime: Date.now(),
-            //             orderNo: "2"
-            //         }, {
-            //             status: "process",
-            //             column: "running",
-            //             orderTime: Date.now(),
-            //             orderStartTime: Date.now(),
-            //             orderNo: "3"
-            //         }, {
-            //             status: "process",
-            //             column: "running",
-            //             orderTime: Date.now(),
-            //             orderStartTime: Date.now(),
-            //             orderNo: "4"
-            //         }], runningLate: [{
-            //             status: "late",
-            //             column: "running late",
-            //             orderTime: new Date(new Date().getTime() - 30 * 60000),
-            //             orderStartTime: new Date(new Date().getTime() - 30 * 60000),
-            //             orderNo: "1"
-            //         }, {
-            //             status: "late",
-            //             column: "running late",
-            //             orderTime: new Date(new Date().getTime() - 20 * 60000),
-            //             orderStartTime: new Date(new Date().getTime() - 20 * 60000),
-            //             orderNo: "2"
-            //         }, {
-            //             status: "late",
-            //             column: "running late",
-            //             orderTime: new Date(new Date().getTime() - 10 * 60000),
-            //             orderStartTime: new Date(new Date().getTime() - 10 * 60000),
-            //             orderNo: "3"
-            //         }], recentOrders: [{
-            //             status: "waiting",
-            //             column: "recent orders",
-            //             orderTime: new Date(new Date().getTime() + 10 * 60000),
-            //             orderStartTime: new Date(new Date().getTime() + 10 * 60000),
-            //             orderNo: "1"
-            //         }, {
-            //             status: "waiting",
-            //             column: "recent orders",
-            //             orderTime: new Date(new Date().getTime() + 20 * 60000),
-            //             orderStartTime: new Date(new Date().getTime() + 20 * 60000),
-            //             orderNo: "2"
-            //         }]
-            //     });
-            //
-            // }, 3000);
         }
     } catch (error) {
         alert(error.message.toString());
@@ -106,21 +46,12 @@ export const OrdersList = () => {
 export const MoveToProgress = (order) => {
     try {
         return (dispatch) => {
-            let column = order.column;
-            //update Order from the api
-            order.status = "process";
-            order.column = "running";
-            // todo change columns name
-            order.orderStartTime = Date.now();
-
-            if (column === "running late") {
-                //update Order from the api
+            if (order.orderType === "running late") {
                 dispatch({
                     type: SOD_RUNNING_LATE_MOVE_TO_PROGRESS,
                     order
                 });
             } else {
-                //update Order from the api
                 dispatch({
                     type: SOD_RECENT_MOVE_TO_PROGRESS,
                     order
@@ -131,6 +62,55 @@ export const MoveToProgress = (order) => {
         alert(error.message.toString());
     }
 };
+
+export const MoveToFinish = (order) => {
+    try {
+        return (dispatch) => {
+            dispatch({
+                type: SOD_RECENT_MOVE_TO_FINISH,
+                order
+            });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
+
+export const orderStatusUpdateRequest = (id, orderType) => {
+    try {
+        return (dispatch) => {
+            dispatch({type: SOD_INPROGRESS});
+            const token = "Bearer " + localStorage.getItem('accessToken');
+
+            let bodyFormData = {
+                orderType
+            };
+
+            const api = {
+                method: 'PUT',
+                headers: {'Authorization': token},
+                url: ENVIRONMENT_VARIABLES.API_URL + "/Bookings/" + id,
+                data: bodyFormData,
+            };
+            axios(api).then((response) => {
+                if (response.status === 200) {
+                    dispatch({type: SOD_MOVE_TO_PROCESSS_SUCCESS, data: response.data});
+                }
+            }).catch((error) => {
+                debugger;
+                if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {
+                    dispatch({type: SOD_NOT_SUCCESS, data: {error_msg: error.response.data.user_msg}});
+                } else {
+                    dispatch({type: SOD_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
+                }
+            });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
 
 export const MoveToRunningLate = (order) => {
     try {

@@ -31,6 +31,10 @@ class App extends Component {
                 this.props.actions.saffronOrdersDisplayAction.NewOrder(data.data);
             else if(data.message === "running late")
                 this.props.actions.saffronOrdersDisplayAction.MoveToRunningLate(data.data);
+            else if(data.message === "running")
+                this.props.actions.saffronOrdersDisplayAction.MoveToProgress(data.data);
+            else if(data.message === 'finish')
+                this.props.actions.saffronOrdersDisplayAction.MoveToFinish(data.data);
         });
     }
 

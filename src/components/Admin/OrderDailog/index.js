@@ -42,13 +42,13 @@ class OrderDialog extends Component {
     }
 
     handleMoveToProgress = () => {
-        this.props.actions.saffronOrderDisplayAction.MoveToProgress(this.state.order);
-        //change logic here
+        this.props.actions.saffronOrderDisplayAction.orderStatusUpdateRequest(this.state.order.id, this.state.column);
         this.props.handleClose();
     };
 
     handleDone = () => {
-        alert("Handle Done");
+        this.props.actions.saffronOrderDisplayAction.orderStatusUpdateRequest(this.state.order.id, 'finish');
+        this.props.handleClose();
     };
 
     render() {
@@ -69,31 +69,97 @@ class OrderDialog extends Component {
                         <div className="modal-content">
                             <div className="modal-body">
                                 <div className="row login-form">
-                                    <div className="col-xs-12 text-center">
-                                        <h2>Change Password</h2>
-                                    </div>
                                     <div className="panel-body">
                                         <div className="row">
                                             <div className="col-md-offset-1 col-md-10">
-                                                <div className="form-group">
-                                                    <div className="form-group text-center row">
-                                                        <div className="col-xs-12 text-center">
-                                                            {this.state.column && (this.state.column === "running late" || this.state.column === "recent orders") ?
-                                                                < button type="button" className="btn btn-save"
-                                                                         style={{margin: '12px 10px 0 0'}}
-                                                                         onClick={this.handleMoveToProgress}>Move to
-                                                                    Progress
-                                                                </button> :
-                                                                < button type="button" className="btn btn-save"
-                                                                         style={{margin: '12px 10px 0 0'}}
-                                                                         onClick={this.handleDone}>Done
-                                                                </button>}
-                                                            <button type="button" className="btn btn-save"
-                                                                    style={{margin: '12px 10px 0 0'}}
-                                                                    onClick={this.props.handleClose}>Close
-                                                            </button>
+                                                <div className="form-group text-center row">
+                                                    <div className="col-xs-12 text-center">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="panel panel-default">
+                                                                        <div class="panel-heading">
+                                                                            <h3 class="panel-title"><strong>Order
+                                                                                summary</strong></h3>
+                                                                        </div>
+                                                                        <div class="panel-body">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-condensed">
+                                                                                    <thead>
+                                                                                    <tr>
+                                                                                        <td><strong>Item</strong></td>
+                                                                                        <td class="text-center">
+                                                                                            <strong>Price</strong></td>
+                                                                                        <td class="text-center">
+                                                                                            <strong>Team Member</strong>
+                                                                                        </td>
+                                                                                        <td class="text-right">
+                                                                                            <strong>Totals</strong></td>
+                                                                                    </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+
+                                                                                    {this.state.order.basket.map((singleProduct) => (
+
+                                                                                        <tr>
+                                                                                            <td> {singleProduct.productItem.title} </td>
+                                                                                            <td class="text-center">₹ {singleProduct.productItem.price}</td>
+                                                                                            <td class="text-center">{singleProduct.productTeam.name}</td>
+                                                                                            <td class="text-right">₹ {singleProduct.productItem.price}</td>
+                                                                                        </tr>
+
+                                                                                    ))}
+
+                                                                                    <tr>
+                                                                                        <td class="thick-line"></td>
+                                                                                        <td class="thick-line"></td>
+                                                                                        <td class="thick-line text-center">
+                                                                                            <strong>Subtotal</strong>
+                                                                                        </td>
+                                                                                        <td class="thick-line text-right">₹ {this.state.order.total} </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="no-line"></td>
+                                                                                        <td class="no-line"></td>
+                                                                                        <td class="no-line text-center">
+                                                                                            <strong>Discount</strong>
+                                                                                        </td>
+                                                                                        <td class="no-line text-right">₹
+                                                                                            0
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="no-line"></td>
+                                                                                        <td class="no-line"></td>
+                                                                                        <td class="no-line text-center">
+                                                                                            <strong>Total</strong></td>
+                                                                                        <td class="no-line text-right">₹ {this.state.order.total}</td>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
+
                                                     </div>
+                                                    {this.state.column && (this.state.column === "running late" || this.state.column === "recent orders") ?
+                                                        < button type="button" className="btn btn-save"
+                                                                 style={{margin: '12px 10px 0 0'}}
+                                                                 onClick={this.handleMoveToProgress}>Move to
+                                                            Progress
+                                                        </button> :
+                                                        < button type="button" className="btn btn-save"
+                                                                 style={{margin: '12px 10px 0 0'}}
+                                                                 onClick={this.handleDone}>Finish
+                                                        </button>}
+                                                    <button type="button" className="btn btn-save"
+                                                            style={{margin: '12px 10px 0 0'}}
+                                                            onClick={this.props.handleClose}>Close
+                                                    </button>
+
                                                 </div>
                                             </div>
                                         </div>

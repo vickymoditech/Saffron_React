@@ -6,7 +6,9 @@ import {
     SOD_RUNNING_LATE_MOVE_TO_PROGRESS,
     SOD_RECENT_MOVE_TO_PROGRESS,
     SOD_RECENT_NEW_ORDER,
-    SOD_MOVE_TO_RUNNING_LATE
+    SOD_MOVE_TO_RUNNING_LATE,
+    SOD_MOVE_TO_PROCESSS_SUCCESS,
+    SOD_RECENT_MOVE_TO_FINISH
 } from '../constants/actionTypes';
 
 
@@ -68,13 +70,19 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             });
 
         case SOD_RUNNING_LATE_MOVE_TO_PROGRESS:
-            //Add into Running Order
-            let runningOrders = [...state.runningOrder, action.order];
 
-            //remove Running Late Order
             let removeOrder = state.runningLate.find(function (runningLateOrder) {
                 return runningLateOrder.id === action.order.id;
             });
+
+            removeOrder.status = action.order.status;
+            removeOrder.column = action.order.column;
+            removeOrder.statusDateTime = action.order.statusDateTime;
+
+            //Add into Running Order
+            let runningOrders = [...state.runningOrder, removeOrder];
+
+            //remove Running Late Order
             let index = state.runningLate.indexOf(removeOrder);
             state.runningLate.splice(index, 1);
 
@@ -84,13 +92,19 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             });
 
         case SOD_RECENT_MOVE_TO_PROGRESS:
-            //Add into Running Order
-            runningOrders = [...state.runningOrder, action.order];
 
-            //remove Recent Order
             removeOrder = state.recentOrders.find(function (recentOrder) {
                 return recentOrder.id === action.order.id;
             });
+
+            removeOrder.status = action.order.status;
+            removeOrder.column = action.order.column;
+            removeOrder.statusDateTime = action.order.statusDateTime;
+
+            //Add into Running Order
+            runningOrders = [...state.runningOrder, removeOrder];
+
+            //remove Recent Order
             index = state.recentOrders.indexOf(removeOrder);
             state.recentOrders.splice(index, 1);
 
@@ -129,6 +143,24 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             return Object.assign({}, state, {
                 runningLate: runningLateOrders,
                 recentOrders: state.recentOrders
+            });
+
+        case SOD_MOVE_TO_PROCESSS_SUCCESS:
+            return Object.assign({}, state, {
+                Loading: false,
+                error_msg: null
+            });
+
+        case SOD_RECENT_MOVE_TO_FINISH:
+            removeOrder = state.runningOrder.find(function (recentOrder) {
+                return recentOrder.id === action.order.id;
+            });
+            index = state.runningOrder.indexOf(removeOrder);
+            state.runningOrder.splice(index, 1);
+            return Object.assign({}, state, {
+                runningOrder: state.runningOrder,
+                Loading: false,
+                error_msg: null,
             });
 
         default:
