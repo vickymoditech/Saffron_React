@@ -59,7 +59,7 @@ export const registrationUser = (credentials) => {
                 if (response.status === 200) {
                     dispatch({
                         type: REGISTRATION_SUCCESS,
-                        data: {accessToken: response.data.accessToken}
+                        data: response.data
                     });
                 }
             }).catch((error) => {

@@ -66,7 +66,6 @@ class AddDialog extends Component {
     };
 
     handleSave = () => {
-        //debugger;
         if (this.state.commonData.filetoupload !== "" && this.state.commonData.filetoupload !== null && this.state.commonData.description !== "" && this.state.commonData.title !== "" && this.state.commonData.service_id !== null && this.state.commonData.sex !== null && this.state.commonData.price !== null && this.state.commonData.offerPrice !== null) {
             var reg = /^\d+$/;
 

@@ -17,6 +17,7 @@ import {
 import _ from 'lodash';
 
 import initialState from './initialState';
+import ENVIRONMENT_VARIABLES from "../environment.config";
 
 export default function authReducer(state = initialState.authReducer, action) {
     switch (action.type) {
@@ -91,11 +92,9 @@ export default function authReducer(state = initialState.authReducer, action) {
             });
 
         case REGISTRATION_INPROGRESS:
-            debugger;
             return Object.assign({}, state, {isRegistration: false, loading: true});
 
         case REGISTRATION_NOT_SUCCESS:
-            debugger;
             return Object.assign({}, state, {
                 isRegistration: false,
                 error_msg: action.data.error_msg,
@@ -103,13 +102,21 @@ export default function authReducer(state = initialState.authReducer, action) {
             });
 
         case REGISTRATION_SUCCESS:
-            debugger;
+
             localStorage.removeItem('accessToken');
             localStorage.removeItem('userProfile');
             localStorage.removeItem('userAvatar');
 
+            console.log(action.data);
+
             userProfile = decode(action.data.accessToken);
-            userAvatar = userProfile.user.image_url;
+
+            if(userProfile.user.image_url !== "")
+                userAvatar = userProfile.user.image_url;
+            else{
+                userAvatar = "images/UserAvatar/demo.png";
+                userProfile.user.image_url = userAvatar;
+            }
 
             localStorage.setItem("accessToken", action.data.accessToken);
             localStorage.setItem("userProfile", JSON.stringify(userProfile.user));
@@ -117,6 +124,9 @@ export default function authReducer(state = initialState.authReducer, action) {
 
             return Object.assign({}, state, {
                 isRegistration: true,
+                accessToken: action.data.accessToken,
+                userAvatar: userAvatar,
+                userProfile: userProfile.user,
                 success_msg: action.data.result,
                 loading: false
             });

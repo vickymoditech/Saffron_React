@@ -54,7 +54,7 @@ class Login extends Component {
         if (nextProps.isAuthenticated) {
             const userProfile = decode(localStorage.getItem("accessToken"));
             const userRole = userProfile.user && userProfile.user.role;
-            if (userRole === "Admin") {
+            if (userRole.toLowerCase() === "admin" || userRole.toLowerCase() === "employee") {
                 browserHistory.push('/Dashboard');
             } else {
                 browserHistory.push('/');

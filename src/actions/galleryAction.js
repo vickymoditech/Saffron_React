@@ -132,7 +132,6 @@ export const EditGallery = (Gallery) => {
                 data: bodyFormData,
                 config: {headers: {'Content-Type': 'multipart/form-data'}}
             };
-            debugger;
 
             axios(api).then((response) => {
                 if (response.status === 200) {

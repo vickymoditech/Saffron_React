@@ -86,7 +86,7 @@ function isTokenExpired(token) {
 function checkUserRole(token) {
     const userProfile = decode(token);
     const userRole = userProfile.user && userProfile.user.role;
-    if (userRole === "Admin" || userRole === "Employee") {
+    if (userRole.toLowerCase() === "admin" || userRole.toLowerCase() === "employee") {
         return true;
     } else {
         return false;
@@ -123,7 +123,7 @@ function checkLoggedIn(nextState, replace) {
     if (accessToken) {
         try {
             const decodedToken = decode(accessToken);
-            if (decodedToken.user.role === "Admin" || decodedToken.user.role === "Employee") {
+            if (decodedToken.user.role.toLowerCase() === "admin" || decodedToken.user.role.toLowerCase() === "employee") {
                 replace({
                     pathname: '/Dashboard',
                     state: {nextPathname: nextState.location.pathname}
@@ -135,6 +135,7 @@ function checkLoggedIn(nextState, replace) {
                 });
             }
         } catch (error) {
+            console.log(error);
         }
     }
 }

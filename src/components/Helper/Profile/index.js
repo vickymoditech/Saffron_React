@@ -27,7 +27,7 @@ class Profile extends Component {
                 image_url: userProfile.image_url,
                 role: userProfile.role
             },
-            image_url: ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url,
+            image_url: userProfile.image_url !== "" && userProfile.image_url !== null ? ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url : "",
             notificationSystem: null
         };
     }
@@ -48,7 +48,7 @@ class Profile extends Component {
                 image_url: userProfile.image_url,
                 role: userProfile.role
             },
-            image_url: ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url,
+            image_url: userProfile.image_url !== "" && userProfile.image_url !== null ? ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url : "",
             changePasswordDialog: false
         });
     };

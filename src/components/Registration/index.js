@@ -76,7 +76,6 @@ class Registration extends Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        debugger;
         if (!nextProps.isRegistration && !nextProps.loading) {
             let toastId = this.notify(nextProps.error_msg);
             this.setState({toastId: toastId});
@@ -203,7 +202,6 @@ class Registration extends Component {
 
 const mapStateToProps = (state) => {
     const {authReducer} = state;
-    debugger;
     return {
         loading: authReducer.loading,
         error_msg: authReducer.error_msg,

@@ -102,7 +102,6 @@ export default function manageTeamProductReducer(state = initialState.manageTeam
                 }
             });
 
-            debugger;
             return Object.assign({}, state, {
                 allProductList: state.allProductList,
                 Loading: false,
