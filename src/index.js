@@ -52,6 +52,7 @@ function requireAuth(nextState, replace) {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("userProfile");
         localStorage.removeItem("userAvatar");
+        localStorage.clear();
         replace({
             pathname: '/',
             state: {nextPathname: nextState.location.pathname}
@@ -84,30 +85,45 @@ function isTokenExpired(token) {
 }
 
 function checkUserRole(token) {
-    const userProfile = decode(token);
-    const userRole = userProfile.user && userProfile.user.role;
-    if (userRole.toLowerCase() === "admin" || userRole.toLowerCase() === "employee") {
-        return true;
+    if (token) {
+        const userProfile = decode(token);
+        const userRole = userProfile.user && userProfile.user.role;
+        if (userRole.toLowerCase() === "admin" || userRole.toLowerCase() === "employee") {
+            return true;
+        } else {
+            return false;
+        }
     } else {
         return false;
     }
+
 }
 
 export function GetLocalUderData() {
     const accessToken = getAccessToken();
-    return decode(accessToken);
+    if (accessToken) {
+        return decode(accessToken);
+    } else {
+        console.log('GetLocalUderData', null);
+        return null;
+    }
+
 }
 
 
 function getTokenExpirationDate(encodedToken) {
     try {
-        const token = decode(encodedToken);
-        if (!token.exp) {
+        if (encodedToken) {
+            const token = decode(encodedToken);
+            if (!token.exp) {
+                return null;
+            }
+            const date = new Date(0);
+            date.setUTCSeconds(token.exp);
+            return date;
+        } else {
             return null;
         }
-        const date = new Date(0);
-        date.setUTCSeconds(token.exp);
-        return date;
     } catch (error) {
         return null
     }
@@ -115,6 +131,7 @@ function getTokenExpirationDate(encodedToken) {
 
 export function clearAccessToken() {
     localStorage.removeItem("accessToken");
+    localStorage.clear();
 }
 
 

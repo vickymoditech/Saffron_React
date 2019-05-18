@@ -76,6 +76,7 @@ export const loggedOut = () => {
             localStorage.removeItem('accessToken');
             localStorage.removeItem('userProfile');
             localStorage.removeItem('userAvatar');
+            localStorage.clear();
             dispatch({type: LOGOUT_USER});
         }
     } catch (error) {

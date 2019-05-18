@@ -52,12 +52,15 @@ class Login extends Component {
             this.setState({toastId: toastId});
         }
         if (nextProps.isAuthenticated) {
-            const userProfile = decode(localStorage.getItem("accessToken"));
-            const userRole = userProfile.user && userProfile.user.role;
-            if (userRole.toLowerCase() === "admin" || userRole.toLowerCase() === "employee") {
-                browserHistory.push('/Dashboard');
-            } else {
-                browserHistory.push('/');
+            const accessToken = localStorage.getItem("accessToken");
+            if(accessToken){
+                const userProfile = decode(accessToken);
+                const userRole = userProfile.user && userProfile.user.role;
+                if (userRole.toLowerCase() === "admin" || userRole.toLowerCase() === "employee") {
+                    browserHistory.push('/Dashboard');
+                } else {
+                    browserHistory.push('/');
+                }
             }
         }
     }

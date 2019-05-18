@@ -46,6 +46,7 @@ export default function authReducer(state = initialState.authReducer, action) {
             localStorage.removeItem('accessToken');
             localStorage.removeItem('userProfile');
             localStorage.removeItem('userAvatar');
+            localStorage.clear();
             browserHistory.push('/Login');
             return Object.assign({}, initialState, {loading: false});
 
@@ -68,6 +69,7 @@ export default function authReducer(state = initialState.authReducer, action) {
             localStorage.removeItem('accessToken');
             localStorage.removeItem('userProfile');
             localStorage.removeItem('userAvatar');
+            localStorage.clear();
 
             userProfile = decode(action.data.accessToken);
             userAvatar = userProfile.user.image_url;
@@ -106,8 +108,8 @@ export default function authReducer(state = initialState.authReducer, action) {
             localStorage.removeItem('accessToken');
             localStorage.removeItem('userProfile');
             localStorage.removeItem('userAvatar');
+            localStorage.clear();
 
-            console.log(action.data);
 
             userProfile = decode(action.data.accessToken);
 
