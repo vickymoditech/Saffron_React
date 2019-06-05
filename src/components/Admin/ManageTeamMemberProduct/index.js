@@ -201,6 +201,7 @@ class ManageTeamMemberProduct extends Component {
             };
             options.push(option);
         });
+        let {selectedTeamId} = this.state;
 
         return (
             <div className="bg-burrito-image autofill-background">
@@ -211,7 +212,7 @@ class ManageTeamMemberProduct extends Component {
                               options={options}
                               onChange={this.handleChangeStore}/>
 
-                    <DragDropContext onDragEnd={this.onDragEnd}>
+                    {selectedTeamId !== null && <DragDropContext onDragEnd={this.onDragEnd}>
                         <Droppable droppableId="droppable">
                             {(provided, snapshot) => (
                                 <div
@@ -288,6 +289,7 @@ class ManageTeamMemberProduct extends Component {
                             )}
                         </Droppable>
                     </DragDropContext>
+                    }
                 </div>}
                 {(this.props.Loading || this.props.teamListLoader || this.state.moveProductMove) && <Loader/>}
             </div>
