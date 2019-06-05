@@ -136,10 +136,10 @@ class Sidebar extends Component {
                                     <div style={{marginTop: 10}} className="link-hover">Manage TeamMember Products</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                <Link to="/Dashboard/ManageUser" className="link">
+                                <Link to="/Dashboard/ManageTimeSlot" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-calendar"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Manage Time Schedules</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Time Slots</div>
                                 </ListItem>
                             </Link> <Divider/>
                                 </span>}

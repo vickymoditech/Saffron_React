@@ -39,6 +39,7 @@ import ManageVideo from './components/Admin/ManageVideo';
 import ManageProduct from './components/Admin/ManageProduct';
 import ManageTeamMemberProduct from './components/Admin/ManageTeamMemberProduct';
 import ManageSliderImage from './components/Admin/ManageSliderImage';
+import ManageTimeSlot from './components/Admin/ManageTimeSlot';
 
 import Analytics from './components/Admin/Analytics';
 
@@ -173,6 +174,8 @@ ReactDOM.render(<Provider store={store}>
                        exact={true}/>
                 <Route path="/Dashboard/ManageProducts" component={ManageProduct} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageTeamMemberProduct" component={ManageTeamMemberProduct}
+                       onEnter={requireAuth} exact={true}/>
+                <Route path="/Dashboard/ManageTimeSlot" component={ManageTimeSlot}
                        onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/Analytics" component={Analytics} onEnter={requireAuth} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
