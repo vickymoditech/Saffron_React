@@ -1,5 +1,6 @@
 import axios from 'axios';
 import ENVIRONMENT_VARIABLES from '../environment.config';
+import {GetLocalUderData} from '../index';
 
 import {
     SOD_INPROGRESS,
@@ -19,11 +20,18 @@ export const OrdersList = () => {
         return (dispatch) => {
             dispatch({type: SOD_INPROGRESS});
             const token = "Bearer " + localStorage.getItem('accessToken');
+            const userProfile = GetLocalUderData().user;
+
+            let URL = ENVIRONMENT_VARIABLES.API_URL + "/Bookings";
+            debugger;
+            if (userProfile.role === "employee") {
+                URL = ENVIRONMENT_VARIABLES.API_URL + "/Bookings/TeamMemberOrder/" + userProfile.id;
+            }
 
             const api = {
                 method: 'GET',
                 headers: {'Authorization': token},
-                url: ENVIRONMENT_VARIABLES.API_URL + "/Bookings"
+                url: URL
             };
             axios(api).then((response) => {
                 if (response.status === 200) {
