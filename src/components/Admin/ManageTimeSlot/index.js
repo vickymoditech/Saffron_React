@@ -5,7 +5,9 @@ import {connect} from 'react-redux';
 import NotificationSystem from 'react-notification-system';
 import Loader from '../../Helper/Loader';
 import {confirmAlert} from 'react-confirm-alert';
+import * as timeSlotsAction from '../../../actions/timeSlotsAction';
 import './react-confirm-alert.css'
+import AddDialog from './addDialog';
 
 import './manage-time.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
@@ -16,6 +18,7 @@ class ManageTimeSlot extends Component {
         super(props);
         this.state = {
             notificationSystem: null,
+            isDialogOpen: false,
         };
     }
 
@@ -28,7 +31,12 @@ class ManageTimeSlot extends Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
+        if (!nextProps.Loading && nextProps.error_msg) {
+            this.addNotifications(nextProps.error_msg, "error");
+        } else if (!nextProps.Loading && nextProps.success_msg) {
+            this.addNotifications(nextProps.success_msg, "success");
+            this.setState({isDialogOpen: false});
+        }
     }
 
     componentDidMount() {
@@ -37,18 +45,44 @@ class ManageTimeSlot extends Component {
 
     componentWillMount() {
         //First Time check all the services are available.
+        this.props.actions.timeSlotsAction.TimeSlotList();
     }
 
+
     addNewService = () => {
-        alert("new service");
+        this.setState({isDialogOpen: true});
     };
 
-    render() {
+    newProductClose = () => {
+        this.setState({isDialogOpen: false});
+    };
 
+    removeTimeSlot = (timeSlotId) => {
+        confirmAlert({
+            key: timeSlotId,
+            message: 'Are you sure you want to Delete?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => {
+                        this.props.actions.timeSlotsAction.TimeSlotDelete(timeSlotId);
+                    }
+                },
+                {
+                    label: 'No'
+                }
+            ]
+        })
+    };
+
+
+    render() {
         return (
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
-
+                {this.state.isDialogOpen &&
+                <AddDialog handleClose={this.newProductClose} isOpen={this.state.isDialogOpen}
+                           notify={this.addNotifications}/>}
 
                 <div className="container tab-bg-container">
                     <h2> Manage TimeSlots </h2>
@@ -66,36 +100,46 @@ class ManageTimeSlot extends Component {
                                     <th style={{cursor: 'context-menu'}}>End Time</th>
                                     <th style={{cursor: 'context-menu'}}>Action</th>
                                 </tr>
+                                {this.props.TimeSlotList.map((value, index) => (
+                                    <tr key={index}>
+                                        <td>{value.start_time}</td>
+                                        <td>{value.end_time}</td>
+                                        <td style={{textAlign: "center"}}>
+                                            <button type="button" className="btn btn-danger" key={value.id}
+                                                    onClick={event => {
+                                                        this.removeTimeSlot(value.id)
+                                                    }}>Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))
+                                }
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+                {this.props.Loading && <Loader/>}
             </div>
         );
     }
 
 }
 
-// const mapStateToProps = (state) => {
-//     const {manageServiceReducer, manageTeamProductReducer} = state;
-//     return {
-//         Loading: manageServiceReducer.Loading,
-//         error_msg: manageServiceReducer.error_msg,
-//         serviceList: manageServiceReducer.serviceList,
-//         product_Loading: manageTeamProductReducer.Loading,
-//         product_error_msg: manageTeamProductReducer.error_msg,
-//         success_msg: manageTeamProductReducer.success_msg,
-//         teamProductList: manageTeamProductReducer.teamProductList,
-//         allProductList: manageTeamProductReducer.allProductList
-//     };
-// };
+const mapStateToProps = (state) => {
+    const {manageTimeSlotReducer} = state;
+    return {
+        Loading: manageTimeSlotReducer.Loading,
+        error_msg: manageTimeSlotReducer.error_msg,
+        TimeSlotList: manageTimeSlotReducer.TimeSlotList,
+        success_msg: manageTimeSlotReducer.success_msg,
+    };
+};
 
-// const mapDispatchToProps = dispatch => ({
-//     actions: {
-//         serviceAction: bindActionCreators(serviceAction, dispatch),
-//         teamProductManageAction: bindActionCreators(teamProductManageAction, dispatch),
-//     }
-// });
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        timeSlotsAction: bindActionCreators(timeSlotsAction, dispatch)
+    }
+});
 
-export default ManageTimeSlot;
+export default connect(mapStateToProps, mapDispatchToProps)(ManageTimeSlot);

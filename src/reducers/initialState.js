@@ -75,4 +75,11 @@ export default {
         allGalleryList: [],
         sliderList: []
     },
+    manageTimeSlotReducer: {
+        Loading: false,
+        TimeSlotList: [],
+        error_msg: null,
+        success_msg: null,
+    },
+
 }
