@@ -12,7 +12,8 @@ import {
     PASSWORD_CONNECTION_ERROR,
     REGISTRATION_INPROGRESS,
     REGISTRATION_NOT_SUCCESS,
-    REGISTRATION_SUCCESS
+    REGISTRATION_SUCCESS,
+    USERPROFILE_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 export const loginUser = (credentials) => {
@@ -202,5 +203,15 @@ export const updateUserProfile = (userProfile) => {
         }
     } catch (error) {
         alert("contact to your developer");
+    }
+};
+
+export const DefaultMessageClear = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: USERPROFILE_DEFAULT_CLEAR});
+        }
+    } catch (error) {
+        alert(error.message.toString());
     }
 };

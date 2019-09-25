@@ -44,13 +44,14 @@ class ManageGallery extends Component {
         }
         else if (!nextProps.Galley_Loading && nextProps.Gallery_Error_msg) {
             this.addNotifications(nextProps.Gallery_Error_msg, "error");
+            this.props.actions.galleryAction.DefaultMessageClear();
         }
         else if (!nextProps.Galley_Loading && nextProps.success_msg) {
             this.addNotifications(nextProps.success_msg, "success");
+            this.props.actions.galleryAction.DefaultMessageClear();
             this.setState({isDialogOpen: false});
             this.setState({isEditDialogOpen: false});
             this.setState({galleryList: nextProps.galleryList || []});
-
         } else {
             if (this.state.serviceNotFound && nextProps.serviceList.length > 0) {
                 this.setState({serviceNotFound: false}, () => {
@@ -73,7 +74,7 @@ class ManageGallery extends Component {
             });
         }
         else {
-            this.setState({selectedServiceId: this.props.serviceList[0].id},() => {
+            this.setState({selectedServiceId: this.props.serviceList[0].id}, () => {
                 let first_service_id = this.props.serviceList[0].id;
                 this.props.actions.galleryAction.GalleryList(first_service_id);
             });
@@ -147,58 +148,62 @@ class ManageGallery extends Component {
                             notify={this.addNotifications} gallery={selected_gallery} serviceList={options}
                             selectedServiceId={this.state.selectedServiceId}/>}
 
-                {options.length > 0 && <div className="container tab-bg-container">
+                <div className="container tab-bg-container">
                     <h2> Manage Gallery </h2>
-                    <button type="button" className="btn btn-primary"
-                            onClick={this.addNewService}>Add New Gallery
-                    </button>
+                    {options.length > 0 && <div>
+                        <button type="button" className="btn btn-primary"
+                                onClick={this.addNewService}>Add New Gallery
+                        </button>
 
-                    <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
-                              options={options}
-                              onChange={this.handleChangeStore}/>
-                    {galleryList.length > 0 && <div className="data-display col-sm-12">
-                        <div className="table-responsive overflow-scroll">
-                            <table width="100%" className="table">
-                                <tbody>
-                                <tr>
-                                    <th style={{cursor: 'context-menu'}}>Gallery Image</th>
-                                    <th style={{cursor: 'context-menu'}}>Title</th>
-                                    <th style={{cursor: 'context-menu'}}>Description</th>
-                                    <th style={{cursor: 'context-menu'}}>Sex</th>
-                                    <th style={{cursor: 'context-menu'}}>Action</th>
-                                </tr>
-                                {galleryList && galleryList.map((value, index) => (
-                                    <tr key={index}>
-                                        <td>{value.image_url !== undefined ? (
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
-                                                 height="150px"/>) : (
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                 width="150px"
-                                                 height="150px"/>)}</td>
-                                        <td>{value.title}</td>
-                                        <td>{value.description}</td>
-                                        <td>{value.sex}</td>
-                                        <td style={{textAlign: "center"}}>
-                                            <button type="button" className="btn btn-primary" key={index}
-                                                    onClick={event => {
-                                                        this.getSpecificService(value.id)
-                                                    }}>Edit
-                                            </button>
-                                            &nbsp;
-                                            <button type="button" className="btn btn-danger" key={value.id}
-                                                    onClick={event => {
-                                                        this.removeSpecificService(value.id)
-                                                    }}>Delete
-                                            </button>
-                                        </td>
+                        <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
+                                  options={options}
+                                  onChange={this.handleChangeStore}/>
+                        {galleryList.length > 0 && <div className="data-display col-sm-12">
+                            <div className="table-responsive overflow-scroll">
+                                <table width="100%" className="table">
+                                    <tbody>
+                                    <tr>
+                                        <th style={{cursor: 'context-menu'}}>Gallery Image</th>
+                                        <th style={{cursor: 'context-menu'}}>Title</th>
+                                        <th style={{cursor: 'context-menu'}}>Description</th>
+                                        <th style={{cursor: 'context-menu'}}>Sex</th>
+                                        <th style={{cursor: 'context-menu'}}>Action</th>
                                     </tr>
-                                ))
-                                }
-                                </tbody>
-                            </table>
-                        </div>
+                                    {galleryList && galleryList.map((value, index) => (
+                                        <tr key={index}>
+                                            <td>{value.image_url !== undefined ? (
+                                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}
+                                                     width="150px"
+                                                     height="150px"/>) : (
+                                                <img
+                                                    src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
+                                                    width="150px"
+                                                    height="150px"/>)}</td>
+                                            <td>{value.title}</td>
+                                            <td>{value.description}</td>
+                                            <td>{value.sex}</td>
+                                            <td style={{textAlign: "center"}}>
+                                                <button type="button" className="btn btn-primary" key={index}
+                                                        onClick={event => {
+                                                            this.getSpecificService(value.id)
+                                                        }}>Edit
+                                                </button>
+                                                &nbsp;
+                                                <button type="button" className="btn btn-danger" key={value.id}
+                                                        onClick={event => {
+                                                            this.removeSpecificService(value.id)
+                                                        }}>Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>}
                     </div>}
-                </div>}
+                </div>
                 {this.props.Loading || this.props.Galley_Loading && <Loader/>}
             </div>
         );

@@ -86,14 +86,15 @@ class Profile extends Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isPasswordChanged) {
+        if (nextProps.isPasswordChanged && nextProps.successMsg) {
             this.addNotifications(nextProps.successMsg, 'success');
+            this.props.actions.authAction.DefaultMessageClear();
             this.reagainFeelData();
-
-        } else if (!nextProps.changePasswordLoading && nextProps.isPasswordChanged === false && nextProps.errMsg) {
-            let message = nextProps.errMsg.toString().split(",");
+        } else if (!nextProps.changePasswordLoading && nextProps.isPasswordChanged === false && nextProps.error_msg) {
+            let message = nextProps.error_msg.toString().split(",");
             for (let i = 0; i < message.length; i++) {
                 this.addNotifications(message[i], 'error');
+                this.props.actions.authAction.DefaultMessageClear();
             }
         }
     };

@@ -38,8 +38,10 @@ class ManageService extends Component {
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
+            this.props.actions.serviceAction.DefaultMessageClear();
         } else if (!nextProps.Loading && nextProps.success_msg) {
             this.addNotifications(nextProps.success_msg, "success");
+            this.props.actions.serviceAction.DefaultMessageClear();
             this.setState({serviceList: nextProps.serviceList || []});
             this.setState({isDialogOpen: false});
             this.setState({isEditDialogOpen: false});

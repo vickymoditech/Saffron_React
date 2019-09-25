@@ -8,6 +8,7 @@ import {
     SERVICE_ADD_SUCCESS,
     SERVICE_EDIT_SUCCESS,
     SERVICE_CONNECTION_ERROR,
+    SERVICE_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 export const ServiceList = () => {
@@ -138,6 +139,16 @@ export const EditService = (Service) => {
                     dispatch({type: SERVICE_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
                 }
             });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
+export const DefaultMessageClear = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: SERVICE_DEFAULT_CLEAR});
         }
     } catch (error) {
         alert(error.message.toString());

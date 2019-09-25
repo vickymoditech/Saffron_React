@@ -8,6 +8,7 @@ import {
     TIMESLOT_ADD_SUCCESS,
     TIMESLOT_EDIT_SUCCESS,
     TIMESLOT_CONNECTION_ERROR,
+    TIMESLOT_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 export const TimeSlotList = () => {
@@ -130,6 +131,16 @@ export const TimeSlotEdit = (Service) => {
                     dispatch({type: TIMESLOT_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
                 }
             });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
+export const DefaultMessageClear = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: TIMESLOT_DEFAULT_CLEAR});
         }
     } catch (error) {
         alert(error.message.toString());

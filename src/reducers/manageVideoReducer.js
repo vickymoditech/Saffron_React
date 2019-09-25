@@ -6,6 +6,7 @@ import {
     VIDEO_ADD_SUCCESS,
     VIDEO_EDIT_SUCCESS,
     VIDEO_CONNECTION_ERROR,
+    VIDEO_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 
@@ -13,6 +14,9 @@ import initialState from './initialState';
 
 export default function manageVideoReducer(state = initialState.manageVideoReducer, action) {
     switch (action.type) {
+
+        case VIDEO_DEFAULT_CLEAR:
+            return Object.assign({}, state, {error_msg: null, success_msg: null});
 
         case VIDEO_INPROGRESS:
             return Object.assign({}, state, {Loading: true, error_msg: null, success_msg: null});

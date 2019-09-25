@@ -101,7 +101,7 @@ class AddDialog extends Component {
             hours.push(option);
         }
 
-        for (let i = 0; i <= 60; i++) {
+        for (let i = 0; i < 60; i++) {
             let text = "";
             if (i < 10)
                 text = "0";

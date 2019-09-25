@@ -8,6 +8,7 @@ import {
     GALLERY_ADD_SUCCESS,
     GALLERY_EDIT_SUCCESS,
     GALLERY_CONNECTION_ERROR,
+    GALLERY_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 export const GalleryList = (serviceId) => {
@@ -148,6 +149,16 @@ export const EditGallery = (Gallery) => {
                     dispatch({type: GALLERY_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
                 }
             });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
+export const DefaultMessageClear = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: GALLERY_DEFAULT_CLEAR});
         }
     } catch (error) {
         alert(error.message.toString());

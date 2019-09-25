@@ -43,16 +43,15 @@ class ManageProduct extends Component {
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
-        }
-        else if (!nextProps.product_Loading && nextProps.product_error_msg) {
+        } else if (!nextProps.product_Loading && nextProps.product_error_msg) {
             this.addNotifications(nextProps.product_error_msg, "error");
-        }
-        else if (!nextProps.product_Loading && nextProps.success_msg.toString().toLowerCase() !== 'successfully fetched') {
+            this.props.actions.teamProductManageAction.DefaultMessageClear();
+        } else if (!nextProps.product_Loading && nextProps.success_msg && nextProps.success_msg.toString().toLowerCase() !== 'successfully fetched') {
             this.addNotifications(nextProps.success_msg, "success");
+            this.props.actions.teamProductManageAction.DefaultMessageClear();
             this.setState({isDialogOpen: false});
             this.setState({isEditDialogOpen: false});
             this.setState({allProductList: nextProps.allProductList || []});
-
         } else {
             if (this.state.serviceNotFound && nextProps.serviceList.length > 0) {
                 this.setState({serviceNotFound: false, selectedServiceId: nextProps.serviceList[0].id});
@@ -168,71 +167,74 @@ class ManageProduct extends Component {
                             notify={this.addNotifications} product={selected_product} serviceList={options}
                             selectedServiceId={this.state.selectedServiceId}/>}
 
-                {options.length > 0 && <div className="container tab-bg-container">
+                <div className="container tab-bg-container">
                     <h2> Manage Products </h2>
+                    {options.length > 0 && <div>
+                        <Switch value={isOfferProduct}
+                                circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
+                                switchStyles={{width: 95}}
+                                onChange={(e) => {
+                                    this.onchangeBlock(!isOfferProduct);
+                                }}/>
 
-                    <Switch value={isOfferProduct}
-                            circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
-                            switchStyles={{width: 95}}
-                            onChange={(e) => {
-                                this.onchangeBlock(!isOfferProduct);
-                            }}/>
+                        <button type="button" className="btn btn-primary"
+                                onClick={this.addNewService}>Add new Product
+                        </button>
 
-                    <button type="button" className="btn btn-primary"
-                            onClick={this.addNewService}>Add new Product
-                    </button>
+                        <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
+                                  options={options}
+                                  onChange={this.handleChangeStore}/>
 
-                    <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
-                              options={options}
-                              onChange={this.handleChangeStore}/>
-
-                    {displayProduct.length > 0 && <div className="data-display col-sm-12">
-                        <div className="table-responsive overflow-scroll">
-                            <table width="100%" className="table">
-                                <tbody>
-                                <tr>
-                                    <th style={{cursor: 'context-menu'}}>Product Image</th>
-                                    <th style={{cursor: 'context-menu'}}>Title</th>
-                                    <th style={{cursor: 'context-menu'}}>Description</th>
-                                    <th style={{cursor: 'context-menu'}}>Price</th>
-                                    <th style={{cursor: 'context-menu'}}>Offer Price</th>
-                                    <th style={{cursor: 'context-menu'}}>Sex</th>
-                                    <th style={{cursor: 'context-menu'}}>Action</th>
-                                </tr>
-                                {displayProduct && displayProduct.map((value, index) => (
-                                    <tr key={index}>
-                                        <td>{value.image_url !== undefined ? (
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
-                                                 height="150px"/>) : (
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                 width="150px"
-                                                 height="150px"/>)}</td>
-                                        <td>{value.title}</td>
-                                        <td>{value.description}</td>
-                                        <td>{value.price}</td>
-                                        <td>{value.offerPrice}</td>
-                                        <td>{value.sex}</td>
-                                        <td style={{textAlign: "center"}}>
-                                            <button type="button" className="btn btn-primary" key={index}
-                                                    onClick={event => {
-                                                        this.getSpecificService(value.id)
-                                                    }}>Edit
-                                            </button>
-                                            &nbsp;
-                                            <button type="button" className="btn btn-danger" key={value.id}
-                                                    onClick={event => {
-                                                        this.removeSpecificProduct(value.id)
-                                                    }}>Delete
-                                            </button>
-                                        </td>
+                        {displayProduct.length > 0 && <div className="data-display col-sm-12">
+                            <div className="table-responsive overflow-scroll">
+                                <table width="100%" className="table">
+                                    <tbody>
+                                    <tr>
+                                        <th style={{cursor: 'context-menu'}}>Product Image</th>
+                                        <th style={{cursor: 'context-menu'}}>Title</th>
+                                        <th style={{cursor: 'context-menu'}}>Description</th>
+                                        <th style={{cursor: 'context-menu'}}>Price</th>
+                                        <th style={{cursor: 'context-menu'}}>Offer Price</th>
+                                        <th style={{cursor: 'context-menu'}}>Sex</th>
+                                        <th style={{cursor: 'context-menu'}}>Action</th>
                                     </tr>
-                                ))
-                                }
-                                </tbody>
-                            </table>
-                        </div>
+                                    {displayProduct && displayProduct.map((value, index) => (
+                                        <tr key={index}>
+                                            <td>{value.image_url !== undefined ? (
+                                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}
+                                                     width="150px"
+                                                     height="150px"/>) : (
+                                                <img
+                                                    src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
+                                                    width="150px"
+                                                    height="150px"/>)}</td>
+                                            <td>{value.title}</td>
+                                            <td>{value.description}</td>
+                                            <td>{value.price}</td>
+                                            <td>{value.offerPrice}</td>
+                                            <td>{value.sex}</td>
+                                            <td style={{textAlign: "center"}}>
+                                                <button type="button" className="btn btn-primary" key={index}
+                                                        onClick={event => {
+                                                            this.getSpecificService(value.id)
+                                                        }}>Edit
+                                                </button>
+                                                &nbsp;
+                                                <button type="button" className="btn btn-danger" key={value.id}
+                                                        onClick={event => {
+                                                            this.removeSpecificProduct(value.id)
+                                                        }}>Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>}
                     </div>}
-                </div>}
+                </div>
                 {(this.props.product_Loading || this.props.Loading) && <Loader/>}
             </div>
         );

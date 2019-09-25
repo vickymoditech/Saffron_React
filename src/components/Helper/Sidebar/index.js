@@ -102,7 +102,7 @@ class Sidebar extends Component {
                             </Link> <Divider/>
                                 <Link to="/Dashboard/ManageVideo" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <i className="fa fa-caret-square-o-right"/>
+                                    <i className="fa fa-film"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Videos</div>
                                 </ListItem>
                             </Link> <Divider/>
@@ -114,14 +114,14 @@ class Sidebar extends Component {
                             </Link> <Divider/>
                                 <Link to="/Dashboard/ManageUser" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <i className="fa fa-address-book"/>
+                                    <i className="fa fa-user"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Users</div>
                                 </ListItem>
                             </Link> <Divider/>
                                 <Link to="/Dashboard/ManageSliderImage" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <i className="fa fa-address-book"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Manage Slider</div>
+                                    <i className="fa fa-file-image-o"/>
+                                    <div style={{marginTop: 10}} className="link-hover">Manage Sliders</div>
                                 </ListItem>
                             </Link><Divider/>
                                 <Link to="/Dashboard/ManageProducts" className="link">
@@ -153,7 +153,7 @@ class Sidebar extends Component {
 
                             <Link to="/Dashboard/Profile" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <i className="fa fa-user"/>
+                                    <i className="fa fa-user-circle-o"/>
                                     <div style={{marginTop: 10}} className="link-hover">Setting</div>
                                 </ListItem>
                             </Link>

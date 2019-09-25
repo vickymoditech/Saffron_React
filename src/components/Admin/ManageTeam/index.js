@@ -40,8 +40,10 @@ class ManageTeam extends Component {
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
+            this.props.actions.teamAction.DefaultMessageClear();
         } else if (!nextProps.Loading && nextProps.success_msg) {
             this.addNotifications(nextProps.success_msg, "success");
+            this.props.actions.teamAction.DefaultMessageClear();
             this.setState({teamList: nextProps.teamList || []});
             this.setState({isDialogOpen: false});
             this.setState({isEditDialogOpen: false});

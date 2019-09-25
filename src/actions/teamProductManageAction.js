@@ -9,6 +9,7 @@ import {
     PRODUCT_DELETE_SUCCESS,
     PRODUCT_ADD_SUCCESS,
     PRODUCT_CONNECTION_ERROR,
+    PRODUCT_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 export const ProductList = () => {
@@ -201,4 +202,15 @@ export const TeamMemberProductAddRemove = (Product, action) => {
         alert(error.message.toString());
     }
 };
+
+export const DefaultMessageClear = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: PRODUCT_DEFAULT_CLEAR});
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
 

@@ -43,13 +43,14 @@ class ManageVideo extends Component {
         }
         else if (!nextProps.Video_Loading && nextProps.Video_Error_msg) {
             this.addNotifications(nextProps.Video_Error_msg, "error");
+            this.props.actions.videoAction.DefaultMessageClear();
         }
         else if (!nextProps.Video_Loading && nextProps.success_msg) {
             this.addNotifications(nextProps.success_msg, "success");
+            this.props.actions.videoAction.DefaultMessageClear();
             this.setState({isDialogOpen: false});
             this.setState({isEditDialogOpen: false});
             this.setState({videoList: nextProps.videoList || []});
-
         } else {
             if (this.state.serviceNotFound && nextProps.serviceList.length > 0) {
                 this.setState({serviceNotFound: false}, () => {
@@ -149,53 +150,55 @@ class ManageVideo extends Component {
                             notify={this.addNotifications} video={selected_video} serviceList={options}
                             selectedServiceId={this.state.selectedServiceId}/>}
 
-                {options.length > 0 && <div className="container tab-bg-container">
+                <div className="container tab-bg-container">
                     <h2> Manage Video </h2>
-                    <button type="button" className="btn btn-primary"
-                            onClick={this.addNewVideo}>Add New Video
-                    </button>
+                    {options.length > 0 && <div>
+                        <button type="button" className="btn btn-primary"
+                                onClick={this.addNewVideo}>Add New Video
+                        </button>
 
-                    <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
-                              options={options}
-                              onChange={this.handleChangeStore}/>
-                    {videoList.length > 0 && <div className="data-display col-sm-12">
-                        <div className="table-responsive overflow-scroll">
-                            <table width="100%" className="table">
-                                <tbody>
-                                <tr>
-                                    <th style={{cursor: 'context-menu'}}>Video URL</th>
-                                    <th style={{cursor: 'context-menu'}}>Title</th>
-                                    <th style={{cursor: 'context-menu'}}>Description</th>
-                                    <th style={{cursor: 'context-menu'}}>Sex</th>
-                                    <th style={{cursor: 'context-menu'}}>Action</th>
-                                </tr>
-                                {videoList && videoList.map((value, index) => (
-                                    <tr key={index}>
-                                        <td>{value.video_url}</td>
-                                        <td>{value.title}</td>
-                                        <td>{value.description}</td>
-                                        <td>{value.sex}</td>
-                                        <td style={{textAlign: "center"}}>
-                                            <button type="button" className="btn btn-primary" key={index}
-                                                    onClick={event => {
-                                                        this.getSpecificService(value.id)
-                                                    }}>Edit
-                                            </button>
-                                            &nbsp;
-                                            <button type="button" className="btn btn-danger" key={value.id}
-                                                    onClick={event => {
-                                                        this.removeSpecificService(value.id)
-                                                    }}>Delete
-                                            </button>
-                                        </td>
+                        <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
+                                  options={options}
+                                  onChange={this.handleChangeStore}/>
+                        {videoList.length > 0 && <div className="data-display col-sm-12">
+                            <div className="table-responsive overflow-scroll">
+                                <table width="100%" className="table">
+                                    <tbody>
+                                    <tr>
+                                        <th style={{cursor: 'context-menu'}}>Video URL</th>
+                                        <th style={{cursor: 'context-menu'}}>Title</th>
+                                        <th style={{cursor: 'context-menu'}}>Description</th>
+                                        <th style={{cursor: 'context-menu'}}>Sex</th>
+                                        <th style={{cursor: 'context-menu'}}>Action</th>
                                     </tr>
-                                ))
-                                }
-                                </tbody>
-                            </table>
-                        </div>
+                                    {videoList && videoList.map((value, index) => (
+                                        <tr key={index}>
+                                            <td>{value.video_url}</td>
+                                            <td>{value.title}</td>
+                                            <td>{value.description}</td>
+                                            <td>{value.sex}</td>
+                                            <td style={{textAlign: "center"}}>
+                                                <button type="button" className="btn btn-primary" key={index}
+                                                        onClick={event => {
+                                                            this.getSpecificService(value.id)
+                                                        }}>Edit
+                                                </button>
+                                                &nbsp;
+                                                <button type="button" className="btn btn-danger" key={value.id}
+                                                        onClick={event => {
+                                                            this.removeSpecificService(value.id)
+                                                        }}>Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>}
                     </div>}
-                </div>}
+                </div>
                 {this.props.Loading || this.props.Video_Loading && <Loader/>}
             </div>
         );

@@ -6,6 +6,7 @@ import {
     GALLERY_ADD_SUCCESS,
     GALLERY_EDIT_SUCCESS,
     GALLERY_CONNECTION_ERROR,
+    GALLERY_DEFAULT_CLEAR
 } from '../constants/actionTypes';
 
 
@@ -13,6 +14,9 @@ import initialState from './initialState';
 
 export default function manageGalleryReducer(state = initialState.manageGalleryReducer, action) {
     switch (action.type) {
+
+        case GALLERY_DEFAULT_CLEAR:
+            return Object.assign({}, state, {error_msg: null, success_msg: null});
 
         case GALLERY_INPROGRESS:
             return Object.assign({}, state, {Loading: true, error_msg: null, success_msg: null});

@@ -7,6 +7,7 @@ import {
     PRODUCT_ADD_SUCCESS,
     PRODUCT_DELETE_SUCCESS,
     PRODUCT_CONNECTION_ERROR,
+    PRODUCT_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 
@@ -14,6 +15,9 @@ import initialState from './initialState';
 
 export default function manageTeamProductReducer(state = initialState.manageTeamProductReducer, action) {
     switch (action.type) {
+
+        case PRODUCT_DEFAULT_CLEAR:
+            return Object.assign({}, state, {error_msg: null, success_msg: null});
 
         case PRODUCT_INPROGRESS:
             return Object.assign({}, state, {Loading: true, error_msg: null, success_msg: null});

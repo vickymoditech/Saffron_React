@@ -5,6 +5,7 @@ import {
     SLIDER_DELETE_SUCCESS,
     SLIDER_ADD_SUCCESS,
     SLIDER_CONNECTION_ERROR,
+    SLIDER_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 
@@ -12,6 +13,9 @@ import initialState from './initialState';
 
 export default function manageSliderReducer(state = initialState.manageSliderReducer, action) {
     switch (action.type) {
+
+        case SLIDER_DEFAULT_CLEAR:
+            return Object.assign({}, state, {error_msg: null, success_msg: null});
 
         case SLIDER_INPROGRESS:
             return Object.assign({}, state, {Loading: true, error_msg: null, success_msg: null});

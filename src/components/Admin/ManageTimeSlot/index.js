@@ -33,8 +33,10 @@ class ManageTimeSlot extends Component {
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
+            this.props.actions.timeSlotsAction.DefaultMessageClear();
         } else if (!nextProps.Loading && nextProps.success_msg) {
             this.addNotifications(nextProps.success_msg, "success");
+            this.props.actions.timeSlotsAction.DefaultMessageClear();
             this.setState({isDialogOpen: false});
         }
     }
@@ -86,12 +88,11 @@ class ManageTimeSlot extends Component {
 
                 <div className="container tab-bg-container">
                     <h2> Manage TimeSlots </h2>
-
                     <button type="button" className="btn btn-primary"
                             onClick={this.addNewService}>Add new TimeSlot
                     </button>
 
-                    <div className="data-display col-sm-12">
+                    {this.props.TimeSlotList.length > 0 && <div className="data-display col-sm-12">
                         <div className="table-responsive overflow-scroll">
                             <table width="100%" className="table">
                                 <tbody>
@@ -117,7 +118,7 @@ class ManageTimeSlot extends Component {
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div>}
                 </div>
                 {this.props.Loading && <Loader/>}
             </div>

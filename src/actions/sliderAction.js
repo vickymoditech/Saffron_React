@@ -7,6 +7,7 @@ import {
     SLIDER_DELETE_SUCCESS,
     SLIDER_ADD_SUCCESS,
     SLIDER_CONNECTION_ERROR,
+    SLIDER_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 export const SliderList = () => {
@@ -95,6 +96,16 @@ export const AddSlider = (Slider) => {
                     dispatch({type: SLIDER_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
                 }
             });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
+export const DefaultMessageClear = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: SLIDER_DEFAULT_CLEAR});
         }
     } catch (error) {
         alert(error.message.toString());

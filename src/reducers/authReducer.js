@@ -12,7 +12,8 @@ import {
     PASSWORD_CONNECTION_ERROR,
     REGISTRATION_SUCCESS,
     REGISTRATION_NOT_SUCCESS,
-    REGISTRATION_INPROGRESS
+    REGISTRATION_INPROGRESS,
+    USERPROFILE_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 import _ from 'lodash';
 
@@ -21,12 +22,17 @@ import ENVIRONMENT_VARIABLES from "../environment.config";
 
 export default function authReducer(state = initialState.authReducer, action) {
     switch (action.type) {
+
+        case USERPROFILE_DEFAULT_CLEAR:
+            return Object.assign({}, state, {error_msg: null, successMsg: null});
+
         case INVALID_USER:
             return Object.assign({}, state, {invalidUser: true, loading: false, error_msg: action.data.error_msg});
+
         case AUTHENTICATION_INPROGRESS:
             return Object.assign({}, state, {invalidUser: false, loading: true});
-        case IS_AUTHENTICATED:
 
+        case IS_AUTHENTICATED:
             let userProfile = decode(action.data.accessToken);
             let userAvatar = userProfile.user.image_url;
 
@@ -60,7 +66,7 @@ export default function authReducer(state = initialState.authReducer, action) {
         case PASSWORD_CHANGE_NOT_SUCCESS:
             return Object.assign({}, state, {
                 isPasswordChanged: false,
-                errMsg: action.data.user_msg,
+                error_msg: action.data.user_msg,
                 changePasswordLoading: false
             });
 
@@ -89,7 +95,7 @@ export default function authReducer(state = initialState.authReducer, action) {
         case PASSWORD_CONNECTION_ERROR:
             return Object.assign({}, state, {
                 isPasswordChanged: false,
-                errMsg: action.data.error_msg,
+                error_msg: action.data.error_msg,
                 changePasswordLoading: false
             });
 
@@ -113,9 +119,9 @@ export default function authReducer(state = initialState.authReducer, action) {
 
             userProfile = decode(action.data.accessToken);
 
-            if(userProfile.user.image_url !== "")
+            if (userProfile.user.image_url !== "")
                 userAvatar = userProfile.user.image_url;
-            else{
+            else {
                 userAvatar = "images/UserAvatar/demo.png";
                 userProfile.user.image_url = userAvatar;
             }

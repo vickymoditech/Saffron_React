@@ -37,8 +37,10 @@ class ManageSliderImage extends Component {
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
+            this.props.actions.sliderAction.DefaultMessageClear();
         } else if (!nextProps.Loading && nextProps.success_msg) {
             this.addNotifications(nextProps.success_msg, "success");
+            this.props.actions.sliderAction.DefaultMessageClear();
             this.setState({sliderList: nextProps.sliderList || []});
             this.setState({isDialogOpen: false});
             this.setState({isEditDialogOpen: false});

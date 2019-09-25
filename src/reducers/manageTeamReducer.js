@@ -6,6 +6,7 @@ import {
     TEAM_ADD_SUCCESS,
     TEAM_EDIT_SUCCESS,
     TEAM_CONNECTION_ERROR,
+    TEAM_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 
@@ -13,6 +14,9 @@ import initialState from './initialState';
 
 export default function manageTeamReducer(state = initialState.manageTeamReducer, action) {
     switch (action.type) {
+
+        case TEAM_DEFAULT_CLEAR:
+            return Object.assign({}, state, {error_msg: null, success_msg: null});
 
         case TEAM_INPROGRESS:
             return Object.assign({}, state, {Loading: true, error_msg: null, success_msg: null});

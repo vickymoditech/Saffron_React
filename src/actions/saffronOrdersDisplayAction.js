@@ -23,7 +23,7 @@ export const OrdersList = () => {
             const userProfile = GetLocalUderData().user;
 
             let URL = ENVIRONMENT_VARIABLES.API_URL + "/Bookings";
-            debugger;
+            //debugger;
             if (userProfile.role === "employee") {
                 URL = ENVIRONMENT_VARIABLES.API_URL + "/Bookings/TeamMemberOrder/" + userProfile.id;
             }

@@ -5,7 +5,8 @@ import {
     TIMESLOT_DELETE_SUCCESS,
     TIMESLOT_ADD_SUCCESS,
     TIMESLOT_EDIT_SUCCESS,
-    TIMESLOT_CONNECTION_ERROR
+    TIMESLOT_CONNECTION_ERROR,
+    TIMESLOT_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 
@@ -13,6 +14,9 @@ import initialState from './initialState';
 
 export default function manageServiceReducer(state = initialState.manageTimeSlotReducer, action) {
     switch (action.type) {
+
+        case TIMESLOT_DEFAULT_CLEAR:
+            return Object.assign({}, state, {error_msg: null, success_msg: null});
 
         case TIMESLOT_INPROGRESS:
             return Object.assign({}, state, {Loading: true, error_msg: null, success_msg: null});

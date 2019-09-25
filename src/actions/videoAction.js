@@ -8,6 +8,7 @@ import {
     VIDEO_ADD_SUCCESS,
     VIDEO_EDIT_SUCCESS,
     VIDEO_CONNECTION_ERROR,
+    VIDEO_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 export const VideoList = (serviceId) => {
@@ -153,3 +154,12 @@ export const EditVideo = (Video) => {
     }
 };
 
+export const DefaultMessageClear = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: VIDEO_DEFAULT_CLEAR});
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};

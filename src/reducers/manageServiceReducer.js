@@ -4,7 +4,8 @@ import {
     SERVICE_SUCCESS,
     SERVICE_DELETE_SUCCESS,
     SERVICE_EDIT_SUCCESS,
-    SERVICE_CONNECTION_ERROR, SERVICE_ADD_SUCCESS
+    SERVICE_CONNECTION_ERROR, SERVICE_ADD_SUCCESS,
+    SERVICE_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 
@@ -12,6 +13,9 @@ import initialState from './initialState';
 
 export default function manageServiceReducer(state = initialState.manageServiceReducer, action) {
     switch (action.type) {
+
+        case SERVICE_DEFAULT_CLEAR:
+            return Object.assign({}, state, {error_msg: null, success_msg: null});
 
         case SERVICE_INPROGRESS:
             return Object.assign({}, state, {Loading: true, error_msg: null, success_msg: null});

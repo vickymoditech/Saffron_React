@@ -8,6 +8,7 @@ import {
     TEAM_ADD_SUCCESS,
     TEAM_EDIT_SUCCESS,
     TEAM_CONNECTION_ERROR,
+    TEAM_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 
 export const TeamList = () => {
@@ -143,3 +144,14 @@ export const EditTeam = (Team) => {
         alert(error.message.toString());
     }
 };
+
+export const DefaultMessageClear = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: TEAM_DEFAULT_CLEAR});
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
