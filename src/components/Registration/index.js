@@ -57,7 +57,7 @@ class Registration extends Component {
                 check = false;
             }
             if (!/^\d{10}$/.test(this.state.credentials.mobile_number.trim())) {
-                let toastId = this.notify("Invalid Phone Number; must be ten digits");
+                let toastId = this.notify("Invalid Phone Number; must be 10 digits");
                 this.setState({toastId: toastId});
                 check = false;
             }

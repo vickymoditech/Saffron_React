@@ -54,7 +54,22 @@ class Profile extends Component {
     };
 
     handleEditConfirm = () => {
-        this.props.actions.authAction.updateUserProfile(this.state.userDetails);
+        let check = true;
+        if (!/^[a-zA-Z]+$/.test(this.state.userDetails.first_name.trim())) {
+            this.addNotifications("Invalid First Name; must be character", 'error');
+            check = false;
+        }
+        if (!/^[a-zA-Z]+$/.test(this.state.userDetails.last_name.trim())) {
+            this.addNotifications("Invalid Last Name; must be character", 'error');
+            check = false;
+        }
+        if (!/^\d{10}$/.test(this.state.userDetails.mobile_number.trim())) {
+            this.addNotifications("Invalid Phone Number; must be 10 digits", 'error');
+            check = false;
+        }
+        if(check){
+            this.props.actions.authAction.updateUserProfile(this.state.userDetails);
+        }
     };
 
 
@@ -90,7 +105,7 @@ class Profile extends Component {
             this.addNotifications(nextProps.successMsg, 'success');
             this.props.actions.authAction.DefaultMessageClear();
             this.reagainFeelData();
-        } else if (!nextProps.changePasswordLoading && nextProps.isPasswordChanged === false && nextProps.error_msg) {
+        } else if (!nextProps.changePasswordLoading && !nextProps.isPasswordChanged && nextProps.error_msg) {
             let message = nextProps.error_msg.toString().split(",");
             for (let i = 0; i < message.length; i++) {
                 this.addNotifications(message[i], 'error');
@@ -207,7 +222,7 @@ const mapStateToProps = (state) => {
         changePasswordLoading: authReducer.changePasswordLoading,
         isPasswordChanged: authReducer.isPasswordChanged,
         successMsg: authReducer.successMsg,
-        errMsg: authReducer.errMsg,
+        error_msg: authReducer.error_msg,
     };
 };
 
