@@ -102,7 +102,7 @@ class ManageUser extends Component {
                                 </tr>
                                 {userList && userList.map((value, index) => (
                                     <tr key={index}>
-                                        <td>{value.image_url !== undefined ? (
+                                        <td>{value.image_url !== undefined && value.image_url !== "" ? (
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
                                                  height="150px"/>) : (
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
