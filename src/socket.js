@@ -6,6 +6,7 @@ const socket = io(ENVIRONMENT_VARIABLES.SOCKET_URL);
 const userProfile = GetLocalUderData();
 let socketKey = "SOD";
 
+//Todo channel name will be changed here. for employee, get name from localStorage
 if (userProfile && userProfile.user.role === "employee") {
     socketKey = userProfile.id;
     debugger;

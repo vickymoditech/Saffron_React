@@ -3,17 +3,13 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {isLoggedIn} from './index';
-
+import {BrowserView, MobileView} from "react-device-detect";
 import $ from "jquery";
 import NotificationSystem from 'react-notification-system';
 import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
 import {browserHistory} from 'react-router';
-import io from 'socket.io-client';
-//import {subscribeToTimer} from './socket';
 import ENVIRONMENT_VARIABLES from "./environment.config";
-
-const socket = io(ENVIRONMENT_VARIABLES.SOCKET_URL);
 
 
 class App extends Component {
@@ -57,24 +53,14 @@ class App extends Component {
         if (isSafari) {
             $('body').addClass("iosSafari");
         }
-
         this.props.actions.websiteAction.getWebsiteHome();
-
-        // subscribeToTimer((err, data) => {
-        //     debugger;
-        //     console.log(data);
-        // });
-
-
     }
 
     handleLogout = () => {
-        socket.emit('test', "Data pass here");
         this.props.actions.websiteAction.loggedOut();
     };
 
     handleLogin = () => {
-        socket.emit('test', "Data pass here");
         browserHistory.push('/Login');
     };
 
@@ -82,36 +68,39 @@ class App extends Component {
         let userProfile = this.props.userAvatar;
         return (
             <div>
-                <NotificationSystem ref="notificationSystem"/>
-                <nav className="navbar navbar-light" style={{height:"61px",backgroundColor:"#263238"}}>
-                    <a className="navbar-brand" href="">
-                        <img src="assets/Images/DB_Logo.png" className="d-inline-block align-top" alt=""/>
-                    </a>
-                        <ul className="navbar-nav">
-                            <Link to="/" >
-                                Home
-                            </Link> |
-                            <Link to="/Gallery" >
-                                Gallery
-                            </Link> |
-                            <Link to="/VideoGallery" >
-                                VideoGallery
-                            </Link> |
-                            <Link to="/ProductList" >
-                                Stepper
-                            </Link> |
-                            {isLoggedIn() ?
-                                ( <span>
+                <BrowserView>
+                    <div>
+                        <NotificationSystem ref="notificationSystem"/>
+                        <nav className="navbar navbar-light" style={{height: "61px", backgroundColor: "#263238"}}>
+                            <a className="navbar-brand" href="">
+                                <img src="assets/Images/DB_Logo.png" className="d-inline-block align-top" alt=""/>
+                            </a>
+                            <ul className="navbar-nav">
+                                <Link to="/">
+                                    Home
+                                </Link> |
+                                <Link to="/Gallery">
+                                    Gallery
+                                </Link> |
+                                <Link to="/VideoGallery">
+                                    VideoGallery
+                                </Link> |
+                                <Link to="/ProductList">
+                                    Stepper
+                                </Link> |
+                                {isLoggedIn() ?
+                                    ( <span>
                                     <Link to="/Profile">
                                     Profile
                                     </Link> |
                                     <Link onClick={this.handleLogout} style={{cursor: "pointer"}}>
                                     Logout
                                     </Link>
-                                    <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile}  style={{borderRadius: "100%",height:45,width:45}} alt="Avatar"/>
+                                    <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile}
+                                         style={{borderRadius: "100%", height: 45, width: 45}} alt="Avatar"/>
                                 </span>  ) :
-                                (
-                                    <span>
+                                    (
+                                        <span>
                                         <Link onClick={this.handleLogin} style={{cursor: "pointer"}}>
                                             Login
                                         </Link> |
@@ -119,11 +108,16 @@ class App extends Component {
                                             Registration
                                         </Link>
                                     </span>
-                                )}
-                        </ul>
-                </nav>
-                {this.props.Loading && <Loader/>}
-                {this.props.children}
+                                    )}
+                            </ul>
+                        </nav>
+                        {this.props.Loading && <Loader/>}
+                        {this.props.children}
+                    </div>
+                </BrowserView>
+                <MobileView>
+                    <h1> Download Mobile Application </h1>
+                </MobileView>
             </div>
         );
     }
