@@ -69,10 +69,20 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
                 OrderSingle.bookingEndTime = new Date(BookingEndTime);
             });
 
+            action.data.recentComplete.forEach((OrderSingle) => {
+                let BookingDateTime = moment.tz(OrderSingle.bookingDateTime, 'Asia/Kolkata').format();
+                let BookingStartTime = moment.tz(OrderSingle.bookingStartTime, 'Asia/Kolkata').format();
+                let BookingEndTime = moment.tz(OrderSingle.bookingEndTime, 'Asia/Kolkata').format();
+                OrderSingle.bookingDateTime = new Date(BookingDateTime);
+                OrderSingle.bookingStartTime = new Date(BookingStartTime);
+                OrderSingle.bookingEndTime = new Date(BookingEndTime);
+            });
+
             return Object.assign({}, state, {
                 runningOrder: action.data.runningOrder,
                 runningLate: action.data.runningLate,
                 recentOrders: action.data.recentOrders,
+                recentComplete: action.data.recentComplete,
                 Loading: false,
                 error_msg: null
             });
@@ -160,16 +170,27 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             });
 
         case SOD_RECENT_MOVE_TO_FINISH:
+
             removeOrder = state.runningOrder.find(function (recentOrder) {
                 return recentOrder.id === action.order.id;
             });
+
+            removeOrder.status = action.order.status;
+            removeOrder.column = action.order.column;
+            removeOrder.statusDateTime = action.order.statusDateTime;
+
+            //Add into Running Order
+            let recentComplete = [...state.recentComplete, removeOrder];
+
+            //remove Recent Order
             index = state.runningOrder.indexOf(removeOrder);
             state.runningOrder.splice(index, 1);
+
             return Object.assign({}, state, {
                 runningOrder: state.runningOrder,
-                Loading: false,
-                error_msg: null,
+                recentComplete: recentComplete
             });
+
 
         default:
             return state;

@@ -151,7 +151,7 @@ class OrderDialog extends Component {
                                                                  onClick={this.handleMoveToProgress}>Move to
                                                             Progress
                                                         </button> :
-                                                        < button type="button" className="btn btn-save"
+                                                        !(this.state.column === "finish") && < button type="button" className="btn btn-save"
                                                                  style={{margin: '12px 10px 0 0'}}
                                                                  onClick={this.handleDone}>Finish
                                                         </button>}

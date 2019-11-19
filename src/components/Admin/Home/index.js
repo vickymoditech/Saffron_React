@@ -8,6 +8,8 @@ import './layout.css';
 import Running from '../Running';
 import Recent from '../Recent';
 import RunningLate from '../RunningLate';
+import RecentComplete from '../RecentComplete';
+
 import * as saffronOrdersDisplayAction from '../../../actions/saffronOrdersDisplayAction';
 
 class Home extends Component {
@@ -49,6 +51,7 @@ class Home extends Component {
                         <Recent orders={this.props.recentOrders}/>
                         <RunningLate orders={this.props.runningLate}/>
                     </div>
+                    <RecentComplete orders={this.props.recentComplete} isResetOpen={false}/>
                 </section>
                 {this.props.Loading && <Loader/>}
             </div>
@@ -70,7 +73,8 @@ const mapStateToProps = (state) => {
         error_msg: saffronOrdersDisplayReducer.error_msg,
         runningOrder: saffronOrdersDisplayReducer.runningOrder,
         runningLate: saffronOrdersDisplayReducer.runningLate,
-        recentOrders: saffronOrdersDisplayReducer.recentOrders
+        recentOrders: saffronOrdersDisplayReducer.recentOrders,
+        recentComplete: saffronOrdersDisplayReducer.recentComplete
     };
 };
 

@@ -64,7 +64,8 @@ export default {
         error_msg: null,
         runningOrder: [],
         runningLate: [],
-        recentOrders: []
+        recentOrders: [],
+        recentComplete: []
     },
     websiteReducer: {
         Loading: false,

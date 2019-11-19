@@ -26,7 +26,6 @@ class App extends Component {
         this.props.actions.saffronOrdersDisplayAction.OrdersList();
 
         newSODMessage((err, data) => {
-            console.log(data);
             if(data.message === "new order")
                 this.props.actions.saffronOrdersDisplayAction.NewOrder(data.data);
             else if(data.message === "running late")
