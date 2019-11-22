@@ -76,9 +76,11 @@ export const AddTeam = (Team) => {
             const token = "Bearer " + localStorage.getItem('accessToken');
 
             let bodyFormData = new FormData();
-            bodyFormData.set('name', Team.title);
+            bodyFormData.set('first_name', Team.first_name);
+            bodyFormData.set('last_name', Team.last_name);
             bodyFormData.set('description', Team.description);
             bodyFormData.set('displayOrder', Team.displayOrder);
+            bodyFormData.set('mobile_number', Team.mobile_number);
             bodyFormData.append('filetoupload', Team.filetoupload);
 
             let api = {
@@ -113,9 +115,10 @@ export const EditTeam = (Team) => {
             const token = "Bearer " + localStorage.getItem('accessToken');
 
             let bodyFormData = new FormData();
-            bodyFormData.set('name', Team.name);
-            bodyFormData.set('description', Team.description);
             bodyFormData.set('id', Team.id);
+            bodyFormData.set('first_name', Team.first_name);
+            bodyFormData.set('last_name', Team.last_name);
+            bodyFormData.set('description', Team.description);
 
             if (Team.filetoupload !== null || Team.filetoupload !== "")
                 bodyFormData.append('filetoupload', Team.filetoupload);

@@ -126,13 +126,13 @@ class ManageTeam extends Component {
                                 </tr>
                                 {teamList && teamList.map((value, index) => (
                                     <tr key={index}>
-                                        <td>{value.image_url !== undefined ? (
+                                        <td>{value.image_url !== "" && value.image_url !== undefined ? (
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
                                                  height="150px"/>) : (
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
                                                  width="150px"
                                                  height="150px"/>)}</td>
-                                        <td>{value.name}</td>
+                                        <td>{value.first_name + " " + value.last_name}</td>
                                         <td>{value.description}</td>
                                         <td style={{textAlign: "center"}}>
                                             <button type="button" className="btn btn-primary" key={index}

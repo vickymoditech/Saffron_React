@@ -37,12 +37,14 @@ class ProductDialog extends Component {
         this.state = {
             isOpen: props.isOpen,
             image_url: null,
-            title1: this.props.status.toLowerCase() === "service" ? "Service Title" : "Team Member Name",
             title2: this.props.status.toLowerCase() === "service" ? "Service Description" : "Team Member Detail",
             commonData: {
                 filetoupload: "",
                 title: "",
                 description: "",
+                first_name: "",
+                last_name: "",
+                mobile_number: "",
                 displayOrder: 1
             }
         };
@@ -62,14 +64,22 @@ class ProductDialog extends Component {
     };
 
     handleSave = () => {
-        if (this.state.commonData.filetoupload !== "" && this.state.commonData.filetoupload !== null && this.state.commonData.description !== "" && this.state.commonData.title !== "") {
-            if (this.props.status.toLowerCase() === "service") {
+
+
+        if (this.props.status.toLowerCase() === "service") {
+            if (this.state.commonData.filetoupload !== "" && this.state.commonData.filetoupload !== null && this.state.commonData.description !== "" && this.state.commonData.title !== "")
                 this.props.actions.serviceAction.AddService(this.state.commonData);
-            } else {
-                this.props.actions.teamAction.AddTeam(this.state.commonData);
-            }
+            else
+                this.props.notify("All the fields are required", 'error');
+
         } else {
-            this.props.notify("All the fields are required", 'error');
+            if (this.state.commonData.filetoupload !== "" && this.state.commonData.filetoupload !== null && this.state.commonData.description !== "" && this.state.commonData.first_name !== "" && this.state.commonData.last_name !== "" && this.state.commonData.mobile_number !== "")
+                if (/^\d{10}$/.test(this.state.commonData.mobile_number))
+                    this.props.actions.teamAction.AddTeam(this.state.commonData);
+                else
+                    this.props.notify("Invalid Mobile Number", 'error');
+            else
+                this.props.notify("All the fields are required", 'error');
         }
     };
 
@@ -104,13 +114,54 @@ class ProductDialog extends Component {
                                                                 <span className="input-group-addon">
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
-                                                                <input type="text" name="title"
-                                                                       placeholder={this.state.title1}
-                                                                       className="form-control"
-                                                                       onChange={this.handleChange}
-                                                                       value={this.state.commonData.title}/>
+                                                                {this.props.status.toLowerCase() === "service" ?
+                                                                    <input type="text" name="title"
+                                                                           placeholder="Service Name"
+                                                                           className="form-control"
+                                                                           onChange={this.handleChange}
+                                                                           value={this.state.commonData.title}/>
+                                                                    :
+                                                                    <input type="text" name="first_name"
+                                                                           placeholder="TeamMember First Name"
+                                                                           className="form-control"
+                                                                           onChange={this.handleChange}
+                                                                           value={this.state.commonData.first_name}/>
+                                                                }
                                                             </div>
                                                         </div>
+
+                                                        {this.props.status.toLowerCase() !== "service" &&
+                                                        < div className="form-group">
+                                                            <div className="input-group">
+                                                            <span className="input-group-addon">
+                                                            <i className="fa fa-pencil"/>
+                                                            </span>
+                                                                <input type="text" name="last_name"
+                                                                       placeholder="TeamMember Last Name"
+                                                                       className="form-control"
+                                                                       onChange={this.handleChange}
+                                                                       value={this.state.commonData.last_name}/>
+
+                                                            </div>
+                                                        </div>
+                                                        }
+
+                                                        {this.props.status.toLowerCase() !== "service" &&
+                                                        < div className="form-group">
+                                                            <div className="input-group">
+                                                            <span className="input-group-addon">
+                                                            <i className="fa fa-pencil"/>
+                                                            </span>
+                                                                <input type="text" name="mobile_number"
+                                                                       placeholder="TeamMember Mobile Number"
+                                                                       className="form-control"
+                                                                       onChange={this.handleChange}
+                                                                       value={this.state.commonData.mobile_number}/>
+                                                            </div>
+                                                        </div>
+                                                        }
+
+
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">

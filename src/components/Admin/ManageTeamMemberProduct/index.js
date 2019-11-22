@@ -16,7 +16,6 @@ const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
-
     return result;
 };
 
@@ -196,7 +195,7 @@ class ManageTeamMemberProduct extends Component {
         let options = [];
         this.props.teamList.map((team, index) => {
             let option = {
-                text: team.name,
+                text: team.first_name + " " + team.last_name,
                 value: team.id
             };
             options.push(option);

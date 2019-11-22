@@ -23,7 +23,6 @@ export default function manageTeamReducer(state = initialState.manageTeamReducer
 
         case TEAM_CONNECTION_ERROR:
             return Object.assign({}, state, {
-                teamList: [],
                 Loading: false,
                 error_msg: action.data.error_msg,
                 success_msg: null
@@ -31,7 +30,6 @@ export default function manageTeamReducer(state = initialState.manageTeamReducer
 
         case TEAM_NOT_SUCCESS:
             return Object.assign({}, state, {
-                teamList: [],
                 error_msg: action.data.error_msg,
                 Loading: false,
                 success_msg: null
@@ -61,13 +59,21 @@ export default function manageTeamReducer(state = initialState.manageTeamReducer
             });
 
         case TEAM_ADD_SUCCESS:
+
             let team = {
                 id: action.data.data.id,
+                first_name : action.data.data.first_name,
+                last_name : action.data.data.last_name,
                 image_url: action.data.data.image_url,
-                name: action.data.data.name,
+                contact_no: action.data.data.contact_no,
+                role: action.data.data.role,
+                userId: action.data.data.userId,
                 description: action.data.data.description,
+                block: action.data.data.block
             };
+
             let teamList = [...state.teamList, team];
+
             return Object.assign({}, state, {
                 teamList: teamList,
                 Loading: false,

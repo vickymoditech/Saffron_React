@@ -38,8 +38,9 @@ class EditDialog extends Component {
             image_url: ENVIRONMENT_VARIABLES.PHOTO_URL + this.props.team.image_url,
             commonData: {
                 filetoupload: "",
-                name: this.props.team.name,
                 id: this.props.team.id,
+                first_name: this.props.team.first_name,
+                last_name: this.props.team.last_name,
                 description: this.props.team.description,
                 displayOrder: 1
             }
@@ -99,11 +100,23 @@ class EditDialog extends Component {
                                                                 <span className="input-group-addon">
                                                                     <i className="fa fa-lock"/>
                                                                 </span>
-                                                                <input type="text" name="name"
-                                                                       placeholder="Team member Name"
+                                                                <input type="text" name="first_name"
+                                                                       placeholder="Team member First Name"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
-                                                                       value={this.state.commonData.name}/>
+                                                                       value={this.state.commonData.first_name}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <div className="input-group">
+                                                                <span className="input-group-addon">
+                                                                    <i className="fa fa-lock"/>
+                                                                </span>
+                                                                <input type="text" name="last_name"
+                                                                       placeholder="Team member Last Name"
+                                                                       className="form-control"
+                                                                       onChange={this.handleChange}
+                                                                       value={this.state.commonData.last_name}/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
@@ -118,7 +131,6 @@ class EditDialog extends Component {
                                                                        value={this.state.commonData.description}/>
                                                             </div>
                                                         </div>
-
                                                         {this.state.image_url !== undefined ? (
                                                             <img
                                                                 src={this.state.image_url}
