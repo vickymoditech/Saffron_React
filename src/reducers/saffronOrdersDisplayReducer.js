@@ -24,18 +24,12 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
 
         case SOD_CONNECTION_ERROR:
             return Object.assign({}, state, {
-                runningOrder: [],
-                runningLate: [],
-                recentOrders: [],
                 Loading: false,
                 error_msg: action.data.error_msg
             });
 
         case SOD_NOT_SUCCESS:
             return Object.assign({}, state, {
-                runningOrder: [],
-                runningLate: [],
-                recentOrders: [],
                 error_msg: action.data.error_msg,
                 Loading: false
             });

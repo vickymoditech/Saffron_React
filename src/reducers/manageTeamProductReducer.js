@@ -24,7 +24,6 @@ export default function manageTeamProductReducer(state = initialState.manageTeam
 
         case PRODUCT_CONNECTION_ERROR:
             return Object.assign({}, state, {
-                serviceList: [],
                 Loading: false,
                 error_msg: action.data.error_msg,
                 success_msg: null

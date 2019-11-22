@@ -166,7 +166,6 @@ ReactDOM.render(<Provider store={store}>
                 <IndexRoute component={AdminHome} onEnter={requireAuth}/>
                 <Route path="/Dashboard/ManageUser" component={ManageUser} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/Profile" component={Profile} onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/AddNewUser" component={Registration} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageService" component={ManageService} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageTeam" component={ManageTeam} onEnter={requireAuth} exact={true}/>
                 <Route path="/Dashboard/ManageGallery" component={ManageGallery} onEnter={requireAuth} exact={true}/>

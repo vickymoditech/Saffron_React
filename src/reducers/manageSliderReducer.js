@@ -22,7 +22,6 @@ export default function manageSliderReducer(state = initialState.manageSliderRed
 
         case SLIDER_CONNECTION_ERROR:
             return Object.assign({}, state, {
-                sliderList: [],
                 Loading: false,
                 error_msg: action.data.error_msg,
                 success_msg: null

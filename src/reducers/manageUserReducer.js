@@ -17,11 +17,13 @@ export default function manageUserReducer(state = initialState.manageUserReducer
             return Object.assign({}, state, {Loading: true});
 
         case USER_CONNECTION_ERROR:
-            return Object.assign({}, state, {userList: [], Loading: false, error_msg: action.data.error_msg});
+            return Object.assign({}, state, {
+                Loading: false,
+                error_msg: action.data.error_msg
+            });
 
         case USER_CHANGE_NOT_SUCCESS:
             return Object.assign({}, state, {
-                userList: [],
                 error_msg: action.data.error_msg,
                 Loading: false
             });

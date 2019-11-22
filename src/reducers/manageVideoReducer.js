@@ -23,7 +23,6 @@ export default function manageVideoReducer(state = initialState.manageVideoReduc
 
         case VIDEO_CONNECTION_ERROR:
             return Object.assign({}, state, {
-                videoList: [],
                 Loading: false,
                 error_msg: action.data.error_msg,
                 success_msg: null

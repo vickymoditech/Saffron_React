@@ -23,7 +23,6 @@ export default function manageGalleryReducer(state = initialState.manageGalleryR
 
         case GALLERY_CONNECTION_ERROR:
             return Object.assign({}, state, {
-                galleryList: [],
                 Loading: false,
                 error_msg: action.data.error_msg,
                 success_msg: null

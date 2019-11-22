@@ -150,15 +150,6 @@ class Sidebar extends Component {
                                 </ListItem>
                             </Link>
                             <Divider/>
-
-                            <Link to="/Dashboard/AddNewUser" className="link">
-                                <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <i className="fa fa-user-plus"/>
-                                    <div style={{marginTop: 10}} className="link-hover">Add New Employee</div>
-                                </ListItem>
-                            </Link>
-                            <Divider/>
-
                             <Link to="/Dashboard/Profile" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-user-circle-o"/>

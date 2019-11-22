@@ -23,7 +23,6 @@ export default function manageServiceReducer(state = initialState.manageTimeSlot
 
         case TIMESLOT_CONNECTION_ERROR:
             return Object.assign({}, state, {
-                TimeSlotList: [],
                 Loading: false,
                 error_msg: action.data.error_msg,
                 success_msg: null
