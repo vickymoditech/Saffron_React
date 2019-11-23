@@ -3,8 +3,7 @@ import {Dialog} from 'material-ui';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as saffronOrderDisplayAction from '../../../actions/saffronOrdersDisplayAction';
-
-//import Loader from "../Loader/index";
+import {GetLocalUderData} from '../../../index';
 
 const style = {
     titleStyle: {
@@ -37,17 +36,20 @@ class OrderDialog extends Component {
         this.state = {
             isOpen: props.isOpen,
             column: props.column,
-            order: props.order
+            order: props.order,
+            role : GetLocalUderData().user.role,
+            teamMemberId: GetLocalUderData().user.id,
+            itemsList: GetLocalUderData().user.role.toLowerCase() !== "admin" ? props.order.teamWiseProductList.find((data) => data.id === GetLocalUderData().user.id) : []
         };
     }
 
     handleMoveToProgress = () => {
-        this.props.actions.saffronOrderDisplayAction.orderStatusUpdateRequest(this.state.order.id, this.state.column);
+        this.props.actions.saffronOrderDisplayAction.orderStatusUpdateRequest(this.state.order.id, this.state.teamMemberId, this.state.column);
         this.props.handleClose();
     };
 
     handleDone = () => {
-        this.props.actions.saffronOrderDisplayAction.orderStatusUpdateRequest(this.state.order.id, 'finish');
+        this.props.actions.saffronOrderDisplayAction.orderStatusUpdateRequest(this.state.order.id, this.state.teamMemberId, 'finish');
         this.props.handleClose();
     };
 
@@ -74,69 +76,128 @@ class OrderDialog extends Component {
                                             <div className="col-md-offset-1 col-md-10">
                                                 <div className="form-group text-center row">
                                                     <div className="col-xs-12 text-center">
-                                                        <div class="container">
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading">
-                                                                            <h3 class="panel-title"><strong>Order
+                                                        <div className="container">
+                                                            <div className="row">
+                                                                <div className="col-md-4">
+                                                                    <div className="panel panel-default">
+                                                                        <div className="panel-heading">
+                                                                            <h3 className="panel-title"><strong>Order
                                                                                 summary</strong></h3>
                                                                         </div>
-                                                                        <div class="panel-body">
-                                                                            <div class="table-responsive">
-                                                                                <table class="table table-condensed">
-                                                                                    <thead>
-                                                                                    <tr>
-                                                                                        <td><strong>Item</strong></td>
-                                                                                        <td class="text-center">
-                                                                                            <strong>Price</strong></td>
-                                                                                        <td class="text-center">
-                                                                                            <strong>Team Member</strong>
-                                                                                        </td>
-                                                                                        <td class="text-right">
-                                                                                            <strong>Totals</strong></td>
-                                                                                    </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
+                                                                        <div className="panel-body">
+                                                                            <div className="table-responsive">
+                                                                                {this.state.role.toLowerCase() === "admin" ?
+                                                                                    <table
+                                                                                        className="table table-condensed">
+                                                                                        <thead>
+                                                                                        <tr>
+                                                                                            <td><strong>Item</strong>
+                                                                                            </td>
+                                                                                            <td className="text-center">
+                                                                                                <strong>Price</strong>
+                                                                                            </td>
+                                                                                            <td className="text-center">
+                                                                                                <strong>Team
+                                                                                                    Member</strong>
+                                                                                            </td>
+                                                                                            <td className="text-right">
+                                                                                                <strong>Totals</strong>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
 
-                                                                                    {this.state.order.basket.map((singleProduct) => (
+                                                                                        {this.state.order.basket.map((singleProduct) => (
+                                                                                            <tr key={singleProduct.productItem.id}>
+                                                                                                <td> {singleProduct.productItem.title} </td>
+                                                                                                <td className="text-center">₹ {singleProduct.productItem.price}</td>
+                                                                                                <td className="text-center">{singleProduct.productTeam.first_name + " " + singleProduct.productTeam.last_name}</td>
+                                                                                                <td className="text-right">₹ {singleProduct.productItem.price}</td>
+                                                                                            </tr>
+
+                                                                                        ))}
 
                                                                                         <tr>
-                                                                                            <td> {singleProduct.productItem.title} </td>
-                                                                                            <td class="text-center">₹ {singleProduct.productItem.price}</td>
-                                                                                            <td class="text-center">{singleProduct.productTeam.name}</td>
-                                                                                            <td class="text-right">₹ {singleProduct.productItem.price}</td>
+                                                                                            <td className="thick-line"></td>
+                                                                                            <td className="thick-line"></td>
+                                                                                            <td className="thick-line text-center">
+                                                                                                <strong>Subtotal</strong>
+                                                                                            </td>
+                                                                                            <td className="thick-line text-right">₹ {this.state.order.total} </td>
                                                                                         </tr>
-
-                                                                                    ))}
-
-                                                                                    <tr>
-                                                                                        <td class="thick-line"></td>
-                                                                                        <td class="thick-line"></td>
-                                                                                        <td class="thick-line text-center">
-                                                                                            <strong>Subtotal</strong>
-                                                                                        </td>
-                                                                                        <td class="thick-line text-right">₹ {this.state.order.total} </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td class="no-line"></td>
-                                                                                        <td class="no-line"></td>
-                                                                                        <td class="no-line text-center">
-                                                                                            <strong>Discount</strong>
-                                                                                        </td>
-                                                                                        <td class="no-line text-right">₹
-                                                                                            0
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td class="no-line"></td>
-                                                                                        <td class="no-line"></td>
-                                                                                        <td class="no-line text-center">
-                                                                                            <strong>Total</strong></td>
-                                                                                        <td class="no-line text-right">₹ {this.state.order.total}</td>
-                                                                                    </tr>
-                                                                                    </tbody>
-                                                                                </table>
+                                                                                        <tr>
+                                                                                            <td className="no-line"></td>
+                                                                                            <td className="no-line"></td>
+                                                                                            <td className="no-line text-center">
+                                                                                                <strong>Discount</strong>
+                                                                                            </td>
+                                                                                            <td className="no-line text-right">₹
+                                                                                                0
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td className="no-line"></td>
+                                                                                            <td className="no-line"></td>
+                                                                                            <td className="no-line text-center">
+                                                                                                <strong>Total</strong>
+                                                                                            </td>
+                                                                                            <td className="no-line text-right">₹ {this.state.order.total}</td>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                    </table> :
+                                                                                    <table
+                                                                                        className="table table-condensed">
+                                                                                        <thead>
+                                                                                        <tr>
+                                                                                            <td><strong>Item</strong>
+                                                                                            </td>
+                                                                                            <td className="text-center">
+                                                                                                <strong>Price</strong>
+                                                                                            </td>
+                                                                                            <td className="text-right">
+                                                                                                <strong>Totals</strong>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                        {this.state.itemsList.productList.map((singleProduct) => (
+                                                                                            <tr key={singleProduct.id}>
+                                                                                                <td> {singleProduct.title} </td>
+                                                                                                <td className="text-center">₹ {singleProduct.price}</td>
+                                                                                                <td className="text-right">₹ {singleProduct.price}</td>
+                                                                                            </tr>
+                                                                                        ))}
+                                                                                        <tr>
+                                                                                            <td className="thick-line"></td>
+                                                                                            <td className="thick-line"></td>
+                                                                                            <td className="thick-line"></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td className="thick-line"></td>
+                                                                                            <td className="thick-line text-center">
+                                                                                                <strong>Subtotal</strong>
+                                                                                            </td>
+                                                                                            <td className="thick-line text-right">₹ {this.state.order.total} </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td className="no-line"></td>
+                                                                                            <td className="no-line text-center">
+                                                                                                <strong>Discount</strong>
+                                                                                            </td>
+                                                                                            <td className="no-line text-right">₹
+                                                                                                0
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td className="no-line"></td>
+                                                                                            <td className="no-line text-center">
+                                                                                                <strong>Total</strong>
+                                                                                            </td>
+                                                                                            <td className="no-line text-right">₹ {this.state.order.total}</td>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                }
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -145,16 +206,16 @@ class OrderDialog extends Component {
                                                         </div>
 
                                                     </div>
-                                                    {this.state.column && (this.state.column === "running late" || this.state.column === "recent orders") ?
+                                                    {this.state.role.toLowerCase() !== "admin" && (this.state.column && (this.state.column === "running late" || this.state.column === "recent orders") ?
                                                         < button type="button" className="btn btn-save"
                                                                  style={{margin: '12px 10px 0 0'}}
                                                                  onClick={this.handleMoveToProgress}>Move to
                                                             Progress
                                                         </button> :
                                                         !(this.state.column === "finish") && < button type="button" className="btn btn-save"
-                                                                 style={{margin: '12px 10px 0 0'}}
-                                                                 onClick={this.handleDone}>Finish
-                                                        </button>}
+                                                                                                      style={{margin: '12px 10px 0 0'}}
+                                                                                                      onClick={this.handleDone}>Finish
+                                                        </button>)}
                                                     <button type="button" className="btn btn-save"
                                                             style={{margin: '12px 10px 0 0'}}
                                                             onClick={this.props.handleClose}>Close

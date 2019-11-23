@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import moment from 'moment';
 import OrderDialog from '../OrderDailog';
 import ENVIRONMENT_VARIABLES from '../../../environment.config';
+import {GetLocalUderData} from "../../../index";
 
 export default class Order extends Component {
     constructor(props) {
@@ -17,7 +18,7 @@ export default class Order extends Component {
     };
 
     componentDidMount() {
-        if (this.props.order.column !== "running late") {
+        if (this.props.order.column !== "running" && this.props.order.column !== "running late") {
             let audio = this.refs.audio;
             audio && audio.play();
         }
@@ -60,7 +61,18 @@ export default class Order extends Component {
 
 
     render() {
-        const {column, status} = this.props.order;
+        let column = null;
+        let status = null;
+        let userId = GetLocalUderData().user.id;
+        if (GetLocalUderData().user.role.toLowerCase() === "admin") {
+            column = this.props.order.column;
+            status = this.props.order.status;
+        } else {
+            let teamWiseStatus = this.props.order.teamWiseProductList.find((data) => data.id === userId);
+            column = teamWiseStatus.column;
+            status = teamWiseStatus.orderStatus;
+        }
+
         const time = this.state.Time;
         const orderTime = (moment(this.props.order.bookingStartTime).utcOffset('IST').format("DD-MM-YYYY HH:mm:ss")).toString().split(" ");
         const HHMM = orderTime[1].toString().split(":");
@@ -90,7 +102,7 @@ export default class Order extends Component {
                 <OrderDialog handleClose={this.orderDialogClose} isOpen={this.state.isDialogOpen} column={column}
                              order={this.props.order}/>}
                 <div className={classes.join(' ')}>
-                    {column !== "running" &&
+                    {column !== "running" && column !== "running late" &&
                     <audio ref="audio">
                         <source src="/assets/store_door.mp3" type="audio/mpeg"/>
                     </audio>}
@@ -118,9 +130,9 @@ export default class Order extends Component {
                                 backgroundSize: "none"
                             }}>Show
                             </button>
-                            {/*<p className="color">*/}
-                            {/*#{customerName}*/}
-                            {/*</p>*/}
+                            <p className="color">
+                            {customerName}
+                            </p>
                         </div>
                         <div className="image">
                             {productImg &&

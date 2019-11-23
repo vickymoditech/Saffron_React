@@ -13,6 +13,7 @@ import {
 
 
 import initialState from './initialState';
+import {GetLocalUderData} from "../index";
 
 let moment = require('moment-timezone');
 
@@ -87,9 +88,17 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
                 return runningLateOrder.id === action.order.id;
             });
 
-            removeOrder.status = action.order.status;
-            removeOrder.column = action.order.column;
-            removeOrder.statusDateTime = action.order.statusDateTime;
+            let userId = GetLocalUderData().user.id;
+            if(GetLocalUderData().user.role.toLowerCase() === "admin"){
+                removeOrder.status = action.order.status;
+                removeOrder.column = action.order.column;
+                removeOrder.statusDateTime = action.order.statusDateTime;
+            }else{
+                let TeamWiseOrderStatusManage = removeOrder.teamWiseProductList.find((data) => data.id === userId);
+                TeamWiseOrderStatusManage.orderStatus = action.order.status;
+                TeamWiseOrderStatusManage.column = action.order.column;
+                TeamWiseOrderStatusManage.statusDateTime = action.order.statusDateTime;
+            }
 
             //Add into Running Order
             let runningOrders = [...state.runningOrder, removeOrder];
@@ -109,9 +118,17 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
                 return recentOrder.id === action.order.id;
             });
 
-            removeOrder.status = action.order.status;
-            removeOrder.column = action.order.column;
-            removeOrder.statusDateTime = action.order.statusDateTime;
+            userId = GetLocalUderData().user.id;
+            if(GetLocalUderData().user.role.toLowerCase() === "admin"){
+                removeOrder.status = action.order.status;
+                removeOrder.column = action.order.column;
+                removeOrder.statusDateTime = action.order.statusDateTime;
+            }else{
+                let TeamWiseOrderStatusManage = removeOrder.teamWiseProductList.find((data) => data.id === userId);
+                TeamWiseOrderStatusManage.orderStatus = action.order.status;
+                TeamWiseOrderStatusManage.column = action.order.column;
+                TeamWiseOrderStatusManage.statusDateTime = action.order.statusDateTime;
+            }
 
             //Add into Running Order
             runningOrders = [...state.runningOrder, removeOrder];
@@ -142,8 +159,24 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
 
         case SOD_MOVE_TO_RUNNING_LATE:
 
-            let runningLateOrders = [...state.runningLate, action.order];
-            console.log('action', action.order);
+            removeOrder = state.recentOrders.find(function (recentOrder) {
+                return recentOrder.id === action.order.id;
+            });
+
+            userId = GetLocalUderData().user.id;
+            if(GetLocalUderData().user.role.toLowerCase() === "admin"){
+                removeOrder.status = action.order.status;
+                removeOrder.column = action.order.column;
+                removeOrder.statusDateTime = action.order.statusDateTime;
+            }else{
+                let TeamWiseOrderStatusManage = removeOrder.teamWiseProductList.find((data) => data.id === userId);
+                TeamWiseOrderStatusManage.orderStatus = action.order.status;
+                TeamWiseOrderStatusManage.column = action.order.column;
+                TeamWiseOrderStatusManage.statusDateTime = action.order.statusDateTime;
+            }
+
+            let runningLateOrders = [...state.runningLate, removeOrder];
+            console.log('action', runningLateOrders);
 
             //remove Recent Order
             removeOrder = state.recentOrders.find(function (recentOrder) {
@@ -169,9 +202,17 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
                 return recentOrder.id === action.order.id;
             });
 
-            removeOrder.status = action.order.status;
-            removeOrder.column = action.order.column;
-            removeOrder.statusDateTime = action.order.statusDateTime;
+            userId = GetLocalUderData().user.id;
+            if(GetLocalUderData().user.role.toLowerCase() === "admin"){
+                removeOrder.status = action.order.status;
+                removeOrder.column = action.order.column;
+                removeOrder.statusDateTime = action.order.statusDateTime;
+            }else{
+                let TeamWiseOrderStatusManage = removeOrder.teamWiseProductList.find((data) => data.id === userId);
+                TeamWiseOrderStatusManage.orderStatus = action.order.status;
+                TeamWiseOrderStatusManage.column = action.order.column;
+                TeamWiseOrderStatusManage.statusDateTime = action.order.statusDateTime;
+            }
 
             //Add into Running Order
             let recentComplete = [...state.recentComplete, removeOrder];

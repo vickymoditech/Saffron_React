@@ -84,7 +84,7 @@ export const MoveToFinish = (order) => {
 };
 
 
-export const orderStatusUpdateRequest = (id, orderType) => {
+export const orderStatusUpdateRequest = (id, teamMemberId, orderType) => {
     try {
         return (dispatch) => {
             dispatch({type: SOD_INPROGRESS});
@@ -97,7 +97,7 @@ export const orderStatusUpdateRequest = (id, orderType) => {
             const api = {
                 method: 'PUT',
                 headers: {'Authorization': token},
-                url: ENVIRONMENT_VARIABLES.API_URL + "/Bookings/" + id,
+                url: ENVIRONMENT_VARIABLES.API_URL + "/Bookings/" + id + "/teamMember/" + teamMemberId,
                 data: bodyFormData,
             };
             axios(api).then((response) => {
