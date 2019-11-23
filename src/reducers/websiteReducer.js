@@ -8,6 +8,7 @@ import {
     WEBSITE_HOME,
     LOGOUT_USER
 } from '../constants/actionTypes';
+import {disconnect} from '../socket';
 
 
 import initialState from './initialState';
@@ -45,6 +46,7 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
             });
 
         case LOGOUT_USER:
+            disconnect();
             browserHistory.push('/');
             return Object.assign({}, state, {
                 Loading: false,

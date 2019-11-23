@@ -4,7 +4,8 @@ import $ from "jquery";
 import * as saffronOrdersDisplayAction from "./actions/saffronOrdersDisplayAction";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {newSODMessage} from './socket';
+import {GetLocalUderData} from "./index";
+import {newSODMessage,connection} from './socket';
 
 class App extends Component {
 
@@ -23,9 +24,18 @@ class App extends Component {
             $('body').addClass("iosSafari");
         }
 
+        connection();
+
+        const userProfile = GetLocalUderData();
+        let socketKey = "SOD";
+        if (userProfile && userProfile.user.role.toLowerCase() === "employee") {
+            socketKey = userProfile.user.id;
+            console.log("socketKey",socketKey);
+        }
+
         this.props.actions.saffronOrdersDisplayAction.OrdersList();
 
-        newSODMessage((err, data) => {
+        newSODMessage(socketKey,(err, data) => {
             if(data.message === "new order")
                 this.props.actions.saffronOrdersDisplayAction.NewOrder(data.data);
             else if(data.message === "running late")
