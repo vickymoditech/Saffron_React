@@ -142,9 +142,9 @@ export default class Order extends Component {
                                 backgroundSize: "none"
                             }}>Show
                             </button>
-                            <p className="color">
-                            {customerName}
-                            </p>
+                            {/*<p className="color">*/}
+                            {/*{customerName}*/}
+                            {/*</p>*/}
                         </div>
                         <div className="image">
                             {productImg &&
