@@ -4,7 +4,6 @@ let socket = "";
 
 export function connection() {
     socket = io(ENVIRONMENT_VARIABLES.SOCKET_URL);
-    console.log("connect");
 }
 
 export function newSODMessage(socketKey,cb) {
@@ -13,5 +12,4 @@ export function newSODMessage(socketKey,cb) {
 
 export function disconnect() {
     socket.disconnect();
-    console.log("disconnect");
 }

@@ -74,7 +74,6 @@ export default function manageServiceReducer(state = initialState.manageServiceR
             });
 
         case SERVICE_EDIT_SUCCESS:
-            console.log(action.data);
             state.serviceList.map((service, index) => {
                 if (service.id === action.data.data.id) {
                     service.title = action.data.data.title;

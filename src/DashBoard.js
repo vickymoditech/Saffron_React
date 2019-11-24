@@ -30,7 +30,6 @@ class App extends Component {
         let socketKey = "SOD";
         if (userProfile && userProfile.user.role.toLowerCase() === "employee") {
             socketKey = userProfile.user.id;
-            console.log("socketKey",socketKey);
         }
 
         this.props.actions.saffronOrdersDisplayAction.OrdersList();

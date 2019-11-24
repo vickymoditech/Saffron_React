@@ -87,6 +87,8 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             let removeOrder = state.runningLate.find(function (runningLateOrder) {
                 return runningLateOrder.id === action.order.id;
             });
+            //remove Running Late Order
+            let index = state.runningLate.indexOf(removeOrder);
 
             let userId = GetLocalUderData().user.id;
             if(GetLocalUderData().user.role.toLowerCase() === "admin"){
@@ -103,8 +105,6 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             //Add into Running Order
             let runningOrders = [...state.runningOrder, removeOrder];
 
-            //remove Running Late Order
-            let index = state.runningLate.indexOf(removeOrder);
             state.runningLate.splice(index, 1);
 
             return Object.assign({}, state, {
@@ -117,6 +117,8 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             removeOrder = state.recentOrders.find(function (recentOrder) {
                 return recentOrder.id === action.order.id;
             });
+            //remove Recent Order
+            index = state.recentOrders.indexOf(removeOrder);
 
             userId = GetLocalUderData().user.id;
             if(GetLocalUderData().user.role.toLowerCase() === "admin"){
@@ -133,8 +135,6 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             //Add into Running Order
             runningOrders = [...state.runningOrder, removeOrder];
 
-            //remove Recent Order
-            index = state.recentOrders.indexOf(removeOrder);
             state.recentOrders.splice(index, 1);
 
             return Object.assign({}, state, {
@@ -162,6 +162,8 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             removeOrder = state.recentOrders.find(function (recentOrder) {
                 return recentOrder.id === action.order.id;
             });
+            //remove Recent Order
+            index = state.recentOrders.indexOf(removeOrder);
 
             userId = GetLocalUderData().user.id;
             if(GetLocalUderData().user.role.toLowerCase() === "admin"){
@@ -176,13 +178,7 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             }
 
             let runningLateOrders = [...state.runningLate, removeOrder];
-            console.log('action', runningLateOrders);
 
-            //remove Recent Order
-            removeOrder = state.recentOrders.find(function (recentOrder) {
-                return recentOrder.id === action.order.id;
-            });
-            index = state.recentOrders.indexOf(removeOrder);
             state.recentOrders.splice(index, 1);
 
             return Object.assign({}, state, {

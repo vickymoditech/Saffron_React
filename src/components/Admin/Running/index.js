@@ -84,7 +84,7 @@ export default class Running extends Component {
                     <ul id="here-now">
                         {Orders && Orders.map((data, index) => (
                             <Order
-                                key={index}
+                                key={data.id}
                                 order={data}
                                 currentElement={index}
                                 handleChangeTicket={this.handleChangeTicket}

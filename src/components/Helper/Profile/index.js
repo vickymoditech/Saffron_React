@@ -122,7 +122,7 @@ class Profile extends Component {
 
 
     render() {
-        const {emailAddress, mobile_number, first_name, last_name, userId, role} = this.state.userDetails;
+        const {emailAddress, mobile_number, first_name, last_name, userId} = this.state.userDetails;
         return (
             <div className="bg-burrito-image autofill-background">
                 {this.state.changePasswordDialog && <ChangePasswordModal

@@ -82,7 +82,6 @@ export default function manageTeamReducer(state = initialState.manageTeamReducer
             });
 
         case TEAM_EDIT_SUCCESS:
-            console.log(action.data);
             state.teamList.map((team, index) => {
                 if (team.id === action.data.data.id) {
                     team.name = action.data.data.name;

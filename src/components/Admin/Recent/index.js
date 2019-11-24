@@ -84,7 +84,7 @@ export default class Recent extends Component {
                     <ul id="onTheWay">
                         {orders && orders.map((data, index) => (
                             <Order
-                                key={index}
+                                key={data.id}
                                 order={data}
                                 currentElement={index}
                                 handleChangeTicket={this.handleChangeTicket}

@@ -27,10 +27,10 @@ export default class RecentComplete extends Component {
                              order={this.state.selectOrder}/>}
                 <ul className="recent-details">
                     {
-                        this.props.orders && this.props.orders.map((data, index) => (
+                        this.props.orders && this.props.orders.map((data) => (
                             <li style={{cursor: 'pointer'}}
                                 className={"on"}
-                                key={index}
+                                key={data.id}
                                 onClick={event => {
                                     this.orderDialogOpen(data)
                                 }}>

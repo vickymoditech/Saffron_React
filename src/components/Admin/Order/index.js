@@ -36,7 +36,6 @@ export default class Order extends Component {
             column = teamWiseOrder.column;
             status = teamWiseOrder.orderStatus;
             statusDateTime = teamWiseOrder.statusDateTime;
-            console.log("not admin");
         }
 
         this.setState({
@@ -45,12 +44,12 @@ export default class Order extends Component {
             column: column,
             status: status,
             statusDateTime:statusDateTime
-        }, () => {
-            this.timerID = setInterval(
-                () => this.tick(),
-                1000
-            );
         });
+
+        this.timerID = setInterval(
+            () => this.tick(),
+            1000
+        );
     }
 
     orderDialogOpen = () => {
@@ -64,7 +63,7 @@ export default class Order extends Component {
 
     tick() {
         let {column,statusDateTime} = this.state;
-        let currentTime = new Date(new Date().toUTCString());
+        let currentTime = new Date();
         let timeDiff = 0;
         const OrderTime = new Date(statusDateTime);
         if (column === "running" || column === "running late") {
@@ -79,14 +78,13 @@ export default class Order extends Component {
 
     }
 
-
     componentWillUnmount() {
         clearInterval(this.timerID);
     };
 
 
     render() {
-        const {column,status} = this.state;
+        const {column,status,statusDateTime} = this.state;
         const time = this.state.Time;
         const orderTime = (moment(this.props.order.bookingStartTime).utcOffset('IST').format("DD-MM-YYYY HH:mm:ss")).toString().split(" ");
         const HHMM = orderTime[1].toString().split(":");
