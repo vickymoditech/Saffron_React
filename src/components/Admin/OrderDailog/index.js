@@ -120,6 +120,11 @@ class OrderDialog extends Component {
                                                                                         <tr>
                                                                                             <td className="thick-line"></td>
                                                                                             <td className="thick-line"></td>
+                                                                                            <td className="thick-line"></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td className="thick-line"></td>
+                                                                                            <td className="thick-line"></td>
                                                                                             <td className="thick-line text-center">
                                                                                                 <strong>Subtotal</strong>
                                                                                             </td>

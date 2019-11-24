@@ -9,7 +9,12 @@ export default class Order extends Component {
         super(props);
         this.state = {
             isDialogOpen: false,
-            Time: 0
+            Time: 0,
+            role: "",
+            teamWiseOrderStatus: "",
+            column: "",
+            status: "",
+            statusDateTime:""
         };
     }
 
@@ -22,10 +27,30 @@ export default class Order extends Component {
             let audio = this.refs.audio;
             audio && audio.play();
         }
-        this.timerID = setInterval(
-            () => this.tick(),
-            1000
-        );
+
+        let teamWiseOrder = [];
+        let {column,status,statusDateTime} = this.props.order;
+        const role = GetLocalUderData().user.role;
+        if(role.toLowerCase() !== "admin"){
+            teamWiseOrder = this.props.order.teamWiseProductList.find((data) => data.id === GetLocalUderData().user.id);
+            column = teamWiseOrder.column;
+            status = teamWiseOrder.orderStatus;
+            statusDateTime = teamWiseOrder.statusDateTime;
+            console.log("not admin");
+        }
+
+        this.setState({
+            role: GetLocalUderData().user.role,
+            teamWiseOrderStatus: teamWiseOrder,
+            column: column,
+            status: status,
+            statusDateTime:statusDateTime
+        }, () => {
+            this.timerID = setInterval(
+                () => this.tick(),
+                1000
+            );
+        });
     }
 
     orderDialogOpen = () => {
@@ -38,13 +63,13 @@ export default class Order extends Component {
 
 
     tick() {
-        let currentTime = new Date();
+        let {column,statusDateTime} = this.state;
+        let currentTime = new Date(new Date().toUTCString());
         let timeDiff = 0;
-        if (this.props.order.column === "running" || this.props.order.column === "running late") {
-            let OrderTime = new Date(this.props.order.statusDateTime);
+        const OrderTime = new Date(statusDateTime);
+        if (column === "running" || column === "running late") {
             timeDiff = Math.abs(Math.round(((currentTime.getTime() - OrderTime.getTime()) / 1000) / 60));
         } else {
-            let OrderTime = new Date(this.props.order.bookingStartTime);
             timeDiff = Math.abs(Math.round(((OrderTime.getTime() - currentTime.getTime()) / 1000) / 60));
         }
 
@@ -61,18 +86,7 @@ export default class Order extends Component {
 
 
     render() {
-        let column = null;
-        let status = null;
-        let userId = GetLocalUderData().user.id;
-        if (GetLocalUderData().user.role.toLowerCase() === "admin") {
-            column = this.props.order.column;
-            status = this.props.order.status;
-        } else {
-            let teamWiseStatus = this.props.order.teamWiseProductList.find((data) => data.id === userId);
-            column = teamWiseStatus.column;
-            status = teamWiseStatus.orderStatus;
-        }
-
+        const {column,status} = this.state;
         const time = this.state.Time;
         const orderTime = (moment(this.props.order.bookingStartTime).utcOffset('IST').format("DD-MM-YYYY HH:mm:ss")).toString().split(" ");
         const HHMM = orderTime[1].toString().split(":");

@@ -48,7 +48,7 @@ const composeEnhancers = composeWithDevTools({});
 const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(thunk, promise, logger)));
 
 
-function requireAuth(nextState, replace) {
+function requireAdminAuth(nextState, replace) {
     if (!isLoggedIn()) {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("userProfile");
@@ -59,7 +59,7 @@ function requireAuth(nextState, replace) {
             state: {nextPathname: nextState.location.pathname}
         })
     } else {
-        if (!checkUserRole(getAccessToken())) {
+        if (!checkAdminUserRole(getAccessToken())) {
             replace({
                 pathname: '/',
                 state: {nextPathname: nextState.location.pathname}
@@ -67,6 +67,27 @@ function requireAuth(nextState, replace) {
         }
     }
 }
+
+function requireAdminEmployeeAuth(nextState, replace) {
+    if (!isLoggedIn()) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("userProfile");
+        localStorage.removeItem("userAvatar");
+        localStorage.clear();
+        replace({
+            pathname: '/',
+            state: {nextPathname: nextState.location.pathname}
+        })
+    } else {
+        if (!checkAdminEmployeeUserRole(getAccessToken())) {
+            replace({
+                pathname: '/',
+                state: {nextPathname: nextState.location.pathname}
+            })
+        }
+    }
+}
+
 
 export function isLoggedIn() {
     const accessToken = getAccessToken();
@@ -85,7 +106,7 @@ function isTokenExpired(token) {
     return expirationDate < new Date();
 }
 
-function checkUserRole(token) {
+function checkAdminEmployeeUserRole(token) {
     if (token) {
         const userProfile = decode(token);
         const userRole = userProfile.user && userProfile.user.role;
@@ -99,6 +120,23 @@ function checkUserRole(token) {
     }
 
 }
+
+function checkAdminUserRole(token) {
+    if (token) {
+        const userProfile = decode(token);
+        const userRole = userProfile.user && userProfile.user.role;
+        if (userRole.toLowerCase() === "admin") {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+
+}
+
+
 
 export function GetLocalUderData() {
     const accessToken = getAccessToken();
@@ -163,21 +201,21 @@ ReactDOM.render(<Provider store={store}>
     <MuiThemeProvider>
         <Router history={browserHistory}>
             <Route component={DashBoard} path="/Dashboard" exact={true}>
-                <IndexRoute component={AdminHome} onEnter={requireAuth}/>
-                <Route path="/Dashboard/ManageUser" component={ManageUser} onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/Profile" component={Profile} onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/ManageService" component={ManageService} onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/ManageTeam" component={ManageTeam} onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/ManageGallery" component={ManageGallery} onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/ManageVideo" component={ManageVideo} onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/ManageSliderImage" component={ManageSliderImage} onEnter={requireAuth}
+                <IndexRoute component={AdminHome} onEnter={requireAdminEmployeeAuth}/>
+                <Route path="/Dashboard/ManageUser" component={ManageUser} onEnter={requireAdminAuth} exact={true}/>
+                <Route path="/Dashboard/Profile" component={Profile} onEnter={requireAdminEmployeeAuth} exact={true}/>
+                <Route path="/Dashboard/ManageService" component={ManageService} onEnter={requireAdminAuth} exact={true}/>
+                <Route path="/Dashboard/ManageTeam" component={ManageTeam} onEnter={requireAdminAuth} exact={true}/>
+                <Route path="/Dashboard/ManageGallery" component={ManageGallery} onEnter={requireAdminAuth} exact={true}/>
+                <Route path="/Dashboard/ManageVideo" component={ManageVideo} onEnter={requireAdminAuth} exact={true}/>
+                <Route path="/Dashboard/ManageSliderImage" component={ManageSliderImage} onEnter={requireAdminAuth}
                        exact={true}/>
-                <Route path="/Dashboard/ManageProducts" component={ManageProduct} onEnter={requireAuth} exact={true}/>
+                <Route path="/Dashboard/ManageProducts" component={ManageProduct} onEnter={requireAdminAuth} exact={true}/>
                 <Route path="/Dashboard/ManageTeamMemberProduct" component={ManageTeamMemberProduct}
-                       onEnter={requireAuth} exact={true}/>
+                       onEnter={requireAdminAuth} exact={true}/>
                 <Route path="/Dashboard/ManageTimeSlot" component={ManageTimeSlot}
-                       onEnter={requireAuth} exact={true}/>
-                <Route path="/Dashboard/Analytics" component={Analytics} onEnter={requireAuth} exact={true}/>
+                       onEnter={requireAdminAuth} exact={true}/>
+                <Route path="/Dashboard/Analytics" component={Analytics} onEnter={requireAdminEmployeeAuth} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
             <Route path="/Login" component={Login} onEnter={checkLoggedIn} exact={true}/>
