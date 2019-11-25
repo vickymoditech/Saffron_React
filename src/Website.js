@@ -111,13 +111,13 @@ class App extends Component {
                                     )}
                             </ul>
                         </nav>
-                        {this.props.Loading && <Loader/>}
                         {this.props.children}
                     </div>
                 </BrowserView>
                 <MobileView>
                     <h1> Download Mobile Application </h1>
                 </MobileView>
+                {this.props.Loading && <Loader/>}
             </div>
         );
     }

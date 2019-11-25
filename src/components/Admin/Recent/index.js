@@ -74,7 +74,7 @@ export default class Recent extends Component {
     };
 
     render() {
-        const orders = this.props.orders;
+        const {orders} = this.props;
         return (
             <div className="col-lg-4 col-sm-12 col-md-6 card on-the-way">
                 <div className="card-header"><span
