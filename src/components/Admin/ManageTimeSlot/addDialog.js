@@ -3,7 +3,7 @@ import {Dialog} from 'material-ui';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as timeSlotsAction from '../../../actions/timeSlotsAction';
-import {Dropdown} from 'semantic-ui-react';
+import TimePicker from 'react-time-picker';
 
 const style = {
     titleStyle: {
@@ -31,16 +31,13 @@ const style = {
 };
 
 class AddDialog extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
             isOpen: props.isOpen,
-            start_time_hours: null,
-            start_time_minutes: null,
-            end_time_hours: null,
-            end_time_minutes: null,
-            start_time: null,
-            end_time: null,
+            start_time: '00:00',
+            end_time: '00:00',
         };
     }
 
@@ -68,17 +65,17 @@ class AddDialog extends Component {
         }
     };
 
+    onChangeStartTime = time => this.setState({start_time: time });
+
+    onChangeEndTime = time => this.setState({end_time: time});
 
     handleSave = () => {
-        if (this.state.start_time_hours !== null && this.state.start_time_minutes !== null && this.state.end_time_hours !== null && this.state.end_time_minutes !== null) {
-            this.setState({
-                start_time: this.state.start_time_hours + ":" + this.state.start_time_minutes,
-                end_time: this.state.end_time_hours + ":" + this.state.end_time_minutes
-            }, () => {
-                this.props.actions.timeSlotsAction.TimeSlotAdd({
-                    start_time: this.state.start_time,
-                    end_time: this.state.end_time
-                });
+        if (this.state.start_time !== null && this.state.end_time !== null) {
+            console.log(this.state.start_time);
+            console.log(this.state.end_time);
+            this.props.actions.timeSlotsAction.TimeSlotAdd({
+                start_time: this.state.start_time,
+                end_time: this.state.end_time
             });
         }
         else {
@@ -87,31 +84,6 @@ class AddDialog extends Component {
     };
 
     render() {
-
-        let hours = [];
-        let minutes = [];
-        for (let i = 1; i <= 24; i++) {
-            let text = "";
-            if (i < 10)
-                text = "0";
-            let option = {
-                text: text + i,
-                value: i
-            };
-            hours.push(option);
-        }
-
-        for (let i = 0; i < 60; i++) {
-            let text = "";
-            if (i < 10)
-                text = "0";
-            let option = {
-                text: text + i,
-                value: i
-            };
-            minutes.push(option);
-        }
-
         return (
             <div>
                 <Dialog
@@ -139,30 +111,14 @@ class AddDialog extends Component {
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <Dropdown placeholder="Select Starting Time" fluid
-                                                                          selection
-                                                                          options={hours}
-                                                                          style={{width: '342px'}}
-                                                                          onChange={this.handleChangeServiceSH}/>
-
-                                                                <Dropdown placeholder="Select Starting Minutes" fluid
-                                                                          selection
-                                                                          options={minutes}
-                                                                          style={{width: '342px'}}
-                                                                          onChange={this.handleChangeServiceSM}/>
-
-                                                                <Dropdown placeholder="Select Ending Time" fluid
-                                                                          selection
-                                                                          options={hours}
-                                                                          style={{width: '342px'}}
-                                                                          onChange={this.handleChangeServiceEH}/>
-
-                                                                <Dropdown placeholder="Select Ending Minutes" fluid
-                                                                          selection
-                                                                          options={minutes}
-                                                                          style={{width: '342px'}}
-                                                                          onChange={this.handleChangeServiceEM}/>
-
+                                                                <TimePicker
+                                                                    onChange={this.onChangeStartTime}
+                                                                    value={this.state.start_time}
+                                                                />
+                                                                <TimePicker
+                                                                    onChange={this.onChangeEndTime}
+                                                                    value={this.state.end_time}
+                                                                />
                                                             </div>
                                                         </div>
                                                         <div className="form-group">

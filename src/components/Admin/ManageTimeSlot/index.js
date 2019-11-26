@@ -10,7 +10,6 @@ import './react-confirm-alert.css'
 import AddDialog from './addDialog';
 
 import './manage-time.css';
-import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
 class ManageTimeSlot extends Component {
 
@@ -102,7 +101,7 @@ class ManageTimeSlot extends Component {
                                     <th style={{cursor: 'context-menu'}}>Action</th>
                                 </tr>
                                 {this.props.TimeSlotList.map((value, index) => (
-                                    <tr key={index}>
+                                    <tr key={value.id}>
                                         <td>{value.start_time}</td>
                                         <td>{value.end_time}</td>
                                         <td style={{textAlign: "center"}}>

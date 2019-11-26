@@ -46,7 +46,7 @@ export default function manageServiceReducer(state = initialState.manageTimeSlot
         case TIMESLOT_DELETE_SUCCESS:
 
             let remove = state.TimeSlotList.find(function (item) {
-                return item.id === action.data.id;
+                return item.id === action.data.timeSlot_id;
             });
             let index = state.TimeSlotList.indexOf(remove);
             state.TimeSlotList.splice(index, 1);
