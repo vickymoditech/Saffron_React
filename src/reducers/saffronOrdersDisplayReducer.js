@@ -153,6 +153,16 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
 
             let recentOrders = [...state.recentOrders, action.order];
 
+            recentOrders.forEach((order, index) => {
+                recentOrders.forEach((innerOrder, innerindex) => {
+                    if (new Date(recentOrders[index].bookingStartTime).getTime() < new Date(recentOrders[innerindex].bookingStartTime).getTime()) {
+                        const tmp = recentOrders[innerindex];
+                        recentOrders[innerindex] = recentOrders[index];
+                        recentOrders[index] = tmp;
+                    }
+                });
+            });
+
             return Object.assign({}, state, {
                 recentOrders: recentOrders
             });

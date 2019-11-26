@@ -18,11 +18,7 @@ class Home extends Component {
         super(props);
         this.state = {
             isResetOpen: false,
-            notificationSystem: null,
-            runningOrder: [],
-            runningLate: [],
-            recentOrders: [],
-            recentComplete: []
+            notificationSystem: null
         }
     }
 
@@ -35,31 +31,8 @@ class Home extends Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        if (!nextProps.Loading && nextProps.error_msg) {
+        if (!nextProps.Loading && nextProps.error_msg)
             this.addNotifications(nextProps.error_msg, "error");
-        }else{
-            //Todo date wise order will be set ascending order
-            this.setState({
-                runningOrder: nextProps.runningOrder,
-                runningLate: nextProps.runningLate,
-                recentComplete: nextProps.recentComplete
-            });
-
-            let recentOrders = nextProps.recentOrders;
-            recentOrders.forEach((order, index) => {
-                recentOrders.forEach((innerOrder,innerindex) => {
-                   if(new Date(recentOrders[index].bookingStartTime).getTime() < new Date(recentOrders[innerindex].bookingStartTime).getTime()){
-                       const tmp = recentOrders[innerindex];
-                       recentOrders[innerindex] = recentOrders[index];
-                       recentOrders[index] = tmp;
-                   }
-                });
-            });
-            this.setState({
-                recentOrders: recentOrders
-            });
-
-        }
     }
 
 
@@ -68,7 +41,7 @@ class Home extends Component {
     };
 
     render() {
-        const {runningOrder, runningLate, recentOrders, recentComplete} = this.state;
+        const {runningOrder, runningLate, recentOrders, recentComplete} = this.props;
         return (
             <div className="drive-by myClass">
                 <NotificationSystem ref="notificationSystem"/>
