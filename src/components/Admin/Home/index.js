@@ -18,7 +18,11 @@ class Home extends Component {
         super(props);
         this.state = {
             isResetOpen: false,
-            notificationSystem: null
+            notificationSystem: null,
+            runningOrder: [],
+            runningLate: [],
+            recentOrders: [],
+            recentComplete: []
         }
     }
 
@@ -33,6 +37,28 @@ class Home extends Component {
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
+        }else{
+            //Todo date wise order will be set ascending order
+            this.setState({
+                runningOrder: nextProps.runningOrder,
+                runningLate: nextProps.runningLate,
+                recentComplete: nextProps.recentComplete
+            });
+
+            let recentOrders = nextProps.recentOrders;
+            recentOrders.forEach((order, index) => {
+                recentOrders.forEach((innerOrder,innerindex) => {
+                   if(new Date(recentOrders[index].bookingStartTime).getTime() < new Date(recentOrders[innerindex].bookingStartTime).getTime()){
+                       const tmp = recentOrders[innerindex];
+                       recentOrders[innerindex] = recentOrders[index];
+                       recentOrders[index] = tmp;
+                   }
+                });
+            });
+            this.setState({
+                recentOrders: recentOrders
+            });
+
         }
     }
 
@@ -42,16 +68,17 @@ class Home extends Component {
     };
 
     render() {
+        const {runningOrder, runningLate, recentOrders, recentComplete} = this.state;
         return (
             <div className="drive-by myClass">
                 <NotificationSystem ref="notificationSystem"/>
                 <section className={this.state.isResetOpen ? "drive-widget recent-runner" : "drive-widget"}>
                     <div className="drive-details">
-                        <Running orders={this.props.runningOrder}/>
-                        <Recent orders={this.props.recentOrders}/>
-                        <RunningLate orders={this.props.runningLate}/>
+                        <Running orders={runningOrder}/>
+                        <Recent orders={recentOrders}/>
+                        <RunningLate orders={runningLate}/>
                     </div>
-                    <RecentComplete orders={this.props.recentComplete} isResetOpen={false}/>
+                    <RecentComplete orders={recentComplete} isResetOpen={false}/>
                 </section>
                 {this.props.Loading && <Loader/>}
             </div>
@@ -68,7 +95,6 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = (state) => {
     const {saffronOrdersDisplayReducer} = state;
-    debugger;
     return {
         Loading: saffronOrdersDisplayReducer.Loading,
         error_msg: saffronOrdersDisplayReducer.error_msg,

@@ -87,7 +87,6 @@ class EditDialog extends Component {
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
                                         <h2>Edit Service</h2>
-                                        <hr/>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
