@@ -4,7 +4,10 @@ import {
     USER_SUCCESS,
     USER_CONNECTION_ERROR,
     USER_BLOCK_SUCCESS,
-    USER_BLOCK_NOT_SUCCESS
+    USER_BLOCK_NOT_SUCCESS,
+    USER_DELETE_SUCCESS,
+    USER_DELETE_NOT_SUCCESS,
+    USER_DEFAULT_CLEAR
 } from '../constants/actionTypes';
 
 
@@ -15,6 +18,9 @@ export default function manageUserReducer(state = initialState.manageUserReducer
 
         case USER_INPROGRESS:
             return Object.assign({}, state, {Loading: true});
+
+        case USER_DEFAULT_CLEAR:
+            return Object.assign({}, state, {Loading: false, error_msg: null, success_msg: null});
 
         case USER_CONNECTION_ERROR:
             return Object.assign({}, state, {
@@ -36,6 +42,25 @@ export default function manageUserReducer(state = initialState.manageUserReducer
             });
 
         case USER_BLOCK_NOT_SUCCESS:
+            return Object.assign({}, state, {
+                Loading: false,
+                error_msg: action.data.error_msg
+            });
+
+        case USER_DELETE_SUCCESS:
+
+            const removeUser =  state.userList.find((data) => data.id === action.data.id);
+            let index = state.userList.indexOf(removeUser);
+            state.userList.splice(index, 1);
+
+            return Object.assign({}, state, {
+                userList: state.userList,
+                Loading: false,
+                error_msg: null,
+                success_msg: action.data.result
+            });
+
+        case USER_DELETE_NOT_SUCCESS:
             return Object.assign({}, state, {
                 Loading: false,
                 error_msg: action.data.error_msg

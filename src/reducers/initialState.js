@@ -20,7 +20,8 @@ export default {
     manageUserReducer: {
         Loading: false,
         userList: [],
-        error_msg: null
+        error_msg: null,
+        success_msg: null
     },
     manageServiceReducer: {
         Loading: false,

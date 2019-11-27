@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import Switch from 'react-flexible-switch';
 import NotificationSystem from 'react-notification-system';
 import * as userManageAction from '../../../actions/userManageAction';
+import {confirmAlert} from 'react-confirm-alert';
+import './react-confirm-alert.css'
 import Loader from '../../Helper/Loader';
 
 
@@ -36,6 +38,9 @@ class ManageUser extends Component {
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
+        }else if (!nextProps.Loading && nextProps.success_msg) {
+            this.addNotifications(nextProps.success_msg, "success");
+            this.props.actions.userManageAction.DefaultMessageClear();
         }
         this.setState({userList: nextProps.userList || []});
         if (this.props.reRender) {
@@ -74,6 +79,24 @@ class ManageUser extends Component {
         return this.setState({search: event.target.value});
     };
 
+    deleteUser = (userId) => {
+        confirmAlert({
+            key: userId,
+            message: 'Are you sure you want to Delete?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => {
+                        this.props.actions.userManageAction.deleteUser(userId);
+                    }
+                },
+                {
+                    label: 'No'
+                }
+            ]
+        })
+    };
+
     render() {
         const {userList, search} = this.state;
         return (
@@ -99,9 +122,10 @@ class ManageUser extends Component {
                                     <th style={{cursor: 'context-menu'}}>Role</th>
                                     <th style={{cursor: 'context-menu'}}>UserId</th>
                                     <th style={{cursor: 'context-menu'}}>Block</th>
+                                    <th style={{cursor: 'context-menu'}}>Delete</th>
                                 </tr>
                                 {userList && userList.map((value, index) => (
-                                    <tr key={index}>
+                                    <tr key={value.id}>
                                         <td>{value.image_url !== undefined && value.image_url !== "" ? (
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
                                                  height="150px"/>) : (
@@ -120,6 +144,13 @@ class ManageUser extends Component {
                                                     onChange={(e) => {
                                                         this.onchangeBlock(!value.block, value.contact_no);
                                                     }}/>
+                                        </td>
+                                        <td style={{textAlign: "center"}}>
+                                            <button type="button" className="btn btn-danger" key={value.id}
+                                                    onClick={event => {
+                                                        this.deleteUser(value.id)
+                                                    }}>Delete
+                                            </button>
                                         </td>
                                     </tr>
                                 ))
@@ -143,6 +174,7 @@ const mapStateToProps = (state) => {
         Loading: manageUserReducer.Loading,
         error_msg: manageUserReducer.error_msg,
         userList: manageUserReducer.userList,
+        success_msg: manageUserReducer.success_msg,
         reRender: true
     };
 };
