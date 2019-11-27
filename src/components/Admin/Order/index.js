@@ -31,7 +31,7 @@ export default class Order extends Component {
         let teamWiseOrder = [];
         let {column,status,statusDateTime} = this.props.order;
         const role = GetLocalUderData().user.role;
-        if(role.toLowerCase() !== "admin"){
+        if(role.toLowerCase() !== "admin" && this.props.order && this.props.order.teamWiseProductList){
             teamWiseOrder = this.props.order.teamWiseProductList.find((data) => data.id === GetLocalUderData().user.id);
             column = teamWiseOrder.column;
             status = teamWiseOrder.orderStatus;
