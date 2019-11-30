@@ -83,5 +83,12 @@ export default {
         error_msg: null,
         success_msg: null,
     },
-
+    manageAnalyticsReducer: {
+        Loading: false,
+        topUsers: [],
+        getTotalBillablePrice: [],
+        getOrderStatusReport: [],
+        getTeamWiseOrderStatusReport: [],
+        error_msg: null,
+    }
 }
