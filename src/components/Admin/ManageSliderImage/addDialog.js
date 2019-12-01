@@ -98,7 +98,7 @@ class AddDialog extends Component {
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
-                                                                <div className="col-xs-12 text-center">
+                                                                <div className="col-xs-12 text-center d-flex">
                                                                     <button type="button" className="btn btn-save"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.handleSave}>Save

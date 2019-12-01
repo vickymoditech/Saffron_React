@@ -151,17 +151,20 @@ class ManageVideo extends Component {
                             selectedServiceId={this.state.selectedServiceId}/>}
 
                 <div className="container tab-bg-container">
+                    <div className="d-flex justify-content-between">
                     <h2> Manage Video </h2>
-                    {options.length > 0 && <div>
-                        <button type="button" className="btn btn-primary"
+                        <button type="button" className="btn btn-primary w-25 mr-4"
                                 onClick={this.addNewVideo}>Add New Video
                         </button>
-
+                        <div className="w-25">
                         <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
                                   options={options}
-                                  onChange={this.handleChangeStore}/>
+                                  onChange={this.handleChangeStore} classname="pr-2"/>
+                        </div>
+                    </div>
+                    {options.length > 0 && <div>
                         {videoList.length > 0 && <div className="data-display col-sm-12">
-                            <div className="table-responsive overflow-scroll">
+                            <div className="overflow-scroll">
                                 <table width="100%" className="table">
                                     <tbody>
                                     <tr>

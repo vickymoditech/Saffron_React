@@ -95,12 +95,14 @@ class ManageSliderImage extends Component {
                            notify={this.addNotifications}/>}
 
                 <div className="container tab-bg-container">
+                    <div className="d-flex justify-content-between">
                     <h2> Manage Slider Images </h2>
-                    <button type="button" className="btn btn-primary"
+                    <button type="button" className="btn btn-primary w-25"
                             onClick={this.addNewTeam}>Add new slider
                     </button>
+                    </div>
                     {sliderList.length > 0 && <div className="data-display col-sm-12">
-                        <div className="table-responsive overflow-scroll">
+                        <div className="overflow-scroll">
                             <table width="100%" className="table">
                                 <tbody>
                                 <tr>

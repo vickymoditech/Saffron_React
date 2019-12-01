@@ -259,6 +259,7 @@ i.inactive {
 .store-info-content .react-flexible-switch.react-flexible-switch--active .react-flexible-switch-label{
     left:14% !important;
 }
+
 .store-config-zone .ui.dropdown>.dropdown.icon{
     color: #6f6f6f !important;
 }
@@ -377,3 +378,6 @@ body.loading .loadingPanel {
 }
 
 /*END Loading Panel CSS*/
+.data-display .overflow-scroll {
+    max-height: calc(100vh - 160px);
+}

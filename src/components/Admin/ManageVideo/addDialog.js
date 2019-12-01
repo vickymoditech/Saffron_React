@@ -98,11 +98,12 @@ class AddDialog extends Component {
                             <div className="modal-body">
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
-                                        <h2>Add New Gallery</h2>
+                                        <h2>Add New Video</h2>
                                     </div>
-                                    <div className="panel-body">
+                                    <div className="panel-body container">
                                         <div className="row">
-                                            <div className="col-md-offset-1 col-md-10">
+                                            <div className="col-12">
+                                                <div className="d-flex justify-content-center">
                                                 <form>
                                                     <div id="loginForm">
                                                         <div className="form-group">
@@ -115,7 +116,7 @@ class AddDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex align-items-center pr-4">
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="title"
@@ -127,7 +128,7 @@ class AddDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex align-items-center pr-4">
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="description"
@@ -139,7 +140,7 @@ class AddDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex align-items-center pr-4">
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="video_url"
@@ -151,15 +152,19 @@ class AddDialog extends Component {
                                                         </div>
 
                                                         <div className="form-group">
-                                                            <div className="input-group">
+                                                            <div className="input-group d-flex justify-content-center">
+                                                                <div>
                                                                 <input type="radio" name="gender" value="male"
                                                                        onClick={this.onChange}
                                                                        checked={sex === 'male'}/> <b
                                                                 style={{'cursor': 'default'}}> Male </b> &nbsp;
+                                                                </div>
+                                                                <div>
                                                                 <input type="radio" name="gender" value="female"
                                                                        onClick={this.onChange}
                                                                        checked={sex === 'female'}/> <b
                                                                 style={{'cursor': 'default'}}> Female </b>
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -180,6 +185,7 @@ class AddDialog extends Component {
                                                         </div>
                                                     </div>
                                                 </form>
+                                            </div>
                                             </div>
                                         </div>
                                     </div>

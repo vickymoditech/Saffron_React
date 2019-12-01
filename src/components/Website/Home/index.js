@@ -15,7 +15,7 @@ class Home extends Component {
         return (
             <div>
                 <ReactPlayer url='assets/Video/saffron.webm' playing loop={true} muted width={"100%"} height={"100%"}/>
-                {this.props.sliderList.length > 0 && <MainSlider sliderList={this.props.sliderList}/>}
+                {/*{this.props.sliderList.length > 0 && <MainSlider sliderList={this.props.sliderList}/>}*/}
                 <ServiceGrid serviceList={this.props.serviceList}/>
                 <MiddleCard/>
                 <ImageGrid galleryList={this.props.galleryList}/>

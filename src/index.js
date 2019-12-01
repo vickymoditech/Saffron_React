@@ -11,6 +11,7 @@ import thunk from 'redux-thunk';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router';
 import promise from 'redux-promise';
 import decode from 'jwt-decode';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // application configuration.
 import Website from './Website';

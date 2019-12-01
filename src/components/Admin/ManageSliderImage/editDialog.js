@@ -133,7 +133,7 @@ class EditDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex align-items-center pr-4">
                                                                     <i className="fa fa-lock"/>
                                                                 </span>
                                                                 <input type="text" name="title"
@@ -157,7 +157,7 @@ class EditDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex align-items-center pr-4">
                                                                     <i className="fa fa-key"/>
                                                                 </span>
                                                                 <input type="text" name="description"

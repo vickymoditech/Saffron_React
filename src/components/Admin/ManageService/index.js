@@ -9,6 +9,7 @@ import {confirmAlert} from 'react-confirm-alert';
 import './react-confirm-alert.css'
 import ProductDialog from '../Helper/AddCommonDialog';
 import EditDialog from './editDialog';
+import '../Helper/AddCommonDialog/index';
 
 import './manage-service.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
@@ -107,12 +108,14 @@ class ManageService extends Component {
                 <EditDialog handleClose={this.editDialogClose} isOpen={this.state.isEditDialogOpen}
                             notify={this.addNotifications} service={selected_service}/>}
                 <div className="container tab-bg-container">
+                    <div className="d-flex justify-content-between">
                     <h2> Manage Service </h2>
-                    <button type="button" className="btn btn-primary"
+                    <button type="button" className="btn btn-primary w-25"
                             onClick={this.addNewService}>Add Service
                     </button>
+                    </div>
                     {serviceList.length > 0 && <div className="data-display col-sm-12">
-                        <div className="table-responsive overflow-scroll">
+                        <div className="overflow-scroll">
                             <table width="100%" className="table">
                                 <tbody>
                                 <tr>

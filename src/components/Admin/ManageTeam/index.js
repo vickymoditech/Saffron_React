@@ -10,6 +10,7 @@ import EditDialog from './editDialog';
 
 import {confirmAlert} from 'react-confirm-alert';
 import './react-confirm-alert.css'
+import '../Helper/AddCommonDialog/index';
 
 
 import './manage-team.css';
@@ -110,10 +111,12 @@ class ManageTeam extends Component {
                             notify={this.addNotifications} team={team}/>}
 
                 <div className="container tab-bg-container">
+                    <div className="d-flex justify-content-between">
                     <h2> Manage Teams Member </h2>
-                    <button type="button" className="btn btn-primary"
+                    <button type="button" className="btn btn-primary w-25"
                             onClick={this.addNewTeam}>Add team member
                     </button>
+                    </div>
                     {teamList.length > 0 && <div className="data-display col-sm-12">
                         <div className="table-responsive overflow-scroll">
                             <table width="100%" className="table">

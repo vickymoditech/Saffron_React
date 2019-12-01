@@ -86,11 +86,12 @@ class ManageTimeSlot extends Component {
                            notify={this.addNotifications}/>}
 
                 <div className="container tab-bg-container">
+                    <div className="d-flex justify-content-between">
                     <h2> Manage TimeSlots </h2>
-                    <button type="button" className="btn btn-primary"
+                    <button type="button" className="btn btn-primary w-25"
                             onClick={this.addNewService}>Add new TimeSlot
                     </button>
-
+                    </div>
                     {this.props.TimeSlotList.length > 0 && <div className="data-display col-sm-12">
                         <div className="table-responsive overflow-scroll">
                             <table width="100%" className="table">

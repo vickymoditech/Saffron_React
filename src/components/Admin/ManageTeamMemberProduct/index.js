@@ -206,12 +206,15 @@ class ManageTeamMemberProduct extends Component {
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
                 <div className="container tab-bg-container">
+                    <div className="d-flex justify-content-between">
                     <h2> Manage products for team </h2>
-                    {options.length > 0 && <div>
-                        <Dropdown placeholder={"Select Team member"} fluid selection
+                        <div className="w-25">
+                    <Dropdown placeholder={"Select Team member"} fluid selection
                                   options={options}
-                                  onChange={this.handleChangeStore}/>
-
+                                  onChange={this.handleChangeStore} classname="pr-2"/>
+                    </div>
+                    </div>
+                    {options.length > 0 && <div className="d-flex justify-content-around mt-4">
                         {selectedTeamId !== null && <DragDropContext onDragEnd={this.onDragEnd}>
                             <Droppable droppableId="droppable">
                                 {(provided, snapshot) => (

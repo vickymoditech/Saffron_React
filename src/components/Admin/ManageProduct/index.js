@@ -168,23 +168,26 @@ class ManageProduct extends Component {
                             selectedServiceId={this.state.selectedServiceId}/>}
 
                 <div className="container tab-bg-container">
+                    <div className="d-flex justify-content-between">
                     <h2> Manage Products </h2>
-                    {options.length > 0 && <div>
-                        <Switch value={isOfferProduct}
+                        <div style={{width:104}}>
+                    <Switch classname="" value={isOfferProduct}
                                 circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
-                                switchStyles={{width: 95}}
+                                switchStyles={{width:95}}
                                 onChange={(e) => {
                                     this.onchangeBlock(!isOfferProduct);
                                 }}/>
-
-                        <button type="button" className="btn btn-primary"
+                        </div>
+                        <button type="button" className="btn btn-primary w-25 mr-4"
                                 onClick={this.addNewService}>Add new Product
                         </button>
-
+                        <div className="w-25">
                         <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
                                   options={options}
-                                  onChange={this.handleChangeStore}/>
-
+                                  onChange={this.handleChangeStore} classname="pr-2"/>
+                        </div>
+                    </div>
+                    {options.length > 0 && <div>
                         {displayProduct.length > 0 && <div className="data-display col-sm-12">
                             <div className="table-responsive overflow-scroll">
                                 <table width="100%" className="table">

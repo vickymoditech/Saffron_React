@@ -113,14 +113,15 @@ class ChangePasswordModal extends Component {
                                         <h2>Change Password</h2>
                                         <br/>
                                     </div>
-                                    <div className="panel-body">
+                                    <div className="panel-body container">
                                         <div className="row">
-                                            <div className="col-md-offset-1 col-md-10">
+                                            <div className="col-12">
+                                                <div className="d-flex justify-content-center">
                                                 <form>
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex align-items-center pr-4">
                                                                     <i className="fa fa-lock"/>
                                                                 </span>
                                                                 <input type="password" name="currentPassword"
@@ -133,7 +134,7 @@ class ChangePasswordModal extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex align-items-center pr-4">
                                                                     <i className="fa fa-key"/>
                                                                 </span>
                                                                 <input type="password" name="newPassword"
@@ -145,7 +146,7 @@ class ChangePasswordModal extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex align-items-center pr-4">
                                                                     <i className="fa fa-key"/>
                                                                 </span>
                                                                 <input type="password" name="confirmPassword"
@@ -169,6 +170,7 @@ class ChangePasswordModal extends Component {
                                                         </div>
                                                     </div>
                                                 </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

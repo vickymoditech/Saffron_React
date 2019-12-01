@@ -104,14 +104,15 @@ class ProductDialog extends Component {
                                     <div className="col-xs-12 text-center">
                                         <h2>Add New {this.props.status}</h2>
                                     </div>
-                                    <div className="panel-body">
+                                    <div className="panel-body container">
                                         <div className="row">
-                                            <div className="col-md-offset-1 col-md-10">
+                                            <div className="col-12">
+                                                <div className="d-flex justify-content-center">
                                                 <form>
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex align-items-center pr-4">
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 {this.props.status.toLowerCase() === "service" ?
@@ -133,7 +134,7 @@ class ProductDialog extends Component {
                                                         {this.props.status.toLowerCase() !== "service" &&
                                                         < div className="form-group">
                                                             <div className="input-group">
-                                                            <span className="input-group-addon">
+                                                            <span className="input-group-addon d-flex align-items-center pr-4">
                                                             <i className="fa fa-pencil"/>
                                                             </span>
                                                                 <input type="text" name="last_name"
@@ -149,7 +150,7 @@ class ProductDialog extends Component {
                                                         {this.props.status.toLowerCase() !== "service" &&
                                                         < div className="form-group">
                                                             <div className="input-group">
-                                                            <span className="input-group-addon">
+                                                            <span className="input-group-addon d-flex align-items-center pr-4">
                                                             <i className="fa fa-pencil"/>
                                                             </span>
                                                                 <input type="text" name="mobile_number"
@@ -164,7 +165,7 @@ class ProductDialog extends Component {
 
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex align-items-center pr-4">
                                                                     <i className="fa fa-pencil"/>
                                                                 </span>
                                                                 <input type="text" name="description"
@@ -199,6 +200,7 @@ class ProductDialog extends Component {
                                                         </div>
                                                     </div>
                                                 </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

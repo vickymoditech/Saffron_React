@@ -105,16 +105,17 @@ class Registration extends Component {
                         <div className="modal-body">
                             <div className="row login-form">
                                 <div className="col-xs-12 text-center">
-                                    <h2 style={{margin: '10px'}}>User Authentication</h2>
+                                    <h2 style={{margin: '10px'}}>User Registration</h2>
                                 </div>
-                                <div className="panel-body">
+                                <div className="panel-body container">
                                     <div className="row">
-                                        <div className="col-md-offset-1 col-md-10">
-                                            <form>
+                                        <div className="col-12">
+                                            <div className="d-flex justify-content-center">
+                                            <form className="w-100">
                                                 <div id="loginForm">
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon">
+                                                        <span className="input-group-addon d-flex align-items-center pr-4">
                                                             <i className="fa fa-user"></i>
                                                         </span>
                                                             <input type="text" value={this.state.credentials.first_name}
@@ -125,7 +126,7 @@ class Registration extends Component {
                                                     </div>
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon">
+                                                        <span className="input-group-addon d-flex align-items-center pr-4">
                                                             <i className="fa fa-user"></i>
                                                         </span>
                                                             <input type="text" value={this.state.credentials.last_name}
@@ -136,7 +137,7 @@ class Registration extends Component {
                                                     </div>
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon">
+                                                        <span className="input-group-addon d-flex align-items-center pr-4">
                                                             <i className="fa fa-user"></i>
                                                         </span>
                                                             <input type="text"
@@ -148,7 +149,7 @@ class Registration extends Component {
                                                     </div>
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon">
+                                                        <span className="input-group-addon d-flex align-items-center pr-4">
                                                             <i className="fa fa-user"></i>
                                                         </span>
                                                             <input type="password"
@@ -161,7 +162,7 @@ class Registration extends Component {
                                                     </div>
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon">
+                                                        <span className="input-group-addon d-flex align-items-center pr-4">
                                                             <i className="fa fa-lock"></i></span>
                                                             <input type="password"
                                                                    value={this.state.credentials.confirm_password}
@@ -170,13 +171,13 @@ class Registration extends Component {
                                                                    className="form-control"
                                                                    onChange={this.handleChange}/>
                                                         </div>
-                                                        <div className="forgot-link">
+                                                        <div className="forgot-link text-center mt-3">
                                                             <Link to="/Login"
                                                                   style={{textDecoration: 'underline'}}>Login</Link> &nbsp;
                                                             <Link to="/"
                                                                   style={{textDecoration: 'underline'}}>Home</Link>
                                                         </div>
-                                                        <div className="form-group text-center row">
+                                                        <div className="form-group text-center justify-content-center row">
                                                             <div className="col-xs-12 text-center">
                                                             </div>
                                                             <button type="submit" className="btn btn-save"
@@ -186,7 +187,7 @@ class Registration extends Component {
                                                     </div>
                                                 </div>
                                             </form>
-
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

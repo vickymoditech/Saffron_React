@@ -149,17 +149,20 @@ class ManageGallery extends Component {
                             selectedServiceId={this.state.selectedServiceId}/>}
 
                 <div className="container tab-bg-container">
+                    <div className="dropdown_position d-flex justify-content-between">
                     <h2> Manage Gallery </h2>
-                    {options.length > 0 && <div>
-                        <button type="button" className="btn btn-primary"
+                        <button type="button" className="btn btn-primary w-25 mr-4"
                                 onClick={this.addNewService}>Add New Gallery
                         </button>
-
+                        <div className="w-25">
                         <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
                                   options={options}
-                                  onChange={this.handleChangeStore}/>
-                        {galleryList.length > 0 && <div className="data-display col-sm-12">
-                            <div className="table-responsive overflow-scroll">
+                                  onChange={this.handleChangeStore} classname="pr-2"/>
+                        </div>
+                    </div>
+                    {options.length > 0 && <div>
+                        {galleryList.length > 0 && <div className="data-display col-12">
+                            <div className="overflow-scroll">
                                 <table width="100%" className="table">
                                     <tbody>
                                     <tr>
@@ -203,7 +206,8 @@ class ManageGallery extends Component {
                             </div>
                         </div>}
                     </div>}
-                </div>
+
+            </div>
                 {this.props.Loading || this.props.Galley_Loading && <Loader/>}
             </div>
         );

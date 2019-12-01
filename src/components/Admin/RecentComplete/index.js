@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import OrderDialog from '../OrderDailog';
+import './recent.css';
 
 export default class RecentComplete extends Component {
 
@@ -21,6 +22,7 @@ export default class RecentComplete extends Component {
 
     render() {
         return (
+
             <div className={this.props.isResetOpen ? "sidebar recent-runner" : "sidebar"}>
                 {this.state.isDialogOpen &&
                 <OrderDialog handleClose={this.orderDialogClose} isOpen={this.state.isDialogOpen} column={"finish"}
@@ -40,6 +42,7 @@ export default class RecentComplete extends Component {
                     }
                 </ul>
             </div>
+
         );
     }
 }

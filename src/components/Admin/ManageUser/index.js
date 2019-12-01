@@ -103,15 +103,17 @@ class ManageUser extends Component {
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
                 <div className="container tab-bg-container">
+                    <div className="d-flex justify-content-between">
                     <h2> Manage Users </h2>
-                    <div className="form-group text-center row">
+                    <div className="form-group text-center w-25">
                         <div className="col-xs-12 text-center">
                             <input type="text" className="form-control" name="mobile_number"
                                    value={search} placeholder="Search (8401060120)" onChange={this.handleChange}/>
                         </div>
                     </div>
-                    {userList.length > 0 && <div className="data-display col-sm-12">
-                        <div className="table-responsive overflow-scroll">
+                    </div>
+                    {userList.length > 0 && <div className="data-display mt-0 col-sm-12">
+                        <div className="overflow-scroll">
                             <table width="100%" className="table">
                                 <tbody>
                                 <tr>

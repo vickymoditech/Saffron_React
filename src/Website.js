@@ -67,46 +67,58 @@ class App extends Component {
     render() {
         let userProfile = this.props.userAvatar;
         return (
-            <div>
+            <div className="container-fluid pl-0 pr-0">
                 <BrowserView>
                     <div>
                         <NotificationSystem ref="notificationSystem"/>
-                        <nav className="navbar navbar-light" style={{height: "61px", backgroundColor: "#263238"}}>
+                        <nav className="navbar navbar-expand-md m-0 rounded-0 fixed-top" id="navbar" style={{backgroundColor: "#263238"}}>
                             <a className="navbar-brand" href="">
-                                <img src="assets/Images/DB_Logo.png" className="d-inline-block align-top" alt=""/>
+                                <img src="assets/Images/DB_Logo.png" alt=""/>
                             </a>
-                            <ul className="navbar-nav">
+                            <ul className="nav navbar-nav ml-auto d-flex">
+                                <li className="nav-item">
                                 <Link to="/">
                                     Home
-                                </Link> |
+                                </Link>
+                                </li>
+                                <li className="nav-item">
                                 <Link to="/Gallery">
                                     Gallery
-                                </Link> |
+                                </Link>
+                                </li>
+                                <li className="nav-item">
                                 <Link to="/VideoGallery">
                                     VideoGallery
-                                </Link> |
-                                <Link to="/ProductList">
-                                    Stepper
-                                </Link> |
+                                </Link>
+                                </li>
+                                <li className="nav-item">
+                                {/*<Link to="/ProductList">*/}
+                                    {/*Stepper*/}
+                                {/*</Link>*/}
+                                </li>
                                 {isLoggedIn() ?
                                     ( <span>
+                                        <li className="nav-item">
                                     <Link to="/Profile">
                                     Profile
-                                    </Link> |
+                                    </Link> </li>
+                                        <li className="nav-item">
                                     <Link onClick={this.handleLogout} style={{cursor: "pointer"}}>
                                     Logout
-                                    </Link>
+                                    </Link></li>
                                     <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile}
                                          style={{borderRadius: "100%", height: 45, width: 45}} alt="Avatar"/>
                                 </span>  ) :
                                     (
                                         <span>
+                                            <li className="nav-item pt-3">
                                         <Link onClick={this.handleLogin} style={{cursor: "pointer"}}>
                                             Login
-                                        </Link> |
+                                        </Link> </li>
+                                            <li className="nav-item pt-3">
                                         <Link to="/Registration">
                                             Registration
-                                        </Link>
+                                        </Link></li>
                                     </span>
                                     )}
                             </ul>

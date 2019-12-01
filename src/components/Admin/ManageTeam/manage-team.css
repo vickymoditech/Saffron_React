@@ -377,3 +377,7 @@ body.loading .loadingPanel {
 }
 
 /*END Loading Panel CSS*/
+
+.data-display .overflow-scroll{
+    min-height: calc(100vh - 160px);
+}

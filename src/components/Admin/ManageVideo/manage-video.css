@@ -377,3 +377,6 @@ body.loading .loadingPanel {
 }
 
 /*END Loading Panel CSS*/
+.data-display .overflow-scroll {
+    max-height: calc(100vh - 160px);
+}
