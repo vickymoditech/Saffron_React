@@ -99,13 +99,13 @@ class Registration extends Component {
                     closeOnClick
                     pauseOnHover
                 />
-                <div className="modal-dialog vertical-alignment-center">
+                <div className="modal-dialog d-flex m-0 mt-4 align-items-center">
                     <div className="modal-content">
                         <a href="javascript:void(0);" className="logo"></a>
                         <div className="modal-body">
                             <div className="row login-form">
                                 <div className="col-xs-12 text-center">
-                                    <h2 style={{margin: '10px'}}>User Registration</h2>
+                                    <h2 style={{margin: '0px'}}>User Registration</h2>
                                 </div>
                                 <div className="panel-body container">
                                     <div className="row">
