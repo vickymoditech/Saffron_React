@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './analytics.css';
-import AverageWaitTimeReport from './AverageWaitTimeReport';
+import TopUsersListReport from './TopUsersListReport';
+import GetTotalOrderStatusWise from './GetTotalOrderStatusWise';
+import GetTeamWiseOrderStatusReport from './GetTeamWiseOrderStatusReport';
+import GetTotalBillablePrice from './GetTotalBillablePrice';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as analyticsAction from '../../../actions/analyticsAction';
@@ -40,8 +43,15 @@ class Analytics extends Component {
         return (
             <div>
                 <div className="dashboard-main">
-                    <AverageWaitTimeReport loading={this.props.Loading}/>
+                    <TopUsersListReport loading={this.props.Loading} topUsers={this.props.topUsers}/>
+                    <GetTotalOrderStatusWise loading={this.props.Loading}
+                                             getOrderStatusReport={this.props.getOrderStatusReport}/>
 
+                    <GetTeamWiseOrderStatusReport loading={this.props.Loading}
+                                                  getTeamWiseOrderStatusReport={this.props.getTeamWiseOrderStatusReport}/>
+
+                    <GetTotalBillablePrice loading={this.props.Loading}
+                                           getTotalBillablePrice={this.props.getTotalBillablePrice}/>
                 </div>
             </div>
         );
