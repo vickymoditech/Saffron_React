@@ -216,7 +216,7 @@ ReactDOM.render(<Provider store={store}>
                        onEnter={requireAdminAuth} exact={true}/>
                 <Route path="/Dashboard/ManageTimeSlot" component={ManageTimeSlot}
                        onEnter={requireAdminAuth} exact={true}/>
-                <Route path="/Dashboard/Analytics" component={Analytics} onEnter={requireAdminEmployeeAuth} exact={true}/>
+                <Route path="/Dashboard/Analytics" component={Analytics} onEnter={requireAdminAuth} exact={true}/>
                 <Route path="*" component={NotFound} exact={true}/>
             </Route>
             <Route path="/Login" component={Login} onEnter={checkLoggedIn} exact={true}/>

@@ -47,7 +47,7 @@ export default class GetTotalBillablePrice extends Component {
                     <div className="analytics-chart-modal">
                         <div className="analytics-chart-header">
                             <div className="chart-title">
-                                <span>Top 10 Users</span>
+                                <span>Get Total Billable</span>
                             </div>
                             <div className="chart-tools">
                             </div>

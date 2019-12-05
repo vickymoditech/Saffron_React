@@ -52,7 +52,7 @@ export default class GetTeamWiseOrderStatusReport extends Component {
                     <div className="analytics-chart-modal">
                         <div className="analytics-chart-header">
                             <div className="chart-title">
-                                <span>Top 10 Users</span>
+                                <span>Team Wise Order Status</span>
                             </div>
                             <div className="chart-tools">
                             </div>

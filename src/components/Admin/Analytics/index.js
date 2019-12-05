@@ -4,6 +4,7 @@ import TopUsersListReport from './TopUsersListReport';
 import GetTotalOrderStatusWise from './GetTotalOrderStatusWise';
 import GetTeamWiseOrderStatusReport from './GetTeamWiseOrderStatusReport';
 import GetTotalBillablePrice from './GetTotalBillablePrice';
+import NotificationSystem from 'react-notification-system';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as analyticsAction from '../../../actions/analyticsAction';
@@ -28,12 +29,16 @@ class Analytics extends Component {
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
-            this.props.actions.serviceAction.DefaultMessageClear();
+            this.props.actions.analyticsAction.DefaultMessageClear();
         } else if (!nextProps.Loading && nextProps.success_msg) {
             this.addNotifications(nextProps.success_msg, "success");
-            this.props.actions.serviceAction.DefaultMessageClear();
+            this.props.actions.analyticsAction.DefaultMessageClear();
         }
     }
+
+    componentDidMount() {
+        this.setState({notificationSystem: this.refs.notificationSystem});
+    };
 
     componentWillMount() {
         this.props.actions.analyticsAction.GetAnalyticsRecords();
@@ -43,6 +48,7 @@ class Analytics extends Component {
         return (
             <div>
                 <div className="dashboard-main">
+                    <NotificationSystem ref="notificationSystem"/>
                     <TopUsersListReport loading={this.props.Loading} topUsers={this.props.topUsers}/>
                     <GetTotalOrderStatusWise loading={this.props.Loading}
                                              getOrderStatusReport={this.props.getOrderStatusReport}/>

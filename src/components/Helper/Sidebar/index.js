@@ -84,8 +84,7 @@ class Sidebar extends Component {
                                     <i className="fa fa-home"/>
                                     <div style={{marginTop: 10}} className="link-hover">Home</div>
                                 </ListItem>
-                            </Link>
-                            <Divider/>
+                            </Link><Divider/>
                             {userRole.toLowerCase() === "admin" &&
                             <span>
                                 <Link to="/Dashboard/ManageService" className="link">
@@ -142,21 +141,19 @@ class Sidebar extends Component {
                                     <div style={{marginTop: 10}} className="link-hover">Manage Time Slots</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                </span>}
-                            <Link to="/Dashboard/Analytics" className="link">
+                                <Link to="/Dashboard/Analytics" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-pie-chart"/>
                                     <div style={{marginTop: 10}} className="link-hover">Analisys</div>
                                 </ListItem>
-                            </Link>
-                            <Divider/>
+                            </Link><Divider/>
+                                </span>}
                             <Link to="/Dashboard/Profile" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-user-circle-o"/>
                                     <div style={{marginTop: 10}} className="link-hover">Setting</div>
                                 </ListItem>
-                            </Link>
-                            <Divider/>
+                            </Link><Divider/>
                         </div>
                     </List>
                     <Divider/>
