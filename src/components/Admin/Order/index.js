@@ -14,9 +14,21 @@ export default class Order extends Component {
             teamWiseOrderStatus: "",
             column: "",
             status: "",
-            statusDateTime:""
+            statusDateTime: ""
         };
     }
+
+    tConvert = (time) => {
+        // Check correct time format and split into components
+        time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+        if (time.length > 1) { // If time format correct
+            time = time.slice(1);  // Remove full string match value
+            time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+            time[0] = +time[0] % 12 || 12; // Adjust hours
+        }
+        return time.join(''); // return adjusted time or original string
+    };
 
     handleChangeTicket = () => {
         this.props.handleChangeTicket(this.props.currentElement);
@@ -29,9 +41,9 @@ export default class Order extends Component {
         }
 
         let teamWiseOrder = [];
-        let {column,status,statusDateTime} = this.props.order;
+        let {column, status, statusDateTime} = this.props.order;
         const role = GetLocalUderData().user.role;
-        if(role.toLowerCase() !== "admin" && this.props.order && this.props.order.teamWiseProductList){
+        if (role.toLowerCase() !== "admin" && this.props.order && this.props.order.teamWiseProductList) {
             teamWiseOrder = this.props.order.teamWiseProductList.find((data) => data.id === GetLocalUderData().user.id);
             column = teamWiseOrder.column;
             status = teamWiseOrder.orderStatus;
@@ -43,7 +55,7 @@ export default class Order extends Component {
             teamWiseOrderStatus: teamWiseOrder,
             column: column,
             status: status,
-            statusDateTime:statusDateTime
+            statusDateTime: statusDateTime
         });
 
         this.timerID = setInterval(
@@ -53,6 +65,7 @@ export default class Order extends Component {
     }
 
     orderDialogOpen = () => {
+        this.props.handleChangeTicket(this.props.currentElement);
         this.setState({isDialogOpen: true});
     };
 
@@ -62,7 +75,7 @@ export default class Order extends Component {
 
 
     tick() {
-        let {column,statusDateTime} = this.state;
+        let {column, statusDateTime} = this.state;
         let currentTime = new Date();
         let timeDiff = 0;
         const OrderTime = new Date(statusDateTime);
@@ -84,10 +97,10 @@ export default class Order extends Component {
 
 
     render() {
-        const {column,status,statusDateTime} = this.state;
+        const {column, status, statusDateTime} = this.state;
         const time = this.state.Time;
         const orderTime = (moment(this.props.order.bookingStartTime).utcOffset('IST').format("DD-MM-YYYY HH:mm:ss")).toString().split(" ");
-        const HHMM = orderTime[1].toString().split(":");
+        const orderTime12Hrs = this.tConvert(orderTime.toString().split(",")[1]);
         const orderNo = this.props.order.id;
         const customerName = this.props.order.customerName;
 
@@ -131,7 +144,7 @@ export default class Order extends Component {
                             </div>
                     }
                     <div className="box-right">
-                        <div className="number">{HHMM[0]}:{HHMM[1]}</div>
+                        <div className="number">{orderTime12Hrs}</div>
                         <div className="icon icon-btn-save">
                             <button type="submit" onClick={this.orderDialogOpen} className="btn btn-save" style={{
                                 minWidth: "none",

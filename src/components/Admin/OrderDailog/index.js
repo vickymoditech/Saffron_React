@@ -54,6 +54,7 @@ class OrderDialog extends Component {
     };
 
     render() {
+        const {order} = this.state;
         return (
             <div>
                 <Dialog
@@ -81,8 +82,8 @@ class OrderDialog extends Component {
                                                                 <div className="col-12">
                                                                     <div className="panel panel-default">
                                                                         <div className="panel-heading">
-                                                                            <h3 className="panel-title"><strong>Order
-                                                                                summary</strong></h3>
+                                                                            <h3 className="panel-title">
+                                                                                <strong>{order.customerName} ({order.customer_id}) </strong></h3>
                                                                         </div>
                                                                         <div className="panel-body">
                                                                             <div className="table-responsive">
