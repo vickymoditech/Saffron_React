@@ -8,18 +8,19 @@ import ServiceGrid from './serviceGrid';
 import MiddleCard from './middleCard';
 import Team from './team';
 import Footer from '../Footer';
+import './websiteCss/website.css';
 
 class Home extends Component {
 
     render() {
         return (
             <div>
-                {/*<ReactPlayer url='assets/Video/saffron.webm' playing loop={true} muted width={"100%"} height={"100%"}/>*/}
+                <ReactPlayer url='assets/Video/saffron.webm' playing loop={true} muted width={"100%"} height={"100%"}/>
                 {/*{this.props.sliderList.length > 0 && <MainSlider sliderList={this.props.sliderList}/>}*/}
-                <ServiceGrid serviceList={this.props.serviceList}/>
-                <MiddleCard/>
-                <ImageGrid galleryList={this.props.galleryList}/>
-                <Team teamList={this.props.teamList}/>
+                {/*<ServiceGrid serviceList={this.props.serviceList}/>*/}
+                {/*<MiddleCard/>*/}
+                {/*<ImageGrid galleryList={this.props.galleryList}/>*/}
+                {/*<Team teamList={this.props.teamList}/>*/}
                 <Footer/>
             </div>
         );

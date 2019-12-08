@@ -1,65 +1,67 @@
 import React, {Component} from 'react';
-import './Footer.css';
 
 class Footer extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
-
             <div>
-
-                <footer className="footer">
-                    <div className="container bottom_border">
-                        <div className="row">
-                            <div className=" col-sm-4 col-md col-sm-4  col-12 col">
-                                <h5 className="headin5_amrc col_white_amrc pt2">Find us</h5>
-
-                                <p className="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                                    1500s</p>
-                                <p><i className="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35 </p>
-                                <p><i className="fa fa-phone"></i> +91-9999878398 </p>
-                                <p><i className="fa fa fa-envelope"></i> info@example.com </p>
-
-
+                <footer class="page-footer footer_section mt-md-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="side1 mt-md-5 mb-md-5">
+                                    <span>About Imahe</span>
+                                    <p class="pt-md-3">Far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+                                    <div class="d-flex">
+                                        <i class="fa fa-twitter mr-md-2"></i>
+                                        <i class="fa fa-facebook mr-md-2"></i>
+                                        <i class="fa fa-linkedin mr-md-2"></i>
+                                        <i class="fa fa-dribbble mr-md-2"></i>
+                                    </div>
+                                </div>
                             </div>
-
-
-                            <div className=" col-sm-4 col-md  col-6 col">
-                                <h5 className="headin5_amrc col_white_amrc pt2">Quick links</h5>
-
-                                <ul className="footer_ul_amrc">
-                                    <li><a href="http://kalarikendramdelhi.com">Home</a></li>
-                                    <li><a href="http://kalarikendramdelhi.com">About</a></li>
-                                    <li><a href="http://kalarikendramdelhi.com">Services</a></li>
-                                    <li><a href="http://kalarikendramdelhi.com">Pricing</a></li>
-                                    <li><a href="http://kalarikendramdelhi.com">Blog</a></li>
-                                    <li><a href="http://kalarikendramdelhi.com">Contact</a></li>
-                                </ul>
+                            <div class="col-md-4">
+                                <div class="side2 mt-md-5 mb-md-5">
+                                    <span>Information</span>
+                                    <div class="d-flex flex-column pt-md-3">
+                                        <div><i class="fa fa-check"></i><a href="#"> Home</a></div>
+                                        <div><i class="fa fa-check"></i><a href="#"> Gallery</a></div>
+                                        <div> <i class="fa fa-check"></i><a href="#"> About</a></div>
+                                        <div><i class="fa fa-check"></i><a href="#"> Blog</a></div>
+                                        <div><i class="fa fa-check"></i><a href="#"> Contact</a></div>
+                                        <div><i class="fa fa-check"></i><a href="#"> Privacy</a></div>
+                                    </div>
+                                </div>
                             </div>
-
+                            <div class="col-md-4">
+                                <div class="side3 mt-md-5 mb-md-5">
+                                    <span class="side3_title">Contact Info</span>
+                                    <div class="pt-md-3">
+                                        <span class="side3_content1">291 South 21th Street,</span>
+                                    </div>
+                                    <span class="side3_content1">Suite 721 New York NY 10016</span>
+                                    <div class="mt-md-3">
+                                        <div>
+                                            <i class="fa fa-phone pr-md-2"></i> <a href="tel:+1235235598">+1235 2355 98</a></div>
+                                        <div class="pt-md-2">
+                                            <i class="fa fa-envelope-open-o pr-md-2"></i> <a href="mailto:info@yoursite.com">info@yoursite.com</a>
+                                        </div>
+                                        <div class="pt-md-2">
+                                            <i class="fa fa-globe pr-md-2"></i> <a href="#">yourwebsite.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-
-                    <div className="container">
-                        <p className="text-center">Copyright @2017 | Designed With by <a href="#">Your Company Name</a></p>
-
-                        <ul className="social_footer_ul">
-                            <li><a href="http://kalarikendramdelhi.com"><i className="fab fa-facebook-f"></i></a></li>
-                            <li><a href="http://kalarikendramdelhi.com"><i className="fab fa-twitter"></i></a></li>
-                            <li><a href="http://kalarikendramdelhi.com"><i className="fab fa-linkedin"></i></a></li>
-                            <li><a href="http://kalarikendramdelhi.com"><i className="fab fa-instagram"></i></a></li>
-                        </ul>
-
+                    <div class="second_footer pt-md-4 pb-md-3">
+                        <div class="container">
+                            <p class="text-center">Copyright ©2019 All rights reserved | This template is made with <i class="fa fa-heart-o"></i> by Colorlib
+                                Demo Images: Unsplash, Pexels</p>
+                        </div>
                     </div>
                 </footer>
             </div>
-
         )
     }
 

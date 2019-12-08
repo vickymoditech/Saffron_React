@@ -80,6 +80,26 @@ function requireAdminEmployeeAuth(nextState, replace) {
             state: {nextPathname: nextState.location.pathname}
         })
     } else {
+        if (!checkAdminEmployeeRole(getAccessToken())) {
+            replace({
+                pathname: '/',
+                state: {nextPathname: nextState.location.pathname}
+            })
+        }
+    }
+}
+
+function requireAdminEmployeeUserAuth(nextState, replace) {
+    if (!isLoggedIn()) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("userProfile");
+        localStorage.removeItem("userAvatar");
+        localStorage.clear();
+        replace({
+            pathname: '/',
+            state: {nextPathname: nextState.location.pathname}
+        })
+    } else {
         if (!checkAdminEmployeeUserRole(getAccessToken())) {
             replace({
                 pathname: '/',
@@ -107,7 +127,7 @@ function isTokenExpired(token) {
     return expirationDate < new Date();
 }
 
-function checkAdminEmployeeUserRole(token) {
+function checkAdminEmployeeRole(token) {
     if (token) {
         const userProfile = decode(token);
         const userRole = userProfile.user && userProfile.user.role;
@@ -119,8 +139,22 @@ function checkAdminEmployeeUserRole(token) {
     } else {
         return false;
     }
-
 }
+
+function checkAdminEmployeeUserRole(token) {
+    if (token) {
+        const userProfile = decode(token);
+        const userRole = userProfile.user && userProfile.user.role;
+        if (userRole) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
 
 function checkAdminUserRole(token) {
     if (token) {
@@ -224,7 +258,7 @@ ReactDOM.render(<Provider store={store}>
             <Route component={Website} path="/" exact={true}>
                 <IndexRoute component={Home}/>
                 <Route path="/Gallery" component={Gallery} exact={true}/>
-                <Route path="/Profile" component={Profile} exact={true}/>
+                <Route path="/Profile" component={Profile} onEnter={requireAdminEmployeeUserAuth} exact={true}/>
                 <Route path="/ProductList" component={ProductList} exact={true}/>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}>
                     <Route path="/VideoGallery/demo" component={VideoGallery}/>

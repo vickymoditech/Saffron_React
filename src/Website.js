@@ -14,7 +14,7 @@ import ENVIRONMENT_VARIABLES from "./environment.config";
 
 class App extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             notificationSystem: null
@@ -67,68 +67,62 @@ class App extends Component {
     render() {
         let userProfile = this.props.userAvatar;
         return (
-            <div className="container-fluid pl-0 pr-0">
-                <BrowserView>
-                    <div>
-                        <NotificationSystem ref="notificationSystem"/>
-                        <nav className="navbar navbar-expand-md m-0 rounded-0 fixed-top" id="navbar" style={{backgroundColor: "#263238"}}>
-                            <a className="navbar-brand" href="">
-                                <img src="assets/Images/DB_Logo.png" alt=""/>
-                            </a>
-                            <ul className="nav navbar-nav ml-auto d-flex">
-                                <li className="nav-item">
-                                <Link to="/">
-                                    Home
-                                </Link>
-                                </li>
-                                <li className="nav-item">
-                                <Link to="/Gallery">
-                                    Gallery
-                                </Link>
-                                </li>
-                                <li className="nav-item">
-                                <Link to="/VideoGallery">
-                                    VideoGallery
-                                </Link>
-                                </li>
-                                <li className="nav-item">
-                                {/*<Link to="/ProductList">*/}
-                                    {/*Stepper*/}
-                                {/*</Link>*/}
-                                </li>
-                                {isLoggedIn() ?
-                                    ( <span>
-                                        <li className="nav-item">
-                                    <Link to="/Profile">
-                                    Profile
-                                    </Link> </li>
-                                        <li className="nav-item">
-                                    <Link onClick={this.handleLogout} style={{cursor: "pointer"}}>
-                                    Logout
-                                    </Link></li>
-                                    <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile}
-                                         style={{borderRadius: "100%", height: 45, width: 45}} alt="Avatar"/>
-                                </span>  ) :
-                                    (
-                                        <span>
-                                            <li className="nav-item pt-3">
-                                        <Link onClick={this.handleLogin} style={{cursor: "pointer"}}>
-                                            Login
-                                        </Link> </li>
-                                            <li className="nav-item pt-3">
-                                        <Link to="/Registration">
-                                            Registration
-                                        </Link></li>
-                                    </span>
-                                    )}
-                            </ul>
-                        </nav>
-                        {this.props.children}
-                    </div>
-                </BrowserView>
-                <MobileView>
-                    <h1> Download Mobile Application </h1>
-                </MobileView>
+            <div>
+                <NotificationSystem ref="notificationSystem"/>
+                {/*<nav className="navbar navbar-expand-md m-0 rounded-0 fixed-top" id="navbar"*/}
+                {/*style={{backgroundColor: "#263238"}}>*/}
+                {/*<a className="navbar-brand" href="">*/}
+                {/*<img src="assets/Images/DB_Logo.png" alt=""/>*/}
+                {/*</a>*/}
+                {/*<ul className="nav navbar-nav ml-auto d-flex">*/}
+                {/*<li className="nav-item">*/}
+                {/*<Link to="/">*/}
+                {/*Home*/}
+                {/*</Link>*/}
+                {/*</li>*/}
+                {/*<li className="nav-item">*/}
+                {/*<Link to="/Gallery">*/}
+                {/*Gallery*/}
+                {/*</Link>*/}
+                {/*</li>*/}
+                {/*<li className="nav-item">*/}
+                {/*<Link to="/VideoGallery">*/}
+                {/*VideoGallery*/}
+                {/*</Link>*/}
+                {/*</li>*/}
+                {/*/!*<li className="nav-item">*!/*/}
+                {/*/!*<Link to="/ProductList">*!/*/}
+                {/*/!*Stepper*!/*/}
+                {/*/!*</Link>*!/*/}
+                {/*/!*</li>*!/*/}
+                {/*{isLoggedIn() && <li className="nav-item">*/}
+                {/*<Link to="/Profile">*/}
+                {/*Profile*/}
+                {/*</Link>*/}
+                {/*</li>}*/}
+                {/*{isLoggedIn() && <li className="nav-item">*/}
+                {/*<Link onClick={this.handleLogout}>*/}
+                {/*Logout*/}
+                {/*</Link>*/}
+                {/*</li>}*/}
+                {/*{!isLoggedIn() && <li className="nav-item">*/}
+                {/*<Link onClick={this.handleLogin}>*/}
+                {/*Login*/}
+                {/*</Link>*/}
+                {/*</li>}*/}
+                {/*{!isLoggedIn() && <li className="nav-item">*/}
+                {/*<Link to="/Registration">*/}
+                {/*Registration*/}
+                {/*</Link>*/}
+                {/*</li>}*/}
+
+                {/*{isLoggedIn() && <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile}*/}
+                {/*style={{borderRadius: "100%", height: 45, width: 45}}*/}
+                {/*alt="Avatar"/>}*/}
+
+                {/*</ul>*/}
+                {/*</nav>*/}
+                {this.props.children}
                 {this.props.Loading && <Loader/>}
             </div>
         );
@@ -136,11 +130,11 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const {websiteReducer,authReducer} = state;
+    const {websiteReducer, authReducer} = state;
     return {
         Loading: websiteReducer.Loading,
         error_msg: websiteReducer.error_msg,
-        userAvatar:authReducer.userAvatar
+        userAvatar: authReducer.userAvatar
     };
 };
 

@@ -253,7 +253,6 @@ class ManageTeamMemberProduct extends Component {
                                 )}
                             </Droppable>
 
-                            <br/><br/>
 
                             <Droppable droppableId="droppable2">
                                 {(provided, snapshot) => (
