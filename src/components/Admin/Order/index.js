@@ -99,7 +99,7 @@ export default class Order extends Component {
     render() {
         const {column, status, statusDateTime} = this.state;
         const time = this.state.Time;
-        const orderTime = (moment(this.props.order.bookingStartTime).utcOffset('IST').format("DD-MM-YYYY HH:mm:ss")).toString().split(" ");
+        const orderTime = (moment(this.props.order.bookingStartTime).utcOffset('IST').format("DD-MM-YYYY HH:mm")).toString().split(" ");
         const orderTime12Hrs = this.tConvert(orderTime.toString().split(",")[1]);
         const orderNo = this.props.order.id;
         const customerName = this.props.order.customerName;
@@ -133,7 +133,7 @@ export default class Order extends Component {
                     </audio>}
                     <div className="waiting-details" style={{backgroundColor: Color}}>
                         <div className="drive-status">{status}</div>
-                        <div className="pickup-time">{time}</div>
+                        <div className="pickup-time" style={{fontSize: 30}}>{time}</div>
                         <div className="min text-uppercase">min</div>
                     </div>
                     {
@@ -144,7 +144,7 @@ export default class Order extends Component {
                             </div>
                     }
                     <div className="box-right">
-                        <div className="number">{orderTime12Hrs}</div>
+                        <div className="number" style={{fontSize: 15}}>{orderTime12Hrs}</div>
                         <div className="icon icon-btn-save">
                             <button type="submit" onClick={this.orderDialogOpen} className="btn btn-save" style={{
                                 minWidth: "none",

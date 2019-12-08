@@ -82,15 +82,16 @@ export default function manageTeamReducer(state = initialState.manageTeamReducer
             });
 
         case TEAM_EDIT_SUCCESS:
-            state.teamList.map((team, index) => {
-                if (team.id === action.data.data.id) {
-                    team.name = action.data.data.name;
-                    team.description = action.data.data.description;
-                    if (action.data.data.image_url !== undefined) {
-                        team.image_url = action.data.data.image_url;
-                    }
+            let updateTeam = state.teamList.find((team) => team.id === action.data.data.id);
+            if(updateTeam){
+                updateTeam.first_name = action.data.data.first_name;
+                updateTeam.last_name = action.data.data.last_name;
+                updateTeam.description = action.data.data.description;
+                if (action.data.data.image_url !== undefined) {
+                    updateTeam.image_url = action.data.data.image_url;
                 }
-            });
+            }
+
             return Object.assign({}, state, {
                 teamList: state.teamList,
                 Loading: false,
