@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './websiteCss/MiddleCard.css';
+
 class MiddleCard extends Component {
 
     constructor(props) {
@@ -9,52 +9,38 @@ class MiddleCard extends Component {
     render() {
         return (
             <div>
-                <div className="container">
-                    <div className="row">
-                        <div className="card col-md-12 p-3">
-                            <div className="row ">
-                                <div className="col-md-4">
-                                    <img className="w-100" src="https://via.placeholder.com/350x350"/>
+                <section className="welcome">
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-md-4 pl-0 pr-0">
+                                <div className="img1">
+                                    <div className="main_text"></div>
                                 </div>
-                                <div className="col-md-8">
-                                    <div className="card-block">
-                                        <h6 className="card-title">Card Title</h6>
-                                        <p className="card-text text-justify">Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                            officia deserunt mollit anim id est laborum.</p>
-                                        <a href="https://www.google.com" className="btn btn-primary">read more...</a>
+                            </div>
+                            <div className="col-md-4 pl-0 pr-0">
+                                <div
+                                    className="d-flex flex-column justify-content-center align-items-center h-100 text-center p-4 welcome_content">
+                                    <div className="text-center d-flex flex-column logo_area mb-3">
+                                        <i className="fa fa-camera"></i>
+                                        <span>Saffron</span>
                                     </div>
+                                    <span className="welcome_text">Welcome to our salon</span>
+                                    <p className="mt-3">A small river named Duden flows by their place and supplies it
+                                        with
+                                        the necessary regelialia. It is a paradisematic country, in which roasted parts
+                                        of sentences fly into your mouth. Far far away, behind the word mountains, far
+                                        from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <button className="btn mt-3" type="button">Read More</button>
+                                </div>
+                            </div>
+                            <div className="col-md-4 pl-0 pr-0">
+                                <div className="img2">
+                                    <div className="main_text"></div>
                                 </div>
                             </div>
                         </div>
-
-                        <div className="card col-md-12 p-3">
-                            <div className="row ">
-                                <div className="col-md-8">
-                                    <div className="card-block">
-                                        <h6 className="card-title text-right">Card Title</h6>
-                                        <p className="card-text text-justify">Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                            officia deserunt mollit anim id est laborum.</p>
-                                        <a href="#" className="btn btn-primary">read more...</a>
-                                    </div>
-                                </div>
-                                <div className="col-md-4">
-                                    <img className="w-100" src="https://via.placeholder.com/350x350"/>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
+                </section>
             </div>
         )
     }

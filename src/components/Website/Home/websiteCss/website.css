@@ -1,168 +1,345 @@
-body {
-    background-color: #a17a47;
-    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+/*header start*/
+header {
+    overflow: hidden;
+    height: 100vh;
 }
 
 header .navbar1 {
     background: transparent;
 }
 
+header .navbar1 .main_logo {
+    display: none;
+}
+
 header .scrolled {
     transition: all .5s;
-    background-color: #a17a47;
-    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    background-color: black;
+    color: white;
     box-shadow: 0 6px 6px 1px rgba(32, 33, 36, 0.28);
 }
 
 header .menu {
     font-family: "Josefin Sans", Arial, sans-serif;
-    color: black;
+    color: white;
 }
 
 header .menu a {
-    color: black;
+    color: white;
     text-decoration: none;
     transition: all .5s;
 }
 
 header .menu a:hover {
-    color: white;
+    color: #bf925b;
 }
 
 header .menu .logo {
-    color: black;
+    color: white;
     font-size: 30px;
     transition: all .5s;
 }
 
 header .menu .logo:hover {
-    color: white;
+    color: #bf925b;
 }
 
-header .carousel .carousel-inner .carousel-item img {
-    height: 100vh;
+header .video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }
 
-.service_main .main_title {
-    font-size: 40px;
-    font-family: "Amatic SC", cursive;
-    text-transform: uppercase;
+/*header end*/
+
+/*welcome section start*/
+
+.welcome .img1 {
+    background-image: url('/assets/Images/formen.jpg');
+    background-size: cover;
+    position: relative;
+    height: calc(100vh - 200px);
+    z-index: 0;
 }
 
-.service_main .main_box {
-    box-shadow: 0px 0px 14px 8px #86653b;
-    border-radius: 5px;
-    background-color: white;
-    transition: all .5s;
+.welcome .img1 ::after {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    right: 50px;
+    bottom: 50px;
+    content: '';
+    border: 3px solid #bf925b;
+    z-index: -1;
 }
 
-.service_main .main_box:hover {
-    color: #a17a47;
-}
-
-.service_main .main_box:hover i {
-    background-color: #a17a47;
-    color: white;
-}
-
-.service_main .main_box:hover p {
-    color: #a17a47;
-}
-
-.service_main .main_box i {
-    font-size: 35px;
-    background-color: #aa8b63;
-    border-radius: 50%;
-    width: 80px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    height: 80px;
-    transition: all .5s;
-}
-
-.service_main .main_box .service_title {
-    font-size: 20px;
-    font-family: "Amatic SC",
-        cursive;
-    text-transform: uppercase;
-}
-
-.service_main .main_box p {
-    font-size: 16px;
+.welcome .welcome_content {
     font-family: "Josefin Sans", Arial, sans-serif;
+    background-color: #f5f2ea;
+}
+
+.welcome .welcome_content .logo_area {
+    font-size: 35px;
+}
+
+.welcome .welcome_content .welcome_text {
+    font-size: 25px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #bf925b;
+}
+
+.welcome .welcome_content p {
     color: gray;
 }
 
-.gallery_section .title_content .main_title {
+.welcome .welcome_content button {
+    width: auto;
+    font-size: 20px;
+    border: 2px solid #bf925b;
+    background: transparent;
+    color: #bf925b;
+    transition: all 0.5s;
+    border-radius: 0px;
+}
+
+.welcome .welcome_content button:hover {
+    background-color: #bf925b;
+    color: white;
+}
+
+.welcome .img2 {
+    background-image: url('/assets/Images/formen.jpg');
+    background-size: cover;
+    position: relative;
+    height: calc(100vh - 200px);
+    z-index: 0;
+}
+
+.welcome .img2 ::after {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    right: 50px;
+    bottom: 50px;
+    content: '';
+    border: 3px solid #bf925b;
+    z-index: -1;
+}
+
+/*welcome section end*/
+
+/*service start*/
+.service {
+    background-color: #f5f2ea;
+    font-family: "Josefin Sans", Arial, sans-serif;
+}
+
+.service .title_content .title {
     font-size: 40px;
-    font-family: "Amatic SC", cursive;
+    font-weight: bold;
     text-transform: uppercase;
 }
 
-.gallery_section .title_content p {
-    font-family: "Josefin Sans", Arial, sans-serif;
-    font-size: 18px;
+.service .title_content .sub_title {
+    font-size: 20px;
+    color: gray;
 }
 
-.gallery_section .main_gallery .image {
-    height: 350px;
-    width: 350px;
-    border: 3px solid white;
-    border-radius: 15px;
-    margin-top: 20px;
-    margin-right: 20px;
+.service .main_box {
+    border: 3px solid transparent;
+    transition: all 0.5s;
+}
+
+.service .main_box:hover {
+    border: 3px solid #bf925b;
+    box-shadow: 0px 0px 10px 5px #bf925b6b;
+}
+
+.service .main_box i {
+    font-size: 35px;
+    color: #bf925b;
+}
+
+.service .main_box span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.service .main_box p {
+    font-size: 16px;
+    color: gray;
+}
+
+/*service end*/
+/*gallery start*/
+.gallery {
+    background-color: #f5f2ea;
+}
+
+.gallery .title_content {
+    font-family: "Josefin Sans", Arial, sans-serif;
+}
+
+.gallery .title_content .title {
+    font-size: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.gallery .title_content .sub_title {
+    font-size: 20px;
+    color: gray;
+}
+
+.gallery .main_img_box {
     overflow: hidden;
 }
 
-.gallery_section .main_gallery img {
-    height: 350px;
-    width: 350px;
-    transition: transform .2s;
-    transition: all .5s;
+.gallery .main_img_box img {
+    overflow: hidden;
+    transition: transform 0.2s;
+    transition: all 0.3s;
 }
 
-.gallery_section .main_gallery img:hover {
+.gallery .main_img_box img:hover {
     transform: scale(1.3);
 }
 
-.blog_section .main_blog .title_content span {
+/*gallery end*/
+
+/*team start*/
+.team_section {
+    background-color: #f5f2ea;
+}
+
+.team_section .main_title1 {
     font-size: 40px;
-    font-family: "Amatic SC", cursive;
+    font-weight: bold;
+    font-family: "Josefin Sans", Arial, sans-serif;
     text-transform: uppercase;
 }
 
-.blog_section .main_blog .title_content p {
-    font-family: "Josefin Sans", Arial, sans-serif;
-    font-size: 18px;
+.team_section .team {
+    position: relative;
 }
 
-.blog_section .main_blog .main_box .item {
-    background-color: white;
-    width: 30%;
+.team_section .team_img {
+    border-radius: 25px 25px 25px 0px;
+    display: block;
+}
+
+.team_section .team_img_content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 25px 25px 25px 0px;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-color: #bf925b;
+}
+
+.team_section .team_content {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.team_section .team_content > a {
+    font-size: 14px;
+    color: #fff;
+    background: #462f13;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 10px 10px 10px 0;
+    display: block;
+    margin: 2.5px;
+}
+
+.team_section .team:hover .team_img_content {
+    opacity: 0.8;
+}
+
+.team_section .team_text1 {
+    padding-top: 20px;
+    font-size: 20px;
+    font-size: 22px;
+    color: #bf925b;
+    font-family: "Josefin Sans", Arial, sans-serif;
+}
+
+.team_section .team_text2 {
+    color: gray;
+    margin-bottom: 0;
+    font-family: "Josefin Sans", Arial, sans-serif;
+}
+
+/*team end*/
+
+/*testimonial start*/
+
+.testimonial {
+    background-color: #ebe8de;
+    font-family: "Josefin Sans", Arial, sans-serif;
+}
+
+.testimonial .title {
+    font-size: 47px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.testimonial .owl-carousel .item {
+    border: 2px solid #bf925b;
     border-radius: 10px;
+    transition: all .5s;
 }
 
-.blog_section .main_blog .main_box .item img {
-    border-radius: 10px 10px 0px 0px;
+.testimonial .owl-carousel .item:hover {
+    border: 2px solid #bf925b;
+    background-color: #bf925b;
+    color: white;
 }
 
-.blog_section .main_blog .main_box .item .title_content span {
-    font-size: 18px;
-    font-family: "Amatic SC", cursive;
+.testimonial .owl-carousel .item:hover .cutsomer_title {
+    color: white;
 }
 
-.blog_section .main_blog .main_box .item .title_content p {
-    font-size: 16px;
-    font-family: "Josefin Sans", Arial, sans-serif;
+.testimonial .owl-carousel .item .cutsomer_title {
+    color: #bf925b;
+    transition: all .5s;
 }
 
-.blog_section .main_blog .main_box .item .second_content {
-    border-top: 2px solid #a9885f;
+.testimonial .owl-carousel .owl-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
+
+/*testimonail end*/
+
+/*footer start*/
 
 .footer_section {
     background-color: #323232;
+    font-family: "Josefin Sans", Arial, sans-serif;
 }
 
 .footer_section .side1 {
@@ -171,19 +348,16 @@ header .carousel .carousel-inner .carousel-item img {
 
 .footer_section .side1 span {
     font-size: 25px;
-    font-family: "Amatic SC",
-        cursive;
     text-transform: uppercase;
 }
 
 .footer_section .side1 p {
     font-size: 16px;
-    font-family: "Josefin Sans", Arial, sans-serif;
 }
 
 .footer_section .side1 i {
-    border: 2px solid #a9885f;
-    color: #a9885f;
+    border: 2px solid #bf925b;
+    color: #bf925b;
     border-radius: 50%;
     height: 35px;
     width: 35px;
@@ -194,8 +368,8 @@ header .carousel .carousel-inner .carousel-item img {
 }
 
 .footer_section .side1 i:hover {
-    border: 2px solid #a9885f;
-    background-color: #a9885f;
+    border: 2px solid #bf925b;
+    background-color: #bf925b;
     color: white;
 }
 
@@ -205,25 +379,19 @@ header .carousel .carousel-inner .carousel-item img {
 
 .footer_section .side2 span {
     font-size: 25px;
-    font-family: "Amatic SC", cursive;
     text-transform: uppercase;
 }
 
 .footer_section .side2 i {
     font-size: 16px;
-    color: #a9885f;
+    color: #bf925b;
 }
 
 .footer_section .side2 a {
     font-size: 16px;
-    font-family: "Josefin Sans", Arial, sans-serif;
     color: white;
     text-decoration: none;
     transition: all .5s;
-}
-
-.footer_section .side2 a:hover {
-    color: #a9885f;
 }
 
 .footer_section .side3 {
@@ -232,14 +400,12 @@ header .carousel .carousel-inner .carousel-item img {
 
 .footer_section .side3 .side3_title {
     font-size: 25px;
-    font-family: "Amatic SC", cursive;
     text-transform: uppercase;
 }
 
 .footer_section .side3 .side3_content1 {
     color: white;
     font-size: 16px;
-    font-family: "Josefin Sans", Arial, sans-serif;
 }
 
 .footer_section .side3 a {
@@ -248,14 +414,8 @@ header .carousel .carousel-inner .carousel-item img {
     transition: all .5s;
 }
 
-.footer_section .side3 a:hover {
-    color: #a9885f;
-    text-decoration: none;
-    transition: all .5s;
-}
-
 .footer_section .side3 i {
-    color: #a9885f;
+    color: #bf925b;
     font-size: 20px;
 }
 
@@ -263,3 +423,188 @@ header .carousel .carousel-inner .carousel-item img {
     background-color: #262626;
     color: white;
 }
+
+.footer_section .second_footer i {
+    color: #bf925b;
+}
+
+/*footer end*/
+
+/*media query start*/
+@media (min-width: 992px) and (max-width: 1200px) {
+    header .menu a {
+        font-size: 11px;
+    }
+
+    header .menu .logo {
+        font-size: 20px;
+    }
+
+    .welcome .welcome_content .logo_area {
+        font-size: 25px;
+    }
+
+    .welcome .welcome_content .welcome_text {
+        font-size: 20px;
+    }
+
+    .welcome .welcome_content p {
+        font-size: 13px;
+    }
+
+    .service .title_content .title {
+        font-size: 30px;
+    }
+
+    .service .title_content .sub_title {
+        font-size: 18px;
+    }
+
+    .gallery .title_content .title {
+        font-size: 30px;
+    }
+
+    .gallery .title_content .sub_title {
+        font-size: 18px;
+    }
+
+    .team_section .main_title1 {
+        font-size: 30px;
+    }
+
+    .team_section .team_text1 {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    header .menu a {
+        font-size: 11px;
+    }
+
+    header .menu .logo {
+        font-size: 20px;
+    }
+
+    .welcome .welcome_content .logo_area {
+        font-size: 25px;
+    }
+
+    .welcome .welcome_content .welcome_text {
+        font-size: 20px;
+    }
+
+    .welcome .welcome_content p {
+        font-size: 13px;
+    }
+
+    .service .title_content .title {
+        font-size: 30px;
+    }
+
+    .service .title_content .sub_title {
+        font-size: 18px;
+    }
+
+    .gallery .title_content .title {
+        font-size: 30px;
+    }
+
+    .gallery .title_content .sub_title {
+        font-size: 18px;
+    }
+
+    .team_section .main_title1 {
+        font-size: 30px;
+    }
+
+    .team_section .team_text1 {
+        font-size: 18px;
+    }
+
+    .testimonial .title {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    header .navbar1 {
+        background: black;
+    }
+
+    header .navbar1 .first_logo {
+        color: white;
+    }
+
+    header .navbar1 .main_menu{
+        width: 80%;
+    }
+
+    header .navbar1 .main_menu .collapse  .menu1{
+        display: flex;
+        flex-direction: column;
+    }
+
+    header .navbar1 .main_menu .collapse  .menu2{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 575px) {
+    header .navbar1 {
+        background: black;
+    }
+
+    header .navbar1 .first_logo {
+        color: white;
+    }
+
+    header .navbar1 .main_menu{
+        width: 80%;
+    }
+
+    header .navbar1 .main_menu .collapse  .menu1{
+        display: flex;
+        flex-direction: column;
+    }
+    header .navbar1 .main_menu .collapse  .menu2{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .team_section .team_position{
+        text-align: center;
+    }
+}
+
+@media(max-width:479px){
+    header .navbar1 {
+        background: black;
+    }
+
+    header .navbar1 .first_logo {
+        color: white;
+    }
+
+    header .navbar1 .main_menu{
+        width: 80%;
+    }
+
+    header .navbar1 .main_menu .collapse  .menu1{
+        display: flex;
+        flex-direction: column;
+    }
+    header .navbar1 .main_menu .collapse  .menu2{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .team_section .team_position{
+        text-align: center;
+    }
+}
+/*media query end*/
