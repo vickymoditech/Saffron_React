@@ -1,8 +1,27 @@
 /*header start*/
-header {
-    overflow: hidden;
-    height: 100vh;
+/*header .navbar{
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem 1rem;
 }
+
+header .fixed-top{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}*/
 
 header .navbar1 {
     background: transparent;
@@ -34,13 +53,13 @@ header .menu a:hover {
     color: #bf925b;
 }
 
-header .menu .logo {
+header .menu .logo1 {
     color: white;
     font-size: 30px;
     transition: all .5s;
 }
 
-header .menu .logo:hover {
+header .menu .logo1:hover {
     color: #bf925b;
 }
 
@@ -53,10 +72,6 @@ header .video {
     width: auto;
     height: auto;
     z-index: 0;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
 }
 
 /*header end*/

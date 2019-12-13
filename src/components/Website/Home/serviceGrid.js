@@ -53,7 +53,7 @@ class ServiceGrid extends Component {
                 {/*</div>*/}
                 {/*</div>*/}
 
-                <section className="service pt-5">
+                <section className="service pt-5 pb-5">
                     <div className="container">
                         <div className="title_content text-center mb-5">
                             <span className="title">Servcie Menu</span>

@@ -22,15 +22,11 @@ class Team extends Component {
                                         <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url} alt="team1" className="img-fluid team_img"/>
                                         <div className="team_img_content">
                                             <div className="team_content d-flex">
-                                                <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
-                                                <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
-                                                <a href="#"><i className="fa fa-google-plus" aria-hidden="true"></i></a>
-                                                <a href="#"> <i className="fa fa-instagram" aria-hidden="true"></i></a>
+                                                <div className="team_text2">{team.description}</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="team_text1">{team.name}</div>
-                                    <div className="team_text2">{team.description}</div>
+                                    <div className="team_text1">{team.first_name} {team.last_name}</div>
                                 </div>
                             ))}
                         </div>
