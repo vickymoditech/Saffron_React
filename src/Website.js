@@ -73,7 +73,7 @@ class App extends Component {
                     <nav className="navbar navbar-expand-md navbar-dark navbar1 scrolled fixed-top pt-md-4" id="navbar">
                         <div
                             className="col-2 d-flex flex-column text-center d-md-none d-block align-items-md-center first_logo logo1">
-                            <i className="fa fa-camera"></i><span>IMAHE</span>
+                            <i className="fa fa-camera"></i><span>Saffron</span>
                         </div>
                         <div className="container main_menu d-flex justify-content-end">
                             <button className="navbar-toggler text-right" data-toggle="collapse"
@@ -87,7 +87,7 @@ class App extends Component {
                                     <a href="service.html">SERVICES</a>
                                 </div>
                                 <div className="col-md-2 d-md-flex d-none flex-column align-items-md-center logo1">
-                                    <i className="fa fa-camera"></i><span>IMAHE</span>
+                                    <i className="fa fa-camera"></i><span>Saffron</span>
                                 </div>
                                 <div className="col-md-5 menu2">
                                     <a href="#">BLOG</a>
