@@ -34,13 +34,13 @@ header .menu a:hover {
     color: #bf925b;
 }
 
-header .menu .logo {
+header .menu .logo1 {
     color: white;
     font-size: 30px;
     transition: all .5s;
 }
 
-header .menu .logo:hover {
+header .menu .logo1:hover {
     color: #bf925b;
 }
 
@@ -53,10 +53,10 @@ header .video {
     width: auto;
     height: auto;
     z-index: 0;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
+    /*-ms-transform: translateX(-50%) translateY(-50%);*/
+    /*-moz-transform: translateX(-50%) translateY(-50%);*/
+    /*-webkit-transform: translateX(-50%) translateY(-50%);*/
+    /*transform: translateX(-50%) translateY(-50%);*/
 }
 
 /*header end*/

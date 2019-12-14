@@ -17,7 +17,9 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            notificationSystem: null
+            notificationSystem: null,
+            visible: false,
+            theposition: 0
         }
     }
 
@@ -29,6 +31,13 @@ class App extends Component {
         });
     };
 
+    listenToScroll = () => {
+        const scrolled = window.scrollY;
+        console.log(window.scrollY);
+        console.log(window.pageYOffset);
+        this.setState({theposition: scrolled});
+    };
+
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
@@ -36,6 +45,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        window.addEventListener('scroll', this.listenToScroll, true);
         this.setState({notificationSystem: this.refs.notificationSystem});
     };
 
@@ -56,6 +66,10 @@ class App extends Component {
         this.props.actions.websiteAction.getWebsiteHome();
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.listenToScroll)
+    }
+
     handleLogout = () => {
         this.props.actions.websiteAction.loggedOut();
     };
@@ -64,64 +78,51 @@ class App extends Component {
         browserHistory.push('/Login');
     };
 
+    toggle = () => {
+        this.setState({visible: !this.state.visible});
+    };
+
     render() {
         let userProfile = this.props.userAvatar;
         return (
             <div>
                 <NotificationSystem ref="notificationSystem"/>
-                {/*<nav className="navbar navbar-expand-md m-0 rounded-0 fixed-top" id="navbar"*/}
-                {/*style={{backgroundColor: "#263238"}}>*/}
-                {/*<a className="navbar-brand" href="">*/}
-                {/*<img src="assets/Images/DB_Logo.png" alt=""/>*/}
-                {/*</a>*/}
-                {/*<ul className="nav navbar-nav ml-auto d-flex">*/}
-                {/*<li className="nav-item">*/}
-                {/*<Link to="/">*/}
-                {/*Home*/}
-                {/*</Link>*/}
-                {/*</li>*/}
-                {/*<li className="nav-item">*/}
-                {/*<Link to="/Gallery">*/}
-                {/*Gallery*/}
-                {/*</Link>*/}
-                {/*</li>*/}
-                {/*<li className="nav-item">*/}
-                {/*<Link to="/VideoGallery">*/}
-                {/*VideoGallery*/}
-                {/*</Link>*/}
-                {/*</li>*/}
-                {/*/!*<li className="nav-item">*!/*/}
-                {/*/!*<Link to="/ProductList">*!/*/}
-                {/*/!*Stepper*!/*/}
-                {/*/!*</Link>*!/*/}
-                {/*/!*</li>*!/*/}
-                {/*{isLoggedIn() && <li className="nav-item">*/}
-                {/*<Link to="/Profile">*/}
-                {/*Profile*/}
-                {/*</Link>*/}
-                {/*</li>}*/}
-                {/*{isLoggedIn() && <li className="nav-item">*/}
-                {/*<Link onClick={this.handleLogout}>*/}
-                {/*Logout*/}
-                {/*</Link>*/}
-                {/*</li>}*/}
-                {/*{!isLoggedIn() && <li className="nav-item">*/}
-                {/*<Link onClick={this.handleLogin}>*/}
-                {/*Login*/}
-                {/*</Link>*/}
-                {/*</li>}*/}
-                {/*{!isLoggedIn() && <li className="nav-item">*/}
-                {/*<Link to="/Registration">*/}
-                {/*Registration*/}
-                {/*</Link>*/}
-                {/*</li>}*/}
+                <header>
+                    <nav className="navbar navbar-expand-md navbar-dark navbar1 scrolled fixed-top pt-md-4" id="navbar">
+                        <div
+                            className="col-2 d-flex flex-column text-center d-md-none d-block align-items-md-center first_logo logo1">
+                            <i className="fa fa-camera"></i><span>Saffron</span>
+                        </div>
+                        <div className="container main_menu d-flex justify-content-end">
+                            <button className="navbar-toggler text-right" data-toggle="collapse"
+                                    data-target="#collapsibleNavbar">
+                                <span className="navbar-toggler-icon" onClick={this.toggle} ></span>
+                            </button>
+                            <div className={`collapse ${this.state.visible ? 'navbar-collapse' : ''} menu`}
+                                 id="collapsibleNavbar">
+                                <div className="col-md-5 menu1 text-right">
+                                    <a href="index.html" className="mr-md-5">HOME</a>
+                                    <a href="gallery.html" className="mr-md-5">GALLERY</a>
+                                    <a href="service.html">SERVICES</a>
+                                </div>
+                                <div className="col-md-2 d-md-flex d-none flex-column align-items-md-center logo1">
+                                    <i className="fa fa-camera"></i><span>saffron</span>
+                                </div>
+                                <div className="col-md-5 menu2">
+                                    <a href="#">BLOG</a>
+                                    <a href="#" className="ml-md-5">ABOUT</a>
+                                    <a href="#" className="ml-md-5">CONTACT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <div className="overlay"></div>
+                    <video playsInline="playsinline" autoPlay="autoplay" muted="muted" className="w-100" loop="loop">
+                        <source src="assets/Video/saffron.webm" type="video/webm"/>
+                    </video>
+                </header>
 
-                {/*{isLoggedIn() && <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile}*/}
-                {/*style={{borderRadius: "100%", height: 45, width: 45}}*/}
-                {/*alt="Avatar"/>}*/}
 
-                {/*</ul>*/}
-                {/*</nav>*/}
                 {this.props.children}
                 {this.props.Loading && <Loader/>}
             </div>
