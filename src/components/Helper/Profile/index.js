@@ -133,22 +133,21 @@ class Profile extends Component {
                 <NotificationSystem ref="notificationSystem"/>
                 <div className="container tab-bg-container">
                     <div className="row">
-                        <div className="form-wrapper col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
+                        <div className="form-wrapper col-md-8">
                             <form className="form-horizontal">
                                 <div className="form-group">
                                     <div className="col-sm-12">
-
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 {this.state.image_url !== undefined && this.state.image_url !== null && this.state.image_url !== "" ? (
                                                     <img
                                                         src={this.state.image_url}
-                                                        width="150px"
-                                                        height="150px"/>) : (
+                                                        width="100px"
+                                                        height="100px"/>) : (
                                                     <img
                                                         src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                        width="150px"
-                                                        height="150px"/>)}
+                                                        width="100px"
+                                                        height="100px"/>)}
                                                 <input type="file" onChange={this.handleSelectedFile}/>
                                             </div>
                                         </div>

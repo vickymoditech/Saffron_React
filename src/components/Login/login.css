@@ -6,13 +6,10 @@ h2 {
 .title {
     margin: 50px auto 25px;
 }
-
-.vertical-alignment-helper {
+.back_color{
+    background-image: linear-gradient(to bottom right, black, #3e3e3e);
     height: 100vh;
-    background-image: url("/assets/Images/hd-wallpaper-website.jpg");
-    display: flex;
 }
-
 a:focus,
 a:hover {
     color: #FFD401;

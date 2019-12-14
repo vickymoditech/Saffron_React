@@ -67,7 +67,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="vertical-alignment-helper">
+            <div className="back_color">
                 <ToastContainer
                     position="top-right"
                     type="default"
@@ -77,7 +77,7 @@ class Login extends Component {
                     closeOnClick
                     pauseOnHover
                 />
-                <div className="modal-dialog vertical-alignment-center">
+                <div className="modal-dialog vertical-alignment-center w-75">
                     <div className="modal-content">
                         <a href="javascript:void(0);" className="logo"></a>
                         <div className="modal-body">

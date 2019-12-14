@@ -89,7 +89,7 @@ class Registration extends Component {
 
         return (
 
-            <div className="vertical-alignment-helper">
+            <div className="back_color">
                 <ToastContainer
                     position="top-right"
                     type="default"
@@ -99,7 +99,7 @@ class Registration extends Component {
                     closeOnClick
                     pauseOnHover
                 />
-                <div className="modal-dialog d-flex m-0 mt-4 align-items-center">
+                <div className="modal-dialog d-flex m-0 mt-4 align-items-center w-75">
                     <div className="modal-content">
                         <a href="javascript:void(0);" className="logo"></a>
                         <div className="modal-body">

@@ -14,6 +14,10 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <div className="overlay"></div>
+                <video playsInline="playsinline" autoPlay="autoplay" muted="muted" className="w-100" loop="loop">
+                    <source src="assets/Video/saffron.webm" type="video/webm"/>
+                </video>
                 <ServiceGrid serviceList={this.props.serviceList}/>
                 <MiddleCard/>
                 <ImageGrid galleryList={this.props.galleryList}/>

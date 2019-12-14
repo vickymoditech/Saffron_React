@@ -2,7 +2,6 @@ html, body {
     height: 100%;
     display: block;
     font-family: "Josefin Sans", Arial, sans-serif;
-
 }
 .pr-0 {
     padding-right: 0;
@@ -14,8 +13,8 @@ html, body {
 .bg-burrito-image {
     position: fixed;
     width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.55) url('/assets/Images/hd-wallpaper-website.jpg') no-repeat;
+
+    height: 100vh !important;
     background-size: cover;
 }
 .bg-burrito-image:before {

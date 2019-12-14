@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"/>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap.min.css">
-    <link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap3.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="%PUBLIC_URL%/css/w3.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet"/>
 
@@ -24,6 +25,51 @@
     <script src="%PUBLIC_URL%/js/serial.js"></script>
     <script src="%PUBLIC_URL%/js/light.js"></script>
     <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js'></script>
+    <script>
+        $(function () {
+            var navMain = $(".navbar-collapse");
+
+            navMain.on("click", "a", null, function () {
+                navMain.collapse('hide');
+            });
+        });
+
+        $(function () {
+            var header = $(".navbar1");
+            $(window).scroll(function () {
+                var scroll = $(window).scrollTop();
+                if (scroll >= 90) {
+                    header.addClass("scrolled");
+                } else {
+                    header.removeClass("scrolled");
+                }
+            });
+        });
+
+        $('.owl-carousel').owlCarousel({
+            autoplay: true,
+            loop: true,
+            center:true,
+            nav: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 1
+                },
+                992: {
+                    items: 2
+                },
+                1170: {
+                    items: 3
+                }
+            }
+        });
+
+    </script>
     <title>Saffron</title>
 </head>
 <body>

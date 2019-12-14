@@ -9,6 +9,7 @@ import NotificationSystem from 'react-notification-system';
 import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
 import {browserHistory} from 'react-router';
+import '././components/Website/Home/websiteCss/website.css'
 import ENVIRONMENT_VARIABLES from "./environment.config";
 
 
@@ -88,7 +89,7 @@ class App extends Component {
             <div>
                 <NotificationSystem ref="notificationSystem"/>
                 <header>
-                    <nav className="navbar navbar-expand-md navbar-dark navbar1 scrolled fixed-top pt-md-4" id="navbar">
+                    <nav className="navbar navbar-expand-md navbar-dark navbar1 fixed-top scrolled pt-md-4" id="navbar">
                         <div
                             className="col-2 d-flex flex-column text-center d-md-none d-block align-items-md-center first_logo logo1">
                             <i className="fa fa-camera"></i><span>Saffron</span>
@@ -116,12 +117,7 @@ class App extends Component {
                             </div>
                         </div>
                     </nav>
-                    <div className="overlay"></div>
-                    <video playsInline="playsinline" autoPlay="autoplay" muted="muted" className="w-100" loop="loop">
-                        <source src="assets/Video/saffron.webm" type="video/webm"/>
-                    </video>
                 </header>
-
 
                 {this.props.children}
                 {this.props.Loading && <Loader/>}

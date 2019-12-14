@@ -7,10 +7,9 @@ h2 {
     margin: 50px auto 25px;
 }
 
-.vertical-alignment-helper {
+.back_color{
+    background-image: linear-gradient(to bottom right, black, #3e3e3e);
     height: 100vh;
-    background-image: url("/assets/Images/hd-wallpaper-website.jpg");
-    display: flex;
 }
 
 a:focus,
@@ -85,6 +84,9 @@ hr {
 }
 
 /* Form CSS */
+.form-group{
+    margin-bottom: 5px;
+}
 .form-control {
     padding: 15px 10px;
     font-size: 14px;

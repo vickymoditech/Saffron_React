@@ -1,10 +1,7 @@
 /* Common CSS */
-.drive-by {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.55) url('/assets/Images/hd-wallpaper-website.jpg') no-repeat;
-    background-size: cover;
+body{
+    background-image: linear-gradient(to bottom right, black, #3e3e3e);
+    height: 100vh;
 }
 
 .change-password .modal-body {
