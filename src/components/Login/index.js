@@ -83,7 +83,7 @@ class Login extends Component {
                         <div className="modal-body">
                             <div className="row login-form">
                                 <div className="col-xs-12 text-center">
-                                    <h2 style={{margin: '10px'}}>User Authentication</h2>
+                                    <h2 style={{margin: '10px'}} className="title1">User Authentication</h2>
                                 </div>
                                 <div className="panel-body w-100">
                                     <div className="container">
@@ -94,7 +94,7 @@ class Login extends Component {
                                                     <div className="form-group">
                                                         <div className="input-group">
                                                         <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-user"></i>
+                                                            <i className="fa fa-user icon_color"></i>
                                                         </span>
                                                             <input type="text" value={this.state.credentials.email}
                                                                    name="mobile_number" placeholder="Mobile Number"
@@ -105,7 +105,7 @@ class Login extends Component {
                                                     <div className="form-group">
                                                         <div className="input-group">
                                                         <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-lock"></i></span>
+                                                            <i className="fa fa-lock icon_color"></i></span>
                                                             <input type="password"
                                                                    value={this.state.credentials.password}
                                                                    name="password" placeholder="Password"
@@ -114,11 +114,11 @@ class Login extends Component {
                                                         </div>
                                                         <div className="forgot-link pt-4">
                                                             <Link to="forgot-password"
-                                                                  style={{textDecoration: 'underline'}}>Forgot
+                                                                  style={{textDecoration: 'underline',color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Forgot
                                                                 Password?</Link>
                                                         </div>
                                                         <div className="form-group text-center">
-                                                            <button type="submit" className="btn btn-save" onClick={this.handleSubmit}>Sign In
+                                                            <button type="submit" className="button_main" onClick={this.handleSubmit}>Sign In
                                                             </button>
                                                         </div>
                                                     </div>

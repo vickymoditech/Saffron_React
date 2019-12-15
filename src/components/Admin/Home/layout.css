@@ -1,9 +1,7 @@
 /* Common CSS */
 body{
-    background-image: linear-gradient(to bottom right, black, #3e3e3e);
-    height: 100vh;
+    font-family: "Josefin Sans", Arial, sans-serif;
 }
-
 .change-password .modal-body {
     padding-top: 10px;
 }

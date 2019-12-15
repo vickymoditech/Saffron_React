@@ -1,29 +1,11 @@
 /*header start*/
-
 header .navbar{
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: .5rem 1rem;
+    margin: 0px 17px 0px 0px;
+    border-radius: 0px;
 }
-
 header .navbar1 {
     background: transparent;
 }
-
-header .navbar1 .main_logo {
-    display: none;
-}
-
 header .scrolled {
     transition: all .5s;
     background-color: black;
@@ -31,6 +13,9 @@ header .scrolled {
     box-shadow: 0 6px 6px 1px rgba(32, 33, 36, 0.28);
 }
 
+header .navbar1 .main_logo {
+    display: none;
+}
 header .menu {
     font-family: "Josefin Sans", Arial, sans-serif;
     color: white;
@@ -64,6 +49,7 @@ header .video {
     min-height: 100%;
     width: auto;
     height: auto;
+    margin-top:90px;
     z-index: 0;
     /*-ms-transform: translateX(-50%) translateY(-50%);*/
     /*-moz-transform: translateX(-50%) translateY(-50%);*/
@@ -79,7 +65,7 @@ header .video {
     background-image: url('/assets/Images/formen.jpg');
     background-size: cover;
     position: relative;
-    height: calc(100vh - 200px);
+    height: 100vh;
     z-index: 0;
 }
 
@@ -132,7 +118,7 @@ header .video {
     background-image: url('/assets/Images/formen.jpg');
     background-size: cover;
     position: relative;
-    height: calc(100vh - 200px);
+    height: 100vh;
     z-index: 0;
 }
 
@@ -444,6 +430,13 @@ header .video {
 
 /*media query start*/
 @media (min-width: 992px) and (max-width: 1200px) {
+    header .navbar{
+        margin: 0px 0px 0px 0px;
+        border-radius: 0px;
+    }
+    header video{
+        margin-top:90px;
+    }
     header .menu a {
         font-size: 11px;
     }
@@ -451,7 +444,13 @@ header .video {
     header .menu .logo {
         font-size: 20px;
     }
+.welcome .img1{
+    height: calc(100vh - 200px);
+}
 
+.welcome .img2{
+    height: calc(100vh - 200px);
+}
     .welcome .welcome_content .logo_area {
         font-size: 25px;
     }
@@ -490,6 +489,13 @@ header .video {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+    header .navbar{
+        margin: 0px 0px 0px 0px;
+        border-radius: 0px;
+    }
+    header .video{
+        margin-top:105px;
+    }
     header .menu a {
         font-size: 11px;
     }
@@ -497,7 +503,13 @@ header .video {
     header .menu .logo {
         font-size: 20px;
     }
+    .welcome .img1{
+        height: calc(100vh - 200px);
+    }
 
+    .welcome .img2{
+        height: calc(100vh - 200px);
+    }
     .welcome .welcome_content .logo_area {
         font-size: 25px;
     }
@@ -543,6 +555,9 @@ header .video {
     header .navbar1 {
         background: black;
     }
+    header .video{
+        margin-top: 50px;
+    }
 
     header .navbar1 .first_logo {
         color: white;
@@ -561,6 +576,13 @@ header .video {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+    }
+    .welcome .img1{
+        height: calc(100vh - 200px);
+    }
+
+    .welcome .img2{
+        height: calc(100vh - 200px);
     }
 }
 
@@ -568,6 +590,9 @@ header .video {
     header .navbar1 {
         background: black;
     }
+    header .video{
+        margin-top:50px;
+    }
 
     header .navbar1 .first_logo {
         color: white;
@@ -586,7 +611,13 @@ header .video {
         flex-direction: column;
         align-items: flex-end;
     }
+    .welcome .img1{
+        height: calc(100vh - 200px);
+    }
 
+    .welcome .img2{
+        height: calc(100vh - 200px);
+    }
     .team_section .team_position{
         text-align: center;
     }
@@ -596,7 +627,9 @@ header .video {
     header .navbar1 {
         background: black;
     }
-
+    header .video{
+        margin-top: 53px !important;
+    }
     header .navbar1 .first_logo {
         color: white;
     }
@@ -614,7 +647,25 @@ header .video {
         flex-direction: column;
         align-items: flex-end;
     }
+    .welcome .img1{
+        height: calc(100vh - 200px);
+    }
 
+    .welcome .img2{
+        height: calc(100vh - 200px);
+    }
+    .gallery .title_content .title{
+        font-size: 30px;
+    }
+    .service .title_content .title{
+        font-size: 30px;
+    }
+    .testimonial .title{
+    font-size: 30px;
+         }
+    .team_section .main_title1{
+        font-size: 30px;
+    }
     .team_section .team_position{
         text-align: center;
     }

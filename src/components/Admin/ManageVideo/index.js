@@ -152,8 +152,8 @@ class ManageVideo extends Component {
 
                 <div className="container tab-bg-container">
                     <div className="d-flex justify-content-between">
-                    <h2> Manage Video </h2>
-                        <button type="button" className="btn btn-primary w-25 mr-4"
+                    <h2 className="text-white"> Manage Video </h2>
+                        <button type="button" className="w-25 mr-4 button_main2"
                                 onClick={this.addNewVideo}>Add New Video
                         </button>
                         <div className="w-25">

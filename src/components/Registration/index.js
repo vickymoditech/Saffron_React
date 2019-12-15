@@ -116,7 +116,7 @@ class Registration extends Component {
                                                     <div className="form-group">
                                                         <div className="input-group">
                                                         <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-user"></i>
+                                                            <i className="fa fa-user icon_color"></i>
                                                         </span>
                                                             <input type="text" value={this.state.credentials.first_name}
                                                                    name="first_name" placeholder="First Name"
@@ -127,7 +127,7 @@ class Registration extends Component {
                                                     <div className="form-group">
                                                         <div className="input-group">
                                                         <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-user"></i>
+                                                            <i className="fa fa-user icon_color"></i>
                                                         </span>
                                                             <input type="text" value={this.state.credentials.last_name}
                                                                    name="last_name" placeholder="Last Name"
@@ -138,7 +138,7 @@ class Registration extends Component {
                                                     <div className="form-group">
                                                         <div className="input-group">
                                                         <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-user"></i>
+                                                            <i className="fa fa-user icon_color"></i>
                                                         </span>
                                                             <input type="text"
                                                                    value={this.state.credentials.mobile_number}
@@ -150,7 +150,7 @@ class Registration extends Component {
                                                     <div className="form-group">
                                                         <div className="input-group">
                                                         <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-user"></i>
+                                                            <i className="fa fa-user icon_color"></i>
                                                         </span>
                                                             <input type="password"
                                                                    value={this.state.credentials.password}
@@ -163,7 +163,7 @@ class Registration extends Component {
                                                     <div className="form-group">
                                                         <div className="input-group">
                                                         <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-lock"></i></span>
+                                                            <i className="fa fa-lock icon_color"></i></span>
                                                             <input type="password"
                                                                    value={this.state.credentials.confirm_password}
                                                                    name="confirm_password"
@@ -173,14 +173,14 @@ class Registration extends Component {
                                                         </div>
                                                         <div className="forgot-link text-center mt-3">
                                                             <Link to="/Login"
-                                                                  style={{textDecoration: 'underline'}}>Login</Link> &nbsp;
+                                                                  style={{textDecoration: 'underline',color:'#bf925d',textDecoration:'none', fontFamily:'Josefin Sans'}}>Login</Link> &nbsp;
                                                             <Link to="/"
-                                                                  style={{textDecoration: 'underline'}}>Home</Link>
+                                                                  style={{textDecoration: 'underline',color:'#bf925d',textDecoration:'none', fontFamily:'Josefin Sans'}}>Home</Link>
                                                         </div>
-                                                        <div className="form-group text-center justify-content-center row">
+                                                        <div className="form-group text-center justify-content-center row mt-2">
                                                             <div className="col-xs-12 text-center">
                                                             </div>
-                                                            <button type="submit" className="btn btn-save"
+                                                            <button type="submit" className="button_main"
                                                                     onClick={this.handleSubmit}>Sign Up
                                                             </button>
                                                         </div>

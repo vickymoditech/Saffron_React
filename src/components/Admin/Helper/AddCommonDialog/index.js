@@ -28,7 +28,7 @@ const style = {
         color: '#c53140',
         marginTop: '-6px',
         padding: "9px 12px"
-    }
+    },
 };
 
 class ProductDialog extends Component {
@@ -102,7 +102,7 @@ class ProductDialog extends Component {
                             <div className="modal-body">
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
-                                        <h2>Add New {this.props.status}</h2>
+                                        <h2 style={{color:'#bf925b'}} className="mb-3">Add New {this.props.status}</h2>
                                     </div>
                                     <div className="panel-body container">
                                         <div className="row">
@@ -111,37 +111,40 @@ class ProductDialog extends Component {
                                                 <form>
                                                     <div id="loginForm">
                                                         <div className="form-group">
-                                                            <div className="input-group">
+                                                            <div className="input-group mb-3">
                                                                 <span className="input-group-addon d-flex align-items-center pr-4">
-                                                                    <i className="fa fa-pencil"/>
+                                                                    <i className="fa fa-pencil" style={{color:'#bf925b'}}/>
                                                                 </span>
                                                                 {this.props.status.toLowerCase() === "service" ?
                                                                     <input type="text" name="title"
                                                                            placeholder="Service Name"
                                                                            className="form-control"
                                                                            onChange={this.handleChange}
-                                                                           value={this.state.commonData.title}/>
+                                                                           value={this.state.commonData.title}
+                                                                           style={{borderBottom:'0px'}}/>
                                                                     :
                                                                     <input type="text" name="first_name"
                                                                            placeholder="TeamMember First Name"
                                                                            className="form-control"
                                                                            onChange={this.handleChange}
-                                                                           value={this.state.commonData.first_name}/>
+                                                                           value={this.state.commonData.first_name}
+                                                                           style={{borderBottom:'0px'}}/>
                                                                 }
                                                             </div>
                                                         </div>
 
                                                         {this.props.status.toLowerCase() !== "service" &&
                                                         < div className="form-group">
-                                                            <div className="input-group">
+                                                            <div className="input-group mb-3">
                                                             <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-pencil"/>
+                                                            <i className="fa fa-pencil" style={{color:'#bf925b'}}/>
                                                             </span>
                                                                 <input type="text" name="last_name"
                                                                        placeholder="TeamMember Last Name"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
-                                                                       value={this.state.commonData.last_name}/>
+                                                                       value={this.state.commonData.last_name}
+                                                                       style={{borderBottom:'0px'}}/>
 
                                                             </div>
                                                         </div>
@@ -149,30 +152,32 @@ class ProductDialog extends Component {
 
                                                         {this.props.status.toLowerCase() !== "service" &&
                                                         < div className="form-group">
-                                                            <div className="input-group">
+                                                            <div className="input-group mb-3">
                                                             <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-pencil"/>
+                                                            <i className="fa fa-pencil" style={{color:'#bf925b'}}/>
                                                             </span>
                                                                 <input type="text" name="mobile_number"
                                                                        placeholder="TeamMember Mobile Number"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
-                                                                       value={this.state.commonData.mobile_number}/>
+                                                                       value={this.state.commonData.mobile_number}
+                                                                       style={{borderBottom:'0px'}}/>
                                                             </div>
                                                         </div>
                                                         }
 
 
                                                         <div className="form-group">
-                                                            <div className="input-group">
+                                                            <div className="input-group mb-3">
                                                                 <span className="input-group-addon d-flex align-items-center pr-4">
-                                                                    <i className="fa fa-pencil"/>
+                                                                    <i className="fa fa-pencil" style={{color:'#bf925b'}}/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder={this.state.title2}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
-                                                                       value={this.state.commonData.description}/>
+                                                                       value={this.state.commonData.description}
+                                                                       style={{borderBottom:'0px'}}/>
                                                             </div>
                                                         </div>
 
@@ -183,15 +188,14 @@ class ProductDialog extends Component {
                                                                 height="150px"/>)}
                                                         <input type="file" onChange={this.handleSelectedFile}/>
 
-
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center">
-                                                                    <button type="button" className="btn btn-save"
+                                                                    <button type="button" className="btn btn-save button_main"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.handleSave}>Save
                                                                     </button>
-                                                                    <button type="button" className="btn btn-save"
+                                                                    <button type="button" className="btn btn-save button_main"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.props.handleClose}>Close
                                                                     </button>

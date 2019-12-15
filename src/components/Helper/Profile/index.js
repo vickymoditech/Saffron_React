@@ -131,14 +131,14 @@ class Profile extends Component {
                     notify={this.addNotifications}
                 />}
                 <NotificationSystem ref="notificationSystem"/>
-                <div className="container tab-bg-container">
-                    <div className="row">
-                        <div className="form-wrapper col-md-8">
-                            <form className="form-horizontal">
+                <div className="container tab-bg-container d-flex flex-column justify-content-center h-100">
+                    <div className="row d-flex justify-content-center">
+                        <div className="form-wrapper col-md-8 p-4" style={{backgroundColor:'#000000'}}>
+                            <form className="form-horizontal w-100 bg-transparent">
                                 <div className="form-group">
                                     <div className="col-sm-12">
                                         <div className="row">
-                                            <div className="col-sm-6">
+                                            <div className="col-12 d-flex justify-content-center align-items-center">
                                                 {this.state.image_url !== undefined && this.state.image_url !== null && this.state.image_url !== "" ? (
                                                     <img
                                                         src={this.state.image_url}
@@ -153,15 +153,15 @@ class Profile extends Component {
                                         </div>
 
                                         <div className="row">
-                                            <div className="col-sm-6">
-                                                <span className="store-config-icon" title="First Name"> <img
+                                            <div className="col-sm-6 mt-3">
+                                                <span className="store-config-icon icon_color" title="First Name"> <img
                                                     src="/assets/Images/username.png" alt=""/> </span>
                                                 <input type="text" className="form-control" name="first_name"
                                                        value={first_name}
                                                        placeholder="First Name" onChange={this.handleChange}/>
                                             </div>
-                                            <div className="col-sm-6">
-                                                <span className="store-config-icon" title="Last Name"> <img
+                                            <div className="col-sm-6 mt-3">
+                                                <span className="store-config-icon icon_color" title="Last Name"> <img
                                                     src="/assets/Images/username.png" alt=""/> </span>
                                                 <input type="text" className="form-control" name="last_name"
                                                        value={last_name} placeholder="Last Name"
@@ -172,14 +172,14 @@ class Profile extends Component {
                                         <br/>
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                <span className="store-config-icon" title="UserId"> <img
+                                                <span className="store-config-icon icon_color" title="UserId"> <img
                                                     src="/assets/Images/username.png" alt=""/> </span>
                                                 <input type="text" className="form-control" name="userId"
                                                        value={userId}
                                                        placeholder="userId" disabled/>
                                             </div>
                                             <div className="col-sm-6">
-                                                <span className="store-config-icon" title="mobile_number"> <img
+                                                <span className="store-config-icon icon_color" title="mobile_number"> <img
                                                     src="/assets/Images/username.png" alt=""/> </span>
                                                 <input type="text" className="form-control" name="mobile_number"
                                                        value={mobile_number} placeholder="Contact No"
@@ -190,19 +190,21 @@ class Profile extends Component {
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <div className="col-sm-12">
-                                        <span className="store-config-icon" title="Email"> <img
+                                    <div className="col-sm-12 mt-3">
+                                        <span className="store-config-icon icon_color" title="Email"> <img
                                             src="/assets/Images/email.png" alt=""/> </span>
                                         <input type="text" className="form-control" value={emailAddress}
                                                name="emailAddress" placeholder="Email" onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <div className="col-sm-12 text-right button-div">
-                                        <a className="btn btn-save" onClick={this.handleEditConfirm}
-                                           style={{cursor: 'pointer', marginRight: 10}}>Update User</a>
-                                        <a className="btn btn-save" onClick={this.handleOpen}
-                                           style={{cursor: 'pointer', float: 'right'}}>Change Password</a>
+                                    <div className="col-sm-12 text-center button-div mt-3 d-flex justify-content-center">
+                                        <a className="text-white mr-3" onClick={this.handleEditConfirm}
+                                           style={{cursor: 'pointer', fontSize:'15px',backgroundColor:'#bf925d',color:'white',
+                                               borderRadius: '5px',padding:'10px'}}>Update User</a>
+                                        <a className="text-white" onClick={this.handleOpen}
+                                           style={{cursor: 'pointer', fontSize:'15px',backgroundColor:'#bf925d',color:'white',
+                                               borderRadius: '5px',padding:'10px'}}>Change Password</a>
                                     </div>
                                 </div>
                             </form>

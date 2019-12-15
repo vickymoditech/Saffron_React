@@ -96,8 +96,8 @@ class ManageSliderImage extends Component {
 
                 <div className="container tab-bg-container">
                     <div className="d-flex justify-content-between">
-                    <h2> Manage Slider Images </h2>
-                    <button type="button" className="btn btn-primary w-25"
+                    <h2 className="text-white"> Manage Slider Images </h2>
+                    <button type="button" className="btn btn-primary w-25 button_main2"
                             onClick={this.addNewTeam}>Add new slider
                     </button>
                     </div>

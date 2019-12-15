@@ -169,7 +169,7 @@ class ManageProduct extends Component {
 
                 <div className="container tab-bg-container">
                     <div className="d-flex justify-content-between">
-                    <h2> Manage Products </h2>
+                    <h2 className="text-white"> Manage Products </h2>
                         <div style={{width:104}}>
                     <Switch classname="" value={isOfferProduct}
                                 circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
@@ -178,7 +178,7 @@ class ManageProduct extends Component {
                                     this.onchangeBlock(!isOfferProduct);
                                 }}/>
                         </div>
-                        <button type="button" className="btn btn-primary w-25 mr-4"
+                        <button type="button" className="btn btn-primary w-25 button_main2 mr-4"
                                 onClick={this.addNewService}>Add new Product
                         </button>
                         <div className="w-25">

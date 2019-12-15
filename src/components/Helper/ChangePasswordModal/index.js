@@ -110,7 +110,7 @@ class ChangePasswordModal extends Component {
                             <div className="modal-body">
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
-                                        <h2>Change Password</h2>
+                                        <h2 className="title">Change Password</h2>
                                         <br/>
                                     </div>
                                     <div className="panel-body container">
@@ -122,7 +122,7 @@ class ChangePasswordModal extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon d-flex align-items-center pr-4">
-                                                                    <i className="fa fa-lock"/>
+                                                                    <i className="fa fa-lock icon_color"/>
                                                                 </span>
                                                                 <input type="password" name="currentPassword"
                                                                        placeholder="Current Password"
@@ -135,7 +135,7 @@ class ChangePasswordModal extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon d-flex align-items-center pr-4">
-                                                                    <i className="fa fa-key"/>
+                                                                    <i className="fa fa-key icon_color"/>
                                                                 </span>
                                                                 <input type="password" name="newPassword"
                                                                        placeholder="New Password"
@@ -147,7 +147,7 @@ class ChangePasswordModal extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon d-flex align-items-center pr-4">
-                                                                    <i className="fa fa-key"/>
+                                                                    <i className="fa fa-key icon_color"/>
                                                                 </span>
                                                                 <input type="password" name="confirmPassword"
                                                                        placeholder="Confirm Password"
@@ -157,11 +157,11 @@ class ChangePasswordModal extends Component {
                                                             </div>
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center">
-                                                                    <button type="button" className="btn btn-save"
+                                                                    <button type="button" className="btn btn-save button_main"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.handleSubmit}>Submit
                                                                     </button>
-                                                                    <button type="button" className="btn btn-save"
+                                                                    <button type="button" className="btn btn-save button_main"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.props.handleClose}>Cancel
                                                                     </button>

@@ -102,7 +102,7 @@ class AddDialog extends Component {
                             <div className="modal-body">
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
-                                        <h2>Add New TimeSlot</h2>
+                                        <h2 className="title">Add New TimeSlot</h2>
                                     </div>
                                     <div className="panel-body">
                                         <div className="row">
@@ -124,11 +124,11 @@ class AddDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center">
-                                                                    <button type="button" className="btn btn-save"
+                                                                    <button type="button" className="button_main"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.handleSave}>Save
                                                                     </button>
-                                                                    <button type="button" className="btn btn-save"
+                                                                    <button type="button" className="button_main"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.props.handleClose}>Close
                                                                     </button>

@@ -107,7 +107,7 @@ class EditDialog extends Component {
                             <div className="modal-body">
                                 <div className="row login-form">
                                     <div className="col-xs-12 text-center">
-                                        <h2>Edit Product</h2>
+                                        <h2 className="title">Edit Product</h2>
                                     </div>
                                     <div className="panel-body container">
                                         <div className="row">
@@ -127,7 +127,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon d-flex align-items-center pr-4">
-                                                                    <i className="fa fa-pencil"/>
+                                                                    <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="title"
                                                                        placeholder="Product Title"
@@ -139,7 +139,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon d-flex align-items-center pr-4">
-                                                                    <i className="fa fa-pencil"/>
+                                                                    <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Product Description"
@@ -151,7 +151,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon d-flex align-items-center pr-4">
-                                                                    <i className="fa fa-pencil"/>
+                                                                    <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="price"
                                                                        placeholder="Price"
@@ -163,7 +163,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon d-flex align-items-center pr-4">
-                                                                    <i className="fa fa-pencil"/>
+                                                                    <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="offerPrice"
                                                                        placeholder="offerPrice"
@@ -202,11 +202,11 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center">
-                                                                    <button type="button" className="btn btn-save"
+                                                                    <button type="button" className="button_main"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.handleSave}>Save
                                                                     </button>
-                                                                    <button type="button" className="btn btn-save"
+                                                                    <button type="button" className="button_main"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.props.handleClose}>Close
                                                                     </button>

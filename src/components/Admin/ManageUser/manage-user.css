@@ -2,8 +2,9 @@ html, body {
     height: 100%;
     display: block;
     font-family: "Josefin Sans", Arial, sans-serif;
-
+    background-image: linear-gradient(to bottom right, black, #3e3e3e);
 }
+
 .pr-0 {
     padding-right: 0;
 }
@@ -50,10 +51,10 @@ html, body {
     font-size: 14px;
 }
 .form-wrapper {
-    -webkit-box-shadow: 0 0 2px 2px #ffd527;
-    box-shadow: 0 0 2px 2px #ffd527;
+    box-shadow: 0 0 2px 2px #bf925b;
     margin-top: 20px;
     padding: 0;
+    border: 2px solid #bf925b;
 }
 .form-wrapper .form-control {
     border-radius: 0;
@@ -92,11 +93,10 @@ html, body {
 }
 .data-display {
     margin-top: 20px;
-    -webkit-box-shadow: 0 0 2px 2px #ffd527;
-    box-shadow: 0 0 2px 2px #ffd527;
+    box-shadow: 0 0 6px 2px #bf925b9e;
+    margin-top: 20px;
     padding: 0;
-    margin-bottom: 0;
-    border: 0 none;
+    border: 2px solid #bf925b;
 }
 .gmt-offset .input{
     display: inline-block;
@@ -143,7 +143,7 @@ html, body {
 .form-horizontal .form-group:last-child {
     margin-bottom: 0;
 }
-.data-display .table th { color: #fbce1f; }
+.data-display .table th { color: #ffffff; }
 .data-display .table>tbody>tr>td{
     vertical-align: middle;
 }
