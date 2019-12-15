@@ -75,10 +75,6 @@ class App extends Component {
         this.props.actions.websiteAction.loggedOut();
     };
 
-    handleLogin = () => {
-        browserHistory.push('/Login');
-    };
-
     toggle = () => {
         this.setState({visible: !this.state.visible});
     };
@@ -101,31 +97,37 @@ class App extends Component {
                             <div className={`collapse ${this.state.visible ? 'navbar-collapse' : ''} menu`}
                                  id="collapsibleNavbar">
                                 <div className="col-md-5 menu1 text-right">
-                                    <a href="index.html" className="mr-md-5">HOME</a>
-                                    <a href="gallery.html" className="mr-md-5">GALLERY</a>
-                                    <a href="service.html">SERVICES</a>
+                                    <Link to="/" className="mr-md-5">HOME</Link>
+                                    <Link to="/Gallery" className="mr-md-5">GALLERY</Link>
+                                    <Link to="/ProductList">SERVICES</Link>
                                 </div>
                                 <div className="col-md-2 d-md-flex d-none flex-column align-items-md-center logo1">
-                                    <i className="fa fa-camera"></i><span>saffron</span>
+                                    <Link to="/"><span>Saffron</span></Link>
                                 </div>
                                 <div className="col-md-5 menu2">
-                                    <a href="#">BLOG</a>
-                                    <a href="#" className="ml-md-5">ABOUT</a>
+                                    <Link to="/VideoGallery">VIDEOS</Link>
+                                    {!isLoggedIn() && <Link className="ml-md-5" to="/login">LOGIN</Link>}
+                                    {isLoggedIn() &&  <Link className="ml-md-5" onClick={this.handleLogout} to="/">LOGOUT</Link>}
+                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-5">SIGN IN</Link>}
+                                    {isLoggedIn() && <Link to="/Profile" className="ml-md-5">PROFILE</Link>}
                                     <a href="#" className="ml-md-5">CONTACT</a>
                                 </div>
                             </div>
-                            <div class="collapse navbar-collapse menu">
+                            <div className="collapse navbar-collapse menu">
                                 <div className="col-md-5 menu1 text-right d-md-block d-none pt-md-3">
-                                    <a href="index.html" className="mr-md-5">HOME</a>
-                                    <a href="gallery.html" className="mr-md-5">GALLERY</a>
-                                    <a href="service.html">SERVICES</a>
+                                    <Link to="/" className="mr-md-5">HOME</Link>
+                                    <Link to="/Gallery" className="mr-md-5">GALLERY</Link>
+                                    <Link to="/ProductList">SERVICES</Link>
                                 </div>
                                 <div className="col-md-2 d-md-flex d-none flex-column align-items-md-center logo1">
-                                    <i className="fa fa-camera"></i><span>saffron</span>
+                                    <Link to="/"><span>Saffron</span></Link>
                                 </div>
                                 <div className="col-md-5 menu2 d-md-block d-none pt-md-3">
-                                    <a href="#">BLOG</a>
-                                    <a href="#" className="ml-md-5">ABOUT</a>
+                                    <Link to="/VideoGallery">VIDEOS</Link>
+                                    {!isLoggedIn() && <Link className="ml-md-5" to="/login">LOGIN</Link>}
+                                    {isLoggedIn() &&  <Link className="ml-md-5" onClick={this.handleLogout} to="/">LOGOUT</Link>}
+                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-5">SIGN IN</Link>}
+                                    {isLoggedIn() && <Link to="/Profile" className="ml-md-5">PROFILE</Link>}
                                     <a href="#" className="ml-md-5">CONTACT</a>
                                 </div>
                             </div>
