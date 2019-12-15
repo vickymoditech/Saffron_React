@@ -72,6 +72,7 @@ class App extends Component {
     }
 
     handleLogout = () => {
+        this.setState({visible: !this.state.visible});
         this.props.actions.websiteAction.loggedOut();
     };
 
@@ -97,19 +98,19 @@ class App extends Component {
                             <div className={`collapse ${this.state.visible ? 'navbar-collapse' : ''} menu`}
                                  id="collapsibleNavbar">
                                 <div className="col-md-5 menu1 text-right">
-                                    <Link to="/" className="mr-md-5">HOME</Link>
-                                    <Link to="/Gallery" className="mr-md-5">GALLERY</Link>
-                                    <Link to="/ProductList">SERVICES</Link>
+                                    <Link to="/" className="mr-md-5" onClick={this.toggle}>HOME</Link>
+                                    <Link to="/Gallery" className="mr-md-5" onClick={this.toggle}>GALLERY</Link>
+                                    <Link to="/ProductList" onClick={this.toggle}>SERVICES</Link>
                                 </div>
                                 <div className="col-md-2 d-md-flex d-none flex-column align-items-md-center logo1">
                                     <Link to="/"><span>Saffron</span></Link>
                                 </div>
                                 <div className="col-md-5 menu2">
-                                    <Link to="/VideoGallery">VIDEOS</Link>
-                                    {!isLoggedIn() && <Link className="ml-md-5" to="/login">LOGIN</Link>}
+                                    <Link to="/VideoGallery" onClick={this.toggle}>VIDEOS</Link>
+                                    {!isLoggedIn() && <Link className="ml-md-5" to="/login" onClick={this.toggle}>LOGIN</Link>}
                                     {isLoggedIn() &&  <Link className="ml-md-5" onClick={this.handleLogout} to="/">LOGOUT</Link>}
-                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-5">SIGN IN</Link>}
-                                    {isLoggedIn() && <Link to="/Profile" className="ml-md-5">PROFILE</Link>}
+                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-5" onClick={this.toggle}>SIGN IN</Link>}
+                                    {isLoggedIn() && <Link to="/Profile" className="ml-md-5" onClick={this.toggle}>PROFILE</Link>}
                                     <a href="#" className="ml-md-5">CONTACT</a>
                                 </div>
                             </div>
