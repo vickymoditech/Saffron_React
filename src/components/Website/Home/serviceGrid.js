@@ -56,7 +56,7 @@ class ServiceGrid extends Component {
                 <section className="service pt-5 pb-5">
                     <div className="container">
                         <div className="title_content text-center mb-5">
-                            <span className="title">Servcie Menu</span>
+                            <span className="title">Service Menu</span>
                             <p className="sub_title pt-3">Far far away, behind the word mountains, far from the
                                 countries
                                 Vokalia and Consonantia</p>

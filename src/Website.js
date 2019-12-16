@@ -3,14 +3,11 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {isLoggedIn} from './index';
-import {BrowserView, MobileView} from "react-device-detect";
 import $ from "jquery";
 import NotificationSystem from 'react-notification-system';
 import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
-import {browserHistory} from 'react-router';
 import '././components/Website/Home/websiteCss/website.css'
-import ENVIRONMENT_VARIABLES from "./environment.config";
 
 
 class App extends Component {
@@ -32,13 +29,6 @@ class App extends Component {
         });
     };
 
-    listenToScroll = () => {
-        const scrolled = window.scrollY;
-        console.log(window.scrollY);
-        console.log(window.pageYOffset);
-        this.setState({theposition: scrolled});
-    };
-
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
@@ -46,7 +36,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.listenToScroll, true);
         this.setState({notificationSystem: this.refs.notificationSystem});
     };
 
@@ -67,12 +56,12 @@ class App extends Component {
         this.props.actions.websiteAction.getWebsiteHome();
     }
 
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.listenToScroll)
-    }
+    handleLogoutMobile = () => {
+        this.setState({visible: !this.state.visible});
+        this.props.actions.websiteAction.loggedOut();
+    };
 
     handleLogout = () => {
-        this.setState({visible: !this.state.visible});
         this.props.actions.websiteAction.loggedOut();
     };
 
@@ -86,7 +75,7 @@ class App extends Component {
             <div>
                 <NotificationSystem ref="notificationSystem"/>
                 <header>
-                    <nav className="navbar navbar-expand-md navbar-dark navbar1 fixed-top scrolled pt-md-4" id="navbar">
+                    <nav className="navbar navbar-expand-md navbar-dark navbar1 fixed-top scrolled pt-md-4 m-0" id="navbar">
                         <div className="col-2 d-flex flex-column text-center d-md-none d-block align-items-md-center first_logo logo1">
                             <i className="fa fa-camera"></i><span>Saffron</span>
                         </div>
@@ -107,9 +96,9 @@ class App extends Component {
                                 </div>
                                 <div className="col-md-5 menu2">
                                     <Link to="/VideoGallery" onClick={this.toggle}>VIDEOS</Link>
-                                    {!isLoggedIn() && <Link className="ml-md-5" to="/login" onClick={this.toggle}>LOGIN</Link>}
-                                    {isLoggedIn() &&  <Link className="ml-md-5" onClick={this.handleLogout} to="/">LOGOUT</Link>}
-                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-5" onClick={this.toggle}>SIGN IN</Link>}
+                                    {!isLoggedIn() && <Link className="ml-md-5" to="/login" onClick={this.toggle}>SIGN IN</Link>}
+                                    {isLoggedIn() &&  <Link className="ml-md-5" onClick={this.handleLogoutMobile} to="/">SIGN OUT</Link>}
+                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-5" onClick={this.toggle}>SIGN UP</Link>}
                                     {isLoggedIn() && <Link to="/Profile" className="ml-md-5" onClick={this.toggle}>PROFILE</Link>}
                                     <a href="#" className="ml-md-5">CONTACT</a>
                                 </div>
@@ -125,9 +114,9 @@ class App extends Component {
                                 </div>
                                 <div className="col-md-5 menu2 d-md-block d-none pt-md-3">
                                     <Link to="/VideoGallery">VIDEOS</Link>
-                                    {!isLoggedIn() && <Link className="ml-md-5" to="/login">LOGIN</Link>}
-                                    {isLoggedIn() &&  <Link className="ml-md-5" onClick={this.handleLogout} to="/">LOGOUT</Link>}
-                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-5">SIGN IN</Link>}
+                                    {!isLoggedIn() && <Link className="ml-md-5" to="/login">SIGN IN</Link>}
+                                    {isLoggedIn() &&  <Link className="ml-md-5" onClick={this.handleLogout} to="/">SIGN OUT</Link>}
+                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-5">SIGN UP</Link>}
                                     {isLoggedIn() && <Link to="/Profile" className="ml-md-5">PROFILE</Link>}
                                     <a href="#" className="ml-md-5">CONTACT</a>
                                 </div>

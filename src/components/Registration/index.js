@@ -86,9 +86,7 @@ class Registration extends Component {
 
 
     render() {
-
         return (
-
             <div className="back_color">
                 <ToastContainer
                     position="top-right"

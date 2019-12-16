@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import registerServiceWorker from './registerServiceWorker';
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';

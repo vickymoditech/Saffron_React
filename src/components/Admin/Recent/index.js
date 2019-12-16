@@ -77,9 +77,9 @@ export default class Recent extends Component {
         const {orders} = this.props;
         return (
             <div className="col-lg-4 col-sm-12 col-md-6 card on-the-way">
-                <div className="card-header" style={{backgroundColor:'#bf925d'}}><span
+                <div className="card-header" style={{backgroundColor:'#bf925d',color:'#000000'}}><span
                     className="item-number">{(orders && orders.length) || 0}</span>
-                    <h3 className="sub-title text-white">Recent All Booking</h3></div>
+                    <h3 className="sub-title">Recent All Booking</h3></div>
                 <div className="card-body on-the-way-scroll">
                     <ul id="onTheWay">
                         {orders && orders.map((data, index) => (

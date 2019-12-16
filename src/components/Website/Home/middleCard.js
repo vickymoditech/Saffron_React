@@ -30,7 +30,6 @@ class MiddleCard extends Component {
                                         the necessary regelialia. It is a paradisematic country, in which roasted parts
                                         of sentences fly into your mouth. Far far away, behind the word mountains, far
                                         from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <button className="btn mt-3" type="button">Read More</button>
                                 </div>
                             </div>
                             <div className="col-md-4 pl-0 pr-0">

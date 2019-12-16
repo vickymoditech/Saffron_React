@@ -82,7 +82,7 @@ class OrderDialog extends Component {
                                                                 <div className="col-12">
                                                                     <div className="panel panel-default">
                                                                         <div className="panel-heading">
-                                                                            <h3 className="panel-title">
+                                                                            <h3 className="panel-title text-dark mb-3">
                                                                                 <strong>{order.customerName} ({order.customer_id}) </strong></h3>
                                                                         </div>
                                                                         <div className="panel-body">
@@ -213,8 +213,7 @@ class OrderDialog extends Component {
 
                                                     </div>
                                                     {this.state.role.toLowerCase() !== "admin" && (this.state.column && (this.state.column === "running late" || this.state.column === "recent orders") ?
-                                                        < button type="button" className="btn btn-save"
-                                                                 style={{margin: '12px 10px 0 0'}}
+                                                        < button type="button" style={{padding:'10px',marginRight:'10px',borderRadius:'5px',border:'0px',backgroundColor:'#bf925d',color:'#000000'}}
                                                                  onClick={this.handleMoveToProgress}>Move to
                                                             Progress
                                                         </button> :
@@ -222,8 +221,7 @@ class OrderDialog extends Component {
                                                                                                       style={{margin: '12px 10px 0 0'}}
                                                                                                       onClick={this.handleDone}>Finish
                                                         </button>)}
-                                                    <button type="button" className="btn btn-save"
-                                                            style={{margin: '12px 10px 0 0'}}
+                                                    <button type="button" style={{padding:'10px',borderRadius:'5px',border:'0px',backgroundColor:'#bf925d',color:'#000000'}}
                                                             onClick={this.props.handleClose}>Close
                                                     </button>
 

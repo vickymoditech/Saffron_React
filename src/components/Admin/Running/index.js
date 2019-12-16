@@ -77,9 +77,9 @@ export default class Running extends Component {
         const {orders} = this.props;
         return (
             <div className="col-lg-4 col-sm-12 col-md-6 card here-now">
-                <div className="card-header" style={{backgroundColor:'#bf925d'}}><span
+                <div className="card-header" style={{backgroundColor:'#bf925d',color:'#000000'}}><span
                     className="item-number">{orders && (orders.length || 0)}</span>
-                    <h3 className="sub-title text-white">Running!</h3></div>
+                    <h3 className="sub-title">Running!</h3></div>
                 <div className="card-body here-now-scroll">
                     <ul id="here-now">
                         {orders && orders.map((data, index) => (

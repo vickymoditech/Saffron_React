@@ -71,9 +71,9 @@ class Gallery extends Component {
         let placeHolder = options.length > 1 ? options[0].text : "Service Loading...";
 
         return (
-            <div>
-                <div>
-                    <Dropdown placeholder={placeHolder} fluid selection options={options}
+            <div className="mt-5 pt-md-5 pt-2">
+                <div className="mt-5 mb-3 w-100 d-flex flex-column align-items-center">
+                    <Dropdown style={{width:'60%'}} placeholder={placeHolder} fluid selection options={options}
                               onChange={this.handleChangeService}/>
                 </div>
                 <PhotoGrid columns={4} photos={photos}/>
