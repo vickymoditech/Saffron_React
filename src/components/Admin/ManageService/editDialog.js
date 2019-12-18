@@ -92,7 +92,7 @@ class EditDialog extends Component {
                                         <div className="row">
                                             <div className="col-12">
                                                 <div className="d-flex justify-content-center">
-                                                <form>
+                                                <form className="w-100">
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="input-group">

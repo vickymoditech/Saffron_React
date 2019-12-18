@@ -218,7 +218,7 @@ class ManageTeamMemberProduct extends Component {
                         {selectedTeamId !== null && <DragDropContext onDragEnd={this.onDragEnd}>
                             <Droppable droppableId="droppable">
                                 {(provided, snapshot) => (
-                                    <div
+                                    <div className="dropbox"
                                         ref={provided.innerRef}
                                         style={getListStyle(snapshot.isDraggingOver)}>
                                         {this.state.items.map((item, index) => (
@@ -256,7 +256,7 @@ class ManageTeamMemberProduct extends Component {
 
                             <Droppable droppableId="droppable2">
                                 {(provided, snapshot) => (
-                                    <div
+                                    <div className="dropbox"
                                         ref={provided.innerRef}
                                         style={getListStyle(snapshot.isDraggingOver)}>
                                         {this.state.selected.map((item, index) => (

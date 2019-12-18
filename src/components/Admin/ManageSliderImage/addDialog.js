@@ -94,17 +94,17 @@ class AddDialog extends Component {
                                                         width="350px"
                                                         height="150px"/>)}
                                                 <input type="file" onChange={this.handleSelectedFile}/>
-                                                <form>
+                                                <form className="w-100">
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center d-flex">
                                                                     <button type="button" className="button_main"
-                                                                            style={{margin: '12px 10px 0 0'}}
+                                                                            style={{margin: '12px 10px 0 0',width:'35%'}}
                                                                             onClick={this.handleSave}>Save
                                                                     </button>
                                                                     <button type="button" className="button_main"
-                                                                            style={{margin: '12px 10px 0 0'}}
+                                                                            style={{margin: '12px 10px 0 0',width:'35%'}}
                                                                             onClick={this.props.handleClose}>Close
                                                                     </button>
                                                                 </div>

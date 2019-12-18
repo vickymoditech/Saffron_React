@@ -20,7 +20,9 @@ header .menu {
     font-family: "Josefin Sans", Arial, sans-serif;
     color: white;
 }
-
+header .fixed-top{
+    z-index:1 !important;
+}
 header .menu a {
     color: white;
     text-decoration: none;

@@ -121,7 +121,7 @@ class EditDialog extends Component {
                                                         width="150px"
                                                         height="150px"/>)}
                                                 <input type="file" onChange={this.handleSelectedFile}/>
-                                                <form>
+                                                <form className="w-100">
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="input-group">

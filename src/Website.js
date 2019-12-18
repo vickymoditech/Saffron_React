@@ -8,7 +8,7 @@ import NotificationSystem from 'react-notification-system';
 import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
 import '././components/Website/Home/websiteCss/website.css'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
 

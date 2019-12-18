@@ -107,7 +107,7 @@ class AddDialog extends Component {
                                     <div className="panel-body">
                                         <div className="row">
                                             <div className="col-md-offset-1 col-md-10">
-                                                <form>
+                                                <form className="w-100">
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="input-group">
@@ -125,11 +125,11 @@ class AddDialog extends Component {
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center">
                                                                     <button type="button" className="button_main"
-                                                                            style={{margin: '12px 10px 0 0'}}
+                                                                            style={{margin: '12px 10px 0 0',width:'35%'}}
                                                                             onClick={this.handleSave}>Save
                                                                     </button>
                                                                     <button type="button" className="button_main"
-                                                                            style={{margin: '12px 10px 0 0'}}
+                                                                            style={{margin: '12px 10px 0 0',width:'35%'}}
                                                                             onClick={this.props.handleClose}>Close
                                                                     </button>
                                                                 </div>

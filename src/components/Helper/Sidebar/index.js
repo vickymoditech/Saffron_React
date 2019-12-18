@@ -72,7 +72,7 @@ class Sidebar extends Component {
                     open={this.state.open} containerStyle={stylesDrawer.containerStyle} docked={false}
                     onRequestChange={this.props.closeNav}>
                     <List style={{padding: 0}}>
-                        <ListItem className="text-center" style={{color: "#fff", backgroundColor: "#1f3e70"}}
+                        <ListItem className="text-center" style={{color: "#fff", backgroundColor: "#bf925d"}}
                                   innerDivStyle={stylesMenu.innerDivStyle}>
                             <span><img src="/assets/Images/DB_Logo.png" alt="" style={{width: 120}}/></span>
                             <span onClick={this.props.closeNav}><i className="fa fa-times"
@@ -158,8 +158,8 @@ class Sidebar extends Component {
                     </List>
                     <Divider/>
                     <List className="logout-list">
-                        <Link onClick={this.handleLogout} className="link">
-                            <ListItem className="sidebar-list" style={ListStyles.style}>
+                        <Link onClick={this.handleLogout} className="link" >
+                            <ListItem className="sidebar-list bg_color_logout" style={ListStyles.style}>
                                 <i className="fa fa-power-off"/>
                                 <div style={{marginTop: 10}} className="link-hover">Logout</div>
                             </ListItem>

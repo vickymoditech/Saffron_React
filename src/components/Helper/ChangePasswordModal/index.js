@@ -117,7 +117,7 @@ class ChangePasswordModal extends Component {
                                         <div className="row">
                                             <div className="col-12">
                                                 <div className="d-flex justify-content-center">
-                                                <form>
+                                                <form className="w-100">
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="input-group">
@@ -157,11 +157,11 @@ class ChangePasswordModal extends Component {
                                                             </div>
                                                             <div className="form-group text-center row">
                                                                 <div className="col-xs-12 text-center">
-                                                                    <button type="button" className="btn btn-save button_main"
+                                                                    <button type="button" className="button_main"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.handleSubmit}>Submit
                                                                     </button>
-                                                                    <button type="button" className="btn btn-save button_main"
+                                                                    <button type="button" className="button_main"
                                                                             style={{margin: '12px 10px 0 0'}}
                                                                             onClick={this.props.handleClose}>Cancel
                                                                     </button>
