@@ -67,7 +67,7 @@ class Profile extends Component {
             this.addNotifications("Invalid Phone Number; must be 10 digits", 'error');
             check = false;
         }
-        if(check){
+        if (check) {
             this.props.actions.authAction.updateUserProfile(this.state.userDetails);
         }
     };
@@ -92,6 +92,7 @@ class Profile extends Component {
         this.state.notificationSystem.addNotification({
             message: message,
             level: level,
+            position: 'bc',
             autoDismiss: 3
         });
     };
@@ -133,7 +134,7 @@ class Profile extends Component {
                 <NotificationSystem ref="notificationSystem"/>
                 <div className="container tab-bg-container d-flex flex-column justify-content-center h-100">
                     <div className="row d-flex justify-content-center">
-                        <div className="form-wrapper col-md-8 p-4" style={{backgroundColor:'#000000'}}>
+                        <div className="form-wrapper col-md-8 p-4" style={{backgroundColor: '#000000'}}>
                             <form className="form-horizontal w-100 bg-transparent">
                                 <div className="form-group">
                                     <div className="col-sm-12">
@@ -179,7 +180,8 @@ class Profile extends Component {
                                                        placeholder="userId" disabled/>
                                             </div>
                                             <div className="col-sm-6">
-                                                <span className="store-config-icon icon_color" title="mobile_number"> <img
+                                                <span className="store-config-icon icon_color"
+                                                      title="mobile_number"> <img
                                                     src="/assets/Images/username.png" alt=""/> </span>
                                                 <input type="text" className="form-control" name="mobile_number"
                                                        value={mobile_number} placeholder="Contact No"
@@ -198,13 +200,26 @@ class Profile extends Component {
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <div className="col-sm-12 text-center button-div mt-3 d-flex justify-content-center">
+                                    <div
+                                        className="col-sm-12 text-center button-div mt-3 d-flex justify-content-center">
                                         <a className="text-white mr-3" onClick={this.handleEditConfirm}
-                                           style={{cursor: 'pointer', fontSize:'15px',backgroundColor:'#bf925d',color:'white',
-                                               borderRadius: '5px',padding:'10px'}}>Update User</a>
+                                           style={{
+                                               cursor: 'pointer',
+                                               fontSize: '15px',
+                                               backgroundColor: '#bf925d',
+                                               color: 'white',
+                                               borderRadius: '5px',
+                                               padding: '10px'
+                                           }}>Update User</a>
                                         <a className="text-white" onClick={this.handleOpen}
-                                           style={{cursor: 'pointer', fontSize:'15px',backgroundColor:'#bf925d',color:'white',
-                                               borderRadius: '5px',padding:'10px'}}>Change Password</a>
+                                           style={{
+                                               cursor: 'pointer',
+                                               fontSize: '15px',
+                                               backgroundColor: '#bf925d',
+                                               color: 'white',
+                                               borderRadius: '5px',
+                                               padding: '10px'
+                                           }}>Change Password</a>
                                     </div>
                                 </div>
                             </form>
