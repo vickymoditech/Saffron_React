@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 
 class Footer extends Component {
 
@@ -10,7 +11,7 @@ class Footer extends Component {
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="side1 my-md-5 my-3">
-                                    <span>About Imahe</span>
+                                    <span>About Saffron</span>
                                     <p className="pt-3">Far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
                                     <div className="d-flex">
                                         <i className="fa fa-twitter mr-md-2"></i>
@@ -24,12 +25,11 @@ class Footer extends Component {
                                 <div className="side2 my-md-5 my-3">
                                     <span>Information</span>
                                     <div className="d-flex flex-column pt-3">
-                                        <div><i className="fa fa-check"></i><a href="#"> Home</a></div>
-                                        <div><i className="fa fa-check"></i><a href="#"> Gallery</a></div>
-                                        <div> <i className="fa fa-check"></i><a href="#"> About</a></div>
-                                        <div><i className="fa fa-check"></i><a href="#"> Blog</a></div>
-                                        <div><i className="fa fa-check"></i><a href="#"> Contact</a></div>
-                                        <div><i className="fa fa-check"></i><a href="#"> Privacy</a></div>
+                                        <div><Link to="/" className="fa fa-check">Home</Link></div>
+                                        <div><Link to="/Gallery" className="fa fa-check">Gallery</Link></div>
+                                        <div><Link to="/ProductList" className="fa fa-check">Service</Link></div>
+                                        <div><Link to="/VideoGallery" className="fa fa-check">Videos</Link></div>
+                                        <div><i className="fa fa-check"></i><a href="#">Contact</a></div>
                                     </div>
                                 </div>
                             </div>

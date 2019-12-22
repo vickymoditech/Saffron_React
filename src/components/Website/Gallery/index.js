@@ -28,17 +28,17 @@ class Gallery extends Component {
         }
     }
 
-    requestConvertToResponse(galleryList) {
-        let GalleryList = [];
-        galleryList.map((gallery, index) => {
-            let single = {
-                id: index, src: ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url,
-                bigSrc: ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url
-            };
-            GalleryList.push(single);
-        });
-        return GalleryList;
-    }
+    // requestConvertToResponse(galleryList) {
+    //     let GalleryList = [];
+    //     galleryList.map((gallery, index) => {
+    //         let single = {
+    //             id: index, src: ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url,
+    //             bigSrc: ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url
+    //         };
+    //         GalleryList.push(single);
+    //     });
+    //     return GalleryList;
+    // }
 
 
     componentWillReceiveProps(nextProps) {
@@ -47,7 +47,7 @@ class Gallery extends Component {
                 this.props.actions.websiteAction.getAllGallerys(this.props.serviceList[0].id);
             });
         }
-        this.setState({photos: this.requestConvertToResponse(nextProps.allGalleryList)});
+        this.setState({photos: nextProps.allGalleryList});
     }
 
 
@@ -59,7 +59,7 @@ class Gallery extends Component {
     };
 
     render() {
-        const photos = this.state.photos;
+        const {photos} = this.state;
         let options = [];
         this.props.serviceList.map((service, index) => {
             let option = {
@@ -71,12 +71,28 @@ class Gallery extends Component {
         let placeHolder = options.length > 1 ? options[0].text : "Service Loading...";
 
         return (
-            <div className="mt-5 pt-md-5 pt-2">
-                <div className="mt-5 mb-3 w-100 d-flex flex-column align-items-center">
-                    <Dropdown style={{width:'60%'}} placeholder={placeHolder} fluid selection options={options}
-                              onChange={this.handleChangeService}/>
-                </div>
-                <PhotoGrid columns={4} photos={photos}/>
+            <div>
+                <section className="gallery pt-5">
+                    <div className="container-fluid">
+                        <div className="title_content text-center">
+                            <span className="title">Gallery</span>
+                            <p className="sub_title py-3">Separated they live in. A small river named Duden flows by
+                                their place and supplies it with the necessary regelialia.</p>
+                            <Dropdown style={{width: '60%'}} placeholder={placeHolder} fluid selection options={options}
+                                      onChange={this.handleChangeService}/>
+                        </div>
+                        <div className="row">
+                            {photos.map((gallery, index) => (
+                                <div className="col-md-3 px-0" key={index}>
+                                    <div className="main_img_box">
+                                        <img className="img-fluid" alt="image"
+                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url}/>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
             </div>
         )
     }

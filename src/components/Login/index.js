@@ -116,6 +116,8 @@ class Login extends Component {
                                                             <Link to="forgot-password"
                                                                   style={{textDecoration: 'underline',color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Forgot
                                                                 Password?</Link>
+                                                            <Link to="/"
+                                                                  style={{textDecoration: 'underline',color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Home</Link>
                                                         </div>
                                                         <div className="form-group text-center">
                                                             <button type="submit" className="button_main" onClick={this.handleSubmit}>Sign In

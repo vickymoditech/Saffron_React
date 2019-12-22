@@ -9,6 +9,7 @@ import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
 import '././components/Website/Home/websiteCss/website.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './components/Website/Footer';
 
 class App extends Component {
 
@@ -124,9 +125,9 @@ class App extends Component {
                         </div>
                     </nav>
                 </header>
-
                 {this.props.children}
                 {this.props.Loading && <Loader/>}
+                <Footer/>
             </div>
         );
     }
