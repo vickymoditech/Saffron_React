@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import moment from 'moment';
-
-import SidebarComponent from '../../Helper/Sidebar';
-
+import SidebarComponent from '../Sidebar/index';
 import './Header.css';
 
 export default class Header extends Component {
@@ -11,7 +9,7 @@ export default class Header extends Component {
         this.state={
             open:false,
             time:"Loading....",
-            timeZone:'IST'
+            timeZone:'Asia/Kolkata'
         }
     }
 
@@ -41,12 +39,12 @@ export default class Header extends Component {
     }
 
     getDateGMTChangeStore = (timeZone) => {
-        return moment(Date.now()).utcOffset(timeZone).format("DD-MM-YYYY HH:mm:ss");
+        return moment().tz(timeZone).format("DD-MM-YYYY HH:mm:ss a");
     };
 
 
     render(){
-        if (this.state.time.toString() === "01:00:00") {
+        if (this.state.time.toString().includes("12:10:00 pm")) {
             window.location.reload();
         }
         return(

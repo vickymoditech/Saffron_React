@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import Header from '../src/components/Helper/Header';
+import Header from './components/Admin/Helper/Header';
 import $ from "jquery";
 import * as saffronOrdersDisplayAction from "./actions/saffronOrdersDisplayAction";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {GetLocalUderData} from "./index";
 import {newSODMessage,connection} from './socket';
+import './components/Admin/AdminCss/bootstrap.min.css';
 
 class App extends Component {
 
@@ -41,7 +42,7 @@ class App extends Component {
                 this.props.actions.saffronOrdersDisplayAction.MoveToRunningLate(data.data);
             else if(data.message === "running")
                 this.props.actions.saffronOrdersDisplayAction.MoveToProgress(data.data);
-            else if(data.message === 'finish')
+            else if(data.message === "finish")
                 this.props.actions.saffronOrdersDisplayAction.MoveToFinish(data.data);
         });
     }

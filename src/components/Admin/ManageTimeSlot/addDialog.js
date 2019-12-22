@@ -41,30 +41,6 @@ class AddDialog extends Component {
         };
     }
 
-    handleChangeServiceSH = (event, {value}) => {
-        if (value !== null) {
-            this.setState({start_time_hours: value});
-        }
-    };
-
-    handleChangeServiceSM = (event, {value}) => {
-        if (value !== null) {
-            this.setState({start_time_minutes: value});
-        }
-    };
-
-    handleChangeServiceEH = (event, {value}) => {
-        if (value !== null) {
-            this.setState({end_time_hours: value});
-        }
-    };
-
-    handleChangeServiceEM = (event, {value}) => {
-        if (value !== null) {
-            this.setState({end_time_minutes: value})
-        }
-    };
-
     onChangeStartTime = time => this.setState({start_time: time });
 
     onChangeEndTime = time => this.setState({end_time: time});
@@ -155,6 +131,5 @@ const mapDispatchToProps = dispatch => ({
         timeSlotsAction: bindActionCreators(timeSlotsAction, dispatch),
     }
 });
-
 
 export default connect(null, mapDispatchToProps)(AddDialog);

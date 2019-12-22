@@ -3,7 +3,6 @@ import Loader from '../../Helper/Loader';
 import NotificationSystem from 'react-notification-system';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
 import './layout.css';
 import Running from '../Running';
 import Recent from '../Recent';

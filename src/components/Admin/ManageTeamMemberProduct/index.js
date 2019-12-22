@@ -37,8 +37,7 @@ const move = (source, destination, droppableSource, droppableDestination) => {
     return result;
 };
 
-
-const grid = 10;
+const grid = 5;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
@@ -59,7 +58,6 @@ const getListStyle = isDraggingOver => ({
     width: 250
 });
 
-
 class ManageTeamMemberProduct extends Component {
 
     constructor(props) {
@@ -70,6 +68,7 @@ class ManageTeamMemberProduct extends Component {
             notificationSystem: null,
             selectedTeamId: null,
             moveProductMove: false,
+            minutes: []
         };
     }
 
@@ -88,13 +87,31 @@ class ManageTeamMemberProduct extends Component {
     productAddRemove = (source, destination, droppableSource, droppableDestination) => {
         this.setState({moveProductMove: true});
         let product = source[droppableSource.index];
+        let findProduct = this.state.minutes.find((data) => data.productId === product.id);
+        const approxTime = findProduct ? findProduct.approxTime : 0;
+
         let requestData = {
             id: this.state.selectedTeamId,
-            product_id: product.id
+            product_id: product.id,
+            approxTime: approxTime
         };
         let action = "addTeamProduct";
 
         if (droppableSource.droppableId === "droppable2") {
+            let allMinutes = this.state.minutes;
+            let minutes = [];
+            for (let i = 0; i < 60; i++) {
+                let text = "";
+                if (i < 10)
+                    text = "0";
+                let option = {
+                    text: text + i,
+                    value: `${product.id},${i}`
+                };
+                minutes.push(option);
+            }
+            allMinutes.push({productId: product.id, minute: minutes, approxTime: 0});
+            this.setState({minutes: allMinutes});
             action = "removeTeamProduct";
         }
 
@@ -152,11 +169,10 @@ class ManageTeamMemberProduct extends Component {
         }
     };
 
-    handleChangeStore = (event, {value}) => {
+    handleChangeTeamMember = (event, {value}) => {
         this.setState({selectedTeamId: value});
         this.props.actions.teamProductManageAction.TeamMemberProductList(value);
     };
-
 
     addNotifications = (message, level) => {
         this.state.notificationSystem.addNotification({
@@ -166,11 +182,9 @@ class ManageTeamMemberProduct extends Component {
         });
     };
 
-
     componentDidMount() {
         this.setState({notificationSystem: this.refs.notificationSystem});
     };
-
 
     componentWillReceiveProps(nextProps) {
         if ((!nextProps.Loading && nextProps.error_msg) || (!nextProps.teamListLoader && nextProps.teamListError_msg)) {
@@ -178,22 +192,51 @@ class ManageTeamMemberProduct extends Component {
         } else if (!nextProps.Loading && nextProps.success_msg !== 'Successfully fetched') {
             this.addNotifications(nextProps.success_msg, "success");
         }
-        var AllProductList = _.cloneDeep(nextProps.allProductList);
-        nextProps.teamProductList.map((teamProduct) => {
-            let removeProduct = AllProductList.find(function (product) {
-                return product.id === teamProduct.id;
-            });
-            let index = AllProductList.indexOf(removeProduct);
-            AllProductList.splice(index, 1)
+        let AllProductList = _.cloneDeep(nextProps.allProductList);
+        let allMinutes = [];
+
+        AllProductList.map((item) => {
+            let minutes = [];
+            for (let i = 0; i < 60; i++) {
+                let text = "";
+                if (i < 10)
+                    text = "0";
+                let option = {
+                    text: text + i,
+                    value: `${item.id},${i}`
+                };
+                minutes.push(option);
+            }
+            allMinutes.push({productId: item.id, minute: minutes, approxTime: 0});
         });
-        this.setState({items: AllProductList || []});
+
+        nextProps.teamProductList.map((teamProduct) => {
+
+            let removeProduct = AllProductList.find((product) => product.id === teamProduct.id);
+            let index = AllProductList.indexOf(removeProduct);
+            AllProductList.splice(index, 1);
+
+            removeProduct = allMinutes.find((product) => product.productId === teamProduct.id);
+            index = allMinutes.indexOf(removeProduct);
+            allMinutes.splice(index, 1);
+
+        });
+        this.setState({items: AllProductList || [], minutes: allMinutes});
         this.setState({selected: nextProps.teamProductList || []});
     }
 
+    handleChangeServiceM = (event, {value}) => {
+        const valueSplit = value.toString().split(',');
+        let stateAllProducts = this.state.minutes;
+        let stateProduct = stateAllProducts.find((data) => data.productId === valueSplit[0]);
+        stateProduct.approxTime = valueSplit[1];
+        value !== null && this.setState({minutes: stateAllProducts});
+    };
 
     render() {
         let options = [];
-        this.props.teamList.map((team, index) => {
+        const {minutes} = this.state;
+        this.props.teamList.map((team) => {
             let option = {
                 text: team.first_name + " " + team.last_name,
                 value: team.id
@@ -211,7 +254,7 @@ class ManageTeamMemberProduct extends Component {
                         <div className="w-25">
                     <Dropdown placeholder={"Select Team member"} fluid selection
                                   options={options}
-                                  onChange={this.handleChangeStore} classname="pr-2"/>
+                                  onChange={this.handleChangeTeamMember} className="pr-2"/>
                     </div>
                     </div>
                     {options.length > 0 && <div className="d-flex justify-content-around mt-4">
@@ -237,13 +280,18 @@ class ManageTeamMemberProduct extends Component {
                                                         )}>
                                                         {item.image_url !== undefined ? (
                                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}
-                                                                 width="60px"
-                                                                 height="60px"/>) : (
+                                                                 width="50px"
+                                                                 height="50px"/>) : (
                                                             <img
                                                                 src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                                width="60px"
-                                                                height="60px"/>)}
+                                                                width="50px"
+                                                                height="50px"/>)}
                                                         {item.title}
+                                                        <Dropdown placeholder="Select ApproxTime" fluid
+                                                                  selection
+                                                                  options={(minutes.find((data) => data.productId === item.id)).minute}
+                                                                  key={item.id}
+                                                                  onChange={this.handleChangeServiceM}/>
                                                     </div>
                                                 )}
                                             </Draggable>
@@ -282,6 +330,8 @@ class ManageTeamMemberProduct extends Component {
                                                                 width="50px"
                                                                 height="50px"/>)}
                                                         {item.title}
+                                                        {(minutes.find((data) => data.productId === item.id)) ? (minutes.find((data) => data.productId === item.id)).approxTime : (item.approxTime)}
+                                                        mins
                                                     </div>
                                                 )}
                                             </Draggable>
@@ -290,8 +340,7 @@ class ManageTeamMemberProduct extends Component {
                                     </div>
                                 )}
                             </Droppable>
-                        </DragDropContext>
-                        }
+                        </DragDropContext>}
                     </div>}
                 </div>
                 {(this.props.Loading || this.props.teamListLoader || this.state.moveProductMove) && <Loader/>}

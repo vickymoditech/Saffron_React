@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import decode from 'jwt-decode';
 import NotificationSystem from 'react-notification-system';
 
-import * as websiteAction from '../../../actions/websiteAction';
+import * as websiteAction from '../../../../actions/websiteAction';
 
 import './Sidebar.css';
 
