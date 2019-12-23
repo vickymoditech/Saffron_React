@@ -32,6 +32,7 @@ html, body {
     border:2px solid #000000 !important;
     color:#ffffff !important;
     transition:all .5s !important;
+    border-radius: 5px;
     font-family: "Josefin Sans", Arial, sans-serif;
 }
 .button_main2:hover{

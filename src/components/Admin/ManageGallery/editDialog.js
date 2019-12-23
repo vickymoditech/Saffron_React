@@ -126,11 +126,12 @@ class EditDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="title"
                                                                        placeholder="Service Title"
+                                                                       style={{borderBottom:'0'}}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.title}/>
@@ -154,12 +155,13 @@ class EditDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Service Description"
                                                                        className="form-control"
+                                                                       style={{borderBottom:'0'}}
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.description}/>
                                                             </div>

@@ -110,42 +110,44 @@ class AddDialog extends Component {
                                                             <div className="input-group">
                                                                 <Dropdown placeholder="Select Service" fluid selection
                                                                           options={this.props.serviceList}
-                                                                          style={{width: '342px'}}
                                                                           onChange={this.handleChangeService}/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="title"
                                                                        placeholder="Video Title"
                                                                        className="form-control"
+                                                                       style={{borderBottom:'0'}}
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.title}/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Description"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
+                                                                       style={{borderBottom:'0'}}
                                                                        value={this.state.commonData.description}/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="video_url"
                                                                        placeholder="Video URL"
                                                                        className="form-control"
+                                                                       style={{borderBottom:'0'}}
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.video_url}/>
                                                             </div>

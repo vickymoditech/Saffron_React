@@ -25,11 +25,11 @@ class Footer extends Component {
                                 <div className="side2 my-md-5 my-3">
                                     <span>Information</span>
                                     <div className="d-flex flex-column pt-3">
-                                        <div><Link to="/" className="fa fa-check">Home</Link></div>
-                                        <div><Link to="/Gallery" className="fa fa-check">Gallery</Link></div>
-                                        <div><Link to="/ProductList" className="fa fa-check">Service</Link></div>
-                                        <div><Link to="/VideoGallery" className="fa fa-check">Videos</Link></div>
-                                        <div><i className="fa fa-check"></i><a href="#">Contact</a></div>
+                                        <div><Link to="/" className="fa fa-check"> Home</Link></div>
+                                        <div><Link to="/Gallery" className="fa fa-check"> Gallery</Link></div>
+                                        <div><Link to="/ProductList" className="fa fa-check"> Service</Link></div>
+                                        <div><Link to="/VideoGallery" className="fa fa-check"> Videos</Link></div>
+                                        <div><i className="fa fa-check"></i><a href="#"> Contact</a></div>
                                     </div>
                                 </div>
                             </div>

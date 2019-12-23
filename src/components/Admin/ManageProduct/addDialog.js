@@ -127,17 +127,17 @@ class AddDialog extends Component {
                                                             <div className="input-group">
                                                                 <Dropdown placeholder="Select Service" fluid selection
                                                                           options={this.props.serviceList}
-                                                                          style={{width: '342px'}}
                                                                           onChange={this.handleChangeService}/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="title"
                                                                        placeholder="Product Title"
+                                                                       style={{borderBottom:'0'}}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.title}/>
@@ -145,11 +145,12 @@ class AddDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Description"
+                                                                       style={{borderBottom:'0'}}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.description}/>
@@ -157,7 +158,7 @@ class AddDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon pr-4">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="price"
@@ -169,11 +170,12 @@ class AddDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="offerPrice"
                                                                        placeholder="Offer Price"
+                                                                       style={{borderBottom:'0'}}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.offerPrice}/>

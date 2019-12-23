@@ -85,7 +85,7 @@ class AddDialog extends Component {
                                         <h2 className="title">Add New Slider</h2>
                                         <br/>
                                     </div>
-                                    <div className="panel-body">
+                                    <div className="panel-body w-100">
                                         <div className="row">
                                             <div className="col-md-offset-1 col-md-10">
                                                 {this.state.image_url !== undefined && this.state.image_url !== null && (
@@ -98,7 +98,7 @@ class AddDialog extends Component {
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
-                                                                <div className="col-xs-12 text-center d-flex">
+                                                                <div className="col-xs-12 text-center d-flex justify-content-center">
                                                                     <button type="button" className="button_main"
                                                                             style={{margin: '12px 10px 0 0',width:'35%'}}
                                                                             onClick={this.handleSave}>Save

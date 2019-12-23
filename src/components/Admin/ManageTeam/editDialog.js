@@ -97,35 +97,38 @@ class EditDialog extends Component {
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-lock icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="first_name"
                                                                        placeholder="Team member First Name"
                                                                        className="form-control"
+                                                                       style={{borderBottom:'0'}}
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.first_name}/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-lock icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="last_name"
                                                                        placeholder="Team member Last Name"
                                                                        className="form-control"
+                                                                       style={{borderBottom:'0'}}
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.last_name}/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-key icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Service Description"
+                                                                       style={{borderBottom:'0'}}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.description}/>

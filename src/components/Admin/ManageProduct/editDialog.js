@@ -126,11 +126,12 @@ class EditDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="title"
                                                                        placeholder="Product Title"
+                                                                       style={{borderBottom:'0'}}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.title}/>
@@ -138,11 +139,12 @@ class EditDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Product Description"
+                                                                       style={{borderBottom:'0'}}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.description}/>
@@ -150,23 +152,25 @@ class EditDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="price"
                                                                        placeholder="Price"
                                                                        className="form-control"
+                                                                       style={{borderBottom:'0'}}
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.price}/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="offerPrice"
                                                                        placeholder="offerPrice"
+                                                                       style={{borderBottom:'0'}}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.offerPrice}/>

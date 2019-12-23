@@ -121,7 +121,6 @@ class Profile extends Component {
         this.setState({userDetails: userDetails, image_url: URL.createObjectURL(event.target.files[0])});
     };
 
-
     render() {
         const {emailAddress, mobile_number, first_name, last_name, userId} = this.state.userDetails;
         return (
@@ -202,24 +201,10 @@ class Profile extends Component {
                                 <div className="form-group">
                                     <div
                                         className="col-sm-12 text-center button-div mt-3 d-flex justify-content-center">
-                                        <a className="text-white mr-3" onClick={this.handleEditConfirm}
-                                           style={{
-                                               cursor: 'pointer',
-                                               fontSize: '15px',
-                                               backgroundColor: '#bf925d',
-                                               color: 'white',
-                                               borderRadius: '5px',
-                                               padding: '10px'
-                                           }}>Update User</a>
-                                        <a className="text-white" onClick={this.handleOpen}
-                                           style={{
-                                               cursor: 'pointer',
-                                               fontSize: '15px',
-                                               backgroundColor: '#bf925d',
-                                               color: 'white',
-                                               borderRadius: '5px',
-                                               padding: '10px'
-                                           }}>Change Password</a>
+                                        <a className="text-white mr-3 button_main2 p-3" onClick={this.handleEditConfirm}
+                                           >Update User</a>
+                                        <a className="text-white button_main2 p-3" onClick={this.handleOpen}
+                                           >Change Password</a>
                                     </div>
                                 </div>
                             </form>

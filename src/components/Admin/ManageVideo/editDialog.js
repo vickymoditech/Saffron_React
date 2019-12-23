@@ -123,6 +123,7 @@ class EditDialog extends Component {
                                                                 </span>
                                                                 <input type="text" name="title"
                                                                        placeholder="Service Title"
+                                                                       style={{borderBottom:'0'}}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.title}/>
@@ -151,6 +152,7 @@ class EditDialog extends Component {
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Service Description"
+                                                                       style={{borderBottom:'0'}}
                                                                        className="form-control"
                                                                        onChange={this.handleChange}
                                                                        value={this.state.commonData.description}/>
@@ -162,6 +164,7 @@ class EditDialog extends Component {
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="video_url"
+                                                                       style={{borderBottom:'0'}}
                                                                        placeholder="Video url"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}

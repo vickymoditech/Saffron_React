@@ -112,7 +112,7 @@ class ProductDialog extends Component {
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="input-group mb-3">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil" style={{color:'#bf925b'}}/>
                                                                 </span>
                                                                 {this.props.status.toLowerCase() === "service" ?
@@ -136,7 +136,7 @@ class ProductDialog extends Component {
                                                         {this.props.status.toLowerCase() !== "service" &&
                                                         < div className="form-group">
                                                             <div className="input-group mb-3">
-                                                            <span className="input-group-addon d-flex align-items-center pr-4">
+                                                            <span className="input-group-addon">
                                                             <i className="fa fa-pencil" style={{color:'#bf925b'}}/>
                                                             </span>
                                                                 <input type="text" name="last_name"
@@ -153,7 +153,7 @@ class ProductDialog extends Component {
                                                         {this.props.status.toLowerCase() !== "service" &&
                                                         < div className="form-group">
                                                             <div className="input-group mb-3">
-                                                            <span className="input-group-addon d-flex align-items-center pr-4">
+                                                            <span className="input-group-addon">
                                                             <i className="fa fa-pencil" style={{color:'#bf925b'}}/>
                                                             </span>
                                                                 <input type="text" name="mobile_number"
@@ -169,7 +169,7 @@ class ProductDialog extends Component {
 
                                                         <div className="form-group">
                                                             <div className="input-group mb-3">
-                                                                <span className="input-group-addon d-flex align-items-center pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil" style={{color:'#bf925b'}}/>
                                                                 </span>
                                                                 <input type="text" name="description"

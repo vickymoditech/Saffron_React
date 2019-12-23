@@ -80,13 +80,13 @@ class AddDialog extends Component {
                                     <div className="col-xs-12 text-center">
                                         <h2 className="title">Add New TimeSlot</h2>
                                     </div>
-                                    <div className="panel-body">
+                                    <div className="panel-body w-100">
                                         <div className="row">
                                             <div className="col-md-offset-1 col-md-10">
                                                 <form className="w-100">
                                                     <div id="loginForm">
                                                         <div className="form-group">
-                                                            <div className="input-group">
+                                                            <div className="input-group d-flex justify-content-between">
                                                                 <TimePicker
                                                                     onChange={this.onChangeStartTime}
                                                                     value={this.state.start_time}
