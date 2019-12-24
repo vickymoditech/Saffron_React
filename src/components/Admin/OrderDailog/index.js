@@ -229,7 +229,7 @@ class OrderDialog extends Component {
                                                     <button type="button" style={{padding:'10px',borderRadius:'5px',border:'0px',backgroundColor:'#bf925d',color:'#000000'}}
                                                             onClick={this.props.handleClose}>Close
                                                     </button>
-                                                    {(this.state.role.toLowerCase() === "admin" && (this.state.column && this.state.column === "finish")) &&
+                                                    {(this.state.role.toLowerCase() === "admin" && (this.state.column && this.state.column === "finish" && !(order.paymentComplete))) &&
                                                     < button type="button" className="btn btn-save"
                                                              style={{margin: '12px 10px 0 0'}}
                                                              onClick={this.handleFinishPayment}>Finish Payment
