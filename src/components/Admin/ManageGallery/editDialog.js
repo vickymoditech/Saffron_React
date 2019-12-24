@@ -176,7 +176,7 @@ class EditDialog extends Component {
                                                                 src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
                                                                 width="90px"
                                                                 height="90px"/>)}
-                                                        <input type="file" onChange={this.handleSelectedFile}/>
+                                                        <input type="file" accept="image/*" onChange={this.handleSelectedFile}/>
 
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">

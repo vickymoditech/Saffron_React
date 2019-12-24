@@ -186,7 +186,7 @@ class ProductDialog extends Component {
                                                                 src={this.state.image_url}
                                                                 width="150px"
                                                                 height="150px"/>)}
-                                                        <input type="file" onChange={this.handleSelectedFile}/>
+                                                        <input type="file" accept="image/*" onChange={this.handleSelectedFile}/>
 
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">

@@ -164,7 +164,7 @@ class AddDialog extends Component {
                                                         </div>
 
 
-                                                        <input type="file" onChange={this.handleselectedFile}/>
+                                                        <input type="file" accept="image/*" onChange={this.handleselectedFile}/>
                                                         {this.state.image_url !== undefined && this.state.image_url !== null && (
                                                             <img
                                                                 src={this.state.image_url}

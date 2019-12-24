@@ -200,7 +200,7 @@ class AddDialog extends Component {
                                                                 src={this.state.image_url}
                                                                 width="90px"
                                                                 height="90px"/>)}
-                                                        <input type="file" onChange={this.handleselectedFile}/>
+                                                        <input type="file" accept="image/*" onChange={this.handleselectedFile}/>
 
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">
