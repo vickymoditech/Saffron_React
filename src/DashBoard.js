@@ -36,6 +36,7 @@ class App extends Component {
         this.props.actions.saffronOrdersDisplayAction.OrdersList();
 
         newSODMessage(socketKey,(err, data) => {
+            console.log(data.message);
             if(data.message === "new order")
                 this.props.actions.saffronOrdersDisplayAction.NewOrder(data.data);
             else if(data.message === "running late")
@@ -44,6 +45,8 @@ class App extends Component {
                 this.props.actions.saffronOrdersDisplayAction.MoveToProgress(data.data);
             else if(data.message === "finish")
                 this.props.actions.saffronOrdersDisplayAction.MoveToFinish(data.data);
+            else if(data.message === "payment finish")
+                this.props.actions.saffronOrdersDisplayAction.MoveToPaymentFinish(data.data);
         });
     }
 

@@ -13,6 +13,7 @@ import {
     SOD_MOVE_TO_RUNNING_LATE,
     SOD_MOVE_TO_PROCESSS_SUCCESS,
     SOD_RECENT_MOVE_TO_FINISH,
+    SOD_FINISH_MOVE_TO_PAYMENT_FINISH
 } from '../constants/actionTypes';
 
 export const OrdersList = () => {
@@ -83,6 +84,18 @@ export const MoveToFinish = (order) => {
     }
 };
 
+export const MoveToPaymentFinish = (order) => {
+    try {
+        return (dispatch) => {
+            dispatch({
+                type: SOD_FINISH_MOVE_TO_PAYMENT_FINISH,
+                order
+            });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
 
 export const orderStatusUpdateRequest = (id, teamMemberId, orderType) => {
     try {

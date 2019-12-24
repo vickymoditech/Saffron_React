@@ -8,7 +8,8 @@ import {
     SOD_RECENT_NEW_ORDER,
     SOD_MOVE_TO_RUNNING_LATE,
     SOD_MOVE_TO_PROCESSS_SUCCESS,
-    SOD_RECENT_MOVE_TO_FINISH
+    SOD_RECENT_MOVE_TO_FINISH,
+    SOD_FINISH_MOVE_TO_PAYMENT_FINISH
 } from '../constants/actionTypes';
 
 
@@ -232,6 +233,19 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
                 recentComplete: recentComplete
             });
 
+        case SOD_FINISH_MOVE_TO_PAYMENT_FINISH:
+
+            let modifiedOrder = state.recentComplete.find(function (recentCompleteOrder) {
+                return recentCompleteOrder.id === action.order.id;
+            });
+
+            modifiedOrder.paymentComplete = action.order.paymentComplete;
+            modifiedOrder.paymentMemberId = action.order.paymentMemberId;
+            modifiedOrder.paymentMemberName = action.order.paymentMemberName;
+
+            return Object.assign({}, state, {
+                recentComplete: state.recentComplete
+            });
 
         default:
             return state;
