@@ -50,7 +50,7 @@ class Home extends Component {
                         <Recent orders={recentOrders}/>
                         <RunningLate orders={runningLate}/>
                     </div>
-                    <RecentComplete orders={recentComplete} isResetOpen={false}/>
+                    <RecentComplete orders={recentComplete}/>
                 </section>
                 {this.props.Loading && <Loader/>}
             </div>

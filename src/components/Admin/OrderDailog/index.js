@@ -53,6 +53,11 @@ class OrderDialog extends Component {
         this.props.handleClose();
     };
 
+    handleFinishPayment =  () => {
+        this.props.actions.saffronOrderDisplayAction.orderStatusPaymentUpdateRequest(this.state.order.id, 'payment finish');
+        this.props.handleClose();
+    };
+
     render() {
         const {order} = this.state;
         return (
@@ -224,7 +229,12 @@ class OrderDialog extends Component {
                                                     <button type="button" style={{padding:'10px',borderRadius:'5px',border:'0px',backgroundColor:'#bf925d',color:'#000000'}}
                                                             onClick={this.props.handleClose}>Close
                                                     </button>
-
+                                                    {(this.state.role.toLowerCase() === "admin" && (this.state.column && this.state.column === "finish")) &&
+                                                    < button type="button" className="btn btn-save"
+                                                             style={{margin: '12px 10px 0 0'}}
+                                                             onClick={this.handleFinishPayment}>Finish Payment
+                                                    </button>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>

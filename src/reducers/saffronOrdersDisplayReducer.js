@@ -244,7 +244,7 @@ export default function saffronOrdersDisplayReducer(state = initialState.saffron
             modifiedOrder.paymentMemberName = action.order.paymentMemberName;
 
             return Object.assign({}, state, {
-                recentComplete: state.recentComplete
+                recentComplete: [...state.recentComplete]
             });
 
         default:

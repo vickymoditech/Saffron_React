@@ -23,7 +23,7 @@ export default class RecentComplete extends Component {
     render() {
         return (
 
-            <div className={this.props.isResetOpen ? "sidebar recent-runner" : "sidebar"}>
+            <div className="sidebar">
                 {this.state.isDialogOpen &&
                 <OrderDialog handleClose={this.orderDialogClose} isOpen={this.state.isDialogOpen} column={"finish"}
                              order={this.state.selectOrder}/>}
@@ -31,7 +31,7 @@ export default class RecentComplete extends Component {
                     {
                         this.props.orders && this.props.orders.map((data) => (
                             <li style={{cursor: 'pointer'}}
-                                className={"on"}
+                                className={data.paymentComplete ? "on" : "off"}
                                 key={data.id}
                                 onClick={event => {
                                     this.orderDialogOpen(data)
