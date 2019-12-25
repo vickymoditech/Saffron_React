@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import NotificationSystem from 'react-notification-system';
-import ProductDialogStepper from './ProductDialogStepper';
-
+import Modal from "react-responsive-modal";
 
 class ProductList extends Component {
 
@@ -34,21 +33,24 @@ class ProductList extends Component {
 
 
     render() {
-
+        const {isDialogOpen} = this.state;
         return (
-
             <div>
                 <NotificationSystem ref="notificationSystem"/>
-                {this.state.isDialogOpen &&
-                <ProductDialogStepper handleClose={this.DialogClose} isOpen={this.state.isDialogOpen}
-                                      notify={this.addNotifications}/>}
-
                 <button type="button" className="btn btn-primary"
                         onClick={this.DialogOpen}>Open
                 </button>
+                <Modal open={isDialogOpen} onClose={this.DialogClose}>
+                    <h2>Simple centered modal</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                        pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
+                        hendrerit risus, sed porttitor quam.
+                    </p>
+                </Modal>
+
                 {/*{this.props.Loading || this.props.Galley_Loading && <Loader/>}*/}
             </div>
-
         );
 
     }
