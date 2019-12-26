@@ -94,7 +94,7 @@ class OrderDialog extends Component {
                                                                             <div className="table-responsive">
                                                                                 {this.state.role.toLowerCase() === "admin" ?
                                                                                     <table
-                                                                                        className="table table-condensed">
+                                                                                        className="table table-bordered">
                                                                                         <thead>
                                                                                         <tr>
                                                                                             <td><strong>Item</strong>
