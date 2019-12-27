@@ -118,11 +118,10 @@ class ManageUser extends Component {
                                 <tbody>
                                 <tr>
                                     <th style={{cursor: 'context-menu'}}>Profile</th>
-                                    <th style={{cursor: 'context-menu'}}>First Name</th>
-                                    <th style={{cursor: 'context-menu'}}>Last Name</th>
+                                    <th style={{cursor: 'context-menu'}}>Name</th>
                                     <th style={{cursor: 'context-menu'}}>Contact</th>
                                     <th style={{cursor: 'context-menu'}}>Role</th>
-                                    <th style={{cursor: 'context-menu'}}>UserId</th>
+                                    <th style={{cursor: 'context-menu'}}>SaffronPoint</th>
                                     <th style={{cursor: 'context-menu'}}>Block</th>
                                     <th style={{cursor: 'context-menu'}}>Delete</th>
                                 </tr>
@@ -134,11 +133,10 @@ class ManageUser extends Component {
                                             <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
                                                  width="150px"
                                                  height="150px"/>)}</td>
-                                        <td>{value.first_name}</td>
-                                        <td>{value.last_name}</td>
+                                        <td>{value.first_name} {value.last_name}</td>
                                         <td>{value.contact_no}</td>
                                         <td>{value.role}</td>
-                                        <td>{value.userId}</td>
+                                        <td>{value.saffronPoint}</td>
                                         <td style={{textAlign: "center"}}>
                                             <Switch value={value.block}
                                                     circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
