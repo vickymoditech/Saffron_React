@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Loader from '../../Helper/Loader';
 import _ from 'lodash';
 import {Dropdown} from 'semantic-ui-react';
-import './react-confirm-alert.css'
+import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import * as teamProductManageAction from '../../../actions/teamProductManageAction'
 import ENVIRONMENT_VARIABLES from "../../../environment.config";

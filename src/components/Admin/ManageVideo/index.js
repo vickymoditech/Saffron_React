@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
 import NotificationSystem from 'react-notification-system';
 import * as serviceAction from '../../../actions/serviceAction';
 import * as videoAction from '../../../actions/videoAction';
 import Loader from '../../Helper/Loader';
 import {confirmAlert} from 'react-confirm-alert';
-import './react-confirm-alert.css'
+import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import AddDialog from './addDialog';
 import EditDialog from './editDialog';
 import {Dropdown} from 'semantic-ui-react';
-
 import './manage-video.css';
 
 class ManageVideo extends Component {

@@ -6,7 +6,7 @@ import NotificationSystem from 'react-notification-system';
 import * as serviceAction from '../../../actions/serviceAction';
 import Loader from '../../Helper/Loader';
 import {confirmAlert} from 'react-confirm-alert';
-import './react-confirm-alert.css'
+import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import ProductDialog from '../Helper/AddCommonDialog';
 import EditDialog from './editDialog';
 import '../Helper/AddCommonDialog/index';

@@ -6,9 +6,8 @@ import NotificationSystem from 'react-notification-system';
 import * as sliderAction from '../../../actions/sliderAction';
 import Loader from '../../Helper/Loader';
 import AddDialog from './addDialog';
-
 import {confirmAlert} from 'react-confirm-alert';
-import './react-confirm-alert.css'
+import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 
 
 import './manage-slider.css';

@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
 import Switch from 'react-flexible-switch';
 import NotificationSystem from 'react-notification-system';
 import * as userManageAction from '../../../actions/userManageAction';
 import {confirmAlert} from 'react-confirm-alert';
-import './react-confirm-alert.css'
+import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import Loader from '../../Helper/Loader';
 
 

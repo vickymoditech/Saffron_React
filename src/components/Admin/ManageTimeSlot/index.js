@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
 import NotificationSystem from 'react-notification-system';
 import Loader from '../../Helper/Loader';
 import {confirmAlert} from 'react-confirm-alert';
 import * as timeSlotsAction from '../../../actions/timeSlotsAction';
-import './react-confirm-alert.css'
+import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import AddDialog from './addDialog';
-
 import './manage-time.css';
 
 class ManageTimeSlot extends Component {

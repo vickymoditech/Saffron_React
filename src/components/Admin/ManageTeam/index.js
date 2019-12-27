@@ -1,18 +1,14 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
 import NotificationSystem from 'react-notification-system';
 import * as teamAction from '../../../actions/teamAction';
 import Loader from '../../Helper/Loader';
 import ProductDialog from '../Helper/AddCommonDialog';
 import EditDialog from './editDialog';
-
 import {confirmAlert} from 'react-confirm-alert';
-import './react-confirm-alert.css'
+import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import '../Helper/AddCommonDialog/index';
-
-
 import './manage-team.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 

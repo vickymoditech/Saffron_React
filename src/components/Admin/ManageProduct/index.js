@@ -7,7 +7,7 @@ import * as serviceAction from '../../../actions/serviceAction';
 import * as teamProductManageAction from '../../../actions/teamProductManageAction';
 import Loader from '../../Helper/Loader';
 import {confirmAlert} from 'react-confirm-alert';
-import './react-confirm-alert.css'
+import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import AddDialog from './addDialog';
 import EditDialog from './editDialog';
 import {Dropdown} from 'semantic-ui-react';
