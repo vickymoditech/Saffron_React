@@ -154,15 +154,17 @@ class Profile extends Component {
 
                                         <div className="row">
                                             <div className="col-sm-6 mt-3">
-                                                <span className="store-config-icon icon_color" title="First Name"> <img
-                                                    src="/assets/Images/username.png" alt=""/> </span>
+                                                <span className="input-group-addon">
+                                                    <i className="fa fa-user icon_color"/>
+                                                </span>
                                                 <input type="text" className="form-control" name="first_name"
                                                        value={first_name}
                                                        placeholder="First Name" onChange={this.handleChange}/>
                                             </div>
                                             <div className="col-sm-6 mt-3">
-                                                <span className="store-config-icon icon_color" title="Last Name"> <img
-                                                    src="/assets/Images/username.png" alt=""/> </span>
+                                                <span className="input-group-addon">
+                                                    <i className="fa fa-user icon_color"/>
+                                                </span>
                                                 <input type="text" className="form-control" name="last_name"
                                                        value={last_name} placeholder="Last Name"
                                                        onChange={this.handleChange}/>
@@ -172,28 +174,29 @@ class Profile extends Component {
                                         <br/>
                                         <div className="row">
                                             <div className="col-sm-6">
-                                                <span className="store-config-icon icon_color" title="UserId"> <img
-                                                    src="/assets/Images/username.png" alt=""/> </span>
+                                                <span className="input-group-addon">
+                                                    <i className="fa fa-key icon_color"/>
+                                                </span>
                                                 <input type="text" className="form-control" name="userId"
                                                        value={userId}
                                                        placeholder="userId" disabled/>
                                             </div>
                                             <div className="col-sm-6">
-                                                <span className="store-config-icon icon_color"
-                                                      title="mobile_number"> <img
-                                                    src="/assets/Images/username.png" alt=""/> </span>
+                                                <span className="input-group-addon">
+                                                    <i className="fa fa-mobile icon_color"/>
+                                                </span>
                                                 <input type="text" className="form-control" name="mobile_number"
                                                        value={mobile_number} placeholder="Contact No"
                                                        onChange={this.handleChange}/>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <div className="col-sm-12 mt-3">
-                                        <span className="store-config-icon icon_color" title="Email"> <img
-                                            src="/assets/Images/email.png" alt=""/> </span>
+                                        <span className="input-group-addon">
+                                            <i className="fa fa-envelope-o icon_color"/>
+                                        </span>
                                         <input type="text" className="form-control" value={emailAddress}
                                                name="emailAddress" placeholder="Email" onChange={this.handleChange}/>
                                     </div>
@@ -202,9 +205,9 @@ class Profile extends Component {
                                     <div
                                         className="col-sm-12 text-center button-div mt-3 d-flex justify-content-center">
                                         <a className="text-white mr-3 button_main2 p-3" onClick={this.handleEditConfirm}
-                                           >Update User</a>
+                                        >Update User</a>
                                         <a className="text-white button_main2 p-3" onClick={this.handleOpen}
-                                           >Change Password</a>
+                                        >Change Password</a>
                                     </div>
                                 </div>
                             </form>
