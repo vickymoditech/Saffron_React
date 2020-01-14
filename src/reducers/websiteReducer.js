@@ -5,6 +5,7 @@ import {
     WEBSITE_CONNECTION_ERROR,
     ALL_GALLERY_SUCCESS,
     ALL_SLIDER_SUCCESS,
+    ALL_PRODUCTS_SUCCESS,
     WEBSITE_HOME,
     LOGOUT_USER
 } from '../constants/actionTypes';
@@ -31,6 +32,13 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
         case ALL_GALLERY_SUCCESS:
             return Object.assign({}, state, {
                 allGalleryList: action.data,
+                Loading: false,
+                error_msg: null
+            });
+
+        case ALL_PRODUCTS_SUCCESS:
+            return Object.assign({}, state, {
+                AllProductsList: action.data,
                 Loading: false,
                 error_msg: null
             });

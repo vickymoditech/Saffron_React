@@ -75,7 +75,8 @@ export default {
         galleryList: [],
         serviceList: [],
         allGalleryList: [],
-        sliderList: []
+        sliderList: [],
+        AllProductsList: []
     },
     manageTimeSlotReducer: {
         Loading: false,
