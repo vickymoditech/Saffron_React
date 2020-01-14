@@ -5,6 +5,7 @@ import NotificationSystem from 'react-notification-system';
 import Modal from "react-responsive-modal";
 import * as websiteAction from "../../../actions/websiteAction";
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import './ProductList.css';
 
 class ProductList extends Component {
 
