@@ -35,7 +35,7 @@ class ProductList extends Component {
     render() {
         const {isDialogOpen} = this.state;
         return (
-            <div>
+            <div style={{marginTop:'100px',backgroundColor:'#f5f2ea'}}>
                 <NotificationSystem ref="notificationSystem"/>
                 <button type="button" className="btn btn-primary"
                         onClick={this.DialogOpen}>Open

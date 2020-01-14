@@ -76,7 +76,7 @@ class App extends Component {
             <div>
                 <NotificationSystem ref="notificationSystem"/>
                 <header>
-                    <nav className="navbar navbar-expand-md navbar-dark navbar1 fixed-top scrolled pt-md-4 m-0" id="navbar">
+                    <nav className="navbar navbar-expand-md navbar-dark navbar1 fixed-top scrolled pt-md-4 m-0 rounded-0" id="navbar">
                         <div className="col-2 d-flex flex-column text-center d-md-none d-block align-items-md-center first_logo logo1">
                             <i className="fa fa-camera"></i><span>Saffron</span>
                         </div>
@@ -105,21 +105,21 @@ class App extends Component {
                                 </div>
                             </div>
                             <div className="collapse navbar-collapse menu">
-                                <div className="col-md-5 menu1 text-right d-md-block d-none pt-md-3">
-                                    <Link to="/" className="mr-md-5">HOME</Link>
-                                    <Link to="/Gallery" className="mr-md-5">GALLERY</Link>
+                                <div className="col-md-5 menu1 text-right d-md-block d-none pt-lg-3">
+                                    <Link to="/" className="mr-lg-5 mr-md-3">HOME</Link>
+                                    <Link to="/Gallery" className="mr-lg-5 mr-md-3">GALLERY</Link>
                                     <Link to="/ProductList">SERVICES</Link>
                                 </div>
                                 <div className="col-md-2 d-md-flex d-none flex-column align-items-md-center logo1">
                                     <Link to="/"><span>Saffron</span></Link>
                                 </div>
-                                <div className="col-md-5 menu2 d-md-block d-none pt-md-3">
+                                <div className="col-md-5 menu2 d-md-block d-none pt-lg-3">
                                     <Link to="/VideoGallery">VIDEOS</Link>
-                                    {!isLoggedIn() && <Link className="ml-md-5" to="/login">SIGN IN</Link>}
-                                    {isLoggedIn() &&  <Link className="ml-md-5" onClick={this.handleLogout} to="/">SIGN OUT</Link>}
-                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-5">SIGN UP</Link>}
-                                    {isLoggedIn() && <Link to="/Profile" className="ml-md-5">PROFILE</Link>}
-                                    <a href="#" className="ml-md-5">CONTACT</a>
+                                    {!isLoggedIn() && <Link className="ml-md-3 ml-lg-5" to="/login">SIGN IN</Link>}
+                                    {isLoggedIn() &&  <Link className="ml-md-3 ml-lg-5" onClick={this.handleLogout} to="/">SIGN OUT</Link>}
+                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-3 ml-lg-5">SIGN UP</Link>}
+                                    {isLoggedIn() && <Link to="/Profile" className="ml-md-3 ml-lg-5">PROFILE</Link>}
+                                    <a href="#" className="ml-lg-5 ml-md-3">CONTACT</a>
                                 </div>
                             </div>
                         </div>

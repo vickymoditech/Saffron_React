@@ -13,8 +13,6 @@ class ImageGrid extends React.Component {
                     <div className="container-fluid">
                         <div className="title_content text-center">
                             <span className="title">Gallery</span>
-                            <p className="sub_title py-3">Separated they live in. A small river named Duden flows by
-                                their place and supplies it with the necessary regelialia.</p>
                         </div>
                         <div className="row">
                             {this.props.galleryList.map((gallery, index) => (

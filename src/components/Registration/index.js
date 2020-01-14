@@ -171,9 +171,9 @@ class Registration extends Component {
                                                         </div>
                                                         <div className="forgot-link text-center mt-3">
                                                             <Link to="/Login"
-                                                                  style={{textDecoration: 'underline',color:'#bf925d',textDecoration:'none', fontFamily:'Josefin Sans'}}>Login</Link> &nbsp;
+                                                                  style={{textDecoration: 'underline',color:'#000000',textDecoration:'none', fontFamily:'Josefin Sans'}}>Login</Link> &nbsp;
                                                             <Link to="/"
-                                                                  style={{textDecoration: 'underline',color:'#bf925d',textDecoration:'none', fontFamily:'Josefin Sans'}}>Home</Link>
+                                                                  style={{textDecoration: 'underline',color:'#000000',textDecoration:'none', fontFamily:'Josefin Sans'}}>Home</Link>
                                                         </div>
                                                         <div className="form-group text-center justify-content-center row mt-2">
                                                             <div className="col-xs-12 text-center">

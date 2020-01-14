@@ -72,7 +72,7 @@ class ServiceGrid extends Component {
                                 </div>
                             </div>
                             <div className="col-md-4">
-                                <div className="text-center p-3 main_box">
+                                <div className="text-center p-3 mt-sm-0 mt-3 main_box">
                                     <div className="mb-1">
                                         <i className="fa fa-picture-o"></i>
                                     </div>
@@ -81,7 +81,7 @@ class ServiceGrid extends Component {
                                 </div>
                             </div>
                             <div className="col-md-4">
-                                <div className="text-center p-3 main_box">
+                                <div className="text-center p-3 mt-sm-0 mt-3 main_box">
                                     <div className="mb-1">
                                         <i className="fa fa-video-camera"></i>
                                     </div>

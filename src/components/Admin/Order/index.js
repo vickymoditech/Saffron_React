@@ -146,7 +146,7 @@ export default class Order extends Component {
                     <div className="box-right">
                         <div className="number" style={{fontSize: 15}}>{orderTime12Hrs}</div>
                         <div className="icon icon-btn-save">
-                            <button type="submit" onClick={this.orderDialogOpen} className="btn btn-save" style={{
+                            <button type="submit" onClick={this.orderDialogOpen} className="btn button_main" style={{
                                 minWidth: "none",
                                 minHeight: "none",
                                 padding: "4px 0px",

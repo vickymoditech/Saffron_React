@@ -72,13 +72,11 @@ class Gallery extends Component {
 
         return (
             <div>
-                <section className="gallery pt-5">
+                <section className="gallery pt-5 pb-5" style={{marginTop:'80px'}}>
                     <div className="container-fluid">
                         <div className="title_content text-center">
                             <span className="title">Gallery</span>
-                            <p className="sub_title py-3">Separated they live in. A small river named Duden flows by
-                                their place and supplies it with the necessary regelialia.</p>
-                            <Dropdown style={{width: '60%'}} placeholder={placeHolder} fluid selection options={options}
+                            <Dropdown style={{width: '60%',margin:'0 auto',marginBottom:'10px'}} placeholder={placeHolder} fluid selection options={options}
                                       onChange={this.handleChangeService}/>
                         </div>
                         <div className="row">

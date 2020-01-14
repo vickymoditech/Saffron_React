@@ -351,7 +351,10 @@ body .modal-dialog .form-control:focus {
     box-shadow: none;
     outline: -webkit-focus-ring-color auto 0px;
 }
-
+.input-group{
+    display: flex;
+    border-bottom: 0px;
+}
 .modal-dialog .input-group-addon {
     font-size: 18px;
     color: #ffd401;

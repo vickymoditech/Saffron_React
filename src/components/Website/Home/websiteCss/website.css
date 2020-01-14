@@ -1,13 +1,10 @@
-body{
-    background: transparent !important;
+html, body{
+    background: #f5f2ea !important;
 }
+
 /*header start*/
-header .navbar{
-    margin: 0px 17px 0px 0px;
-    border-radius: 0px;
-}
-header .navbar1 {
-    background: transparent;
+header{
+    position: relative;
 }
 header .scrolled {
     transition: all .5s;
@@ -15,17 +12,22 @@ header .scrolled {
     color: white;
     box-shadow: 0 6px 6px 1px rgba(32, 33, 36, 0.28);
 }
-
+header .fixed-top{
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
 header .navbar1 .main_logo {
     display: none;
 }
+
 header .menu {
     font-family: "Josefin Sans", Arial, sans-serif;
     color: white;
 }
-header .fixed-top{
-    z-index:1 !important;
-}
+
 header .menu a {
     color: white;
     text-decoration: none;
@@ -70,7 +72,7 @@ header .video {
     background-image: url('/assets/Images/formen.jpg');
     background-size: cover;
     position: relative;
-    height: 100vh;
+    height: 70vh;
     z-index: 0;
 }
 
@@ -123,7 +125,7 @@ header .video {
     background-image: url('/assets/Images/formen.jpg');
     background-size: cover;
     position: relative;
-    height: 100vh;
+    height: 70vh;
     z-index: 0;
 }
 
@@ -289,7 +291,7 @@ header .video {
 }
 
 .team_section .team_text2 {
-    color: gray;
+    color: white;
     margin-bottom: 0;
     font-family: "Josefin Sans", Arial, sans-serif;
 }
@@ -299,10 +301,13 @@ header .video {
 /*testimonial start*/
 
 .testimonial {
+    overflow: hidden;
     background-color: #ebe8de;
     font-family: "Josefin Sans", Arial, sans-serif;
 }
-
+.testimonial .testi_img{
+    height: 70vh;
+}
 .testimonial .title {
     font-size: 47px;
     font-weight: bold;
@@ -389,7 +394,9 @@ header .video {
     font-size: 16px;
     color: #bf925b;
 }
-
+.footer_section .side2 Link{
+    font-family: 'josefin sans';
+}
 .footer_section .side2 a {
     font-size: 16px;
     color: white;
@@ -445,7 +452,9 @@ header .video {
     header .menu a {
         font-size: 11px;
     }
-
+header .menu a span{
+        font-size: 26px;
+    }
     header .menu .logo {
         font-size: 20px;
     }
@@ -494,6 +503,9 @@ header .video {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+    html, body{
+    background: #f5f2ea !important;
+}
     header .navbar{
         margin: 0px 0px 0px 0px;
         border-radius: 0px;
@@ -504,7 +516,9 @@ header .video {
     header .menu a {
         font-size: 11px;
     }
-
+    header .menu a span{
+        font-size: 26px;
+    }
     header .menu .logo {
         font-size: 20px;
     }

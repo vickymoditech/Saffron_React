@@ -119,7 +119,6 @@ class EditDialog extends Component {
                                                             <div className="input-group">
                                                                 <Dropdown placeholder="Select Service" fluid selection
                                                                           defaultValue={this.state.commonData.service_id}
-                                                                          style={{width: '342px'}}
                                                                           options={this.props.serviceList}
                                                                           onChange={this.handleChangeService}/>
                                                             </div>

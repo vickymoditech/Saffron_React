@@ -10,7 +10,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className="mt-5 pt-md-4 pt-3">
                 <div className="overlay"></div>
                 <video playsInline="playsinline" autoPlay="autoplay" muted="muted" className="w-100" loop="loop">
                     <source src="assets/Video/saffron.webm" type="video/webm"/>

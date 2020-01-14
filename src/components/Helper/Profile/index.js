@@ -124,14 +124,14 @@ class Profile extends Component {
     render() {
         const {emailAddress, mobile_number, first_name, last_name, userId} = this.state.userDetails;
         return (
-            <div className="bg-burrito-image autofill-background">
+            <div className="autofill-background" style={{marginTop:'90px',marginBottom:'20px'}}>
                 {this.state.changePasswordDialog && <ChangePasswordModal
                     handleClose={this.handleClose}
                     isOpen={this.state.changePasswordDialog}
                     notify={this.addNotifications}
                 />}
                 <NotificationSystem ref="notificationSystem"/>
-                <div className="container tab-bg-container d-flex flex-column justify-content-center h-100">
+                <div className="container tab-bg-container d-flex flex-column justify-content-start h-100">
                     <div className="row d-flex justify-content-center">
                         <div className="form-wrapper col-md-8 p-4" style={{backgroundColor: '#000000'}}>
                             <form className="form-horizontal w-100 bg-transparent">
