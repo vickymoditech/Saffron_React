@@ -13,6 +13,7 @@ class ProductList extends Component {
         super(props);
         this.state = {
             isDialogOpen: false,
+            selectedProduct: null
         };
     }
 
@@ -39,28 +40,39 @@ class ProductList extends Component {
         this.setState({isDialogOpen: false});
     };
 
-    DialogOpen = () => {
-        this.setState({isDialogOpen: true});
+    DialogOpen = (productId, service_id) => {
+        const Service = this.props.AllProductsList.AllProducts.find((data) => data.service_id === service_id);
+        const Product = Service.products.find((data) => data.id === productId);
+        this.setState({isDialogOpen: true, selectedProduct: Product});
     };
 
 
     render() {
         const {isDialogOpen} = this.state;
+        const TeamList = [];
+        this.state.selectedProduct && this.state.selectedProduct.teamMember.map((id) => {
+            TeamList.push(this.props.teamList.find((data) => data.id === id));
+        });
+
         return (
             <div style={{marginTop: '100px', backgroundColor: '#f5f2ea'}}>
                 <NotificationSystem ref="notificationSystem"/>
                 <Modal open={isDialogOpen} onClose={this.DialogClose}>
                     <h2>Simple centered modal</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                        pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
-                        hendrerit risus, sed porttitor quam.
-                    </p>
+                    {TeamList.map((team, index) => (
+                        <div className="col-xl-3 col-md-3 col-sm-6 col-12 team_position mt-3" key={index}>
+                            <div className="team">
+                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url} alt="team1"
+                                     className="img-fluid team_img"/>
+                            </div>
+                            <div className="team_text1">{team.first_name} {team.last_name}</div>
+                        </div>
+                    ))}
                 </Modal>
 
                 <div className="d-flex align-items-center pl-md-3 service_menu">
-                    {this.props.serviceList.map((singleService) => (
-                        <a href={"#" + singleService.title}>{singleService.title}</a>
+                    {this.props.serviceList.map((singleService, i) => (
+                        <a href={"#" + singleService.title} key={i}>{singleService.title}</a>
                     ))}
                 </div>
 
@@ -73,32 +85,31 @@ class ProductList extends Component {
                             </div>
 
                             <div className="row">
-                                {singleService.products.map((singleProdct) => (
-                                    <div className="col-md-4">
+                                {singleService.products.map((singleProdct, i) => (
+                                    <div className="col-md-4"
+                                         key={i}
+                                         onClick={() => this.DialogOpen(singleProdct.id, singleProdct.service_id)}>
                                         <div className="service_box">
-                                            {singleProdct.offerPrice > 0 && <div id="pointer"><span className="shape_text">Best Seller</span></div>}
+                                            {singleProdct.offerPrice > 0 &&
+                                            <div id="pointer"><span className="shape_text">Offer Price.</span></div>}
                                             <div>
-                                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProdct.image_url} className="img-fluid"
+                                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProdct.image_url}
+                                                     className="img-fluid"
                                                      alt="service1" style={{height: '50px', width: '50px'}}/>
                                                 <span className="service_title ml-md-3">{singleProdct.title}</span>
                                             </div>
                                             <div className="price">
-                                                {singleProdct.offerPrice > 0 && <strike className="price1">{singleProdct.offerPrice}</strike>}
+                                                {singleProdct.offerPrice > 0 &&
+                                                <strike className="price1">{singleProdct.offerPrice}</strike>}
                                                 <span className="price2">{singleProdct.price}</span>
                                             </div>
                                         </div>
                                     </div>
                                 ))}
                             </div>
-
                         </div>
                     </div>
-
                 ))}
-
-                <button type="button" className="btn btn-primary"
-                        onClick={this.DialogOpen}>Open
-                </button>
             </div>
         );
 
@@ -110,6 +121,7 @@ const mapStateToProps = (state) => {
     return {
         AllProductsList: websiteReducer.AllProductsList,
         serviceList: websiteReducer.serviceList,
+        teamList: websiteReducer.teamList,
     };
 };
 
