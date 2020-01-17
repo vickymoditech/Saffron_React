@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import PhotoGrid from "react-photo-feed";
 import "react-photo-feed/library/style.css";
 import * as websiteAction from '../../../actions/websiteAction';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
@@ -28,18 +27,9 @@ class Gallery extends Component {
         }
     }
 
-    // requestConvertToResponse(galleryList) {
-    //     let GalleryList = [];
-    //     galleryList.map((gallery, index) => {
-    //         let single = {
-    //             id: index, src: ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url,
-    //             bigSrc: ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url
-    //         };
-    //         GalleryList.push(single);
-    //     });
-    //     return GalleryList;
-    // }
-
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.serviceList.length > 0 && this.state.loadThisPage) {
@@ -49,7 +39,6 @@ class Gallery extends Component {
         }
         this.setState({photos: nextProps.allGalleryList});
     }
-
 
     handleChangeService = (event, {value}) => {
         this.setState({current_service: value});
@@ -72,11 +61,12 @@ class Gallery extends Component {
 
         return (
             <div>
-                <section className="gallery pt-5 pb-5" style={{marginTop:'80px'}}>
+                <section className="gallery pt-5 pb-5" style={{marginTop: '80px'}}>
                     <div className="container-fluid">
                         <div className="title_content text-center">
                             <span className="title">Gallery</span>
-                            <Dropdown style={{width: '60%',margin:'0 auto',marginBottom:'10px'}} placeholder={placeHolder} fluid selection options={options}
+                            <Dropdown style={{width: '60%', margin: '0 auto', marginBottom: '10px'}}
+                                      placeholder={placeHolder} fluid selection options={options}
                                       onChange={this.handleChangeService}/>
                         </div>
                         <div className="row">

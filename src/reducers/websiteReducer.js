@@ -4,8 +4,9 @@ import {
     WEBSITE_NOT_SUCCESS,
     WEBSITE_CONNECTION_ERROR,
     ALL_GALLERY_SUCCESS,
-    ALL_SLIDER_SUCCESS,
     ALL_PRODUCTS_SUCCESS,
+    ADDPRODUCTTOCART,
+    REMOVEPRODUCTTOCART,
     WEBSITE_HOME,
     LOGOUT_USER
 } from '../constants/actionTypes';
@@ -49,6 +50,24 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
                 serviceList: action.ServicesList,
                 galleryList: action.GalleryList,
                 teamList: action.TeamList,
+                Loading: false,
+                error_msg: null
+            });
+
+        case ADDPRODUCTTOCART:
+            const BasketGeneratorProducts = [...state.BasketGeneratorProducts, action.data];
+            return Object.assign({}, state, {
+                BasketGeneratorProducts: BasketGeneratorProducts,
+                Loading: false,
+                error_msg: null
+            });
+
+        case REMOVEPRODUCTTOCART:
+            const findProduct = state.BasketGeneratorProducts.find((data) => data.product.id === action.data.product_id && data.teamMember.id === action.data.teamMember_id);
+            const findIndex = state.BasketGeneratorProducts.indexOf(findProduct);
+            state.BasketGeneratorProducts.splice(findIndex, 1);
+            return Object.assign({}, state, {
+                BasketGeneratorProducts: [...state.BasketGeneratorProducts],
                 Loading: false,
                 error_msg: null
             });

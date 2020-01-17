@@ -5,6 +5,7 @@ import NotificationSystem from 'react-notification-system';
 import Modal from "react-responsive-modal";
 import * as websiteAction from "../../../actions/websiteAction";
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import {isLoggedIn} from '../../../index';
 import './ProductList.css';
 
 class ProductList extends Component {
@@ -13,7 +14,8 @@ class ProductList extends Component {
         super(props);
         this.state = {
             isDialogOpen: false,
-            selectedProduct: null
+            selectedProduct: null,
+            selectedProductTeamMember: null
         };
     }
 
@@ -34,6 +36,7 @@ class ProductList extends Component {
 
     componentDidMount() {
         this.setState({notificationSystem: this.refs.notificationSystem});
+        window.scrollTo(0, 0);
     };
 
     DialogClose = () => {
@@ -43,7 +46,26 @@ class ProductList extends Component {
     DialogOpen = (productId, service_id) => {
         const Service = this.props.AllProductsList.AllProducts.find((data) => data.service_id === service_id);
         const Product = Service.products.find((data) => data.id === productId);
-        this.setState({isDialogOpen: true, selectedProduct: Product});
+        this.setState({isDialogOpen: true, selectedProduct: Product, selectedProductTeamMember: null});
+    };
+
+    SelectTeamMember = (TeamMemberId) => {
+        this.setState({selectedProductTeamMember: TeamMemberId});
+    };
+
+    VisibleButton = () => {
+        //Todo step - check login -> check select or not -> visible button
+        const {selectedProductTeamMember} = this.state;
+        if (isLoggedIn() && selectedProductTeamMember !== null)
+            return true;
+        else
+            return false;
+    };
+
+    AddCart = () => {
+        const {selectedProduct, selectedProductTeamMember} = this.state;
+        this.props.actions.websiteAction.AddNewProductToCart(selectedProduct, selectedProductTeamMember);
+        this.setState({isDialogOpen: false, selectedProduct: null, selectedProductTeamMember: null});
     };
 
 
@@ -53,6 +75,7 @@ class ProductList extends Component {
         this.state.selectedProduct && this.state.selectedProduct.teamMember.map((id) => {
             TeamList.push(this.props.teamList.find((data) => data.id === id));
         });
+        const BasketProductCount = this.props.BasketGeneratorProducts && this.props.BasketGeneratorProducts.length;
 
         return (
             <div style={{marginTop: '100px', backgroundColor: '#f5f2ea'}}>
@@ -60,7 +83,8 @@ class ProductList extends Component {
                 <Modal open={isDialogOpen} onClose={this.DialogClose}>
                     <h2>Simple centered modal</h2>
                     {TeamList.map((team, index) => (
-                        <div className="col-xl-3 col-md-3 col-sm-6 col-12 team_position mt-3" key={index}>
+                        <div className="col-xl-3 col-md-3 col-sm-6 col-12 team_position mt-3" key={index}
+                             onClick={() => this.SelectTeamMember(team)}>
                             <div className="team">
                                 <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url} alt="team1"
                                      className="img-fluid team_img"/>
@@ -68,6 +92,9 @@ class ProductList extends Component {
                             <div className="team_text1">{team.first_name} {team.last_name}</div>
                         </div>
                     ))}
+
+                    {this.VisibleButton() && <button onClick={this.AddCart}> Add Cart</button>}
+
                 </Modal>
 
                 <div className="d-flex align-items-center pl-md-3 service_menu">
@@ -85,23 +112,23 @@ class ProductList extends Component {
                             </div>
 
                             <div className="row">
-                                {singleService.products.map((singleProdct, i) => (
+                                {singleService.products.map((singleProduct, i) => (
                                     <div className="col-md-4"
                                          key={i}
-                                         onClick={() => this.DialogOpen(singleProdct.id, singleProdct.service_id)}>
+                                         onClick={() => this.DialogOpen(singleProduct.id, singleProduct.service_id)}>
                                         <div className="service_box">
-                                            {singleProdct.offerPrice > 0 &&
+                                            {singleProduct.offerPrice > 0 &&
                                             <div id="pointer"><span className="shape_text">Offer Price.</span></div>}
                                             <div>
-                                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProdct.image_url}
+                                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.image_url}
                                                      className="img-fluid"
                                                      alt="service1" style={{height: '50px', width: '50px'}}/>
-                                                <span className="service_title ml-md-3">{singleProdct.title}</span>
+                                                <span className="service_title ml-md-3">{singleProduct.title}</span>
                                             </div>
                                             <div className="price">
-                                                {singleProdct.offerPrice > 0 &&
-                                                <strike className="price1">{singleProdct.offerPrice}</strike>}
-                                                <span className="price2">{singleProdct.price}</span>
+                                                {singleProduct.offerPrice > 0 &&
+                                                <strike className="price1">{singleProduct.offerPrice}</strike>}
+                                                <span className="price2">{singleProduct.price}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -110,6 +137,13 @@ class ProductList extends Component {
                         </div>
                     </div>
                 ))}
+
+                {BasketProductCount > 0 && <div id="ex3">
+                    <span className="p1 fa-stack fa-5x has-badge" data-count={BasketProductCount}>
+                    <i className="p2 fa fa-circle fa-stack-2x"></i>
+                    <i className="p3 fa fa-shopping-cart fa-stack-1x fa-inverse" data-count="5"></i>
+                    </span>
+                </div>}
             </div>
         );
 
@@ -122,6 +156,7 @@ const mapStateToProps = (state) => {
         AllProductsList: websiteReducer.AllProductsList,
         serviceList: websiteReducer.serviceList,
         teamList: websiteReducer.teamList,
+        BasketGeneratorProducts: websiteReducer.BasketGeneratorProducts,
     };
 };
 

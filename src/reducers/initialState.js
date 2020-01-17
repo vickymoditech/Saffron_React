@@ -76,7 +76,9 @@ export default {
         serviceList: [],
         allGalleryList: [],
         sliderList: [],
-        AllProductsList: []
+        AllProductsList: [],
+        BasketGeneratorProducts: [],
+        RecentCompleteOrder: [],
     },
     manageTimeSlotReducer: {
         Loading: false,

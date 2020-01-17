@@ -6,6 +6,8 @@ import {
     WEBSITE_NOT_SUCCESS,
     ALL_GALLERY_SUCCESS,
     ALL_PRODUCTS_SUCCESS,
+    ADDPRODUCTTOCART,
+    REMOVEPRODUCTTOCART,
     WEBSITE_HOME,
     LOGOUT_USER
 } from '../constants/actionTypes';
@@ -42,7 +44,6 @@ export const getWebsiteHome = () => {
     }
 
 };
-
 
 export const getAllGallerys = (ServiceId) => {
     try {
@@ -110,3 +111,28 @@ export const loggedOut = () => {
     }
 };
 
+export const AddNewProductToCart = (Product, TeamMember) => {
+    return (dispatch) => {
+        dispatch({type: WEBSITE_INPROGRESS});
+        dispatch({
+            type: ADDPRODUCTTOCART,
+            data: {
+                product: Product,
+                teamMember: TeamMember
+            }
+        });
+    }
+};
+
+export const RemoveProductToCart = (ProductId, TeamMemberId) => {
+    return (dispatch) => {
+        dispatch({type: WEBSITE_INPROGRESS});
+        dispatch({
+            type: REMOVEPRODUCTTOCART,
+            data: {
+                product: ProductId,
+                teamMember: TeamMemberId
+            }
+        });
+    }
+};
