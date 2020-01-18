@@ -7,6 +7,7 @@ import * as websiteAction from "../../../actions/websiteAction";
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import {isLoggedIn} from '../../../index';
 import './ProductList.css';
+import {browserHistory} from "react-router";
 
 class ProductList extends Component {
 
@@ -68,6 +69,9 @@ class ProductList extends Component {
         this.setState({isDialogOpen: false, selectedProduct: null, selectedProductTeamMember: null});
     };
 
+    BasketClick = () => {
+        browserHistory.push('/BasketItems');
+    };
 
     render() {
         const {isDialogOpen} = this.state;
@@ -138,7 +142,7 @@ class ProductList extends Component {
                     </div>
                 ))}
 
-                {BasketProductCount > 0 && <div id="ex3">
+                {BasketProductCount > 0 && <div id="ex3" onClick={this.BasketClick}>
                     <span className="p1 fa-stack fa-5x has-badge" data-count={BasketProductCount}>
                     <i className="p2 fa fa-circle fa-stack-2x"></i>
                     <i className="p3 fa fa-shopping-cart fa-stack-1x fa-inverse" data-count="5"></i>

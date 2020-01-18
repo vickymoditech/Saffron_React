@@ -5,6 +5,7 @@ import {
     WEBSITE_CONNECTION_ERROR,
     ALL_GALLERY_SUCCESS,
     ALL_PRODUCTS_SUCCESS,
+    ALL_TIMESLOTS_SUCCESS,
     ADDPRODUCTTOCART,
     REMOVEPRODUCTTOCART,
     WEBSITE_HOME,
@@ -68,6 +69,14 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
             state.BasketGeneratorProducts.splice(findIndex, 1);
             return Object.assign({}, state, {
                 BasketGeneratorProducts: [...state.BasketGeneratorProducts],
+                Loading: false,
+                error_msg: null
+            });
+
+        case ALL_TIMESLOTS_SUCCESS:
+            debugger;
+            return Object.assign({}, state, {
+                TimeSlots : [...state.TimeSlots, action.data],
                 Loading: false,
                 error_msg: null
             });

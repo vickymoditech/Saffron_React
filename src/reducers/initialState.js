@@ -79,6 +79,7 @@ export default {
         AllProductsList: [],
         BasketGeneratorProducts: [],
         RecentCompleteOrder: [],
+        TimeSlots: []
     },
     manageTimeSlotReducer: {
         Loading: false,

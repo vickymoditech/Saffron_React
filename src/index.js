@@ -26,6 +26,7 @@ import ProductList from './components/Website/ProductList';
 import VideoGalleryMain from './components/Website/VideoGallery';
 import VideoGallery from './components/Website/VideoGallery/index1';
 import Profile from './components/Helper/Profile';
+import BasketItemsList from './components/Website/BasketItems/index';
 
 
 //Admin
@@ -258,6 +259,7 @@ ReactDOM.render(<Provider store={store}>
                 <Route path="/Gallery" component={Gallery} exact={true}/>
                 <Route path="/Profile" component={Profile} onEnter={requireAdminEmployeeUserAuth} exact={true}/>
                 <Route path="/ProductList" component={ProductList} exact={true}/>
+                <Route path="/BasketItems" component={BasketItemsList} onEnter={requireAdminEmployeeUserAuth} exact={true}/>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}>
                     <Route path="/VideoGallery/demo" component={VideoGallery}/>
                 </Route>
