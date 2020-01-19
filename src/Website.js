@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
+import {browserHistory, Link} from 'react-router';
 import {isLoggedIn} from './index';
 import $ from "jquery";
 import NotificationSystem from 'react-notification-system';
@@ -33,6 +33,10 @@ class App extends Component {
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
             this.addNotifications(nextProps.error_msg, "error");
+        }
+        if(nextProps.success_msg){
+            this.addNotifications(nextProps.success_msg, "success");
+            browserHistory.push('/ProductList');
         }
     }
 
@@ -70,8 +74,13 @@ class App extends Component {
         this.setState({visible: !this.state.visible});
     };
 
+    BasketClick = () => {
+        browserHistory.push('/BasketItems');
+    };
+
     render() {
         let userProfile = this.props.userAvatar;
+        const BasketProductCount = this.props.BasketGeneratorProducts && this.props.BasketGeneratorProducts.length;
         return (
             <div>
                 <NotificationSystem ref="notificationSystem"/>
@@ -127,6 +136,14 @@ class App extends Component {
                 </header>
                 {this.props.children}
                 {this.props.Loading && <Loader/>}
+
+                {(this.props.BasketVisible === true && BasketProductCount > 0) && <div id="ex3" onClick={this.BasketClick}>
+                    <span className="p1 fa-stack fa-5x has-badge" data-count={BasketProductCount}>
+                    <i className="p2 fa fa-circle fa-stack-2x"></i>
+                    <i className="p3 fa fa-shopping-cart fa-stack-1x fa-inverse" data-count="5"></i>
+                    </span>
+                </div>}
+
                 <Footer/>
             </div>
         );
@@ -138,7 +155,10 @@ const mapStateToProps = (state) => {
     return {
         Loading: websiteReducer.Loading,
         error_msg: websiteReducer.error_msg,
-        userAvatar: authReducer.userAvatar
+        success_msg:websiteReducer.success_msg,
+        userAvatar: authReducer.userAvatar,
+        BasketGeneratorProducts: websiteReducer.BasketGeneratorProducts,
+        BasketVisible: websiteReducer.BasketVisible
     };
 };
 

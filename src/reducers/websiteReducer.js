@@ -9,7 +9,7 @@ import {
     ADDPRODUCTTOCART,
     REMOVEPRODUCTTOCART,
     WEBSITE_HOME,
-    LOGOUT_USER
+    LOGOUT_USER, BASKETVISIBLE, ORDER_PLACE
 } from '../constants/actionTypes';
 import {disconnect} from '../socket';
 
@@ -57,8 +57,22 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
 
         case ADDPRODUCTTOCART:
             const BasketGeneratorProducts = [...state.BasketGeneratorProducts, action.data];
+            localStorage.setItem("BasketGeneratorProducts", JSON.stringify({BasketList: BasketGeneratorProducts}));
             return Object.assign({}, state, {
                 BasketGeneratorProducts: BasketGeneratorProducts,
+                Loading: false,
+                error_msg: null
+            });
+
+        case ORDER_PLACE:
+            const RecentCompleteOrder = [...state.RecentCompleteOrder, action.data];
+            localStorage.removeItem("BasketGeneratorProducts");
+            return Object.assign({}, state, {
+                RecentCompleteOrder: RecentCompleteOrder,
+                BasketGeneratorProducts: [],
+                BasketVisible: false,
+                TimeSlotVisible: false,
+                success_msg: "your order has been successfully placed",
                 Loading: false,
                 error_msg: null
             });
@@ -74,10 +88,17 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
             });
 
         case ALL_TIMESLOTS_SUCCESS:
-            debugger;
             return Object.assign({}, state, {
-                TimeSlots : [...state.TimeSlots, action.data],
+                TimeSlots: action.data,
                 Loading: false,
+                error_msg: null,
+                TimeSlotVisible: true
+            });
+
+        case BASKETVISIBLE:
+            return Object.assign({}, state, {
+                BasketVisible: action.data,
+                success_msg: null,
                 error_msg: null
             });
 

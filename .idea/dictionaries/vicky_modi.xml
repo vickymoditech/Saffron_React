@@ -2,6 +2,8 @@
   <dictionary name="vicky.modi">
     <words>
       <w>addproducttocart</w>
+      <w>basketvisible</w>
+      <w>reagain</w>
       <w>removeproducttocart</w>
       <w>theposition</w>
       <w>timeslots</w>

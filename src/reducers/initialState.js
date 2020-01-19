@@ -1,6 +1,12 @@
 import decode from 'jwt-decode';
 
 let accessToken = localStorage.getItem('accessToken');
+let BasketGeneratorProducts = null;
+if (localStorage.getItem('BasketGeneratorProducts'))
+    BasketGeneratorProducts = JSON.parse(localStorage.getItem('BasketGeneratorProducts')).BasketList;
+else
+    BasketGeneratorProducts = [];
+
 let userProfile;
 
 if (accessToken) {
@@ -71,15 +77,18 @@ export default {
     websiteReducer: {
         Loading: false,
         error_msg: null,
+        success_msg: null,
         teamList: [],
         galleryList: [],
         serviceList: [],
         allGalleryList: [],
         sliderList: [],
         AllProductsList: [],
-        BasketGeneratorProducts: [],
+        BasketGeneratorProducts: BasketGeneratorProducts,
         RecentCompleteOrder: [],
-        TimeSlots: []
+        TimeSlots: [],
+        BasketVisible: false,
+        TimeSlotVisible: false,
     },
     manageTimeSlotReducer: {
         Loading: false,

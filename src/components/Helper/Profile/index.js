@@ -20,7 +20,7 @@ class Profile extends Component {
                 first_name: userProfile.first_name,
                 last_name: userProfile.last_name,
                 mobile_number: userProfile.contact_no.toString(),
-                emailAddress: userProfile.email_id,
+                emailAddress: userProfile.email_id ? userProfile.email_id : "",
                 password: userProfile.password,
                 confirm_password: userProfile.password,
                 block: userProfile.block,

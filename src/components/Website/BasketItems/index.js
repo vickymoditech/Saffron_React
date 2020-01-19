@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import NotificationSystem from 'react-notification-system';
 import * as websiteAction from "../../../actions/websiteAction";
-import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import TimeSlotDialog from './TimeSlotDialog';
+import {browserHistory, Link} from 'react-router';
 import './BasketItemsList.css';
 
 class BasketItemsList extends Component {
@@ -16,15 +15,29 @@ class BasketItemsList extends Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
+        if (this.props.BasketGeneratorProducts.length > 0) {
+            this.props.actions.websiteAction.basketVisible(false);
+        } else {
+            browserHistory.push('/ProductList');
+        }
     };
 
-    openDialog = () => {
-        this.setState({isDialogOpen: true});
+    componentWillReceiveProps(nextProps) {
+        this.setState({isDialogOpen: nextProps.TimeSlotVisible});
+    }
+
+    getTimeSlots = () => {
+        this.props.actions.websiteAction.getAllTimeSlots();
     };
 
     closeDialog = () => {
         this.setState({isDialogOpen: false});
     };
+
+    placeOrder = (timeSlot) => {
+        this.props.actions.websiteAction.placeOrder(timeSlot);
+    };
+
 
     render() {
         return (
@@ -32,9 +45,10 @@ class BasketItemsList extends Component {
 
                 {this.state.isDialogOpen &&
                 <TimeSlotDialog handleClose={this.closeDialog} isOpen={this.state.isDialogOpen}
-                           notify={this.addNotifications}/>}
+                                placeOrder={this.placeOrder}
+                                notify={this.addNotifications} TimeSlots={this.props.TimeSlots}/>}
 
-                <button onClick={this.openDialog}> Place order</button>
+                <button onClick={this.getTimeSlots}> Place order</button>
 
             </div>
 
@@ -46,6 +60,8 @@ const mapStateToProps = (state) => {
     const {websiteReducer} = state;
     return {
         BasketGeneratorProducts: websiteReducer.BasketGeneratorProducts,
+        TimeSlots: websiteReducer.TimeSlots,
+        TimeSlotVisible: websiteReducer.TimeSlotVisible
     };
 };
 

@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
+import * as websiteAction from "../../../actions/websiteAction";
+import {bindActionCreators} from 'redux';
 import {Link} from 'react-router';
+import {connect} from "react-redux";
 
 class VideoGalleryMain extends Component {
 
     componentDidMount() {
+        this.props.actions.websiteAction.basketVisible(true);
         window.scrollTo(0, 0);
     }
 
@@ -19,4 +23,10 @@ class VideoGalleryMain extends Component {
 
 }
 
-export default VideoGalleryMain;
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        websiteAction: bindActionCreators(websiteAction, dispatch)
+    }
+});
+
+export default connect(null, mapDispatchToProps)(VideoGalleryMain);

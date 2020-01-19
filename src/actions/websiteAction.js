@@ -9,6 +9,8 @@ import {
     ALL_TIMESLOTS_SUCCESS,
     ADDPRODUCTTOCART,
     REMOVEPRODUCTTOCART,
+    BASKETVISIBLE,
+    ORDER_PLACE,
     WEBSITE_HOME,
     LOGOUT_USER
 } from '../constants/actionTypes';
@@ -149,6 +151,68 @@ export const getAllTimeSlots = () => {
             axios(api).then((response) => {
                 if (response.status === 200) {
                     dispatch({type: ALL_TIMESLOTS_SUCCESS, data: response.data});
+                }
+            }).catch((error) => {
+                if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {
+                    dispatch({type: WEBSITE_NOT_SUCCESS, data: {error_msg: error.response.data.user_msg}});
+                } else {
+                    dispatch({type: WEBSITE_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
+                }
+            });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
+export const basketVisible = (value) => {
+    try {
+        return (dispatch) => {
+            dispatch({type: BASKETVISIBLE, data: value});
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
+export const placeOrder = (TimeSlot) => {
+    try {
+        return (dispatch) => {
+            dispatch({type: WEBSITE_INPROGRESS});
+            const token = "Bearer " + localStorage.getItem('accessToken');
+            const basketList = JSON.parse(localStorage.getItem('BasketGeneratorProducts')).BasketList;
+            const startTime = TimeSlot.start_time.split(":");
+            const endTime = TimeSlot.end_time.split(":");
+
+            let data = {
+                startTime: {
+                    hours: startTime[0],
+                    minutes: startTime[1]
+                },
+                endTime: {
+                    hours: endTime[0],
+                    minutes: endTime[1]
+                },
+                bookingProduct: []
+            };
+
+            basketList.map((singleProduct) => {
+                data.bookingProduct.push({
+                    product_id: singleProduct.product.id,
+                    teamMember_id: singleProduct.teamMember.id
+                });
+            });
+
+            const api = {
+                method: 'POST',
+                headers: {'Authorization': token},
+                url: ENVIRONMENT_VARIABLES.API_URL + "/Bookings",
+                data: data
+            };
+
+            axios(api).then((response) => {
+                if (response.status === 200) {
+                    dispatch({type: ORDER_PLACE, data: response.data});
                 }
             }).catch((error) => {
                 if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {

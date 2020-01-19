@@ -97,11 +97,11 @@ export default class Order extends Component {
 
 
     render() {
-        const {column, status, statusDateTime} = this.state;
+        const {column, status} = this.state;
         const time = this.state.Time;
         const orderTime = (moment(this.props.order.bookingStartTime).utcOffset('IST').format("DD-MM-YYYY HH:mm")).toString().split(" ");
         const orderTime12Hrs = this.tConvert(orderTime.toString().split(",")[1]);
-        const orderNo = this.props.order.id;
+        //const orderNo = this.props.order.id;
         const customerName = this.props.order.customerName;
 
         let Color = "#F3D250";

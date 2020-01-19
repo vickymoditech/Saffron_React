@@ -2,12 +2,11 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import NotificationSystem from 'react-notification-system';
-import Modal from "react-responsive-modal";
 import * as websiteAction from "../../../actions/websiteAction";
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import {isLoggedIn} from '../../../index';
 import './ProductList.css';
-import {browserHistory} from "react-router";
+import TeamListModel from './TeamListModel';
 
 class ProductList extends Component {
 
@@ -37,6 +36,7 @@ class ProductList extends Component {
 
     componentDidMount() {
         this.setState({notificationSystem: this.refs.notificationSystem});
+        this.props.actions.websiteAction.basketVisible(true);
         window.scrollTo(0, 0);
     };
 
@@ -69,37 +69,19 @@ class ProductList extends Component {
         this.setState({isDialogOpen: false, selectedProduct: null, selectedProductTeamMember: null});
     };
 
-    BasketClick = () => {
-        browserHistory.push('/BasketItems');
-    };
-
     render() {
         const {isDialogOpen} = this.state;
         const TeamList = [];
         this.state.selectedProduct && this.state.selectedProduct.teamMember.map((id) => {
             TeamList.push(this.props.teamList.find((data) => data.id === id));
         });
-        const BasketProductCount = this.props.BasketGeneratorProducts && this.props.BasketGeneratorProducts.length;
-
         return (
             <div style={{marginTop: '100px', backgroundColor: '#f5f2ea'}}>
                 <NotificationSystem ref="notificationSystem"/>
-                <Modal open={isDialogOpen} onClose={this.DialogClose}>
-                    <h2>Simple centered modal</h2>
-                    {TeamList.map((team, index) => (
-                        <div className="col-xl-3 col-md-3 col-sm-6 col-12 team_position mt-3" key={index}
-                             onClick={() => this.SelectTeamMember(team)}>
-                            <div className="team">
-                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url} alt="team1"
-                                     className="img-fluid team_img"/>
-                            </div>
-                            <div className="team_text1">{team.first_name} {team.last_name}</div>
-                        </div>
-                    ))}
 
-                    {this.VisibleButton() && <button onClick={this.AddCart}> Add Cart</button>}
-
-                </Modal>
+                {this.state.isDialogOpen &&
+                <TeamListModel handleClose={this.DialogClose} isOpen={this.state.isDialogOpen} VisibleButton={this.VisibleButton}
+                                notify={this.addNotifications} TeamList={TeamList} SelectTeamMember={this.SelectTeamMember} AddCart={this.AddCart} />}
 
                 <div className="d-flex align-items-center pl-md-3 service_menu">
                     {this.props.serviceList.map((singleService, i) => (
@@ -141,13 +123,6 @@ class ProductList extends Component {
                         </div>
                     </div>
                 ))}
-
-                {BasketProductCount > 0 && <div id="ex3" onClick={this.BasketClick}>
-                    <span className="p1 fa-stack fa-5x has-badge" data-count={BasketProductCount}>
-                    <i className="p2 fa fa-circle fa-stack-2x"></i>
-                    <i className="p3 fa fa-shopping-cart fa-stack-1x fa-inverse" data-count="5"></i>
-                    </span>
-                </div>}
             </div>
         );
 
@@ -159,8 +134,7 @@ const mapStateToProps = (state) => {
     return {
         AllProductsList: websiteReducer.AllProductsList,
         serviceList: websiteReducer.serviceList,
-        teamList: websiteReducer.teamList,
-        BasketGeneratorProducts: websiteReducer.BasketGeneratorProducts,
+        teamList: websiteReducer.teamList
     };
 };
 

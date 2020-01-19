@@ -25,6 +25,7 @@ class Gallery extends Component {
                 this.props.actions.websiteAction.getWebsiteHome();
             });
         }
+        this.props.actions.websiteAction.basketVisible(true);
     }
 
     componentDidMount() {

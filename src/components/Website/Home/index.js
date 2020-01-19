@@ -5,8 +5,14 @@ import MainSlider from './slider';
 import ServiceGrid from './serviceGrid';
 import MiddleCard from './middleCard';
 import Team from './team';
+import {bindActionCreators} from "redux";
+import * as websiteAction from "../../../actions/websiteAction";
 
 class Home extends Component {
+
+    componentDidMount() {
+        this.props.actions.websiteAction.basketVisible(true);
+    }
 
     render() {
         return (
@@ -35,6 +41,11 @@ const mapStateToProps = (state) => {
     };
 };
 
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        websiteAction: bindActionCreators(websiteAction, dispatch)
+    }
+});
 
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 

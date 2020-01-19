@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Dialog} from 'material-ui';
+import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
 const style = {
     titleStyle: {
@@ -26,20 +27,9 @@ const style = {
     }
 };
 
-class TimeSlotDialog extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {selectedTime: null};
-    }
 
-    TimeSelectedClick = (selectedTime) => {
-        this.setState({selectedTime: selectedTime});
-    };
-
-    placeOrder = () => {
-        this.props.placeOrder(this.state.selectedTime);
-    };
+class TeamListModel extends Component{
 
     render() {
         return (
@@ -58,18 +48,20 @@ class TimeSlotDialog extends Component {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-body">
-                                <div> Time slot example</div>
-                                {this.props.TimeSlots.map((singleData) => (
-                                    <button key={singleData.id} onClick={() => this.TimeSelectedClick({
-                                        start_time: singleData.start_time,
-                                        end_time: singleData.end_time
-                                    })}>
-                                        <div> startTime:{singleData.start_time} </div>
-                                        <div> EndTime:{singleData.end_time} </div>
-                                    </button>
+
+                                {this.props.TeamList.map((team, index) => (
+                                    <div className="col-xl-3 col-md-3 col-sm-6 col-12 team_position mt-3" key={index}
+                                         onClick={() => this.props.SelectTeamMember(team)}>
+                                        <div className="team">
+                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url} alt="team1"
+                                                 className="img-fluid team_img"/>
+                                        </div>
+                                        <div className="team_text1">{team.first_name} {team.last_name}</div>
+                                    </div>
                                 ))}
-                                {this.state.selectedTime && <button onClick={this.placeOrder}> Place Order</button>}
-                                <button onClick={this.props.handleClose}> close</button>
+
+                                {this.props.VisibleButton() && <button onClick={this.props.AddCart}> Add Cart</button>}
+
                             </div>
                         </div>
                     </div>
@@ -79,4 +71,4 @@ class TimeSlotDialog extends Component {
     }
 }
 
-export default TimeSlotDialog;
+export default TeamListModel;
