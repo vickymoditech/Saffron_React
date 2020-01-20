@@ -25,7 +25,9 @@ import Gallery from './components/Website/Gallery';
 import ProductList from './components/Website/ProductList';
 import VideoGalleryMain from './components/Website/VideoGallery';
 import VideoGallery from './components/Website/VideoGallery/index1';
+import Parents from './components/Helper/Profile/Parents';
 import Profile from './components/Helper/Profile';
+import TodayCompleteOrders from './components/Helper/Profile/TodayCompleteOrders';
 import BasketItemsList from './components/Website/BasketItems/index';
 
 
@@ -257,7 +259,10 @@ ReactDOM.render(<Provider store={store}>
             <Route component={Website} path="/" exact={true}>
                 <IndexRoute component={Home}/>
                 <Route path="/Gallery" component={Gallery} exact={true}/>
-                <Route path="/Profile" component={Profile} onEnter={requireAdminEmployeeUserAuth} exact={true}/>
+                <Route path="/Profile" component={Parents} onEnter={requireAdminEmployeeUserAuth} exact={true}>
+                    <Route path="/Profile/UserProfile" component={Profile}/>
+                    <Route path="/Profile/TodayCompleteOrders" component={TodayCompleteOrders}/>
+                </Route>
                 <Route path="/ProductList" component={ProductList} exact={true}/>
                 <Route path="/BasketItems" component={BasketItemsList} onEnter={requireAdminEmployeeUserAuth} exact={true}/>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}>

@@ -63,6 +63,13 @@ class ProductList extends Component {
             return false;
     };
 
+    checkLogin = () => {
+        if (isLoggedIn())
+            return false;
+        else
+            return true;
+    };
+
     AddCart = () => {
         const {selectedProduct, selectedProductTeamMember} = this.state;
         this.props.actions.websiteAction.AddNewProductToCart(selectedProduct, selectedProductTeamMember);
@@ -80,8 +87,11 @@ class ProductList extends Component {
                 <NotificationSystem ref="notificationSystem"/>
 
                 {this.state.isDialogOpen &&
-                <TeamListModel handleClose={this.DialogClose} isOpen={this.state.isDialogOpen} VisibleButton={this.VisibleButton}
-                                notify={this.addNotifications} TeamList={TeamList} SelectTeamMember={this.SelectTeamMember} AddCart={this.AddCart} />}
+                <TeamListModel handleClose={this.DialogClose} isOpen={this.state.isDialogOpen}
+                               VisibleButton={this.VisibleButton}
+                               notify={this.addNotifications} TeamList={TeamList}
+                               isLogin = {this.checkLogin}
+                               SelectTeamMember={this.SelectTeamMember} AddCart={this.AddCart}/>}
 
                 <div className="d-flex align-items-center pl-md-3 service_menu">
                     {this.props.serviceList.map((singleService, i) => (

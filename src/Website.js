@@ -110,7 +110,7 @@ class App extends Component {
                                     {!isLoggedIn() && <Link className="ml-md-5" to="/login" onClick={this.toggle}>SIGN IN</Link>}
                                     {isLoggedIn() &&  <Link className="ml-md-5" onClick={this.handleLogoutMobile} to="/">SIGN OUT</Link>}
                                     {!isLoggedIn() && <Link to="/Registration" className="ml-md-5" onClick={this.toggle}>SIGN UP</Link>}
-                                    {isLoggedIn() && <Link to="/Profile" className="ml-md-5" onClick={this.toggle}>PROFILE</Link>}
+                                    {isLoggedIn() && <Link to="/Profile/UserProfile" className="ml-md-5" onClick={this.toggle}>SETTING</Link>}
                                     <a href="#" className="ml-md-5">CONTACT</a>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@ class App extends Component {
                                     {!isLoggedIn() && <Link className="ml-md-3 ml-lg-5" to="/login">SIGN IN</Link>}
                                     {isLoggedIn() &&  <Link className="ml-md-3 ml-lg-5" onClick={this.handleLogout} to="/">SIGN OUT</Link>}
                                     {!isLoggedIn() && <Link to="/Registration" className="ml-md-3 ml-lg-5">SIGN UP</Link>}
-                                    {isLoggedIn() && <Link to="/Profile" className="ml-md-3 ml-lg-5">PROFILE</Link>}
+                                    {isLoggedIn() && <Link to="/Profile/UserProfile" className="ml-md-3 ml-lg-5">SETTING</Link>}
                                     <a href="#" className="ml-lg-5 ml-md-3">CONTACT</a>
                                 </div>
                             </div>

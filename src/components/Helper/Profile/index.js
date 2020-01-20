@@ -124,7 +124,7 @@ class Profile extends Component {
     render() {
         const {emailAddress, mobile_number, first_name, last_name, userId} = this.state.userDetails;
         return (
-            <div className="autofill-background" style={{marginTop:'90px',marginBottom:'20px'}}>
+            <div className="autofill-background">
                 {this.state.changePasswordDialog && <ChangePasswordModal
                     handleClose={this.handleClose}
                     isOpen={this.state.changePasswordDialog}

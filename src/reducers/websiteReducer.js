@@ -84,7 +84,9 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
         case REMOVEPRODUCTTOCART:
             const findProduct = state.BasketGeneratorProducts.find((data) => data.product.id === action.data.product_id && data.teamMember.id === action.data.teamMember_id);
             const findIndex = state.BasketGeneratorProducts.indexOf(findProduct);
+            localStorage.removeItem("BasketGeneratorProducts");
             state.BasketGeneratorProducts.splice(findIndex, 1);
+            localStorage.setItem("BasketGeneratorProducts", JSON.stringify({BasketList: [...state.BasketGeneratorProducts]}));
             return Object.assign({}, state, {
                 BasketGeneratorProducts: [...state.BasketGeneratorProducts],
                 Loading: false,
