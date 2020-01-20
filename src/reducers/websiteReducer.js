@@ -20,7 +20,11 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
     switch (action.type) {
 
         case WEBSITE_INPROGRESS:
-            return Object.assign({}, state, {Loading: true});
+            return Object.assign({}, state, {
+                Loading: true,
+                success_msg: null,
+                error_msg: null
+            });
 
         case WEBSITE_CONNECTION_ERROR:
             return Object.assign({}, state, {Loading: false, error_msg: action.data.error_msg});

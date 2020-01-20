@@ -35,6 +35,7 @@ class App extends Component {
             this.addNotifications(nextProps.error_msg, "error");
         }
         if(nextProps.success_msg){
+            this.props.actions.websiteAction.basketVisible(false);
             this.addNotifications(nextProps.success_msg, "success");
             browserHistory.push('/ProductList');
         }

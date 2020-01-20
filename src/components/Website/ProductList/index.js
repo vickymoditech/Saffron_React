@@ -35,9 +35,9 @@ class ProductList extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.setState({notificationSystem: this.refs.notificationSystem});
         this.props.actions.websiteAction.basketVisible(true);
-        window.scrollTo(0, 0);
     };
 
     DialogClose = () => {
