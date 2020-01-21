@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ImageGrid from './imageGrid';
-import MainSlider from './slider';
+import HappyClient from './happyClient';
 import ServiceGrid from './serviceGrid';
 import MiddleCard from './middleCard';
 import Team from './team';
@@ -24,7 +24,7 @@ class Home extends Component {
                 <ServiceGrid serviceList={this.props.serviceList}/>
                 <MiddleCard/>
                 <ImageGrid galleryList={this.props.galleryList}/>
-                {this.props.sliderList.length > 0 && <MainSlider sliderList={this.props.sliderList}/>}
+                <HappyClient/>
                 <Team teamList={this.props.teamList}/>
             </div>
         );
@@ -37,7 +37,6 @@ const mapStateToProps = (state) => {
         teamList: websiteReducer.teamList,
         serviceList: websiteReducer.serviceList,
         galleryList: websiteReducer.galleryList,
-        sliderList: websiteReducer.sliderList
     };
 };
 

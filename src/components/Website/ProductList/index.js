@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import NotificationSystem from 'react-notification-system';
 import * as websiteAction from "../../../actions/websiteAction";
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
-import {isLoggedIn} from '../../../index';
 import './ProductList.css';
 import TeamListModel from './TeamListModel';
 
@@ -55,19 +54,11 @@ class ProductList extends Component {
     };
 
     VisibleButton = () => {
-        //Todo step - check login -> check select or not -> visible button
         const {selectedProductTeamMember} = this.state;
-        if (isLoggedIn() && selectedProductTeamMember !== null)
+        if (selectedProductTeamMember !== null)
             return true;
         else
             return false;
-    };
-
-    checkLogin = () => {
-        if (isLoggedIn())
-            return false;
-        else
-            return true;
     };
 
     AddCart = () => {
@@ -83,14 +74,13 @@ class ProductList extends Component {
             TeamList.push(this.props.teamList.find((data) => data.id === id));
         });
         return (
-            <div style={{marginTop: '100px', backgroundColor: '#f5f2ea'}}>
+            <div style={{marginTop: '90px', backgroundColor: '#f5f2ea'}}>
                 <NotificationSystem ref="notificationSystem"/>
 
                 {this.state.isDialogOpen &&
                 <TeamListModel handleClose={this.DialogClose} isOpen={this.state.isDialogOpen}
                                VisibleButton={this.VisibleButton}
-                               notify={this.addNotifications} TeamList={TeamList}
-                               isLogin = {this.checkLogin}
+                               TeamList={TeamList}
                                SelectTeamMember={this.SelectTeamMember} AddCart={this.AddCart}/>}
 
                 <div className="d-flex align-items-center pl-md-3 service_menu">
@@ -119,7 +109,7 @@ class ProductList extends Component {
                                                 <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.image_url}
                                                      className="img-fluid"
                                                      alt="service1" style={{height: '50px', width: '50px'}}/>
-                                                <span className="service_title ml-md-3">{singleProduct.title}</span>
+                                                <span className="service_title ml-md-3">{singleProduct.title} ({singleProduct.sex})</span>
                                             </div>
                                             <div className="price">
                                                 {singleProduct.offerPrice > 0 &&

@@ -264,7 +264,7 @@ ReactDOM.render(<Provider store={store}>
                     <Route path="/Profile/TodayCompleteOrders" component={TodayCompleteOrders}/>
                 </Route>
                 <Route path="/ProductList" component={ProductList} exact={true}/>
-                <Route path="/BasketItems" component={BasketItemsList} onEnter={requireAdminEmployeeUserAuth} exact={true}/>
+                <Route path="/BasketItems" component={BasketItemsList} exact={true}/>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}>
                     <Route path="/VideoGallery/demo" component={VideoGallery}/>
                 </Route>

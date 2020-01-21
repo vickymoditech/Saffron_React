@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Dialog} from 'material-ui';
-import {Link} from 'react-router';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
 const style = {
@@ -61,8 +60,6 @@ class TeamListModel extends Component {
                                 ))}
 
                                 {this.props.VisibleButton() && <button onClick={this.props.AddCart}> Add Cart</button>}
-                                {this.props.isLogin() && <Link to="/login"><span> Sign in or create account
-Already use Uber? Sign in with your account. </span></Link>}
                                 <button onClick={this.props.handleClose}> Close</button>
 
                             </div>

@@ -9,6 +9,7 @@ html {
     z-index: 99;
     background-color: white;
     box-shadow: 0px 2px 4px 3px #92929282;
+    text-transform: capitalize;
 }
 
 .service_menu a {
@@ -30,6 +31,7 @@ html {
 .service_1 .title_space .service_main_title {
     font-size: 25px;
     font-weight: 600;
+    text-transform: capitalize;
 }
 
 .service_1 .service_box {
@@ -70,9 +72,10 @@ html {
 }
 
 .service_1 .service_box .service_title {
-    font-size: 20px;
+    font-size: 15px;
     color: #795548;
     font-weight: 600;
+    text-transform: capitalize;
 }
 
 .service_1 .service_box .price {

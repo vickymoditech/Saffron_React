@@ -7,6 +7,8 @@ import {browserHistory} from 'react-router';
 import './BasketItemsList.css';
 import {confirmAlert} from 'react-confirm-alert';
 import '../../Admin/Helper/DeleteAlertCss/react-confirm-alert.css';
+import {isLoggedIn} from '../../../index';
+import {Link} from 'react-router';
 
 class BasketItemsList extends Component {
 
@@ -59,6 +61,14 @@ class BasketItemsList extends Component {
         });
     };
 
+    checkLogin = () => {
+        if (isLoggedIn())
+            return false;
+        else
+            return true;
+    };
+
+
     render() {
 
         let totalPrice = 0;
@@ -88,10 +98,10 @@ class BasketItemsList extends Component {
                                 Member</strong>
                         </td>
                         <td className="text-right">
-                            <strong>Totals</strong>
+                            <strong>Total</strong>
                         </td>
                         <td className="text-right">
-                            <strong>DELETE</strong>
+                            <strong>Remove</strong>
                         </td>
                     </tr>
                     </thead>
@@ -99,9 +109,9 @@ class BasketItemsList extends Component {
 
                     {this.props.BasketGeneratorProducts.map((singleProduct) => (
                         <tr key={singleProduct.product.id}>
-                            <td> {singleProduct.product.title} </td>
+                            <td style={{"text-transform": "capitalize"}}> {singleProduct.product.title} </td>
                             <td className="text-center">₹ {singleProduct.product.price}</td>
-                            <td className="text-center">{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</td>
+                            <td className="text-center" style={{"text-transform": "capitalize"}}>{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</td>
                             <td className="text-right">₹ {singleProduct.product.price}</td>
                             <td className="text-right">
                                 <button
@@ -122,8 +132,8 @@ class BasketItemsList extends Component {
                         <td className="thick-line"></td>
                         <td className="thick-line"></td>
                         <td className="thick-line"></td>
-                        <td className="thick-line text-center">
-                            <strong>Subtotal</strong>
+                        <td className="no-line text-right">
+                            <strong>SubTotal</strong>
                         </td>
                         <td className="thick-line text-right">₹ {totalPrice} </td>
                     </tr>
@@ -131,7 +141,7 @@ class BasketItemsList extends Component {
                         <td className="thick-line"></td>
                         <td className="thick-line"></td>
                         <td className="thick-line"></td>
-                        <td className="no-line text-center">
+                        <td className="no-line text-right">
                             <strong>Discount</strong>
                         </td>
                         <td className="no-line text-right">₹
@@ -142,14 +152,18 @@ class BasketItemsList extends Component {
                         <td className="thick-line"></td>
                         <td className="thick-line"></td>
                         <td className="thick-line"></td>
-                        <td className="no-line text-center">
+                        <td className="no-line text-right">
                             <strong>Total</strong>
                         </td>
                         <td className="no-line text-right">₹ {totalPrice}</td>
                     </tr>
                     </tbody>
                 </table>
-                <button onClick={this.getTimeSlots}> Place order</button>
+
+                {this.checkLogin() ? <Link to="/login"><span> Sign in or create account
+Already use Saffron? Sign in with your account. </span></Link> :
+                    <button onClick={this.getTimeSlots}> Place order</button>
+                }
 
             </div>
 

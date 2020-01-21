@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
-class MainSlider extends Component {
+class HappyClient extends Component {
 
     constructor(props) {
         super(props);
@@ -70,4 +70,4 @@ class MainSlider extends Component {
     }
 }
 
-export default MainSlider;
+export default HappyClient;
