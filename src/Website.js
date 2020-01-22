@@ -136,16 +136,14 @@ class App extends Component {
                     </nav>
                 </header>
                 {this.props.children}
-                {this.props.Loading && <Loader/>}
-
                 {(this.props.BasketVisible === true && BasketProductCount > 0) && <div id="ex3" onClick={this.BasketClick}>
                     <span className="p1 fa-stack fa-5x has-badge" data-count={BasketProductCount}>
                     <i className="p2 fa fa-circle fa-stack-2x"></i>
                     <i className="p3 fa fa-shopping-cart fa-stack-1x fa-inverse" data-count="5"></i>
                     </span>
                 </div>}
-
                 <Footer/>
+                {this.props.Loading && <Loader/>}
             </div>
         );
     }

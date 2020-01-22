@@ -49,7 +49,7 @@ class Gallery extends Component {
     };
 
     render() {
-        const {photos} = this.state;
+        const {photos,current_service} = this.state;
         let options = [];
         this.props.serviceList.map((service, index) => {
             let option = {
@@ -74,7 +74,7 @@ class Gallery extends Component {
                             {photos.map((gallery, index) => (
                                 <div className="col-md-3 px-0" key={index}>
                                     <div className="main_img_box">
-                                        <img className="img-fluid" alt="image"
+                                        <img className="img-fluid" alt="Gallery Image"
                                              src={ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url}/>
                                     </div>
                                 </div>

@@ -77,7 +77,7 @@ class ProductList extends Component {
             <div style={{marginTop: '90px', backgroundColor: '#f5f2ea'}}>
                 <NotificationSystem ref="notificationSystem"/>
 
-                {this.state.isDialogOpen &&
+                {isDialogOpen &&
                 <TeamListModel handleClose={this.DialogClose} isOpen={this.state.isDialogOpen}
                                VisibleButton={this.VisibleButton}
                                TeamList={TeamList}
@@ -108,7 +108,7 @@ class ProductList extends Component {
                                             <div>
                                                 <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.image_url}
                                                      className="img-fluid"
-                                                     alt="service1" style={{height: '50px', width: '50px'}}/>
+                                                     alt={singleProduct.title} style={{height: '50px', width: '50px'}}/>
                                                 <span className="service_title ml-md-3">{singleProduct.title} ({singleProduct.sex})</span>
                                             </div>
                                             <div className="price">

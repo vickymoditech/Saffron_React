@@ -9,16 +9,20 @@ import {confirmAlert} from 'react-confirm-alert';
 import '../../Admin/Helper/DeleteAlertCss/react-confirm-alert.css';
 import {isLoggedIn} from '../../../index';
 import {Link} from 'react-router';
+import Loader from '../../Helper/Loader';
 
 class BasketItemsList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {isDialogOpen: false}
+        this.state = {isDialogOpen: false, Loading: true}
     }
 
     componentDidMount() {
         window.scrollTo(0, 0);
+        setTimeout(() => {
+            this.setState({Loading: false});
+        },1000);
         if (this.props.BasketGeneratorProducts.length > 0) {
             this.props.actions.websiteAction.basketVisible(false);
         } else {
@@ -70,14 +74,19 @@ class BasketItemsList extends Component {
 
 
     render() {
-
+        const {Loading} = this.state;
         let visible = false;
         let totalPrice = 0;
+        let offerPrice = 0;
         this.props.BasketGeneratorProducts.map((singleProduct) => {
             totalPrice += singleProduct.product.price;
+            offerPrice += singleProduct.product.offerPrice;
             visible = true;
         });
-
+        let discount = offerPrice - totalPrice;
+        if (discount < 0) {
+            discount = -(discount);
+        }
 
         return (
             <div style={{marginTop: '100px', backgroundColor: '#f5f2ea'}}>
@@ -114,7 +123,7 @@ class BasketItemsList extends Component {
                             {this.props.BasketGeneratorProducts.map((singleProduct) => (
                                 <tr key={singleProduct.product.id}>
                                     <td style={{"textTransform": "capitalize"}}> {singleProduct.product.title} </td>
-                                    <td className="text-center">₹ {singleProduct.product.price}</td>
+                                    <td className="text-center">₹ {singleProduct.product.offerPrice}</td>
                                     <td className="text-center"
                                         style={{"textTransform": "capitalize"}}>{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</td>
                                     <td className="text-right">₹ {singleProduct.product.price}</td>
@@ -127,36 +136,36 @@ class BasketItemsList extends Component {
                             ))}
 
                             <tr>
-                                <td className="thick-line"></td>
-                                <td className="thick-line"></td>
-                                <td className="thick-line"></td>
-                                <td className="thick-line"></td>
-                                <td className="thick-line"></td>
+                                <td className="thick-line"/>
+                                <td className="thick-line"/>
+                                <td className="thick-line"/>
+                                <td className="thick-line"/>
+                                <td className="thick-line"/>
                             </tr>
                             <tr>
-                                <td className="thick-line"></td>
-                                <td className="thick-line"></td>
-                                <td className="thick-line"></td>
+                                <td className="thick-line"/>
+                                <td className="thick-line"/>
+                                <td className="thick-line"/>
                                 <td className="no-line text-right">
                                     <strong>SubTotal</strong>
                                 </td>
                                 <td className="thick-line text-right">₹ {totalPrice} </td>
                             </tr>
                             <tr>
-                                <td className="thick-line"></td>
-                                <td className="thick-line"></td>
-                                <td className="thick-line"></td>
+                                <td className="thick-line"/>
+                                <td className="thick-line"/>
+                                <td className="thick-line"/>
                                 <td className="no-line text-right">
                                     <strong>Discount</strong>
                                 </td>
                                 <td className="no-line text-right">₹
-                                    0
+                                    {discount}
                                 </td>
                             </tr>
                             <tr>
-                                <td className="thick-line"></td>
-                                <td className="thick-line"></td>
-                                <td className="thick-line"></td>
+                                <td className="thick-line"/>
+                                <td className="thick-line"/>
+                                <td className="thick-line"/>
                                 <td className="no-line text-right">
                                     <strong>Total</strong>
                                 </td>
@@ -176,6 +185,9 @@ Already use Saffron? Sign in with your account. </span></Link> :
                     <Link to="/ProductList"><span> your cart is empty </span></Link>
                 </div>
                 }
+
+                {Loading && <Loader/>}
+
             </div>
 
         );
