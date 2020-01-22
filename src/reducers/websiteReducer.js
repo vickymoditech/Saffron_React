@@ -9,7 +9,7 @@ import {
     ADDPRODUCTTOCART,
     REMOVEPRODUCTTOCART,
     WEBSITE_HOME,
-    LOGOUT_USER, BASKETVISIBLE, ORDER_PLACE
+    LOGOUT_USER, BASKETVISIBLE, ORDER_PLACE, COMPLETED_ORDER_LIST
 } from '../constants/actionTypes';
 import {disconnect} from '../socket';
 
@@ -27,12 +27,13 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
             });
 
         case WEBSITE_CONNECTION_ERROR:
-            return Object.assign({}, state, {Loading: false, error_msg: action.data.error_msg});
+            return Object.assign({}, state, {Loading: false, error_msg: action.data.error_msg, TimeSlotVisible: false});
 
         case WEBSITE_NOT_SUCCESS:
             return Object.assign({}, state, {
                 error_msg: action.data.error_msg,
-                Loading: false
+                Loading: false,
+                TimeSlotVisible: false
             });
 
         case ALL_GALLERY_SUCCESS:
@@ -105,6 +106,14 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
             return Object.assign({}, state, {
                 BasketVisible: action.data,
                 success_msg: null,
+                error_msg: null
+            });
+
+        case COMPLETED_ORDER_LIST:
+            return Object.assign({}, state, {
+                RecentCompleteOrder: [...action.data.TodayOrders],
+                SaffronPoint: action.data.UserPoints.saffronPoint,
+                Loading: false,
                 error_msg: null
             });
 

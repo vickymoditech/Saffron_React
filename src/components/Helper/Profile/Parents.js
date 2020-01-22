@@ -7,20 +7,19 @@ import {connect} from "react-redux";
 class Parents extends Component {
 
     componentDidMount() {
-        this.props.actions.websiteAction.basketVisible(true);
         window.scrollTo(0, 0);
+        this.props.actions.websiteAction.basketVisible(true);
     }
 
     render() {
         return (
-            <div style={{marginTop:'90px',marginBottom:'20px'}}>
+            <div style={{marginTop: '90px', marginBottom: '20px'}}>
                 <Link to="/Profile/UserProfile" className="link">User Profile</Link>
                 <Link to="/Profile/TodayCompleteOrders" className="link">your order</Link>
                 {this.props.children}
             </div>
         )
     }
-
 }
 
 const mapDispatchToProps = dispatch => ({

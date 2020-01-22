@@ -71,9 +71,11 @@ class BasketItemsList extends Component {
 
     render() {
 
+        let visible = false;
         let totalPrice = 0;
         this.props.BasketGeneratorProducts.map((singleProduct) => {
             totalPrice += singleProduct.product.price;
+            visible = true;
         });
 
 
@@ -84,87 +86,96 @@ class BasketItemsList extends Component {
                 <TimeSlotDialog handleClose={this.closeDialog} isOpen={this.state.isDialogOpen}
                                 placeOrder={this.placeOrder} TimeSlots={this.props.TimeSlots}/>}
 
-                <table
-                    className="table table-bordered">
-                    <thead>
-                    <tr>
-                        <td><strong>Item</strong>
-                        </td>
-                        <td className="text-center">
-                            <strong>Price</strong>
-                        </td>
-                        <td className="text-center">
-                            <strong>Team
-                                Member</strong>
-                        </td>
-                        <td className="text-right">
-                            <strong>Total</strong>
-                        </td>
-                        <td className="text-right">
-                            <strong>Remove</strong>
-                        </td>
-                    </tr>
-                    </thead>
-                    <tbody>
+                {visible ? (
+                    <div>
+                        <table
+                            className="table table-bordered">
+                            <thead>
+                            <tr>
+                                <td><strong>Item</strong>
+                                </td>
+                                <td className="text-center">
+                                    <strong>Price</strong>
+                                </td>
+                                <td className="text-center">
+                                    <strong>Team
+                                        Member</strong>
+                                </td>
+                                <td className="text-right">
+                                    <strong>Total</strong>
+                                </td>
+                                <td className="text-right">
+                                    <strong>Remove</strong>
+                                </td>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                    {this.props.BasketGeneratorProducts.map((singleProduct) => (
-                        <tr key={singleProduct.product.id}>
-                            <td style={{"text-transform": "capitalize"}}> {singleProduct.product.title} </td>
-                            <td className="text-center">₹ {singleProduct.product.price}</td>
-                            <td className="text-center" style={{"text-transform": "capitalize"}}>{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</td>
-                            <td className="text-right">₹ {singleProduct.product.price}</td>
-                            <td className="text-right">
-                                <button
-                                    onClick={() => this.deleteProductFromCart(singleProduct.product.id, singleProduct.teamMember.id)}> Delete
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
+                            {this.props.BasketGeneratorProducts.map((singleProduct) => (
+                                <tr key={singleProduct.product.id}>
+                                    <td style={{"textTransform": "capitalize"}}> {singleProduct.product.title} </td>
+                                    <td className="text-center">₹ {singleProduct.product.price}</td>
+                                    <td className="text-center"
+                                        style={{"textTransform": "capitalize"}}>{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</td>
+                                    <td className="text-right">₹ {singleProduct.product.price}</td>
+                                    <td className="text-right">
+                                        <button
+                                            onClick={() => this.deleteProductFromCart(singleProduct.product.id, singleProduct.teamMember.id)}> Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
 
-                    <tr>
-                        <td className="thick-line"></td>
-                        <td className="thick-line"></td>
-                        <td className="thick-line"></td>
-                        <td className="thick-line"></td>
-                        <td className="thick-line"></td>
-                    </tr>
-                    <tr>
-                        <td className="thick-line"></td>
-                        <td className="thick-line"></td>
-                        <td className="thick-line"></td>
-                        <td className="no-line text-right">
-                            <strong>SubTotal</strong>
-                        </td>
-                        <td className="thick-line text-right">₹ {totalPrice} </td>
-                    </tr>
-                    <tr>
-                        <td className="thick-line"></td>
-                        <td className="thick-line"></td>
-                        <td className="thick-line"></td>
-                        <td className="no-line text-right">
-                            <strong>Discount</strong>
-                        </td>
-                        <td className="no-line text-right">₹
-                            0
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="thick-line"></td>
-                        <td className="thick-line"></td>
-                        <td className="thick-line"></td>
-                        <td className="no-line text-right">
-                            <strong>Total</strong>
-                        </td>
-                        <td className="no-line text-right">₹ {totalPrice}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                            <tr>
+                                <td className="thick-line"></td>
+                                <td className="thick-line"></td>
+                                <td className="thick-line"></td>
+                                <td className="thick-line"></td>
+                                <td className="thick-line"></td>
+                            </tr>
+                            <tr>
+                                <td className="thick-line"></td>
+                                <td className="thick-line"></td>
+                                <td className="thick-line"></td>
+                                <td className="no-line text-right">
+                                    <strong>SubTotal</strong>
+                                </td>
+                                <td className="thick-line text-right">₹ {totalPrice} </td>
+                            </tr>
+                            <tr>
+                                <td className="thick-line"></td>
+                                <td className="thick-line"></td>
+                                <td className="thick-line"></td>
+                                <td className="no-line text-right">
+                                    <strong>Discount</strong>
+                                </td>
+                                <td className="no-line text-right">₹
+                                    0
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="thick-line"></td>
+                                <td className="thick-line"></td>
+                                <td className="thick-line"></td>
+                                <td className="no-line text-right">
+                                    <strong>Total</strong>
+                                </td>
+                                <td className="no-line text-right">₹ {totalPrice}</td>
+                            </tr>
+                            </tbody>
+                        </table>
 
-                {this.checkLogin() ? <Link to="/login"><span> Sign in or create account
+                        {this.checkLogin() ? <Link to="/login"><span> Sign in or create account
 Already use Saffron? Sign in with your account. </span></Link> :
-                    <button onClick={this.getTimeSlots}> Place order</button>
-                }
+                            <button onClick={this.getTimeSlots}> Place order</button>
+                        }
+                    </div>
 
+                ) : <div>
+                    <img alt="empty card" src="/assets/Images/empty-cart.png"/>
+                    <Link to="/ProductList"><span> your cart is empty </span></Link>
+                </div>
+                }
             </div>
 
         );
