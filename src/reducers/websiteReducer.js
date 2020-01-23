@@ -70,14 +70,12 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
             });
 
         case ORDER_PLACE:
-            const RecentCompleteOrder = [...state.RecentCompleteOrder, action.data];
             localStorage.removeItem("BasketGeneratorProducts");
             return Object.assign({}, state, {
-                RecentCompleteOrder: RecentCompleteOrder,
                 BasketGeneratorProducts: [],
                 BasketVisible: false,
                 TimeSlotVisible: false,
-                success_msg: "your order has been successfully placed",
+                success_msg: "your order successfully has been placed",
                 Loading: false,
                 error_msg: null
             });

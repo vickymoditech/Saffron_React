@@ -35,7 +35,7 @@ class Team extends Component {
                                         </div>
                                     </div>
                                     <div className="team_text1"
-                                         style={{"text-transform": "capitalize"}}>{team.first_name} {team.last_name}</div>
+                                         style={{"textTransform": "capitalize"}}>{team.first_name} {team.last_name}</div>
                                 </div>
                             ))}
                         </div>

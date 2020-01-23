@@ -21,7 +21,7 @@ class TodayCompleteOrders extends Component {
                 <p> User SaffronPoint {this.props.SaffronPoint} </p>
                 <div>
                     <Collapse accordion>
-                        {this.props.RecentCompleteOrder.map((singleCompletedOrder, index) => (
+                        {this.props.RecentCompleteOrder && this.props.RecentCompleteOrder.map((singleCompletedOrder, index) => (
                             <Panel
                                 header={`Order Status ${singleCompletedOrder.column} Total ${singleCompletedOrder.total} BookingDate ${new Date(moment.tz(singleCompletedOrder.bookingDateTime, 'Asia/Kolkata').format())}`}
                                 key={index}>
