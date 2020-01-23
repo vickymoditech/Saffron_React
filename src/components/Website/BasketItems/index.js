@@ -10,6 +10,8 @@ import '../../Admin/Helper/DeleteAlertCss/react-confirm-alert.css';
 import {isLoggedIn} from '../../../index';
 import {Link} from 'react-router';
 import Loader from '../../Helper/Loader';
+import Lottie from 'react-lottie';
+import * as animationData from './empty-cart';
 
 class BasketItemsList extends Component {
 
@@ -22,7 +24,7 @@ class BasketItemsList extends Component {
         window.scrollTo(0, 0);
         setTimeout(() => {
             this.setState({Loading: false});
-        },1000);
+        }, 1000);
         if (this.props.BasketGeneratorProducts.length > 0) {
             this.props.actions.websiteAction.basketVisible(false);
         } else {
@@ -87,6 +89,15 @@ class BasketItemsList extends Component {
         if (discount < 0) {
             discount = -(discount);
         }
+
+        const defaultOptions = {
+            loop: true,
+            autoplay: true,
+            animationData: animationData,
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
 
         return (
             <div style={{marginTop: '100px', backgroundColor: '#f5f2ea'}}>
@@ -181,7 +192,7 @@ Already use Saffron? Sign in with your account. </span></Link> :
                     </div>
 
                 ) : <div>
-                    <img alt="empty card" src="/assets/Images/empty-cart.png"/>
+                    <Lottie options={defaultOptions} height={400} width={400}/>
                     <Link to="/ProductList"><span> your cart is empty </span></Link>
                 </div>
                 }

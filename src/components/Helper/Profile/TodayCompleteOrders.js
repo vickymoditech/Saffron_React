@@ -47,7 +47,7 @@ class TodayCompleteOrders extends Component {
                                         </thead>
                                         <tbody>
 
-                                        {singleCompletedOrder.basket.map((singleProduct) => (
+                                        {singleCompletedOrder && singleCompletedOrder.basket.map((singleProduct) => (
                                             <tr key={singleProduct.productItem.id}>
                                                 <td style={{"textTransform": "capitalize"}}> {singleProduct.productItem.title} </td>
                                                 <td className="text-center">₹ {singleProduct.productItem.offerPrice > 0 ? singleProduct.productItem.offerPrice : singleProduct.productItem.price}</td>

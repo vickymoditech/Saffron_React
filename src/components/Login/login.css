@@ -155,7 +155,7 @@ hr {
     left: 0;
     height: 100%;
     width: 100%;
-    background: #000000 url('/assets/Images/s_loader.gif') 50% 50% no-repeat;
+    background: #000000 50% 50% no-repeat;
     opacity: 0.8;
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import ImageLoader from 'react-load-image';
 
 class ImageGrid extends React.Component {
     constructor(props) {
@@ -18,8 +19,12 @@ class ImageGrid extends React.Component {
                             {this.props.galleryList.map((gallery, index) => (
                                 <div className="col-md-3 px-0" key={index}>
                                     <div className="main_img_box">
-                                        <img className="img-fluid" alt="image"
-                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url}/>
+                                        <ImageLoader
+                                            src={ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url}>
+                                            <img className="img-fluid" alt="image"/>
+                                            <div>Error!</div>
+                                            <div>preload</div>
+                                        </ImageLoader>
                                     </div>
                                 </div>
                             ))}

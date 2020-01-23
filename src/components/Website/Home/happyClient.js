@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import ImageLoader from 'react-load-image';
 
 class HappyClient extends Component {
 
@@ -51,7 +52,12 @@ class HappyClient extends Component {
                                     <div id="customers-testimonials" className="owl-carousel d-flex">
                                         <div className="item m-1 p-2">
                                             <div className="d-flex flex-column align-items-center">
-                                                <img src="assets/Images/stylist-1.jpg" classname="img-fluid mt-2" style={{height:'100px',width:'100px',borderRadius:'50%'}} alt="customer image"/>
+                                                <ImageLoader
+                                                    src="assets/Images/stylist-1.jpg">
+                                                    <img className="img-fluid" alt="image" style={{height:'100px',width:'100px',borderRadius:'50%'}}/>
+                                                    <div>Error!</div>
+                                                    <div>preload</div>
+                                                </ImageLoader>
                                                     <div className="d-flex flex-column text-center mt-3 mb-3">
                                                         <span className="cutsomer_title">Jeff Nucci</span>
                                                         <span>Businessman</span>

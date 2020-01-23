@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import ImageLoader from 'react-load-image';
 
 class Team extends Component {
 
@@ -19,8 +20,14 @@ class Team extends Component {
                             {this.props.teamList.map((team, index) => (
                                 <div className="col-xl-3 col-md-3 col-sm-6 col-12 team_position mt-3" key={index}>
                                     <div className="team">
-                                        <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url} alt="team1"
-                                             className="img-fluid team_img"/>
+
+                                        <ImageLoader
+                                            src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url}>
+                                            <img className="img-fluid team_img" alt={team.first_name}/>
+                                            <div>Error!</div>
+                                            <div>preload</div>
+                                        </ImageLoader>
+
                                         <div className="team_img_content">
                                             <div className="team_content d-flex">
                                                 <div className="team_text2">{team.description}</div>

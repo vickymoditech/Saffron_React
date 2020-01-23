@@ -6,6 +6,7 @@ import * as websiteAction from "../../../actions/websiteAction";
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import './ProductList.css';
 import TeamListModel from './TeamListModel';
+import ImageLoader from 'react-load-image';
 
 class ProductList extends Component {
 
@@ -27,10 +28,11 @@ class ProductList extends Component {
     };
 
     componentWillMount() {
-        if (this.props.serviceList.length <= 0) {
+        if (this.props.serviceList.length <= 0)
             this.props.actions.websiteAction.getWebsiteHome();
-        }
-        this.props.actions.websiteAction.getAllProducts();
+
+        if (this.props.AllProductsList.length <= 0)
+            this.props.actions.websiteAction.getAllProducts();
     }
 
     componentDidMount() {
@@ -106,10 +108,15 @@ class ProductList extends Component {
                                             {singleProduct.offerPrice > 0 &&
                                             <div id="pointer"><span className="shape_text">Offer Price.</span></div>}
                                             <div>
-                                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.image_url}
-                                                     className="img-fluid"
-                                                     alt={singleProduct.title} style={{height: '50px', width: '50px'}}/>
-                                                <span className="service_title ml-md-3">{singleProduct.title} ({singleProduct.sex})</span>
+                                                <ImageLoader
+                                                    src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.image_url}>
+                                                    <img className="img-fluid" style={{height: '50px', width: '50px'}}
+                                                         alt={singleProduct.title}/>
+                                                    <div>Error!</div>
+                                                    <div>preload</div>
+                                                </ImageLoader>
+                                                <span
+                                                    className="service_title ml-md-3">{singleProduct.title} ({singleProduct.sex})</span>
                                             </div>
                                             <div className="price">
                                                 {singleProduct.offerPrice > 0 &&
