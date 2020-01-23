@@ -18,3 +18,11 @@ body.loading {
 body.loading .loadingPanel {
     display: block;
 }
+
+body.loadingSuccess {
+    overflow: hidden;
+}
+body.loadingSuccess .loadingPanel {
+    display: block;
+}
+
