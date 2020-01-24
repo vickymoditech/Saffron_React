@@ -154,7 +154,7 @@ class EditDialog extends Component {
                                                                 <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
-                                                                <input type="text" name="price"
+                                                                <input type="number" name="price"
                                                                        placeholder="Price"
                                                                        className="form-control"
                                                                        style={{borderBottom:'0'}}
@@ -167,7 +167,7 @@ class EditDialog extends Component {
                                                                 <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
-                                                                <input type="text" name="offerPrice"
+                                                                <input type="number" name="offerPrice"
                                                                        placeholder="offerPrice"
                                                                        style={{borderBottom:'0'}}
                                                                        className="form-control"

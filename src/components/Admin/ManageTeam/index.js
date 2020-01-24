@@ -11,6 +11,7 @@ import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import '../Helper/AddCommonDialog/index';
 import './manage-team.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import ImageLoader from 'react-load-image';
 
 class ManageTeam extends Component {
 
@@ -125,12 +126,17 @@ class ManageTeam extends Component {
                                 </tr>
                                 {teamList && teamList.map((value, index) => (
                                     <tr key={index}>
-                                        <td>{value.image_url !== "" && value.image_url !== undefined ? (
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
-                                                 height="150px"/>) : (
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                 width="150px"
-                                                 height="150px"/>)}</td>
+                                        <td>
+                                            <ImageLoader
+                                                src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}>
+                                                <img className="img-fluid" style={{height: '150px', width: '150px'}}
+                                                     alt={value.first_name}/>
+                                                <img src="/assets/Images/NoImages.png" style={{height: '150px', width: '150px'}}
+                                                     alt={value.first_name} />
+                                                <img src="/assets/Images/s_loader.gif" style={{height: '150px', width: '150px'}}
+                                                     alt={value.first_name} />
+                                            </ImageLoader>
+                                        </td>
                                         <td>{value.first_name + " " + value.last_name}</td>
                                         <td>{value.description}</td>
                                         <td style={{textAlign: "center"}}>

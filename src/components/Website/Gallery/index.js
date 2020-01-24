@@ -5,6 +5,7 @@ import "react-photo-feed/library/style.css";
 import * as websiteAction from '../../../actions/websiteAction';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import {Dropdown} from 'semantic-ui-react';
+import ImageLoader from 'react-load-image';
 
 class Gallery extends Component {
 
@@ -74,8 +75,12 @@ class Gallery extends Component {
                             {photos.map((gallery, index) => (
                                 <div className="col-md-3 px-0" key={index}>
                                     <div className="main_img_box">
-                                        <img className="img-fluid" alt="Gallery Image"
-                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url}/>
+                                        <ImageLoader
+                                            src={ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url}>
+                                            <img className="img-fluid" alt="Gallery Image"/>
+                                            <img src="/assets/Images/NoImages.png" alt="Gallery Image" />
+                                            <img src="/assets/Images/s_loader.gif" alt="Gallery Image" />
+                                        </ImageLoader>
                                     </div>
                                 </div>
                             ))}

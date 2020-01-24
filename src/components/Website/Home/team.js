@@ -24,8 +24,10 @@ class Team extends Component {
                                         <ImageLoader
                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url}>
                                             <img className="img-fluid team_img" alt={team.first_name}/>
-                                            <div>Error!</div>
-                                            <div>preload</div>
+                                            <img src="/assets/Images/NoImages.png" style={{height: '50px', width: '50px'}}
+                                                 alt={team.first_name} />
+                                            <img src="/assets/Images/s_loader.gif" style={{height: '50px', width: '50px'}}
+                                                 alt={team.first_name} />
                                         </ImageLoader>
 
                                         <div className="team_img_content">

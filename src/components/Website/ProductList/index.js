@@ -112,8 +112,10 @@ class ProductList extends Component {
                                                     src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.image_url}>
                                                     <img className="img-fluid" style={{height: '50px', width: '50px'}}
                                                          alt={singleProduct.title}/>
-                                                    <div>Error!</div>
-                                                    <div>preload</div>
+                                                    <img src="/assets/Images/NoImages.png" style={{height: '50px', width: '50px'}}
+                                                         alt={singleProduct.title} />
+                                                    <img src="/assets/Images/s_loader.gif" style={{height: '50px', width: '50px'}}
+                                                         alt={singleProduct.title} />
                                                 </ImageLoader>
                                                 <span
                                                     className="service_title ml-md-3">{singleProduct.title} ({singleProduct.sex})</span>

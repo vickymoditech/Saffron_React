@@ -138,7 +138,7 @@ class Registration extends Component {
                                                         <span className="input-group-addon d-flex align-items-center pr-4">
                                                             <i className="fa fa-user icon_color"></i>
                                                         </span>
-                                                            <input type="text"
+                                                            <input type="number"
                                                                    value={this.state.credentials.mobile_number}
                                                                    name="mobile_number" placeholder="Mobile Number"
                                                                    className="form-control"

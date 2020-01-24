@@ -7,7 +7,7 @@ import $ from "jquery";
 import NotificationSystem from 'react-notification-system';
 import * as websiteAction from './actions/websiteAction';
 import Loader from '././components/Helper/Loader';
-import SucessLoader from '././components/Helper/SucessLoader';
+import SuccessLoader from '././components/Helper/SuccessLoader';
 import '././components/Website/Home/websiteCss/website.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Website/Footer';
@@ -43,7 +43,6 @@ class App extends Component {
                     this.setState({orderPlace:false});
                 },1000);
             });
-            this.addNotifications(nextProps.success_msg, "success");
             browserHistory.push('/ProductList');
         }
     }
@@ -150,7 +149,7 @@ class App extends Component {
                 </div>}
                 <Footer/>
                 {this.props.Loading && <Loader/>}
-                {this.state.orderPlace && <SucessLoader/>}
+                {this.state.orderPlace && <SuccessLoader/>}
             </div>
         );
     }
@@ -158,7 +157,6 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     const {websiteReducer, authReducer} = state;
-    debugger;
     return {
         Loading: websiteReducer.Loading,
         error_msg: websiteReducer.error_msg,

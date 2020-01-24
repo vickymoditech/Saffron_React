@@ -6,12 +6,13 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: #000000 url('/assets/Images/loader.gif.vertical') 50% 50% no-repeat;
     opacity: 0.8;
 }
+
 body{
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
 }
+
 body.loading {
     overflow: hidden;
 }

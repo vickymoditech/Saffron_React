@@ -8,7 +8,7 @@ import Loader from '../../Helper/Loader';
 import AddDialog from './addDialog';
 import {confirmAlert} from 'react-confirm-alert';
 import '../Helper/DeleteAlertCss/react-confirm-alert.css';
-
+import ImageLoader from 'react-load-image';
 
 import './manage-slider.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
@@ -110,12 +110,17 @@ class ManageSliderImage extends Component {
                                 </tr>
                                 {sliderList && sliderList.map((value, index) => (
                                     <tr key={index}>
-                                        <td>{value.image_url !== undefined ? (
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="350px"
-                                                 height="150px"/>) : (
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                 width="150px"
-                                                 height="150px"/>)}</td>
+                                        <td>
+                                            <ImageLoader
+                                                src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}>
+                                                <img className="img-fluid" style={{height: '150px', width: '150px'}}
+                                                     alt={value.title}/>
+                                                <img src="/assets/Images/NoImages.png" style={{height: '150px', width: '150px'}}
+                                                     alt={value.title} />
+                                                <img src="/assets/Images/s_loader.gif" style={{height: '150px', width: '150px'}}
+                                                     alt={value.title} />
+                                            </ImageLoader>
+                                        </td>
                                         <td style={{textAlign: "center"}}>
                                             <button type="button" className="btn btn-danger" key={value.id}
                                                     onClick={event => {

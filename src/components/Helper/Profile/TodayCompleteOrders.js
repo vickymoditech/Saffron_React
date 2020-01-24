@@ -23,10 +23,10 @@ class TodayCompleteOrders extends Component {
                     <Collapse accordion>
                         {this.props.RecentCompleteOrder && this.props.RecentCompleteOrder.map((singleCompletedOrder, index) => (
                             <Panel
-                                header={`Order Status ${singleCompletedOrder.column} Total ${singleCompletedOrder.total} BookingDate ${new Date(moment.tz(singleCompletedOrder.bookingDateTime, 'Asia/Kolkata').format())}`}
+                                header={`Order Status ${singleCompletedOrder.column} Total ${singleCompletedOrder.total} BookingDate ${moment.tz(singleCompletedOrder.bookingDateTime, 'Asia/Kolkata').format("DD-MM-YYYY HH:mm a")}`}
                                 key={index}>
                                 <div>
-
+                                    <p> {`Your arrival time ${ moment.tz(singleCompletedOrder.bookingStartTime, 'Asia/Kolkata').format("DD-MM-YYYY HH:mm a") }`} </p>
                                     <table
                                         className="table table-bordered">
                                         <thead>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Dialog} from 'material-ui';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import ImageLoader from 'react-load-image';
 
 const style = {
     titleStyle: {
@@ -52,8 +53,13 @@ class TeamListModel extends Component {
                                     <div className="col-xl-3 col-md-3 col-sm-6 col-12 team_position mt-3" key={index}
                                          onClick={() => this.props.SelectTeamMember(team)}>
                                         <div className="team">
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url} alt="team1"
-                                                 className="img-fluid team_img"/>
+                                            <ImageLoader
+                                                src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url}>
+                                                <img className="img-fluid" alt="team1"/>
+                                                <img src="/assets/Images/NoImages.png" alt="team1" style={{height: '60px', width: '60px'}}/>
+                                                <img src="/assets/Images/s_loader.gif" alt="team1" style={{height: '60px', width: '60px'}}/>
+                                            </ImageLoader>
+
                                         </div>
                                         <div className="team_text1">{team.first_name} {team.last_name}</div>
                                     </div>

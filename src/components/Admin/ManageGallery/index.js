@@ -11,6 +11,7 @@ import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import AddDialog from './addDialog';
 import EditDialog from './editDialog';
 import {Dropdown} from 'semantic-ui-react';
+import ImageLoader from 'react-load-image';
 
 import './manage-gallery.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
@@ -174,14 +175,17 @@ class ManageGallery extends Component {
                                     </tr>
                                     {galleryList && galleryList.map((value, index) => (
                                         <tr key={index}>
-                                            <td>{value.image_url !== undefined ? (
-                                                <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}
-                                                     width="150px"
-                                                     height="150px"/>) : (
-                                                <img
-                                                    src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                    width="150px"
-                                                    height="150px"/>)}</td>
+                                            <td>
+                                                <ImageLoader
+                                                    src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}>
+                                                    <img className="img-fluid" style={{height: '150px', width: '150px'}}
+                                                         alt={value.title}/>
+                                                    <img src="/assets/Images/NoImages.png" style={{height: '150px', width: '150px'}}
+                                                         alt={value.title} />
+                                                    <img src="/assets/Images/s_loader.gif" style={{height: '150px', width: '150px'}}
+                                                         alt={value.title} />
+                                                </ImageLoader>
+                                            </td>
                                             <td>{value.title}</td>
                                             <td>{value.description}</td>
                                             <td>{value.sex}</td>

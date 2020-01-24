@@ -7,6 +7,8 @@ import * as authAction from '../../../actions/authAction';
 import Loader from "../Loader/index";
 import ChangePasswordModal from '../ChangePasswordModal';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import SuccessLoader from '../SuccessLoader/index';
+import ImageLoader from 'react-load-image';
 
 class Profile extends Component {
 
@@ -28,7 +30,8 @@ class Profile extends Component {
                 role: userProfile.role
             },
             image_url: userProfile.image_url !== "" && userProfile.image_url !== null ? ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url : "",
-            notificationSystem: null
+            notificationSystem: null,
+            successLoader: false,
         };
     }
 
@@ -103,7 +106,11 @@ class Profile extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.isPasswordChanged && nextProps.successMsg) {
-            this.addNotifications(nextProps.successMsg, 'success');
+            this.setState({successLoader: true}, () => {
+                setTimeout(() => {
+                    this.setState({successLoader: false});
+                }, 1000);
+            });
             this.props.actions.authAction.DefaultMessageClear();
             this.reagainFeelData();
         } else if (!nextProps.changePasswordLoading && !nextProps.isPasswordChanged && nextProps.error_msg) {
@@ -139,15 +146,15 @@ class Profile extends Component {
                                     <div className="col-sm-12">
                                         <div className="row">
                                             <div className="col-12 d-flex justify-content-center align-items-center">
-                                                {this.state.image_url !== undefined && this.state.image_url !== null && this.state.image_url !== "" ? (
-                                                    <img
-                                                        src={this.state.image_url}
-                                                        width="100px"
-                                                        height="100px"/>) : (
-                                                    <img
-                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                        width="100px"
-                                                        height="100px"/>)}
+                                                <ImageLoader
+                                                    src={this.state.image_url}>
+                                                    <img className="img-fluid" style={{height: '100px', width: '100px'}}
+                                                         alt="image"/>
+                                                    <img src="/assets/Images/NoImages.png" style={{height: '100px', width: '100px'}}
+                                                         alt="image" />
+                                                    <img src="/assets/Images/s_loader.gif" style={{height: '100px', width: '100px'}}
+                                                         alt="image" />
+                                                </ImageLoader>
                                                 <input type="file" accept="image/*" onChange={this.handleSelectedFile}/>
                                             </div>
                                         </div>
@@ -177,7 +184,7 @@ class Profile extends Component {
                                                 <span className="input-group-addon">
                                                     <i className="fa fa-key icon_color"/>
                                                 </span>
-                                                <input type="text" className="form-control" name="userId"
+                                                <input type="number" className="form-control" name="userId"
                                                        value={userId}
                                                        placeholder="userId" disabled/>
                                             </div>
@@ -185,7 +192,7 @@ class Profile extends Component {
                                                 <span className="input-group-addon">
                                                     <i className="fa fa-mobile icon_color"/>
                                                 </span>
-                                                <input type="text" className="form-control" name="mobile_number"
+                                                <input type="number" className="form-control" name="mobile_number"
                                                        value={mobile_number} placeholder="Contact No"
                                                        onChange={this.handleChange}/>
                                             </div>
@@ -197,7 +204,7 @@ class Profile extends Component {
                                         <span className="input-group-addon">
                                             <i className="fa fa-envelope-o icon_color"/>
                                         </span>
-                                        <input type="text" className="form-control" value={emailAddress}
+                                        <input type="email" className="form-control" value={emailAddress}
                                                name="emailAddress" placeholder="Email" onChange={this.handleChange}/>
                                     </div>
                                 </div>
@@ -215,6 +222,7 @@ class Profile extends Component {
                     </div>
                 </div>
                 {this.props.changePasswordLoading && <Loader/>}
+                {this.state.successLoader && <SuccessLoader/>}
             </div>
         )
     }

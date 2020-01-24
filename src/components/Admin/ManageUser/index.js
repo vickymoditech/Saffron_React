@@ -7,7 +7,7 @@ import * as userManageAction from '../../../actions/userManageAction';
 import {confirmAlert} from 'react-confirm-alert';
 import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import Loader from '../../Helper/Loader';
-
+import ImageLoader from 'react-load-image';
 
 import './manage-user.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
@@ -126,12 +126,17 @@ class ManageUser extends Component {
                                 </tr>
                                 {userList && userList.map((value, index) => (
                                     <tr key={value.id}>
-                                        <td>{value.image_url !== undefined && value.image_url !== "" ? (
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url} width="150px"
-                                                 height="150px"/>) : (
-                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                 width="150px"
-                                                 height="150px"/>)}</td>
+                                        <td>
+                                            <ImageLoader
+                                                src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}>
+                                                <img className="img-fluid" style={{height: '150px', width: '150px'}}
+                                                     alt={value.title}/>
+                                                <img src="/assets/Images/NoImages.png" style={{height: '150px', width: '150px'}}
+                                                     alt={value.title} />
+                                                <img src="/assets/Images/s_loader.gif" style={{height: '150px', width: '150px'}}
+                                                     alt={value.title} />
+                                            </ImageLoader>
+                                        </td>
                                         <td>{value.first_name} {value.last_name}</td>
                                         <td>{value.contact_no}</td>
                                         <td>{value.role}</td>

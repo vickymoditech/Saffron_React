@@ -156,7 +156,7 @@ class ProductDialog extends Component {
                                                             <span className="input-group-addon">
                                                             <i className="fa fa-pencil" style={{color:'#bf925b'}}/>
                                                             </span>
-                                                                <input type="text" name="mobile_number"
+                                                                <input type="number" name="mobile_number"
                                                                        placeholder="TeamMember Mobile Number"
                                                                        className="form-control"
                                                                        onChange={this.handleChange}

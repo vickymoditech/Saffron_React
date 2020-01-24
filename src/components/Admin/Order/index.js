@@ -159,11 +159,11 @@ export default class Order extends Component {
                             {/*{customerName}*/}
                             {/*</p>*/}
                         </div>
-                        <div className="image">
-                            {productImg &&
-                            <img src={productImg} className="img-responsive" style={{border: "none", height: "50px"}}
-                                 alt=""/>}
-                        </div>
+                        {/*<div className="image">*/}
+                            {/*{productImg &&*/}
+                            {/*<img src={productImg} className="img-responsive" style={{border: "none", height: "50px"}}*/}
+                                 {/*alt=""/>}*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </li>

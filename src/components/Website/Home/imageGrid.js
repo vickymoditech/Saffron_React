@@ -22,8 +22,10 @@ class ImageGrid extends React.Component {
                                         <ImageLoader
                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url}>
                                             <img className="img-fluid" alt="image"/>
-                                            <div>Error!</div>
-                                            <div>preload</div>
+                                            <img src="/assets/Images/NoImages.png" style={{height: '50px', width: '50px'}}
+                                                 alt="image" />
+                                            <img src="/assets/Images/s_loader.gif" style={{height: '50px', width: '50px'}}
+                                                 alt="image" />
                                         </ImageLoader>
                                     </div>
                                 </div>

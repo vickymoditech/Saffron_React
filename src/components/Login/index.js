@@ -96,7 +96,7 @@ class Login extends Component {
                                                         <span className="input-group-addon pr-4">
                                                             <i className="fa fa-user icon_color"></i>
                                                         </span>
-                                                            <input type="text" value={this.state.credentials.email}
+                                                            <input type="number" value={this.state.credentials.email}
                                                                    name="mobile_number" placeholder="Mobile Number"
                                                                    className="form-control"
                                                                    onChange={this.handleChange}/>

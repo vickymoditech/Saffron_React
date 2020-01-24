@@ -55,8 +55,10 @@ class HappyClient extends Component {
                                                 <ImageLoader
                                                     src="assets/Images/stylist-1.jpg">
                                                     <img className="img-fluid" alt="image" style={{height:'100px',width:'100px',borderRadius:'50%'}}/>
-                                                    <div>Error!</div>
-                                                    <div>preload</div>
+                                                    <img src="/assets/Images/NoImages.png" style={{height: '50px', width: '50px'}}
+                                                         alt="image" />
+                                                    <img src="/assets/Images/s_loader.gif" style={{height: '50px', width: '50px'}}
+                                                         alt="image" />
                                                 </ImageLoader>
                                                     <div className="d-flex flex-column text-center mt-3 mb-3">
                                                         <span className="cutsomer_title">Jeff Nucci</span>

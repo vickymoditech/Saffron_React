@@ -10,6 +10,7 @@ import * as teamProductManageAction from '../../../actions/teamProductManageActi
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import NotificationSystem from 'react-notification-system';
 import * as teamAction from '../../../actions/teamAction';
+import ImageLoader from 'react-load-image';
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -278,14 +279,16 @@ class ManageTeamMemberProduct extends Component {
                                                             snapshot.isDragging,
                                                             provided.draggableProps.style
                                                         )}>
-                                                        {item.image_url !== undefined ? (
-                                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}
-                                                                 width="50px"
-                                                                 height="50px"/>) : (
-                                                            <img
-                                                                src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                                width="50px"
-                                                                height="50px"/>)}
+
+                                                        <ImageLoader
+                                                            src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}>
+                                                            <img className="img-fluid" style={{height: '50px', width: '50px'}}
+                                                                 alt={item.title}/>
+                                                            <img src="/assets/Images/NoImages.png" style={{height: '50px', width: '50px'}}
+                                                                 alt={item.title} />
+                                                            <img src="/assets/Images/s_loader.gif" style={{height: '50px', width: '50px'}}
+                                                                 alt={item.title} />
+                                                        </ImageLoader>
                                                         {item.title}
                                                         <Dropdown placeholder="Select ApproxTime" fluid
                                                                   selection
