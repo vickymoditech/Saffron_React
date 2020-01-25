@@ -108,6 +108,7 @@ export const loggedOut = () => {
             localStorage.removeItem('accessToken');
             localStorage.removeItem('userProfile');
             localStorage.removeItem('userAvatar');
+            localStorage.removeItem('BasketGeneratorProducts');
             localStorage.clear();
             dispatch({type: LOGOUT_USER});
         }

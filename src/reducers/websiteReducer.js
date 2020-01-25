@@ -120,6 +120,7 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
             browserHistory.push('/');
             return Object.assign({}, state, {
                 Loading: false,
+                BasketGeneratorProducts:[]
             });
 
         default:
