@@ -111,6 +111,7 @@ export default function authReducer(state = initialState.authReducer, action) {
 
         case REGISTRATION_SUCCESS:
 
+            const BasketGeneratorProducts = localStorage.getItem('BasketGeneratorProducts');
             localStorage.removeItem('accessToken');
             localStorage.removeItem('userProfile');
             localStorage.removeItem('userAvatar');
@@ -129,6 +130,7 @@ export default function authReducer(state = initialState.authReducer, action) {
             localStorage.setItem("accessToken", action.data.accessToken);
             localStorage.setItem("userProfile", JSON.stringify(userProfile.user));
             localStorage.setItem("userAvatar", userAvatar);
+            localStorage.setItem("BasketGeneratorProducts", BasketGeneratorProducts);
 
             return Object.assign({}, state, {
                 isRegistration: true,
