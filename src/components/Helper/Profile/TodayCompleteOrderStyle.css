@@ -1,0 +1,42 @@
+.main_order_box {
+    border: 1px solid #c1c1c1;
+}
+
+.main_order_box .status {
+    background-color: #f1f1f1;
+}
+
+.collapse_data {
+    border: 1px solid #c1c1c1;
+}
+
+.collapse_data .product_box .product {
+    background-color: #f1f1f1;
+}
+
+.collapse_data .product_box .product img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #c1c1c1;
+}

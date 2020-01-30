@@ -1,0 +1,47 @@
+.product {
+    width: 40%;
+    position: relative;
+}
+
+.product i {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    color: black;
+}
+
+.product .products {
+    height: 163px;
+    overflow-y: scroll;
+}
+
+.product .products .product_details {
+    background-color: #f1f1f1;
+}
+
+.product .products .product_details img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #c1c1c1;
+}

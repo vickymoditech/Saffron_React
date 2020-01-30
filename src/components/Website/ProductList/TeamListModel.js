@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Dialog} from 'material-ui';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import ImageLoader from 'react-load-image';
+import './TeamListModelStyle.css';
 
 const style = {
     titleStyle: {
@@ -45,29 +46,30 @@ class TeamListModel extends Component {
                     contentClassName="change-password-content"
                     className="password-dialog"
                 >
-                    <div className="modal-dialog">
-                        <div className="modal-content">
+                    <div>
+                        <div>
                             <div className="modal-body">
-
-                                {this.props.TeamList.map((team, index) => (
-                                    <div className="col-xl-3 col-md-3 col-sm-6 col-12 team_position mt-3" key={index}
-                                         onClick={() => this.props.SelectTeamMember(team)}>
-                                        <div className="team">
-                                            <ImageLoader
-                                                src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url}>
-                                                <img className="img-fluid" alt="team1"/>
-                                                <img src="/assets/Images/NoImages.png" alt="team1" style={{height: '60px', width: '60px'}}/>
-                                                <img src="/assets/Images/s_loader.gif" alt="team1" style={{height: '60px', width: '60px'}}/>
-                                            </ImageLoader>
-
-                                        </div>
-                                        <div className="team_text1">{team.first_name} {team.last_name}</div>
+                                <div className="product">
+                                    <div className="d-flex justify-content-center">
+                                        <h4 className="p-2">Product</h4>
+                                        <i className="fa fa-close"></i>
                                     </div>
-                                ))}
-
+                                    <div className="products p-2">
+                                        {this.props.TeamList.map((team, index) => (
+                                            <div className="product_details d-flex align-items-center p-2 m-2" onClick={() => this.props.SelectTeamMember(team)} key={index}>
+                                                <ImageLoader
+                                                    src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url}>
+                                                    <img className="img-fluid" alt="team1"/>
+                                                    <img src="/assets/Images/NoImages.png" alt="team1" className="img-fluid"/>
+                                                    <img src="/assets/Images/s_loader.gif" alt="team1" className="img-fluid"/>
+                                                </ImageLoader>
+                                                <h5 className="ml-2">{team.first_name} {team.last_name}</h5>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
                                 {this.props.VisibleButton() && <button onClick={this.props.AddCart}> Add Cart</button>}
                                 <button onClick={this.props.handleClose}> Close</button>
-
                             </div>
                         </div>
                     </div>

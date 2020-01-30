@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import * as websiteAction from "../../../actions/websiteAction";
 import TimeSlotDialog from './TimeSlotDialog';
 import {browserHistory} from 'react-router';
-import './BasketItemsList.css';
 import {confirmAlert} from 'react-confirm-alert';
 import '../../Admin/Helper/DeleteAlertCss/react-confirm-alert.css';
 import {isLoggedIn} from '../../../index';
@@ -12,6 +11,9 @@ import {Link} from 'react-router';
 import Loader from '../../Helper/Loader';
 import Lottie from 'react-lottie';
 import * as animationData from './empty-cart';
+import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import ImageLoader from 'react-load-image';
+import './BasketItemsList.css';
 
 class BasketItemsList extends Component {
 
@@ -108,87 +110,54 @@ class BasketItemsList extends Component {
 
                 {visible ? (
                     <div>
-                        <table
-                            className="table table-bordered">
-                            <thead>
-                            <tr>
-                                <td><strong>Item</strong>
-                                </td>
-                                <td className="text-center">
-                                    <strong>Price</strong>
-                                </td>
-                                <td className="text-center">
-                                    <strong>Team
-                                        Member</strong>
-                                </td>
-                                <td className="text-right">
-                                    <strong>Total</strong>
-                                </td>
-                                <td className="text-right">
-                                    <strong>Remove</strong>
-                                </td>
-                            </tr>
-                            </thead>
-                            <tbody>
-
+                        <div className="main_basket">
                             {this.props.BasketGeneratorProducts.map((singleProduct) => (
-                                <tr key={singleProduct.product.id}>
-                                    <td style={{"textTransform": "capitalize"}}> {singleProduct.product.title} </td>
-                                    <td className="text-center">₹ {singleProduct.product.offerPrice}</td>
-                                    <td className="text-center"
-                                        style={{"textTransform": "capitalize"}}>{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</td>
-                                    <td className="text-right">₹ {singleProduct.product.price}</td>
-                                    <td className="text-right">
-                                        <button
-                                            onClick={() => this.deleteProductFromCart(singleProduct.product.id, singleProduct.teamMember.id)}> Delete
-                                        </button>
-                                    </td>
-                                </tr>
+
+                                <div key={singleProduct.product.id}
+                                     className="basket_detail d-flex justify-content-around align-items-center p-2 m-2">
+                                    <ImageLoader
+                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.product.image_url}>
+                                        <img className="img-fluid" alt={singleProduct.product.title}/>
+                                        <img src="/assets/Images/NoImages.png" className="img-fluid"
+                                             alt={singleProduct.product.title}/>
+                                        <img src="/assets/Images/s_loader.gif" className="img-fluid"
+                                             alt={singleProduct.product.title}/>
+                                    </ImageLoader>
+                                    <p style={{"textTransform": "capitalize"}}>{singleProduct.product.title}</p>
+                                    <p>₹ {singleProduct.product.offerPrice}</p>
+                                    <ImageLoader
+                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.teamMember.image_url}>
+                                        <img className="img-fluid" alt={singleProduct.teamMember.first_name}/>
+                                        <img src="/assets/Images/NoImages.png" className="img-fluid"
+                                             alt={singleProduct.teamMember.first_name}/>
+                                        <img src="/assets/Images/s_loader.gif" className="img-fluid"
+                                             alt={singleProduct.teamMember.first_name}/>
+                                    </ImageLoader>
+                                    <p style={{"textTransform": "capitalize"}}>{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</p>
+                                    <p>&#8377; 500</p>
+                                    <button type="button" className="btn btn-danger"
+                                            onClick={() => this.deleteProductFromCart(singleProduct.product.id, singleProduct.teamMember.id)}>Delete
+                                    </button>
+                                </div>
                             ))}
+                        </div>
+                        <div className="second_part d-flex px-2 mt-2">
+                            <div className="d-flex w-75">
 
-                            <tr>
-                                <td className="thick-line"/>
-                                <td className="thick-line"/>
-                                <td className="thick-line"/>
-                                <td className="thick-line"/>
-                                <td className="thick-line"/>
-                            </tr>
-                            <tr>
-                                <td className="thick-line"/>
-                                <td className="thick-line"/>
-                                <td className="thick-line"/>
-                                <td className="no-line text-right">
-                                    <strong>SubTotal</strong>
-                                </td>
-                                <td className="thick-line text-right">₹ {totalPrice} </td>
-                            </tr>
-                            <tr>
-                                <td className="thick-line"/>
-                                <td className="thick-line"/>
-                                <td className="thick-line"/>
-                                <td className="no-line text-right">
-                                    <strong>Discount</strong>
-                                </td>
-                                <td className="no-line text-right">₹
-                                    {discount}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="thick-line"/>
-                                <td className="thick-line"/>
-                                <td className="thick-line"/>
-                                <td className="no-line text-right">
-                                    <strong>Total</strong>
-                                </td>
-                                <td className="no-line text-right">₹ {totalPrice}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                        {this.checkLogin() ? <Link to="/login"><span> Sign in or create account
-Already use Saffron? Sign in with your account. </span></Link> :
-                            <button onClick={this.getTimeSlots}> Place order</button>
-                        }
+                                {this.checkLogin() ? (
+                                        <div><span> Sign in or create account Already use Saffron? Sign in with your account. </span>
+                                            <Link to="/Login"> <span className="btn btn-default mr-2">Login</span> </Link>
+                                            <Link to="/Registration"> <span className="btn btn-primary mr-2">Sing up</span>
+                                            </Link></div>) :
+                                    <button type="button" className="btn btn-success" onClick={this.getTimeSlots}> Place
+                                        order</button>
+                                }
+                            </div>
+                            <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">
+                                <h5>Sub Total :&nbsp;</h5>
+                                <h5>&#8377;500</h5>
+                            </div>
+                        </div>
                     </div>
 
                 ) : <div>

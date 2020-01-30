@@ -1,0 +1,41 @@
+.service_box img {
+    height: 300px;
+    width: 250px;
+}
+
+.services_main_box {
+    height: 310px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.services_main_box .main_box {
+    box-shadow: 0px 0px 7px 3px #c1c1c1;
+}
+
+.services_main_box .main_box img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #c1c1c1;
+}
