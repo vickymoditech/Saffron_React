@@ -13,9 +13,8 @@ export default class Loader extends Component {
     }
 
     render() {
-
         const defaultOptions = {
-            loop: true,
+            loop: false,
             autoplay: true,
             animationData: animationData,
             rendererSettings: {
@@ -24,12 +23,9 @@ export default class Loader extends Component {
         };
 
         return (
-
             <div className="loadingPanel">
-                <Lottie options={defaultOptions} height={400}
-                        width={400}/>
+                <Lottie options={defaultOptions} height={400} width={400}/>
             </div>
-
         )
     }
 }

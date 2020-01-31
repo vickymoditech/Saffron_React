@@ -46,30 +46,35 @@ class TeamListModel extends Component {
                     contentClassName="change-password-content"
                     className="password-dialog"
                 >
-                    <div>
-                        <div>
+                    <div className="modal-dialog">
+                        <div className="modal-content">
                             <div className="modal-body">
                                 <div className="product">
                                     <div className="d-flex justify-content-center">
-                                        <h4 className="p-2">Product</h4>
-                                        <i className="fa fa-close"></i>
+                                        <h4 className="p-2"
+                                            style={{"textTransform": "capitalize"}}>{this.props.selectedProduct.title}({this.props.selectedProduct.sex}) </h4>
+                                        <i className="fa fa-close" onClick={this.props.handleClose}></i>
                                     </div>
                                     <div className="products p-2">
                                         {this.props.TeamList.map((team, index) => (
-                                            <div className="product_details d-flex align-items-center p-2 m-2" onClick={() => this.props.SelectTeamMember(team)} key={index}>
+                                            <div className="product_details d-flex align-items-center p-2 m-2"
+                                                 onClick={() => this.props.SelectTeamMember(team)} key={index}>
                                                 <ImageLoader
                                                     src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url}>
                                                     <img className="img-fluid" alt="team1"/>
-                                                    <img src="/assets/Images/NoImages.png" alt="team1" className="img-fluid"/>
-                                                    <img src="/assets/Images/s_loader.gif" alt="team1" className="img-fluid"/>
+                                                    <img src="/assets/Images/NoImages.png" alt="team1"
+                                                         className="img-fluid"/>
+                                                    <img src="/assets/Images/s_loader.gif" alt="team1"
+                                                         className="img-fluid"/>
                                                 </ImageLoader>
-                                                <h5 className="ml-2">{team.first_name} {team.last_name}</h5>
+                                                <h5 className="ml-2"
+                                                    style={{"textTransform": "capitalize"}}>{team.first_name} {team.last_name}</h5>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
-                                {this.props.VisibleButton() && <button onClick={this.props.AddCart}> Add Cart</button>}
-                                <button onClick={this.props.handleClose}> Close</button>
+                                <button onClick={this.props.AddCart} disabled={!this.props.VisibleButton()}> Add Cart
+                                </button>
                             </div>
                         </div>
                     </div>
