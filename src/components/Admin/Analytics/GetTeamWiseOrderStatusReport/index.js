@@ -48,7 +48,7 @@ export default class GetTeamWiseOrderStatusReport extends Component {
 
         return (
             <div>
-                <div className="col-lg-6 col-xs-12 col-sm-12 avg-wait-time-report">
+                <div className="col-md-6 avg-wait-time-report mt-3">
                     <div className="analytics-chart-modal">
                         <div className="analytics-chart-header">
                             <div className="chart-title">

@@ -8,7 +8,7 @@ body{
 
 h2 {
     font-weight: 800;
-    color: #FFD401;
+    color: #fff !important;
 }
 
 .navbar-brand {

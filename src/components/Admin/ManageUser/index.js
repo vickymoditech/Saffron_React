@@ -106,7 +106,7 @@ class ManageUser extends Component {
                     <h2 className="text-white"> Manage Users </h2>
                     <div className="form-group text-center w-25">
                         <div className="col-xs-12 text-center">
-                            <input type="text" className="form-control" name="mobile_number"
+                            <input style={{borderRadius:'5px'}} type="text" className="form-control" name="mobile_number"
                                    value={search} placeholder="Search (8401060120)" onChange={this.handleChange}/>
                         </div>
                     </div>

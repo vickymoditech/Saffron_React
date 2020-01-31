@@ -79,10 +79,12 @@ body.react-confirm-alert-body-element {
   font-size: 12px;
   cursor: pointer;
 }
+
 .dropbox{
     background-color: #313131 !important;
     overflow-y: scroll;
 }
+
 @-webkit-keyframes react-confirm-alert-fadeIn {
   from {
     opacity: 0;

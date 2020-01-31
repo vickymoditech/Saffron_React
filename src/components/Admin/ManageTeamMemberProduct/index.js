@@ -45,10 +45,8 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     userSelect: 'none',
     padding: grid * 2,
     margin: `0 0 ${grid}px 0`,
-
     // change background colour if dragging
     background: isDragging ? '#ffd204' : 'white',
-
     // styles we need to apply on draggables
     ...draggableStyle
 });
@@ -56,6 +54,8 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? 'lightblue' : 'rgba(0,0,0,.87)',
     padding: grid,
+    height:450,
+    overflowY:'scroll',
     width: 250
 });
 
@@ -251,7 +251,7 @@ class ManageTeamMemberProduct extends Component {
                 <NotificationSystem ref="notificationSystem"/>
                 <div className="container tab-bg-container">
                     <div className="d-flex justify-content-between">
-                    <h2> Manage products for team </h2>
+                    <h2 style={{color:'white'}}> Manage products for team </h2>
                         <div className="w-25">
                     <Dropdown placeholder={"Select Team member"} fluid selection
                                   options={options}
