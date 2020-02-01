@@ -79,7 +79,7 @@ class Login extends Component {
                 />
                 <div className="modal-dialog vertical-alignment-center w-75">
                     <div className="modal-content">
-                        <a href="javascript:void(0);" className="logo"></a>
+                        <Link to="/" className="logo"/>
                         <div className="modal-body">
                             <div className="row login-form">
                                 <div className="col-xs-12 text-center">
@@ -113,11 +113,11 @@ class Login extends Component {
                                                                    onChange={this.handleChange}/>
                                                         </div>
                                                         <div className="forgot-link pt-4 d-flex justify-content-between">
-                                                            <Link to="forgot-password"
+                                                            <Link to="/forgot-password"
                                                                   style={{textDecoration: 'underline',color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Forgot
                                                                 Password?</Link>
-                                                            <Link to="/"
-                                                                  style={{color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Home</Link>
+                                                            <Link to="/Registration"
+                                                                  style={{color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Sign Up</Link>
                                                         </div>
                                                         <div className="form-group text-center">
                                                             <button type="submit" className="button_main" onClick={this.handleSubmit}>Sign In

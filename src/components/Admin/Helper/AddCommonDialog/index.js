@@ -149,24 +149,6 @@ class ProductDialog extends Component {
                                                             </div>
                                                         </div>
                                                         }
-
-                                                        {this.props.status.toLowerCase() !== "service" &&
-                                                        < div className="form-group">
-                                                            <div className="input-group mb-3">
-                                                            <span className="input-group-addon">
-                                                            <i className="fa fa-pencil" style={{color:'#bf925b'}}/>
-                                                            </span>
-                                                                <input type="number" name="mobile_number"
-                                                                       placeholder="TeamMember Mobile Number"
-                                                                       className="form-control"
-                                                                       onChange={this.handleChange}
-                                                                       value={this.state.commonData.mobile_number}
-                                                                       style={{borderBottom:'0px'}}/>
-                                                            </div>
-                                                        </div>
-                                                        }
-
-
                                                         <div className="form-group">
                                                             <div className="input-group mb-3">
                                                                 <span className="input-group-addon">
@@ -180,6 +162,23 @@ class ProductDialog extends Component {
                                                                        style={{borderBottom:'0px'}}/>
                                                             </div>
                                                         </div>
+
+                                                        {this.props.status.toLowerCase() !== "service" &&
+                                                        < div className="form-group">
+                                                            <div className="input-group mb-3">
+                                                            <span className="input-group-addon">
+                                                            <i className="fa fa-mobile" style={{color:'#bf925b'}}/>
+                                                            </span>
+                                                                <input type="number" name="mobile_number"
+                                                                       placeholder="TeamMember Mobile Number"
+                                                                       className="form-control"
+                                                                       onChange={this.handleChange}
+                                                                       value={this.state.commonData.mobile_number}
+                                                                       style={{borderBottom:'0px'}}/>
+                                                            </div>
+                                                        </div>
+                                                        }
+
 
                                                         {this.state.image_url !== undefined && this.state.image_url !== null && (
                                                             <img

@@ -158,7 +158,7 @@ class AddDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon pr-4">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="number" name="price"

@@ -99,7 +99,7 @@ class Registration extends Component {
                 />
                 <div className="modal-dialog d-flex m-0 mt-4 align-items-center w-75">
                     <div className="modal-content">
-                        <a href="javascript:void(0);" className="logo"></a>
+                        <Link to="/" className="logo"/>
                         <div className="modal-body">
                             <div className="row login-form">
                                 <div className="col-xs-12 text-center">
@@ -171,9 +171,7 @@ class Registration extends Component {
                                                         </div>
                                                         <div className="forgot-link text-center mt-3">
                                                             <Link to="/Login"
-                                                                  style={{textDecoration: 'underline',color:'#000000',textDecoration:'none', fontFamily:'Josefin Sans'}}>Login</Link> &nbsp;
-                                                            <Link to="/"
-                                                                  style={{textDecoration: 'underline',color:'#000000',textDecoration:'none', fontFamily:'Josefin Sans'}}>Home</Link>
+                                                                  style={{textDecoration: 'underline',color:'#000000',textDecoration:'none', fontFamily:'Josefin Sans'}}> Login! </Link>
                                                         </div>
                                                         <div className="form-group text-center justify-content-center row mt-2">
                                                             <div className="col-xs-12 text-center">

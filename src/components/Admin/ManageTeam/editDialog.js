@@ -99,7 +99,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-lock icon_color"/>
+                                                                    <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="first_name"
                                                                        placeholder="Team member First Name"
@@ -112,7 +112,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-lock icon_color"/>
+                                                                    <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="last_name"
                                                                        placeholder="Team member Last Name"
@@ -125,7 +125,7 @@ class EditDialog extends Component {
                                                         <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
-                                                                    <i className="fa fa-key icon_color"/>
+                                                                    <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="description"
                                                                        placeholder="Service Description"

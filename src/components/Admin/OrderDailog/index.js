@@ -128,10 +128,17 @@ class OrderDialog extends Component {
                                                 Progress
                                             </button> :
                                             !(this.state.column === "finish") &&
-                                            < button type="button" className="btn btn-save"
-                                                     style={{margin: '12px 10px 0 0'}}
+                                            < button type="button"
+                                                     style={{
+                                                         padding: '10px',
+                                                         borderRadius: '5px',
+                                                         border: '0px',
+                                                         backgroundColor: '#bf925d',
+                                                         color: '#000000'
+                                                     }}
                                                      onClick={this.handleDone}>Finish
                                             </button>)}
+                                        &nbsp; &nbsp;
                                         <button type="button"
                                                 style={{
                                                     padding: '10px',
@@ -142,9 +149,16 @@ class OrderDialog extends Component {
                                                 }}
                                                 onClick={this.props.handleClose}>Close
                                         </button>
+                                        &nbsp; &nbsp;
                                         {(this.state.role.toLowerCase() === "admin" && (this.state.column && this.state.column === "finish" && !(order.paymentComplete))) &&
-                                        < button type="button" className="btn btn-save"
-                                                 style={{margin: '12px 10px 0 0'}}
+                                        < button type="button"
+                                                 style={{
+                                                     padding: '10px',
+                                                     borderRadius: '5px',
+                                                     border: '0px',
+                                                     backgroundColor: '#bf925d',
+                                                     color: '#000000'
+                                                 }}
                                                  onClick={this.handleFinishPayment}>Finish Payment
                                         </button>
                                         }

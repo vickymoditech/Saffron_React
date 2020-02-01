@@ -138,9 +138,11 @@ export default class Order extends Component {
                     </div>
                     {
                         column === "running" ?
-                            <div className="status in-progress" style={{backgroundColor: Color}}>in
-                                progress... #{customerName}
-                            </div> : <div className="status pickup">{customerName}
+                            <div className="status in-progress" style={{backgroundColor: Color}}>
+                                {customerName}
+                            </div> :
+                            <div className="status pickup">
+                                {customerName}
                             </div>
                     }
                     <div className="box-right">
