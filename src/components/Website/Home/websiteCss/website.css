@@ -438,6 +438,18 @@ header .video {
     color: #bf925b;
 }
 
+.content {
+    position: relative;
+}
+
+.content .btns {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
 /*footer end*/
 
 /*media query start*/

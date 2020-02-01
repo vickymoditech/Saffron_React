@@ -17,10 +17,15 @@ class Home extends Component {
     render() {
         return (
             <div className="mt-5 pt-md-4 pt-3">
-                <div className="overlay"></div>
-                <video playsInline="playsinline" autoPlay="autoplay" muted="muted" className="w-100" loop="loop">
-                    <source src="assets/Video/saffron.webm" type="video/webm"/>
-                </video>
+                <div className="content">
+                    <div className="overlay"></div>
+                    <video playsInline="playsinline" autoPlay="autoplay" muted="muted" className="w-100" loop="loop">
+                        <source src="assets/Video/saffron.webm" type="video/webm"/>
+                    </video>
+                    <div className="d-flex flex-wrap btns">
+                        <button type="button" className="btn mr-3">Online Booking</button>
+                    </div>
+                </div>
                 <ServiceGrid serviceList={this.props.serviceList}/>
                 <MiddleCard/>
                 <ImageGrid galleryList={this.props.galleryList}/>

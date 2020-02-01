@@ -16,9 +16,7 @@ import {
     USERPROFILE_DEFAULT_CLEAR,
 } from '../constants/actionTypes';
 import _ from 'lodash';
-
 import initialState from './initialState';
-import ENVIRONMENT_VARIABLES from "../environment.config";
 
 export default function authReducer(state = initialState.authReducer, action) {
     switch (action.type) {
@@ -72,6 +70,7 @@ export default function authReducer(state = initialState.authReducer, action) {
 
         case PASSWORD_CHANGE_SUCCESS:
 
+            let BasketGeneratorProducts = localStorage.getItem('BasketGeneratorProducts');
             localStorage.removeItem('accessToken');
             localStorage.removeItem('userProfile');
             localStorage.removeItem('userAvatar');
@@ -83,6 +82,7 @@ export default function authReducer(state = initialState.authReducer, action) {
             localStorage.setItem("accessToken", action.data.accessToken);
             localStorage.setItem("userProfile", JSON.stringify(userProfile.user));
             localStorage.setItem("userAvatar", userAvatar);
+            localStorage.setItem("BasketGeneratorProducts", BasketGeneratorProducts);
 
             return Object.assign({}, state, {
                 isPasswordChanged: true,
@@ -111,7 +111,7 @@ export default function authReducer(state = initialState.authReducer, action) {
 
         case REGISTRATION_SUCCESS:
 
-            const BasketGeneratorProducts = localStorage.getItem('BasketGeneratorProducts');
+            BasketGeneratorProducts = localStorage.getItem('BasketGeneratorProducts');
             localStorage.removeItem('accessToken');
             localStorage.removeItem('userProfile');
             localStorage.removeItem('userAvatar');
