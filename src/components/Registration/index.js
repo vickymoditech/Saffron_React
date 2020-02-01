@@ -47,17 +47,17 @@ class Registration extends Component {
         if (this.state.credentials.password.trim() !== "" && this.state.credentials.confirm_password.trim() !== "" && this.state.credentials.first_name.trim() !== "" && this.state.credentials.last_name.trim() !== "" && this.state.credentials.mobile_number.trim() !== "") {
             var check = true;
             if (!/^[a-zA-Z]+$/.test(this.state.credentials.first_name.trim())) {
-                let toastId = this.notify("Invalid First Name; must be character");
+                let toastId = this.notify("Invalid First Name; Must be Character");
                 this.setState({toastId: toastId});
                 check = false;
             }
             if (!/^[a-zA-Z]+$/.test(this.state.credentials.last_name.trim())) {
-                let toastId = this.notify("Invalid Last Name; must be character");
+                let toastId = this.notify("Invalid Last Name; Must be Character");
                 this.setState({toastId: toastId});
                 check = false;
             }
             if (!/^\d{10}$/.test(this.state.credentials.mobile_number.trim())) {
-                let toastId = this.notify("Invalid Phone Number; must be 10 digits");
+                let toastId = this.notify("Invalid Phone Number; Must be 10 Digits");
                 this.setState({toastId: toastId});
                 check = false;
             }
@@ -65,12 +65,12 @@ class Registration extends Component {
                 if (this.state.credentials.password.trim() === this.state.credentials.confirm_password.trim()) {
                     this.props.actions.auth.registrationUser(this.state.credentials);
                 } else {
-                    let toastId = this.notify("Please check your confirm password");
+                    let toastId = this.notify("Password And Confirm Password Both are not same Please check it.");
                     this.setState({toastId: toastId});
                 }
             }
         } else {
-            let toastId = this.notify("All the fields are required");
+            let toastId = this.notify("All Fields Are Required Please check it.");
             this.setState({toastId: toastId});
         }
     };
@@ -113,7 +113,7 @@ class Registration extends Component {
                                                 <div id="loginForm">
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon d-flex align-items-center pr-4">
+                                                        <span className="input-group-addon d-flex align-items-center">
                                                             <i className="fa fa-user icon_color"></i>
                                                         </span>
                                                             <input type="text" value={this.state.credentials.first_name}
@@ -124,7 +124,7 @@ class Registration extends Component {
                                                     </div>
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon d-flex align-items-center pr-4">
+                                                        <span className="input-group-addon d-flex align-items-center">
                                                             <i className="fa fa-user icon_color"></i>
                                                         </span>
                                                             <input type="text" value={this.state.credentials.last_name}
@@ -135,8 +135,8 @@ class Registration extends Component {
                                                     </div>
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-user icon_color"></i>
+                                                        <span className="input-group-addon d-flex align-items-center">
+                                                            <i className="fa fa-mobile icon_color"></i>
                                                         </span>
                                                             <input type="number"
                                                                    value={this.state.credentials.mobile_number}
@@ -147,8 +147,8 @@ class Registration extends Component {
                                                     </div>
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon d-flex align-items-center pr-4">
-                                                            <i className="fa fa-user icon_color"></i>
+                                                        <span className="input-group-addon d-flex align-items-center">
+                                                            <i className="fa fa-lock icon_color"></i>
                                                         </span>
                                                             <input type="password"
                                                                    value={this.state.credentials.password}
@@ -160,7 +160,7 @@ class Registration extends Component {
                                                     </div>
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon d-flex align-items-center pr-4">
+                                                        <span className="input-group-addon d-flex align-items-center">
                                                             <i className="fa fa-lock icon_color"></i></span>
                                                             <input type="password"
                                                                    value={this.state.credentials.confirm_password}
@@ -170,8 +170,7 @@ class Registration extends Component {
                                                                    onChange={this.handleChange}/>
                                                         </div>
                                                         <div className="forgot-link text-center mt-3">
-                                                            <Link to="/Login"
-                                                                  style={{textDecoration: 'underline',color:'#000000',textDecoration:'none', fontFamily:'Josefin Sans'}}> Login! </Link>
+                                                            <p> Do have an account? <Link to="/Login" style={{textDecoration: 'underline',color:'#000000',textDecoration:'none', fontFamily:'Josefin Sans'}}> Sign In </Link></p>
                                                         </div>
                                                         <div className="form-group text-center justify-content-center row mt-2">
                                                             <div className="col-xs-12 text-center">

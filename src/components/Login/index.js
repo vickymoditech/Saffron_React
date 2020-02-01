@@ -93,7 +93,7 @@ class Login extends Component {
                                                 <div id="loginForm">
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon pr-4">
+                                                        <span className="input-group-addon">
                                                             <i className="fa fa-user icon_color"></i>
                                                         </span>
                                                             <input type="number" value={this.state.credentials.email}
@@ -104,7 +104,7 @@ class Login extends Component {
                                                     </div>
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon pr-4">
+                                                        <span className="input-group-addon">
                                                             <i className="fa fa-lock icon_color"></i></span>
                                                             <input type="password"
                                                                    value={this.state.credentials.password}
@@ -116,8 +116,7 @@ class Login extends Component {
                                                             <Link to="/forgot-password"
                                                                   style={{textDecoration: 'underline',color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Forgot
                                                                 Password?</Link>
-                                                            <Link to="/Registration"
-                                                                  style={{color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Sign Up</Link>
+                                                            <p>Don't have an account? <Link to="/Registration" style={{color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Sign Up</Link></p>
                                                         </div>
                                                         <div className="form-group text-center">
                                                             <button type="submit" className="button_main" onClick={this.handleSubmit}>Sign In
