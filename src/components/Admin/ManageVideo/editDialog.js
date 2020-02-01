@@ -129,22 +129,6 @@ class EditDialog extends Component {
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
-                                                            <div className="input-group justify-content-center">
-                                                                <div>
-                                                                <input type="radio" name="gender" value="male"
-                                                                       onClick={this.onChange}
-                                                                       checked={sex === 'male'}/> <b
-                                                                style={{'cursor': 'default'}}> Male </b> &nbsp;
-                                                                </div>
-                                                                <div>
-                                                                <input type="radio" name="gender" value="female"
-                                                                       onClick={this.onChange}
-                                                                       checked={sex === 'female'}/> <b
-                                                                style={{'cursor': 'default'}}> Female </b>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group">
                                                             <div className="input-group">
                                                                 <span className="input-group-addon">
                                                                     <i className="fa fa-pencil icon_color"/>
@@ -170,7 +154,22 @@ class EditDialog extends Component {
                                                                        value={this.state.commonData.video_url}/>
                                                             </div>
                                                         </div>
-
+                                                        <div className="form-group">
+                                                            <div className="input-group justify-content-center">
+                                                                <div>
+                                                                    <input type="radio" name="gender" value="male"
+                                                                           onClick={this.onChange}
+                                                                           checked={sex === 'male'}/> <b
+                                                                    style={{'cursor': 'default'}}> Male </b> &nbsp;
+                                                                </div>
+                                                                <div>
+                                                                    <input type="radio" name="gender" value="female"
+                                                                           onClick={this.onChange}
+                                                                           checked={sex === 'female'}/> <b
+                                                                    style={{'cursor': 'default'}}> Female </b>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
                                                         <div className="form-group">
                                                             <div className="form-group text-center row">

@@ -216,11 +216,11 @@ class ManageProduct extends Component {
                                                          alt={value.title} />
                                                 </ImageLoader>
                                             </td>
-                                            <td>{value.title}</td>
-                                            <td>{value.description}</td>
+                                            <td style={{"textTransform": "capitalize"}}>{value.title}</td>
+                                            <td style={{"textTransform": "capitalize"}}>{value.description}</td>
                                             <td>{value.price}</td>
                                             <td>{value.offerPrice}</td>
-                                            <td>{value.sex}</td>
+                                            <td style={{"textTransform": "capitalize"}}>{value.sex}</td>
                                             <td style={{textAlign: "center"}}>
                                                 <button type="button" className="btn btn-primary" key={index}
                                                         onClick={event => {

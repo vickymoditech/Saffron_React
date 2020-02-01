@@ -137,9 +137,9 @@ class ManageUser extends Component {
                                                      alt={value.title} />
                                             </ImageLoader>
                                         </td>
-                                        <td>{value.first_name} {value.last_name}</td>
+                                        <td style={{"textTransform": "capitalize"}}>{value.first_name} {value.last_name}</td>
                                         <td>{value.contact_no}</td>
-                                        <td>{value.role}</td>
+                                        <td style={{"textTransform": "capitalize"}}>{value.role}</td>
                                         <td>{value.saffronPoint}</td>
                                         <td style={{textAlign: "center"}}>
                                             <Switch value={value.block}

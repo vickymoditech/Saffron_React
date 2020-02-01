@@ -137,17 +137,17 @@ class ManageTeam extends Component {
                                                      alt={value.first_name} />
                                             </ImageLoader>
                                         </td>
-                                        <td>{value.first_name + " " + value.last_name}</td>
-                                        <td>{value.description}</td>
+                                        <td style={{"textTransform": "capitalize"}}>{value.first_name + " " + value.last_name}</td>
+                                        <td style={{"textTransform": "capitalize"}}>{value.description}</td>
                                         <td style={{textAlign: "center"}}>
                                             <button type="button" className="btn btn-primary" key={index}
-                                                    onClick={event => {
+                                                    onClick={() => {
                                                         this.getSpecificTeam(value.id)
                                                     }}>Edit
                                             </button>
                                             &nbsp;
                                             <button type="button" className="btn btn-danger" key={value.id}
-                                                    onClick={event => {
+                                                    onClick={() => {
                                                         this.removeSpecificTeam(value.id)
                                                     }}>Delete
                                             </button>

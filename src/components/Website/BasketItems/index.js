@@ -149,8 +149,7 @@ class BasketItemsList extends Component {
                                             <Link to="/Login"> <span className="btn btn-default mr-2">Login</span> </Link>
                                             <Link to="/Registration"> <span className="btn btn-primary mr-2">Sing up</span>
                                             </Link></div>) :
-                                    <button type="button" className="btn btn-success" onClick={this.getTimeSlots}> Place
-                                        order</button>
+                                    <button type="button" className="btn btn-success" onClick={this.getTimeSlots}> Choose Your Time </button>
                                 }
                             </div>
                             <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">

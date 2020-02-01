@@ -289,7 +289,7 @@ class ManageTeamMemberProduct extends Component {
                                                             <img src="/assets/Images/s_loader.gif" style={{height: '50px', width: '50px'}}
                                                                  alt={item.title} />
                                                         </ImageLoader>
-                                                        {item.title}
+                                                        <p style={{"textTransform": "capitalize"}}>{item.title}</p>
                                                         <Dropdown placeholder="Select ApproxTime" fluid
                                                                   selection
                                                                   options={(minutes.find((data) => data.productId === item.id)).minute}
@@ -324,17 +324,18 @@ class ManageTeamMemberProduct extends Component {
                                                             snapshot.isDragging,
                                                             provided.draggableProps.style
                                                         )}>
-                                                        {item.image_url !== undefined ? (
-                                                            <img src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}
-                                                                 width="50px"
-                                                                 height="50px"/>) : (
-                                                            <img
-                                                                src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                                width="50px"
-                                                                height="50px"/>)}
-                                                        {item.title}
-                                                        {(minutes.find((data) => data.productId === item.id)) ? (minutes.find((data) => data.productId === item.id)).approxTime : (item.approxTime)}
-                                                        mins
+
+                                                        <ImageLoader
+                                                            src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}>
+                                                            <img className="img-fluid" style={{height: '50px', width: '50px'}}
+                                                                 alt={item.title}/>
+                                                            <img src="/assets/Images/NoImages.png" style={{height: '50px', width: '50px'}}
+                                                                 alt={item.title} />
+                                                            <img src="/assets/Images/s_loader.gif" style={{height: '50px', width: '50px'}}
+                                                                 alt={item.title} />
+                                                        </ImageLoader>
+                                                        <p style={{"textTransform": "capitalize"}}>{item.title}</p>
+                                                        {(minutes.find((data) => data.productId === item.id)) ? (minutes.find((data) => data.productId === item.id)).approxTime : (item.approxTime)}mins
                                                     </div>
                                                 )}
                                             </Draggable>

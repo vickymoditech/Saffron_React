@@ -184,8 +184,9 @@ class ProductDialog extends Component {
                                                         {this.state.image_url !== undefined && this.state.image_url !== null && (
                                                             <img
                                                                 src={this.state.image_url}
-                                                                width="150px"
-                                                                height="150px"/>)}
+                                                                width="90px"
+                                                                height="90px"/>)}
+
                                                         <input type="file" accept="image/*" onChange={this.handleSelectedFile}/>
 
                                                         <div className="form-group">

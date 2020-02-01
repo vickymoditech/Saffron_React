@@ -175,9 +175,9 @@ class ManageVideo extends Component {
                                     {videoList && videoList.map((value, index) => (
                                         <tr key={index}>
                                             <td>{value.video_url}</td>
-                                            <td>{value.title}</td>
-                                            <td>{value.description}</td>
-                                            <td>{value.sex}</td>
+                                            <td style={{"textTransform": "capitalize"}}>{value.title}</td>
+                                            <td style={{"textTransform": "capitalize"}}>{value.description}</td>
+                                            <td style={{"textTransform": "capitalize"}}>{value.sex}</td>
                                             <td style={{textAlign: "center"}}>
                                                 <button type="button" className="btn btn-primary" key={index}
                                                         onClick={event => {

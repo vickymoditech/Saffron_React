@@ -2,7 +2,8 @@ import decode from 'jwt-decode';
 
 let accessToken = localStorage.getItem('accessToken');
 let BasketGeneratorProducts = null;
-if (localStorage.getItem('BasketGeneratorProducts'))
+
+if (localStorage.getItem('BasketGeneratorProducts') !== "null" && localStorage.getItem('BasketGeneratorProducts'))
     BasketGeneratorProducts = JSON.parse(localStorage.getItem('BasketGeneratorProducts')).BasketList;
 else
     BasketGeneratorProducts = [];

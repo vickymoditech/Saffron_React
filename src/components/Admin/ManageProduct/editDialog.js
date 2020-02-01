@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as teamProductManageAction from '../../../actions/teamProductManageAction';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import {Dropdown} from 'semantic-ui-react';
+import ImageLoader from 'react-load-image';
 
 const style = {
     titleStyle: {
@@ -191,15 +192,16 @@ class EditDialog extends Component {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        {this.state.image_url !== undefined ? (
-                                                            <img
-                                                                src={this.state.image_url}
-                                                                width="90px"
-                                                                height="90px"/>) : (
-                                                            <img
-                                                                src={ENVIRONMENT_VARIABLES.PHOTO_URL + "images/UserAvatar/demo.png"}
-                                                                width="90px"
-                                                                height="90px"/>)}
+
+                                                        <ImageLoader
+                                                            src={this.state.image_url}>
+                                                            <img className="img-fluid" style={{height: '90px', width: '90px'}}
+                                                                 alt={"image"}/>
+                                                            <img src="/assets/Images/NoImages.png" style={{height: '90px', width: '90px'}}
+                                                                 alt={"image"} />
+                                                            <img src="/assets/Images/s_loader.gif" style={{height: '90px', width: '90px'}}
+                                                                 alt={"image"} />
+                                                        </ImageLoader>
                                                         <input type="file" accept="image/*" onChange={this.handleSelectedFile}/>
 
                                                         <div className="form-group">

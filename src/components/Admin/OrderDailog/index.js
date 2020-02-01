@@ -81,8 +81,8 @@ class OrderDialog extends Component {
                                     <h5 className="text-center my-2">{order.customerName} ({order.customer_id})</h5>
                                     {this.state.role.toLowerCase() === "admin" ? <div>
                                         <div className="d-flex justify-content-between p-3">
-                                            <h5>Product name</h5>
-                                            <h5>Team name</h5>
+                                            <h5>Product</h5>
+                                            <h5>Team</h5>
                                             <h5>Price</h5>
                                         </div>
                                         <div className="data p-2">
@@ -99,7 +99,7 @@ class OrderDialog extends Component {
                                         </div>
                                     </div> : <div>
                                         <div className="d-flex justify-content-between p-2">
-                                            <h5>Product name</h5>
+                                            <h5>Product</h5>
                                             <h5>Price</h5>
                                         </div>
                                         <div className="data p-2">

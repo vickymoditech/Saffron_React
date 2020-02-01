@@ -186,18 +186,18 @@ class ManageGallery extends Component {
                                                          alt={value.title} />
                                                 </ImageLoader>
                                             </td>
-                                            <td>{value.title}</td>
-                                            <td>{value.description}</td>
-                                            <td>{value.sex}</td>
+                                            <td style={{"textTransform": "capitalize"}}>{value.title}</td>
+                                            <td style={{"textTransform": "capitalize"}}>{value.description}</td>
+                                            <td style={{"textTransform": "capitalize"}}>{value.sex}</td>
                                             <td style={{textAlign: "center"}}>
                                                 <button type="button" className="btn btn-primary" key={index}
-                                                        onClick={event => {
+                                                        onClick={() => {
                                                             this.getSpecificService(value.id)
                                                         }}>Edit
                                                 </button>
                                                 &nbsp;
                                                 <button type="button" className="btn btn-danger" key={value.id}
-                                                        onClick={event => {
+                                                        onClick={() => {
                                                             this.removeSpecificService(value.id)
                                                         }}>Delete
                                                 </button>
