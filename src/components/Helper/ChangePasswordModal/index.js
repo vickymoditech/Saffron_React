@@ -10,23 +10,6 @@ const style = {
         paddingLeft: 15,
         paddingRight: '15px',
         borderBottom: '1px solid #F5F5F5'
-    },
-    actionsContainerStyle: {
-        textAlign: 'right',
-        padding: '5 5'
-    },
-    leftCloseButton: {
-        borderRadius: '50%',
-        boxShadow: '0px 2px 9px -2px #000',
-        float: 'right',
-        backgroundColor: '#fff',
-        width: 43,
-        height: 43,
-        fontSize: 25,
-        fontFamily: 'FontAwesome',
-        color: '#c53140',
-        marginTop: '-6px',
-        padding: "9px 12px"
     }
 };
 
@@ -55,10 +38,10 @@ class ChangePasswordModal extends Component {
     handleSubmit = () => {
         const {currentPassword, newPassword, confirmPassword} = this.state.changePasswordData;
         if (currentPassword.trim() === "" || newPassword.trim() === "" || confirmPassword.trim() === "") {
-            this.props.notify("all Filed are Required", 'error');
+            this.props.notify("All Fields are Required Please check it.", 'error');
         }
         else if (newPassword.trim() !== confirmPassword.trim()) {
-            this.props.notify("new password and confirm password are must be same", 'error');
+            this.props.notify("New Password and Confirm Password are must be same", 'error');
         }
         else {
             this.setState({changePasswordLoading: true});
@@ -117,59 +100,59 @@ class ChangePasswordModal extends Component {
                                         <div className="row">
                                             <div className="col-12">
                                                 <div className="d-flex justify-content-center">
-                                                <form className="w-100">
-                                                    <div id="loginForm">
-                                                        <div className="form-group">
-                                                            <div className="input-group">
-                                                                <span className="input-group-addon pr-4">
+                                                    <form className="w-100">
+                                                        <div id="loginForm">
+                                                            <div className="form-group">
+                                                                <div className="input-group">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-lock icon_color"/>
                                                                 </span>
-                                                                <input type="password" name="currentPassword"
-                                                                       placeholder="Current Password"
-                                                                       className="form-control"
-                                                                       onChange={this.handleChange}
-                                                                       value={this.state.changePasswordData.currentPassword}/>
-                                                            </div>
+                                                                    <input type="password" name="currentPassword"
+                                                                           placeholder="Current Password"
+                                                                           className="form-control"
+                                                                           onChange={this.handleChange}
+                                                                           value={this.state.changePasswordData.currentPassword}/>
+                                                                </div>
 
-                                                        </div>
-                                                        <div className="form-group">
-                                                            <div className="input-group">
-                                                                <span className="input-group-addon pr-4">
+                                                            </div>
+                                                            <div className="form-group">
+                                                                <div className="input-group">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-key icon_color"/>
                                                                 </span>
-                                                                <input type="password" name="newPassword"
-                                                                       placeholder="New Password"
-                                                                       className="form-control"
-                                                                       onChange={this.handleChange}
-                                                                       value={this.state.changePasswordData.newPassword}/>
+                                                                    <input type="password" name="newPassword"
+                                                                           placeholder="New Password"
+                                                                           className="form-control"
+                                                                           onChange={this.handleChange}
+                                                                           value={this.state.changePasswordData.newPassword}/>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div className="form-group">
-                                                            <div className="input-group">
-                                                                <span className="input-group-addon pr-4">
+                                                            <div className="form-group">
+                                                                <div className="input-group">
+                                                                <span className="input-group-addon">
                                                                     <i className="fa fa-key icon_color"/>
                                                                 </span>
-                                                                <input type="password" name="confirmPassword"
-                                                                       placeholder="Confirm Password"
-                                                                       className="form-control"
-                                                                       onChange={this.handleChange}
-                                                                       value={this.state.changePasswordData.confirmPassword}/>
-                                                            </div>
-                                                            <div className="form-group text-center row">
-                                                                <div className="col-xs-12 text-center">
-                                                                    <button type="button" className="button_main"
-                                                                            style={{margin: '12px 10px 0 0'}}
-                                                                            onClick={this.handleSubmit}>Submit
-                                                                    </button>
-                                                                    <button type="button" className="button_main"
-                                                                            style={{margin: '12px 10px 0 0'}}
-                                                                            onClick={this.props.handleClose}>Cancel
-                                                                    </button>
+                                                                    <input type="password" name="confirmPassword"
+                                                                           placeholder="Confirm Password"
+                                                                           className="form-control"
+                                                                           onChange={this.handleChange}
+                                                                           value={this.state.changePasswordData.confirmPassword}/>
+                                                                </div>
+                                                                <div className="form-group text-center row">
+                                                                    <div className="col-xs-12 text-center">
+                                                                        <button type="button" className="button_main"
+                                                                                style={{margin: '12px 10px 0 0'}}
+                                                                                onClick={this.handleSubmit}>Submit
+                                                                        </button>
+                                                                        <button type="button" className="button_main"
+                                                                                style={{margin: '12px 10px 0 0'}}
+                                                                                onClick={this.props.handleClose}>Cancel
+                                                                        </button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </form>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

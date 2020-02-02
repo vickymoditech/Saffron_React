@@ -28,7 +28,7 @@ class App extends Component {
         this.state.notificationSystem.addNotification({
             message: message,
             level: level,
-            autoDismiss: 5
+            autoDismiss: 25
         });
     };
 

@@ -50,7 +50,7 @@ class Gallery extends Component {
     };
 
     render() {
-        const {photos,current_service} = this.state;
+        const {photos} = this.state;
         let options = [];
         this.props.serviceList.map((service, index) => {
             let option = {

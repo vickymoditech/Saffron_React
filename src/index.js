@@ -14,7 +14,6 @@ import decode from 'jwt-decode';
 // application configuration.
 import Website from './Website';
 import DashBoard from './DashBoard';
-
 import rootReducer from './reducers';
 import initialState from '../src/reducers/initialState';
 import NotFound from '../src/components/NotFound';
@@ -24,7 +23,6 @@ import Registration from '../src/components/Registration';
 import Gallery from './components/Website/Gallery';
 import ProductList from './components/Website/ProductList';
 import VideoGalleryMain from './components/Website/VideoGallery';
-import VideoGallery from './components/Website/VideoGallery/index1';
 import Parents from './components/Helper/Profile/Parents';
 import Profile from './components/Helper/Profile';
 import TodayCompleteOrders from './components/Helper/Profile/TodayCompleteOrders';
@@ -265,9 +263,7 @@ ReactDOM.render(<Provider store={store}>
                 </Route>
                 <Route path="/ProductList" component={ProductList} exact={true}/>
                 <Route path="/BasketItems" component={BasketItemsList} exact={true}/>
-                <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}>
-                    <Route path="/VideoGallery/demo" component={VideoGallery}/>
-                </Route>
+                <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}/>
             </Route>
             <Route path="*" component={NotFound} exact={true}/>
         </Router>

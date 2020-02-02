@@ -96,7 +96,7 @@ class Profile extends Component {
             message: message,
             level: level,
             position: 'bc',
-            autoDismiss: 3
+            autoDismiss: 25
         });
     };
 
@@ -138,86 +138,106 @@ class Profile extends Component {
                     notify={this.addNotifications}
                 />}
                 <NotificationSystem ref="notificationSystem"/>
-                <div className="container tab-bg-container d-flex flex-column justify-content-start h-100">
-                    <div className="row d-flex justify-content-center">
-                        <div className="form-wrapper col-md-8 p-4" style={{backgroundColor: '#000000'}}>
-                            <form className="form-horizontal w-100 bg-transparent">
-                                <div className="form-group">
-                                    <div className="col-sm-12">
-                                        <div className="row">
-                                            <div className="col-12 d-flex justify-content-center align-items-center">
-                                                <ImageLoader
-                                                    src={this.state.image_url}>
-                                                    <img className="img-fluid" style={{height: '100px', width: '100px'}}
-                                                         alt="image"/>
-                                                    <img src="/assets/Images/NoImages.png" style={{height: '100px', width: '100px'}}
-                                                         alt="image" />
-                                                    <img src="/assets/Images/s_loader.gif" style={{height: '100px', width: '100px'}}
-                                                         alt="image" />
-                                                </ImageLoader>
-                                                <input type="file" accept="image/*" onChange={this.handleSelectedFile}/>
-                                            </div>
-                                        </div>
-
-                                        <div className="row">
-                                            <div className="col-sm-6 mt-3">
-                                                <span className="input-group-addon">
-                                                    <i className="fa fa-user icon_color"/>
-                                                </span>
-                                                <input type="text" className="form-control" name="first_name"
-                                                       value={first_name}
-                                                       placeholder="First Name" onChange={this.handleChange}/>
-                                            </div>
-                                            <div className="col-sm-6 mt-3">
-                                                <span className="input-group-addon">
-                                                    <i className="fa fa-user icon_color"/>
-                                                </span>
-                                                <input type="text" className="form-control" name="last_name"
-                                                       value={last_name} placeholder="Last Name"
-                                                       onChange={this.handleChange}/>
-                                            </div>
-                                        </div>
-
-                                        <br/>
-                                        <div className="row">
-                                            <div className="col-sm-6">
-                                                <span className="input-group-addon">
-                                                    <i className="fa fa-key icon_color"/>
-                                                </span>
-                                                <input type="number" className="form-control" name="userId"
-                                                       value={userId}
-                                                       placeholder="userId" disabled/>
-                                            </div>
-                                            <div className="col-sm-6">
-                                                <span className="input-group-addon">
-                                                    <i className="fa fa-mobile icon_color"/>
-                                                </span>
-                                                <input type="number" className="form-control" name="mobile_number"
-                                                       value={mobile_number} placeholder="Contact No"
-                                                       onChange={this.handleChange}/>
+                <div className="modal-dialog d-flex m-0 mt-4 align-items-center w-75">
+                    <div className="modal-content">
+                        <div className="modal-body">
+                            <div className="row login-form">
+                                <div className="panel-body container">
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <div className="d-flex justify-content-center">
+                                                <form className="w-100">
+                                                    <div id="loginForm">
+                                                        <div className="form-group">
+                                                            <ImageLoader
+                                                                src={this.state.image_url}>
+                                                                <img className="img-fluid"
+                                                                     style={{height: '100px', width: '100px'}}
+                                                                     alt="image"/>
+                                                                <img src="/assets/Images/NoImages.png"
+                                                                     style={{height: '100px', width: '100px'}}
+                                                                     alt="image"/>
+                                                                <img src="/assets/Images/s_loader.gif"
+                                                                     style={{height: '100px', width: '100px'}}
+                                                                     alt="image"/>
+                                                            </ImageLoader>
+                                                            <input type="file" accept="image/*"
+                                                                   onChange={this.handleSelectedFile}/>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <div className="input-group">
+                                                        <span className="input-group-addon d-flex align-items-center">
+                                                            <i className="fa fa-user icon_color"></i>
+                                                        </span>
+                                                                <input type="text" className="form-control"
+                                                                       name="first_name"
+                                                                       value={first_name}
+                                                                       placeholder="First Name"
+                                                                       onChange={this.handleChange}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <div className="input-group">
+                                                        <span className="input-group-addon d-flex align-items-center">
+                                                            <i className="fa fa-user icon_color"></i>
+                                                        </span>
+                                                                <input type="text" className="form-control"
+                                                                       name="last_name"
+                                                                       value={last_name} placeholder="Last Name"
+                                                                       onChange={this.handleChange}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <div className="input-group">
+                                                        <span className="input-group-addon d-flex align-items-center">
+                                                            <i className="fa fa-mobile icon_color"></i>
+                                                        </span>
+                                                                <input type="number" className="form-control"
+                                                                       name="mobile_number"
+                                                                       value={mobile_number} placeholder="Contact No"
+                                                                       onChange={this.handleChange}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <div className="input-group">
+                                                        <span className="input-group-addon d-flex align-items-center">
+                                                            <i className="fa fa-key icon_color"></i>
+                                                        </span>
+                                                                <input type="number" className="form-control"
+                                                                       name="userId"
+                                                                       value={userId}
+                                                                       placeholder="userId" disabled/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <div className="input-group">
+                                                        <span className="input-group-addon d-flex align-items-center">
+                                                            <i className="fa fa-envelope-o icon_color"></i>
+                                                        </span>
+                                                                <input type="email" className="form-control"
+                                                                       value={emailAddress}
+                                                                       name="emailAddress" placeholder="Email"
+                                                                       onChange={this.handleChange}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <div
+                                                                className="col-sm-12 text-center button-div mt-3 d-flex justify-content-center">
+                                                                <a className="text-white mr-3 button_main2 p-3"
+                                                                   onClick={this.handleEditConfirm}
+                                                                >Update User</a>
+                                                                <a className="text-white button_main2 p-3"
+                                                                   onClick={this.handleOpen}
+                                                                >Change Password</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="form-group">
-                                    <div className="col-sm-12 mt-3">
-                                        <span className="input-group-addon">
-                                            <i className="fa fa-envelope-o icon_color"/>
-                                        </span>
-                                        <input type="email" className="form-control" value={emailAddress}
-                                               name="emailAddress" placeholder="Email" onChange={this.handleChange}/>
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <div
-                                        className="col-sm-12 text-center button-div mt-3 d-flex justify-content-center">
-                                        <a className="text-white mr-3 button_main2 p-3" onClick={this.handleEditConfirm}
-                                        >Update User</a>
-                                        <a className="text-white button_main2 p-3" onClick={this.handleOpen}
-                                        >Change Password</a>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

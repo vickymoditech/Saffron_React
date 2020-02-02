@@ -113,15 +113,15 @@ class Login extends Component {
                                                                    onChange={this.handleChange}/>
                                                         </div>
                                                         <div className="forgot-link pt-4 d-flex justify-content-between">
-                                                            <Link to="/forgot-password"
-                                                                  style={{textDecoration: 'underline',color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Forgot
-                                                                Password?</Link>
                                                             <p>Don't have an account? <Link to="/Registration" style={{color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Sign Up</Link></p>
                                                         </div>
                                                         <div className="form-group text-center">
                                                             <button type="submit" className="button_main" onClick={this.handleSubmit}>Sign In
                                                             </button>
                                                         </div>
+                                                        <Link to="/forgot-password"
+                                                              style={{textDecoration: 'underline',color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Forgot
+                                                            Password?</Link>
                                                     </div>
                                                 </div>
                                             </form>
