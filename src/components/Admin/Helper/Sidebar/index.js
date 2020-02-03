@@ -5,14 +5,12 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import decode from 'jwt-decode';
 import NotificationSystem from 'react-notification-system';
-
 import * as websiteAction from '../../../../actions/websiteAction';
-
 import './Sidebar.css';
 
 const stylesDrawer = {
     containerStyle: {
-        backgroundColor: '#1f2b3e',
+        backgroundColor: '#bf925d',
         color: "#fff"
     }
 };
@@ -30,7 +28,7 @@ const stylesMenu = {
 const ListStyles = {
     style: {
         textAlign: 'center',
-        color: '#99aecf'
+        color: '#bf925d'
     }
 };
 
@@ -140,14 +138,14 @@ class Sidebar extends Component {
                                     <i className="fa fa-calendar"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Time Slots</div>
                                 </ListItem>
-                            </Link> <Divider/>
+                                </Link> <Divider/>
                                 <Link to="/Dashboard/Analytics" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-pie-chart"/>
                                     <div style={{marginTop: 10}} className="link-hover">Analisys</div>
                                 </ListItem>
-                            </Link><Divider/>
-                                </span>}
+                                </Link><Divider/>
+                            </span>}
                             <Link to="/Dashboard/Profile" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-user-circle-o"/>
@@ -158,7 +156,7 @@ class Sidebar extends Component {
                     </List>
                     <Divider/>
                     <List className="logout-list">
-                        <Link onClick={this.handleLogout} className="link" >
+                        <Link onClick={this.handleLogout} className="link">
                             <ListItem className="sidebar-list bg_color_logout" style={ListStyles.style}>
                                 <i className="fa fa-power-off"/>
                                 <div style={{marginTop: 10}} className="link-hover">Logout</div>

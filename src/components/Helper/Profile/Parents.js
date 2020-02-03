@@ -14,8 +14,6 @@ class Parents extends Component {
     render() {
         return (
             <div style={{marginTop: '90px', marginBottom: '20px'}}>
-                <Link to="/Profile/UserProfile" className="link">User Profile</Link>
-                <Link to="/Profile/TodayCompleteOrders" className="link">your order</Link>
                 {this.props.children}
             </div>
         )

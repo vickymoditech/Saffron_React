@@ -11,6 +11,7 @@ import SuccessLoader from '././components/Helper/SuccessLoader';
 import '././components/Website/Home/websiteCss/website.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Website/Footer';
+import SidebarComponent from './components/Website/Sidebar';
 
 class App extends Component {
 
@@ -18,9 +19,9 @@ class App extends Component {
         super(props);
         this.state = {
             notificationSystem: null,
-            visible: false,
             theposition: 0,
             orderPlace: false,
+            open: false,
         }
     }
 
@@ -68,21 +69,20 @@ class App extends Component {
         this.props.actions.websiteAction.getWebsiteHome();
     }
 
-    handleLogoutMobile = () => {
-        this.setState({visible: !this.state.visible});
-        this.props.actions.websiteAction.loggedOut();
-    };
-
     handleLogout = () => {
         this.props.actions.websiteAction.loggedOut();
     };
 
-    toggle = () => {
-        this.setState({visible: !this.state.visible});
-    };
-
     BasketClick = () => {
         browserHistory.push('/BasketItems');
+    };
+
+    openNav = () =>{
+        this.setState({open:true});
+    };
+
+    closeNav = () => {
+        this.setState({open:false});
     };
 
     render() {
@@ -98,27 +98,9 @@ class App extends Component {
                         <div className="container main_menu d-flex justify-content-end">
                             <button className="navbar-toggler text-right" data-toggle="collapse"
                                     data-target="#collapsibleNavbar">
-                                <span className="navbar-toggler-icon" onClick={this.toggle} ></span>
+                                <span className="navbar-toggler-icon" onClick={this.openNav} ></span>
                             </button>
-                            <div className={`collapse ${this.state.visible ? 'navbar-collapse' : ''} menu`}
-                                 id="collapsibleNavbar">
-                                <div className="col-md-5 menu1 text-right">
-                                    <Link to="/" className="mr-md-5" onClick={this.toggle}>HOME</Link>
-                                    <Link to="/Gallery" className="mr-md-5" onClick={this.toggle}>GALLERY</Link>
-                                    <Link to="/ProductList" onClick={this.toggle}>SERVICES</Link>
-                                </div>
-                                <div className="col-md-2 d-md-flex d-none flex-column align-items-md-center logo1">
-                                    <Link to="/"><span>Saffron</span></Link>
-                                </div>
-                                <div className="col-md-5 menu2">
-                                    <Link to="/VideoGallery" onClick={this.toggle}>VIDEOS</Link>
-                                    {!isLoggedIn() && <Link className="ml-md-5" to="/login" onClick={this.toggle}>SIGN IN</Link>}
-                                    {isLoggedIn() &&  <Link className="ml-md-5" onClick={this.handleLogoutMobile} to="/">SIGN OUT</Link>}
-                                    {!isLoggedIn() && <Link to="/Registration" className="ml-md-5" onClick={this.toggle}>SIGN UP</Link>}
-                                    {isLoggedIn() && <Link to="/Profile/UserProfile" className="ml-md-5" onClick={this.toggle}>SETTING</Link>}
-                                    <a href="#" className="ml-md-5">CONTACT</a>
-                                </div>
-                            </div>
+
                             <div className="collapse navbar-collapse menu">
                                 <div className="col-md-5 menu1 text-right d-md-block d-none pt-lg-3">
                                     <Link to="/" className="mr-lg-5 mr-md-3">HOME</Link>
@@ -133,13 +115,13 @@ class App extends Component {
                                     {!isLoggedIn() && <Link className="ml-md-3 ml-lg-5" to="/login">SIGN IN</Link>}
                                     {isLoggedIn() &&  <Link className="ml-md-3 ml-lg-5" onClick={this.handleLogout} to="/">SIGN OUT</Link>}
                                     {!isLoggedIn() && <Link to="/Registration" className="ml-md-3 ml-lg-5">SIGN UP</Link>}
-                                    {isLoggedIn() && <Link to="/Profile/UserProfile" className="ml-md-3 ml-lg-5">SETTING</Link>}
                                     <a href="#" className="ml-lg-5 ml-md-3">CONTACT</a>
                                 </div>
                             </div>
                         </div>
                     </nav>
                 </header>
+                {this.state.open && <SidebarComponent closeNav={this.closeNav} open={this.state.open} logout={this.handleLogout}/>}
                 {this.props.children}
                 {(this.props.BasketVisible === true && BasketProductCount > 0) && <div id="ex3" onClick={this.BasketClick}>
                     <span className="p1 fa-stack fa-5x has-badge" data-count={BasketProductCount}>
@@ -150,6 +132,7 @@ class App extends Component {
                 <Footer/>
                 {this.props.Loading && <Loader/>}
                 {this.state.orderPlace && <SuccessLoader/>}
+                <button onClick={this.openNav}> Open Menu </button>
             </div>
         );
     }
