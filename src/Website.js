@@ -71,6 +71,7 @@ class App extends Component {
 
     handleLogout = () => {
         this.props.actions.websiteAction.loggedOut();
+        this.setState({open:false});
     };
 
     BasketClick = () => {

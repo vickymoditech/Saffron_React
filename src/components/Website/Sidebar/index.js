@@ -58,57 +58,57 @@ class Sidebar extends Component {
                                                                    style={{position: 'absolute', right: 10, top: 10}}/> </span>
                         </ListItem>
                         <div className="menu-left">
-                            <Link to="/" className="link">
+                            <Link onClick={this.props.closeNav} to="/" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">HOME</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Home</div>
                                 </ListItem>
                             </Link><Divider/>
 
-                            <Link to="/Gallery" className="link">
+                            <Link onClick={this.props.closeNav} to="/Gallery" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">GALLERY</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Gallery</div>
                                 </ListItem>
                             </Link><Divider/>
 
-                            <Link to="/ProductList" className="link">
+                            <Link onClick={this.props.closeNav} to="/ProductList" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">SERVICES</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Shop</div>
                                 </ListItem>
                             </Link><Divider/>
 
-                            <Link to="/VideoGallery" className="link">
+                            <Link onClick={this.props.closeNav} to="/VideoGallery" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">VIDEOS</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Videos</div>
                                 </ListItem>
                             </Link><Divider/>
 
-                            {!isLoggedIn() && <span> <Link to="/login" className="link">
+                            {!isLoggedIn() && <span> <Link onClick={this.props.closeNav} to="/login" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">SIGN IN</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Sign In</div>
                                 </ListItem>
                             </Link><Divider/> </span>}
 
-                            {isLoggedIn() && <span> <Link onClick={this.props.logout} to="/" className="link">
-                                <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">SIGN OUT</div>
-                                </ListItem>
-                            </Link><Divider/> </span>}
-
-                            {!isLoggedIn() && <span> < Link to="/Registration" className="link">
+                            {!isLoggedIn() && <span> < Link onClick={this.props.closeNav} to="/Registration" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                 <div style={{marginTop: 10}} className="link-hover">Sign UP</div>
                                 </ListItem>
                                 </Link><Divider/> </span>}
 
-                            {isLoggedIn() && <span><Link to="Profile/UserProfile" className="link">
+                            {isLoggedIn() && <span><Link onClick={this.props.closeNav} to="Profile/UserProfile" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">SETTING</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Settings</div>
                                 </ListItem>
                             </Link><Divider/></span>}
 
-                            {isLoggedIn() && <span> <Link to="Profile/TodayCompleteOrders" className="link">
+                            {isLoggedIn() && <span> <Link onClick={this.props.closeNav} to="Profile/TodayCompleteOrders" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">YOUR ORDERS</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Orders</div>
+                                </ListItem>
+                            </Link><Divider/> </span>}
+
+                            {isLoggedIn() && <span> <Link onClick={this.props.logout} to="/" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <div style={{marginTop: 10}} className="link-hover">Sign out</div>
                                 </ListItem>
                             </Link><Divider/> </span>}
 
