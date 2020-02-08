@@ -9,13 +9,13 @@ class ServiceGrid extends Component {
         return (
             <div>
                 <section className="service pt-5 pb-5">
-                    <div className="container">
+                    <div className="container-fluid">
                         <div className="title_content text-center mb-5">
                             <span className="title">Our Services</span>
                         </div>
 
                         <div className="row">
-                            <div className="col-md-4 col-sm-5">
+                            <div className="col-md-4 col-sm-5 px-0">
                                 <div className="service_box d-flex flex-column align-items-center">
                                     <img src="assets/Images/work-7.jpg" className="img-fluid" alt="service image"/>
                                 </div>

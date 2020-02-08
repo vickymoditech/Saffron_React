@@ -23,7 +23,7 @@ class Home extends Component {
                         <source src="assets/Video/saffron.webm" type="video/webm"/>
                     </video>
                     <div className="d-flex flex-wrap btns">
-                        <button type="button" className="btn mr-3">Online Booking</button>
+                        <button type="button" className="btn video_booking mr-3">Online Booking</button>
                     </div>
                 </div>
                 <ServiceGrid serviceList={this.props.serviceList}/>

@@ -12,7 +12,7 @@ html, body {
 }
 
 .button_main{
-    background-color: #000000 !important;
+    background-color: #bf925b !important;
     border:2px solid #000000 !important;
     padding: 10px;
     width:30%;
@@ -24,7 +24,7 @@ html, body {
 
 .button_main:hover{
     border: 2px solid #bf925b !important;
-    background-color: #bf925b !important;
+    background-color: #000000 !important;
 }
 
 .button_main2{
