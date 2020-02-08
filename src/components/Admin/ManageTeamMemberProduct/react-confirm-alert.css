@@ -7,7 +7,14 @@ body.react-confirm-alert-body-element {
   filter: blur(2px);
   -webkit-filter: blur(2px);
 }
-
+.drag_drop_box{
+    
+}
+.drag_drop_box p{
+    font-weight: 600;
+    color: black;
+    margin-bottom: 5px;
+}
 .react-confirm-alert-overlay {
   position: fixed;
   top: 0;

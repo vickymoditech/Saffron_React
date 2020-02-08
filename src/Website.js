@@ -93,6 +93,9 @@ class App extends Component {
                 <NotificationSystem ref="notificationSystem"/>
                 <header>
                     <nav className="navbar navbar-expand-md navbar-dark navbar1 fixed-top scrolled pt-md-4 m-0 rounded-0" id="navbar">
+                        <button type="button" className="bg-transparent border-0 d-md-block d-none" onClick={this.openNav}>
+                        <i className="fa fa-bars" style={{fontSize:'25px'}}></i>
+                        </button>
                         <div className="col-2 d-flex flex-column text-center d-md-none d-block align-items-md-center first_logo logo1">
                             <i className="fa fa-camera"></i><span>Saffron</span>
                         </div>
@@ -133,7 +136,6 @@ class App extends Component {
                 <Footer/>
                 {this.props.Loading && <Loader/>}
                 {this.state.orderPlace && <SuccessLoader/>}
-                <button onClick={this.openNav}> Open Menu </button>
             </div>
         );
     }

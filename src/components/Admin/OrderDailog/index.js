@@ -140,13 +140,14 @@ class OrderDialog extends Component {
                                             </button>)}
                                         &nbsp; &nbsp;
                                         <button type="button"
-                                                style={{
+                                                /*style={{
                                                     padding: '10px',
                                                     borderRadius: '5px',
                                                     border: '0px',
                                                     backgroundColor: '#bf925d',
                                                     color: '#000000'
-                                                }}
+                                                }}*/
+className="btn button_main"
                                                 onClick={this.props.handleClose}>Close
                                         </button>
                                         &nbsp; &nbsp;

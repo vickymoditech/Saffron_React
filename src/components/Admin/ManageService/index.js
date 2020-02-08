@@ -120,10 +120,10 @@ class ManageService extends Component {
                             <table width="100%" className="table">
                                 <tbody>
                                 <tr>
-                                    <th style={{cursor: 'context-menu'}}>Service Image</th>
+                                    <th className="service-tbl-image" style={{cursor: 'context-menu'}}>Service Image</th>
                                     <th style={{cursor: 'context-menu'}}>Title</th>
                                     <th style={{cursor: 'context-menu'}}>Description</th>
-                                    <th style={{cursor: 'context-menu'}}>Action</th>
+                                    <th className="service-tbl-action" style={{cursor: 'context-menu'}}>Action</th>
                                 </tr>
                                 {serviceList && serviceList.map((value, index) => (
                                     <tr key={index}>

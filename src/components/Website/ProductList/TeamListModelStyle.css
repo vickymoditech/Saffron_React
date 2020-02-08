@@ -14,7 +14,11 @@
     height: 200px;
     overflow-y: scroll;
 }
-
+.addtocartbtn{
+    width: 30%;
+    background-color: #c1c1c1;
+    padding: 10px;
+}
 .product .products .product_details {
     background-color: #f1f1f1;
 }

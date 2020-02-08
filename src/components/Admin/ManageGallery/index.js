@@ -167,11 +167,11 @@ class ManageGallery extends Component {
                                 <table width="100%" className="table">
                                     <tbody>
                                     <tr>
-                                        <th style={{cursor: 'context-menu'}}>Gallery Image</th>
-                                        <th style={{cursor: 'context-menu'}}>Title</th>
+                                        <th className="gallery-tbl-image" style={{cursor: 'context-menu'}}>Gallery Image</th>
+                                        <th className="gallery-tbl-title" style={{cursor: 'context-menu'}}>Title</th>
                                         <th style={{cursor: 'context-menu'}}>Description</th>
-                                        <th style={{cursor: 'context-menu'}}>Sex</th>
-                                        <th style={{cursor: 'context-menu'}}>Action</th>
+                                        <th className="gallery-tbl-sex" style={{cursor: 'context-menu'}}>Sex</th>
+                                        <th className="gallery-tbl-action" style={{cursor: 'context-menu'}}>Action</th>
                                     </tr>
                                     {galleryList && galleryList.map((value, index) => (
                                         <tr key={index}>

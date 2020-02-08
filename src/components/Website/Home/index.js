@@ -7,12 +7,17 @@ import MiddleCard from './middleCard';
 import Team from './team';
 import {bindActionCreators} from "redux";
 import * as websiteAction from "../../../actions/websiteAction";
+import {browserHistory} from "react-router";
 
 class Home extends Component {
 
     componentDidMount() {
         this.props.actions.websiteAction.basketVisible(true);
     }
+
+    onlineBookingAvailable = () => {
+        browserHistory.push('/ProductList');
+    };
 
     render() {
         return (
@@ -23,7 +28,7 @@ class Home extends Component {
                         <source src="assets/Video/saffron.webm" type="video/webm"/>
                     </video>
                     <div className="d-flex flex-wrap btns">
-                        <button type="button" className="btn mr-3">Online Booking</button>
+                        <button type="button" className="btn video_booking mr-3" onClick={this.onlineBookingAvailable}>Now Online Booking Available</button>
                     </div>
                 </div>
                 <ServiceGrid serviceList={this.props.serviceList}/>
