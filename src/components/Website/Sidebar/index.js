@@ -64,15 +64,21 @@ class Sidebar extends Component {
                                 </ListItem>
                             </Link><Divider/>
 
-                            <Link onClick={this.props.closeNav} to="/Gallery" className="link">
+                            <Link onClick={this.props.closeNav} to="/ProductList" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">Gallery</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Online Booking Now</div>
                                 </ListItem>
                             </Link><Divider/>
 
-                            <Link onClick={this.props.closeNav} to="/ProductList" className="link">
+                            <Link onClick={this.props.closeNav} to="/" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">Shop</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Offer Zone</div>
+                                </ListItem>
+                            </Link><Divider/>
+
+                            <Link onClick={this.props.closeNav} to="/Gallery" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <div style={{marginTop: 10}} className="link-hover">Photos</div>
                                 </ListItem>
                             </Link><Divider/>
 
@@ -102,7 +108,7 @@ class Sidebar extends Component {
 
                             {isLoggedIn() && <span> <Link onClick={this.props.closeNav} to="Profile/TodayCompleteOrders" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover">Orders</div>
+                                    <div style={{marginTop: 10}} className="link-hover">Past Orders</div>
                                 </ListItem>
                             </Link><Divider/> </span>}
 

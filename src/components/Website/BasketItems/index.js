@@ -91,10 +91,7 @@ class BasketItemsList extends Component {
             offerPrice += singleProduct.product.offerPrice;
             visible = true;
         });
-        let discount = offerPrice - totalPrice;
-        if (discount < 0) {
-            discount = -(discount);
-        }
+        let discount = Math.abs(offerPrice - totalPrice);
 
         const defaultOptions = {
             loop: true,
@@ -114,9 +111,9 @@ class BasketItemsList extends Component {
 
                 {visible ? (
                     <div>
-                        <div class="d-flex">
-                            <div class="w-75">
-                                <div class="d-flex flex-column order_confirm_box">
+                        <div className="d-flex">
+                            <div className="w-75">
+                                <div className="d-flex flex-column order_confirm_box">
                                     {this.props.BasketGeneratorProducts.length > 0 && <Collapse accordion>
                                         {this.props.BasketGeneratorProducts.map((singleProduct, index) => (
                                             <Panel header={<div className="orders d-flex justify-content-between m-2 p-2">
@@ -129,7 +126,7 @@ class BasketItemsList extends Component {
                                                          alt={singleProduct.product.title}/>
                                                 </ImageLoader>
                                                 <p style={{"textTransform": "capitalize"}}>{singleProduct.product.title}</p>
-                                                <p>₹ {singleProduct.product.offerPrice}</p>
+                                                <p>₹ { singleProduct.product.offerPrice !== 0 ? singleProduct.product.offerPrice : singleProduct.product.price}</p>
                                                 <p>₹ {singleProduct.product.price}</p>
                                                 <button type="button" className="btn btn-danger"
                                                         onClick={() => this.deleteProductFromCart(singleProduct.product.id, singleProduct.teamMember.id)}>Delete
@@ -154,7 +151,7 @@ class BasketItemsList extends Component {
                             </div>
                             <div className="w-25">
                                 <div className="order_total_box d-flex flex-column">
-                                    <span>text</span>
+                                    <span>50% OFF Upto  </span>
                                     <span>text</span>
                                     <span>text</span>
                                     <span>text</span>
@@ -178,7 +175,11 @@ class BasketItemsList extends Component {
                             </div>
                             <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">
                                 <h5>Sub Total :&nbsp;</h5>
-                                <h5>&#8377;500</h5>
+                                <h5>&#8377; {totalPrice} </h5>
+                            </div>
+                            <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">
+                                <h5>Discount :&nbsp;</h5>
+                                <h5>&#8377; {offerPrice} </h5>
                             </div>
                         </div>
                     </div>
