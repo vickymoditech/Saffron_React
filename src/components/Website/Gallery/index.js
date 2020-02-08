@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import "react-photo-feed/library/style.css";
 import * as websiteAction from '../../../actions/websiteAction';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import {Dropdown} from 'semantic-ui-react';

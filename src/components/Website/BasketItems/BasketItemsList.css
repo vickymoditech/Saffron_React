@@ -1,43 +1,3 @@
-.basket_icon {
-    position: fixed;
-    right: 10px;
-    bottom: 10px;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    transition: all .5s;
-    background-color: sienna;
-    z-index: 999;
-    border-radius: 60px;
-}
-
-.basket_icon i {
-    position: absolute;
-    color: white;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.main_basket {
-    height: 230px;
-    overflow-y: scroll;
-}
-
-.main_basket .basket_detail {
-    background-color: #f1f1f1;
-}
-
-.main_basket .basket_detail img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}
-
-.second_part .sub_total {
-    background-color: #f1f1f1;
-}
-
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -57,4 +17,27 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #c1c1c1;
+}
+
+.order_confirm_box {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.order_confirm_box .orders{
+    background-color: #c1c1c1;
+}
+.order_confirm_box .orders img{
+    height: 100px;
+    width: 150px;
+}
+
+.order_total_box{
+    height: 400px;
+    overflow-y: scroll;
+}
+.order_total_box span{
+    background-color: #c1c1c1;
+    padding: 10px;
+    margin: 5px;
 }

@@ -13,7 +13,11 @@ import Lottie from 'react-lottie';
 import * as animationData from './empty-cart';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import ImageLoader from 'react-load-image';
+import {Collapse} from 'antd';
 import './BasketItemsList.css';
+import 'antd/dist/antd.css';
+
+const {Panel} = Collapse;
 
 class BasketItemsList extends Component {
 
@@ -46,8 +50,8 @@ class BasketItemsList extends Component {
         this.setState({isDialogOpen: false});
     };
 
-    placeOrder = (timeSlot) => {
-        this.props.actions.websiteAction.placeOrder(timeSlot);
+    placeOrder = (timeSlot, orderType) => {
+        this.props.actions.websiteAction.placeOrder(timeSlot, orderType);
     };
 
     deleteProductFromCart = (product_id, teamMember_id) => {
@@ -110,37 +114,56 @@ class BasketItemsList extends Component {
 
                 {visible ? (
                     <div>
-                        <div className="main_basket">
-                            {this.props.BasketGeneratorProducts.map((singleProduct) => (
+                        <div class="d-flex">
+                            <div class="w-75">
+                                <div class="d-flex flex-column order_confirm_box">
+                                    {this.props.BasketGeneratorProducts.length > 0 && <Collapse accordion>
+                                        {this.props.BasketGeneratorProducts.map((singleProduct, index) => (
+                                            <Panel header={<div className="orders d-flex justify-content-between m-2 p-2">
+                                                <ImageLoader
+                                                    src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.product.image_url}>
+                                                    <img className="img-fluid" alt={singleProduct.product.title}/>
+                                                    <img src="/assets/Images/NoImages.png" className="img-fluid"
+                                                         alt={singleProduct.product.title}/>
+                                                    <img src="/assets/Images/s_loader.gif" className="img-fluid"
+                                                         alt={singleProduct.product.title}/>
+                                                </ImageLoader>
+                                                <p style={{"textTransform": "capitalize"}}>{singleProduct.product.title}</p>
+                                                <p>₹ {singleProduct.product.offerPrice}</p>
+                                                <p>₹ {singleProduct.product.price}</p>
+                                                <button type="button" className="btn btn-danger"
+                                                        onClick={() => this.deleteProductFromCart(singleProduct.product.id, singleProduct.teamMember.id)}>Delete
+                                                </button>
+                                                </div>}
+                                                key={index}>
 
-                                <div key={singleProduct.product.id}
-                                     className="basket_detail d-flex justify-content-around align-items-center p-2 m-2">
-                                    <ImageLoader
-                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.product.image_url}>
-                                        <img className="img-fluid" alt={singleProduct.product.title}/>
-                                        <img src="/assets/Images/NoImages.png" className="img-fluid"
-                                             alt={singleProduct.product.title}/>
-                                        <img src="/assets/Images/s_loader.gif" className="img-fluid"
-                                             alt={singleProduct.product.title}/>
-                                    </ImageLoader>
-                                    <p style={{"textTransform": "capitalize"}}>{singleProduct.product.title}</p>
-                                    <p>₹ {singleProduct.product.offerPrice}</p>
-                                    <ImageLoader
-                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.teamMember.image_url}>
-                                        <img className="img-fluid" alt={singleProduct.teamMember.first_name}/>
-                                        <img src="/assets/Images/NoImages.png" className="img-fluid"
-                                             alt={singleProduct.teamMember.first_name}/>
-                                        <img src="/assets/Images/s_loader.gif" className="img-fluid"
-                                             alt={singleProduct.teamMember.first_name}/>
-                                    </ImageLoader>
-                                    <p style={{"textTransform": "capitalize"}}>{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</p>
-                                    <p>&#8377; 500</p>
-                                    <button type="button" className="btn btn-danger"
-                                            onClick={() => this.deleteProductFromCart(singleProduct.product.id, singleProduct.teamMember.id)}>Delete
-                                    </button>
+                                                <ImageLoader
+                                                    src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.teamMember.image_url}>
+                                                    <img className="img-fluid" alt={singleProduct.teamMember.first_name}/>
+                                                    <img src="/assets/Images/NoImages.png" className="img-fluid"
+                                                         alt={singleProduct.teamMember.first_name}/>
+                                                    <img src="/assets/Images/s_loader.gif" className="img-fluid"
+                                                         alt={singleProduct.teamMember.first_name}/>
+                                                </ImageLoader>
+                                                <p style={{"textTransform": "capitalize"}}>{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</p>
+
+                                            </Panel>
+                                        ))}
+                                    </Collapse>}
                                 </div>
-                            ))}
+                            </div>
+                            <div className="w-25">
+                                <div className="order_total_box d-flex flex-column">
+                                    <span>text</span>
+                                    <span>text</span>
+                                    <span>text</span>
+                                    <span>text</span>
+                                    <span>text</span>
+                                </div>
+                            </div>
                         </div>
+
+
                         <div className="second_part d-flex px-2 mt-2">
                             <div className="d-flex w-75">
 
@@ -149,7 +172,8 @@ class BasketItemsList extends Component {
                                             <Link to="/Login"> <span className="btn btn-default mr-2">Login</span> </Link>
                                             <Link to="/Registration"> <span className="btn btn-primary mr-2">Sing up</span>
                                             </Link></div>) :
-                                    <button type="button" className="btn btn-success" onClick={this.getTimeSlots}> Choose Your Time </button>
+                                    <button type="button" className="btn btn-success"
+                                            onClick={this.getTimeSlots}> Choose Your Time </button>
                                 }
                             </div>
                             <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">

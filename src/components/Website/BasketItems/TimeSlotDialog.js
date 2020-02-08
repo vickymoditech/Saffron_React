@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Dialog} from 'material-ui';
+import './TimeSlotDialogStyle.css';
 
 const style = {
     titleStyle: {
@@ -13,7 +14,7 @@ class TimeSlotDialog extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {selectedTime: null};
+        this.state = {selectedTime: null, orderType: 0};
     }
 
     TimeSelectedClick = (selectedTime) => {
@@ -21,10 +22,15 @@ class TimeSlotDialog extends Component {
     };
 
     placeOrder = () => {
-        this.props.placeOrder(this.state.selectedTime);
+        this.props.placeOrder(this.state.selectedTime, this.state.orderType);
+    };
+
+    onChange = (event) => {
+        this.setState({orderType: event.target.value});
     };
 
     render() {
+        const {orderType} = this.state;
         return (
             <div>
                 <Dialog
@@ -41,18 +47,57 @@ class TimeSlotDialog extends Component {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-body">
-                                <div> Time slot example</div>
-                                {this.props.TimeSlots.map((singleData) => (
-                                    <button key={singleData.id} onClick={() => this.TimeSelectedClick({
-                                        start_time: singleData.start_time,
-                                        end_time: singleData.end_time
-                                    })}>
-                                        <div> startTime:{singleData.start_time} </div>
-                                        <div> EndTime:{singleData.end_time} </div>
-                                    </button>
-                                ))}
+
+                                <div className="product">
+                                    <div className="d-flex justify-content-center">
+                                        <h4 className="p-2"
+                                            style={{"textTransform": "capitalize"}}> Choose Your Time </h4>
+                                        <i className="fa fa-close" onClick={this.props.handleClose}></i>
+                                    </div>
+
+                                    <div className="products p-2">
+                                        {this.props.TimeSlots.map((singleData, index) => (
+                                            <div className="product_details d-flex align-items-center p-2 m-2"
+                                                 onClick={() => this.TimeSelectedClick({
+                                                     start_time: singleData.start_time,
+                                                     end_time: singleData.end_time
+                                                 })} key={index}>
+                                                <h5 className="ml-2"
+                                                    style={{"textTransform": "capitalize"}}>{singleData.start_time} - {singleData.end_time}</h5>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="d-flex justify-content-around">
+                                    <div className="form-check-inline">
+                                        <label className="form-check-label">
+                                            <input type="radio" name="orderType" value="ASAP"
+                                                   className="form-check-input"
+                                                   onClick={this.onChange}
+                                                   checked={ orderType === 'ASAP'}/> <b
+                                            style={{'cursor': 'default'}}> ASAP </b>
+                                        </label>
+                                    </div>
+                                    <div className="form-check-inline">
+                                        <label className="form-check-label">
+                                            <input type="radio" name="orderType" value="10"
+                                                   className="form-check-input"
+                                                   onClick={this.onChange}
+                                                   checked={ orderType === '10'}/> <b
+                                            style={{'cursor': 'default'}}> After 10 Minutes </b>
+                                        </label>
+                                    </div>
+                                    <div className="form-check-inline disabled">
+                                        <label className="form-check-label">
+                                            <input type="radio" name="orderType" value="15"
+                                                   className="form-check-input"
+                                                   onClick={this.onChange}
+                                                   checked={ orderType === '15'}/> <b
+                                            style={{'cursor': 'default'}}> After 15 Minutes </b>
+                                        </label>
+                                    </div>
+                                </div>
                                 {this.state.selectedTime && <button onClick={this.placeOrder}> Place Order</button>}
-                                <button onClick={this.props.handleClose}> close</button>
                             </div>
                         </div>
                     </div>

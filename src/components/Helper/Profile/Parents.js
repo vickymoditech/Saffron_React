@@ -13,7 +13,7 @@ class Parents extends Component {
 
     render() {
         return (
-            <div style={{marginTop: '90px', marginBottom: '20px'}}>
+            <div style={{marginTop: '100px', backgroundColor: '#f5f2ea'}}>
                 {this.props.children}
             </div>
         )

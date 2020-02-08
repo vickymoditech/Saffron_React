@@ -177,7 +177,7 @@ export const basketVisible = (value) => {
     }
 };
 
-export const placeOrder = (TimeSlot) => {
+export const placeOrder = (TimeSlot, orderType) => {
     try {
         return (dispatch) => {
             dispatch({type: WEBSITE_INPROGRESS});
@@ -187,6 +187,7 @@ export const placeOrder = (TimeSlot) => {
             const endTime = TimeSlot.end_time.split(":");
 
             let data = {
+                orderType: orderType,
                 startTime: {
                     hours: startTime[0],
                     minutes: startTime[1]
