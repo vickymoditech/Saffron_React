@@ -124,16 +124,17 @@ class Sidebar extends Component {
                                 </ListItem>
                             </Link><Divider/></span>}
 
-                            {isLoggedIn() && <span> <Link onClick={this.props.logout} to="/" className="link">
-                                <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-power-off"><span
-                                        className="link-hover">Sign out</span></i></div>
-                                </ListItem>
-                            </Link><Divider/> </span>}
-
                         </div>
                     </List>
                     <Divider/>
+                    {isLoggedIn() && <List className="logout-list">
+                        <Link onClick={this.props.logout} className="link" to="/">
+                            <ListItem className="sidebar-list bg_color_logout" style={ListStyles.style}>
+                                <i className="fa fa-power-off"/>
+                                <div style={{marginTop: 10}} className="link-hover">Sign Out</div>
+                            </ListItem>
+                        </Link>
+                    </List>}
                 </Drawer>
             </div>
         )
