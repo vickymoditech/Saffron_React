@@ -15,8 +15,8 @@ class ServiceGrid extends Component {
                         </div>
 
                         <div className="row">
-                            <div className="col-md-4 col-sm-5 px-0">
-                                <div className="service_box d-flex flex-column align-items-center">
+                            <div className="col-md-4 col-sm-5 pr-0">
+                                <div className="d-flex flex-column align-items-center ml-xl-5 pl-xl-5">
                                     <img src="assets/Images/work-7.jpg" className="img-fluid" alt="service image"/>
                                 </div>
                             </div>

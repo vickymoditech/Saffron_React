@@ -1,14 +1,24 @@
 .icon_color{
     color:#bf925b !important;
 }
-.button_main2{
+.button_main_profile{
     background-color: #bf925b !important;
     border:2px solid #000000 !important;
+    width: auto !important;
+    border-radius: 5px;
+    padding: 10px !important;
     color:#ffffff !important;
     transition:all .5s !important;
     font-family: "Josefin Sans", Arial, sans-serif;
 }
-.button_main2:hover{
+.button_main_profile:hover{
     border: 2px solid #bf925b !important;
     background-color: #000000 !important;
+}
+.autofill-background .modal-dialog{
+    margin:0 auto !important;
+    position: unset !important;
+    left:0% !important;
+    top:0% !important;
+    transform: none !important;
 }

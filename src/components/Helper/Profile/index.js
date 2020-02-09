@@ -9,6 +9,7 @@ import ChangePasswordModal from '../ChangePasswordModal';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import SuccessLoader from '../SuccessLoader/index';
 import ImageLoader from 'react-load-image';
+import button from './profile.css';
 
 class Profile extends Component {
 
@@ -138,9 +139,9 @@ class Profile extends Component {
                     notify={this.addNotifications}
                 />}
                 <NotificationSystem ref="notificationSystem"/>
-                <div className="modal-dialog d-flex m-0 mt-4 align-items-center w-75">
-                    <div className="modal-content">
-                        <div className="modal-body">
+                <div className="modal-dialog d-flex align-items-center w-100">
+                    <div className="modal-content my-3">
+                        <div className="modal-body pt-2">
                             <div className="row login-form">
                                 <div className="panel-body container">
                                     <div className="row">
@@ -148,11 +149,11 @@ class Profile extends Component {
                                             <div className="d-flex justify-content-center">
                                                 <form className="w-100">
                                                     <div id="loginForm">
-                                                        <div className="form-group">
+                                                        <div className="form-group d-flex flex-column align-items-center">
                                                             <ImageLoader
                                                                 src={this.state.image_url}>
                                                                 <img className="img-fluid"
-                                                                     style={{height: '100px', width: '100px'}}
+                                                                     style={{height: '100px', width: '100px',borderRadius:'50px'}}
                                                                      alt="image"/>
                                                                 <img src="/assets/Images/NoImages.png"
                                                                      style={{height: '100px', width: '100px'}}
@@ -223,10 +224,10 @@ class Profile extends Component {
                                                         <div className="form-group">
                                                             <div
                                                                 className="col-sm-12 text-center button-div mt-3 d-flex justify-content-center">
-                                                                <a className="text-white mr-3 button_main2 p-3"
+                                                                <a className="text-white mr-3 button_main_profile p-3"
                                                                    onClick={this.handleEditConfirm}
                                                                 >Update User</a>
-                                                                <a className="text-white button_main2 p-3"
+                                                                <a className="text-white button_main_profile p-3"
                                                                    onClick={this.handleOpen}
                                                                 >Change Password</a>
                                                             </div>

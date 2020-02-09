@@ -18,14 +18,20 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #c1c1c1;
 }
-
+.basketLstPart1{
+    width:75%;
+}
+.basketLstPart2{
+    width: 25%;
+}
 .order_confirm_box {
+    
     height: 400px;
     overflow-y: scroll;
 }
 
 .order_confirm_box .orders{
-    background-color: #c1c1c1;
+    background-color: #f1f1f1;
 }
 .order_confirm_box .orders img{
     height: 100px;
@@ -33,11 +39,37 @@
 }
 
 .order_total_box{
+    
     height: 400px;
     overflow-y: scroll;
 }
 .order_total_box span{
-    background-color: #c1c1c1;
+    background-color: #f1f1f1;
     padding: 10px;
     margin: 5px;
+}
+
+@media only screen and (max-width:992px) and (min-width:320px){
+    .basketLstPart1{
+        width: 100%;
+    }
+    .basketLstPart2{
+        width: 100%;
+    }
+}
+@media only screen and (max-width:575px) and (min-width:320px){
+    .order_confirm_box .orders img{
+        height: 40px;
+        width: 40px;
+    }
+    .ant-collapse .ant-collapse-item .ant-collapse-header{
+        padding: 12px 8px;
+        padding-left: 30px;
+    }
+    .order_confirm_box{
+        height: 200px;
+    }
+    .order_total_box{
+        height: 200px;
+    }
 }

@@ -251,7 +251,7 @@ class ManageTeamMemberProduct extends Component {
                 <NotificationSystem ref="notificationSystem"/>
                 <div className="container tab-bg-container">
                     <div className="d-flex justify-content-between">
-                    <h2 style={{color:'white'}}> Manage products for team </h2>
+                    <h2 className="text-white" style={{color:'#ffffff'}}> Manage products for team </h2>
                         <div className="w-25">
                     <Dropdown placeholder={"Select Team member"} fluid selection
                                   options={options}

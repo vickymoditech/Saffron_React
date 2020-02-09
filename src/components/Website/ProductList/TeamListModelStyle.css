@@ -15,12 +15,23 @@
     overflow-y: scroll;
 }
 .addtocartbtn{
-    width: 30%;
+    width: 50%;
     background-color: #c1c1c1;
     padding: 10px;
+    transition:all .5s;
+}
+.addtocartbtn:active{
+    background-color: green;
+    color: white;
 }
 .product .products .product_details {
+    cursor: pointer;
     background-color: #f1f1f1;
+    transition:all .5s;
+}
+
+.product .products .product_details:active{
+    background-color: #bf925d;
 }
 
 .product .products .product_details img {

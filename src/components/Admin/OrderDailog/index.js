@@ -113,6 +113,7 @@ class OrderDialog extends Component {
                                             ))}
                                         </div>
                                     </div>}
+<div className="d-flex total_price justify-content-end my-2"><span className="totalTag">Total</span><span className="priceTag">500</span></div>
                                     <div className="d-flex justify-content-center btns">
                                         {this.state.role.toLowerCase() !== "admin" && (this.state.column && (this.state.column === "running late" || this.state.column === "recent orders") ?
                                             < button type="button"

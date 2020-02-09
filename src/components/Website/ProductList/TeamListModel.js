@@ -56,7 +56,7 @@ class TeamListModel extends Component {
                                         ))}
                                     </div>
                                 </div>
-                                <div className="text-center">
+                                <div className="text-center mt-3">
                                         <button className="btn addtocartbtn" onClick={this.props.AddCart} disabled={!this.props.VisibleButton()}> Add Cart
                                 </button>
 </div>
