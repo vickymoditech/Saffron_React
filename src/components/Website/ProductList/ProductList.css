@@ -107,3 +107,61 @@ html {
     min-width: 1em;
     font-weight:bold;
 }
+
+.service_main_box #pointer {
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: red;
+}
+
+.service_main_box #pointer:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 15px solid white;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+
+.service_main_box #pointer .shape_text {
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    color: white;
+}
+
+.service_main_box {
+    box-shadow: 0px 2px 4px 3px #92929282;
+    cursor: pointer;
+    height: 100px;
+    position: relative;
+}
+
+.service_main_box img {
+    height: 100px;
+}
+
+.service_main_box .service_box_server_title {
+    font-size: 20px;
+    color: #795548;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.service_main_box .cancle_offer_price {
+    color: green;
+    font-weight: 600;
+}
+
+.service_main_box .offer_price {
+    color: red;
+    font-weight: 600;
+}
+
+

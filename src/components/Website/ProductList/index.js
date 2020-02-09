@@ -102,31 +102,35 @@ class ProductList extends Component {
 
                             <div className="row">
                                 {singleService.products.map((singleProduct, i) => (
-                                    <div className="col-md-4"
-                                         key={i}
+                                    <div className="col-md-4 col-sm-6" key={i}
                                          onClick={() => this.DialogOpen(singleProduct.id, singleProduct.service_id)}>
-                                        <div className="service_box">
+                                        <div className="service_box mt-3">
                                             {singleProduct.offerPrice > 0 &&
                                             <div id="pointer"><span className="shape_text">Offer Price.</span></div>}
-                                            <div>
-                                                <ImageLoader
-                                                    src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.image_url}>
-                                                    <img className="img-fluid" style={{height: '50px', width: '50px'}}
-                                                         alt={singleProduct.title}/>
-                                                    <img src="/assets/Images/NoImages.png"
-                                                         style={{height: '50px', width: '50px'}}
-                                                         alt={singleProduct.title}/>
-                                                    <img src="/assets/Images/s_loader.gif"
-                                                         style={{height: '50px', width: '50px'}}
-                                                         alt={singleProduct.title}/>
-                                                </ImageLoader>
-                                                <span
-                                                    className="service_title ml-md-3">{singleProduct.title} ({singleProduct.sex})</span>
-                                            </div>
-                                            <div className="price">
-                                                {singleProduct.offerPrice > 0 &&
-                                                <strike className="price1">{singleProduct.offerPrice}</strike>}
-                                                <span className="price2">{singleProduct.price}</span>
+                                            <div className="row">
+                                                <div className="col-3 pr-0">
+                                                    <ImageLoader
+                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.image_url}>
+                                                        <img className="img-fluid"
+                                                             style={{height: '50px', width: '50px'}}
+                                                             alt={singleProduct.title}/>
+                                                        <img src="/assets/Images/NoImages.png"
+                                                             style={{height: '50px', width: '50px'}}
+                                                             alt={singleProduct.title}/>
+                                                        <img src="/assets/Images/s_loader.gif"
+                                                             style={{height: '50px', width: '50px'}}
+                                                             alt={singleProduct.title}/>
+                                                    </ImageLoader>
+                                                </div>
+                                                <div className="col-9">
+                                                    <div className="d-flex flex-column justify-content-center h-100 pr-3">
+                                                        <span className="service_box_server_title">{singleProduct.title} ({singleProduct.sex})</span>
+                                                        <div className="d-flex justify-content-between">
+                                                            {singleProduct.offerPrice > 0 && <strike className="cancle_offer_price">{singleProduct.offerPrice}</strike>}
+                                                            <span className="offer_price">{singleProduct.price}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

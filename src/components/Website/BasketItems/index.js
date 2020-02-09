@@ -186,7 +186,7 @@ class BasketItemsList extends Component {
 
                 ) : <div>
                     <Lottie options={defaultOptions} height={400} width={400}/>
-                    <Link to="/ProductList"><span> your cart is empty </span></Link>
+                    <Link to="/ProductList"><span> Your Booking Cart is Empty.. Continue Shopping </span></Link>
                 </div>
                 }
 

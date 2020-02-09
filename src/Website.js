@@ -119,7 +119,7 @@ class App extends Component {
                                     {!isLoggedIn() && <Link className="ml-md-3 ml-lg-5" to="/login">SIGN IN</Link>}
                                     {isLoggedIn() &&  <Link className="ml-md-3 ml-lg-5" onClick={this.handleLogout} to="/">SIGN OUT</Link>}
                                     {!isLoggedIn() && <Link to="/Registration" className="ml-md-3 ml-lg-5">SIGN UP</Link>}
-                                    <a href="#" className="ml-lg-5 ml-md-3">CONTACT</a>
+                                    <Link to="/About" className="ml-md-3 ml-lg-5">CONTACT</Link>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +130,7 @@ class App extends Component {
                 {(this.props.BasketVisible === true && BasketProductCount > 0) && <div id="ex3" onClick={this.BasketClick}>
                     <span className="p1 fa-stack fa-5x has-badge" data-count={BasketProductCount}>
                     <i className="p2 fa fa-circle fa-stack-2x"></i>
-                    <i className="p3 fa fa-shopping-cart fa-stack-1x fa-inverse" data-count="5"></i>
+                    <i className="p3 fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
                     </span>
                 </div>}
                 <Footer/>

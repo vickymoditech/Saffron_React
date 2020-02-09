@@ -107,7 +107,7 @@ class Sidebar extends Component {
                                 </ListItem>
                             </Link><Divider/>
 
-                            {isLoggedIn() && <span> <Link onClick={this.props.closeNav} to="Profile/TodayCompleteOrders"
+                            {isLoggedIn() && <span> <Link onClick={this.props.closeNav} to="/Profile/TodayCompleteOrders"
                                                           className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                              <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-shopping-basket"><span
@@ -117,12 +117,21 @@ class Sidebar extends Component {
 
 
                             {isLoggedIn() &&
-                            <span><Link onClick={this.props.closeNav} to="Profile/UserProfile" className="link">
+                            <span><Link onClick={this.props.closeNav} to="/Profile/UserProfile" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-cogs"><span
                                         className="link-hover">Settings</span></i></div>
                                 </ListItem>
                             </Link><Divider/></span>}
+
+
+                            <span><Link onClick={this.props.closeNav} to="/About" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-cogs"><span
+                                        className="link-hover">Contact Us</span></i></div>
+                                </ListItem>
+                            </Link><Divider/></span>
+
 
                         </div>
                     </List>

@@ -27,6 +27,7 @@ import Parents from './components/Helper/Profile/Parents';
 import Profile from './components/Helper/Profile';
 import TodayCompleteOrders from './components/Helper/Profile/TodayCompleteOrders';
 import BasketItemsList from './components/Website/BasketItems/index';
+import Contact from './components/Website/Contact';
 
 
 //Admin
@@ -264,6 +265,7 @@ ReactDOM.render(<Provider store={store}>
                 <Route path="/ProductList" component={ProductList} exact={true}/>
                 <Route path="/BasketItems" component={BasketItemsList} exact={true}/>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}/>
+                <Route path="/About" component={Contact} exact={true}/>
             </Route>
             <Route path="*" component={NotFound} exact={true}/>
         </Router>
