@@ -112,7 +112,7 @@ class ProductList extends Component {
                                                     <ImageLoader
                                                         src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.image_url}>
                                                         <img className="img-fluid"
-                                                             style={{height: '50px', width: '50px'}}
+                                                             style={{height: '80px', width: '150px'}}
                                                              alt={singleProduct.title}/>
                                                         <img src="/assets/Images/NoImages.png"
                                                              style={{height: '50px', width: '50px'}}
@@ -123,11 +123,11 @@ class ProductList extends Component {
                                                     </ImageLoader>
                                                 </div>
                                                 <div className="col-9">
-                                                    <div className="d-flex flex-column justify-content-center h-100 pr-3">
+                                                    <div className="d-flex flex-column justify-content-around h-100 pr-3">
                                                         <span className="service_box_server_title">{singleProduct.title} ({singleProduct.sex})</span>
                                                         <div className="d-flex justify-content-between">
-                                                            {singleProduct.offerPrice > 0 && <strike className="cancle_offer_price">{singleProduct.offerPrice}</strike>}
-                                                            <span className="offer_price">{singleProduct.price}</span>
+                                                            {singleProduct.offerPrice > 0 ? <strike className="cancle_offer_price">Price &#8377;{singleProduct.offerPrice}</strike> : <span></span>}
+                                                            <span className="offer_price">Price &#8377;{singleProduct.price}</span>
                                                         </div>
                                                     </div>
                                                 </div>

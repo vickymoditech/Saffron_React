@@ -40,7 +40,7 @@ class TeamListModel extends Component {
                                     </div>
                                     <div className="products p-2">
                                         {this.props.TeamList.map((team, index) => (
-                                            <div className="product_details d-flex align-items-center p-2 m-2"
+                                            <div className="product_details d-flex align-items-center p-2 active"
                                                  onClick={() => this.props.SelectTeamMember(team)} key={index}>
                                                 <ImageLoader
                                                     src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url}>
@@ -56,8 +56,8 @@ class TeamListModel extends Component {
                                         ))}
                                     </div>
                                 </div>
-                                <div className="text-center">
-                                    <button className="btn addtocartbtn" onClick={this.props.AddCart}
+                                <div className="text-center mt-3">
+                                    <button className="btn addtocartbtn active" onClick={this.props.AddCart}
                                             disabled={!this.props.VisibleButton()}> Add Cart
                                     </button>
                                 </div>

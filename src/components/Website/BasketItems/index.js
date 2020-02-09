@@ -23,7 +23,7 @@ class BasketItemsList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {isDialogOpen: false, Loading: true}
+        this.state = {isDialogOpen: false, Loading: true};
     }
 
     componentDidMount() {
@@ -90,7 +90,7 @@ class BasketItemsList extends Component {
         this.props.BasketGeneratorProducts.map((singleProduct) => {
             totalPrice += singleProduct.product.price;
             subTotal += singleProduct.product.offerPrice;
-            if(singleProduct.product.offerPrice !== 0)
+            if (singleProduct.product.offerPrice !== 0)
                 offerPrice += singleProduct.product.offerPrice - singleProduct.product.price;
             visible = true;
         });
@@ -105,7 +105,7 @@ class BasketItemsList extends Component {
         };
 
         return (
-            <div style={{marginTop: '100px', backgroundColor: '#f5f2ea'}}>
+            <div style={{paddingTop: '100px', backgroundColor: '#f5f2ea'}}>
 
                 {this.state.isDialogOpen &&
                 <TimeSlotDialog handleClose={this.closeDialog} isOpen={this.state.isDialogOpen}
@@ -113,12 +113,13 @@ class BasketItemsList extends Component {
 
                 {visible ? (
                     <div>
-                        <div className="d-flex">
-                            <div className="w-75">
+                        <div className="d-flex flex-wrap">
+                            <div className="basketLstPart1">
                                 <div className="d-flex flex-column order_confirm_box">
                                     {this.props.BasketGeneratorProducts.length > 0 && <Collapse accordion>
                                         {this.props.BasketGeneratorProducts.map((singleProduct, index) => (
-                                            <Panel header={<div className="orders d-flex justify-content-between m-2 p-2">
+                                            <Panel header={<div
+                                                className="orders d-flex justify-content-between align-items-center m-sm-2 p-2">
                                                 <ImageLoader
                                                     src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.product.image_url}>
                                                     <img className="img-fluid" alt={singleProduct.product.title}/>
@@ -128,30 +129,38 @@ class BasketItemsList extends Component {
                                                          alt={singleProduct.product.title}/>
                                                 </ImageLoader>
                                                 <p style={{"textTransform": "capitalize"}}>{singleProduct.product.title}</p>
-                                                <p>₹ { singleProduct.product.offerPrice !== 0 ? singleProduct.product.offerPrice : singleProduct.product.price}</p>
+                                                <p>₹ {singleProduct.product.offerPrice !== 0 ? singleProduct.product.offerPrice : singleProduct.product.price}</p>
                                                 <p>₹ {singleProduct.product.price}</p>
                                                 <button type="button" className="btn btn-danger"
                                                         onClick={() => this.deleteProductFromCart(singleProduct.product.id, singleProduct.teamMember.id)}>Delete
                                                 </button>
-                                                </div>}
-                                                key={index}>
-
-                                                <ImageLoader
-                                                    src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.teamMember.image_url}>
-                                                    <img className="img-fluid" alt={singleProduct.teamMember.first_name}/>
-                                                    <img src="/assets/Images/NoImages.png" className="img-fluid"
-                                                         alt={singleProduct.teamMember.first_name}/>
-                                                    <img src="/assets/Images/s_loader.gif" className="img-fluid"
-                                                         alt={singleProduct.teamMember.first_name}/>
-                                                </ImageLoader>
-                                                <p style={{"textTransform": "capitalize"}}>{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</p>
-
+                                            </div>}
+                                                   key={index}>
+                                                <div className="d-flex justify-content-center align-items-center">
+                                                    <ImageLoader
+                                                        src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.teamMember.image_url}>
+                                                        <img className="img-fluid"
+                                                             alt={singleProduct.teamMember.first_name} style={{
+                                                            height: '50px',
+                                                            width: '50px',
+                                                            borderRadius: '50%'
+                                                        }}/>
+                                                        <img src="/assets/Images/NoImages.png" className="img-fluid"
+                                                             alt={singleProduct.teamMember.first_name}/>
+                                                        <img src="/assets/Images/s_loader.gif" className="img-fluid"
+                                                             alt={singleProduct.teamMember.first_name}/>
+                                                    </ImageLoader>
+                                                    <p style={{
+                                                        textTransform: "capitalize",
+                                                        marginLeft: '10px'
+                                                    }}>{singleProduct.teamMember.first_name + " " + singleProduct.teamMember.last_name}</p>
+                                                </div>
                                             </Panel>
                                         ))}
                                     </Collapse>}
                                 </div>
                             </div>
-                            <div className="w-25">
+                            <div className="basketLstPart2">
                                 <div className="order_total_box d-flex flex-column">
                                     <span>50% OFF Upto  </span>
                                     <span>text</span>
@@ -163,9 +172,9 @@ class BasketItemsList extends Component {
                         </div>
 
 
-                        <div className="second_part d-flex px-2 mt-2">
-                            <div className="d-flex w-75">
-
+                        <div
+                            className="second_part d-flex flex-sm-nowrap flex-wrap justify-content-between px-2 py-2 w-100">
+                            <div className="d-flex my-sm-0 my-2">
                                 {this.checkLogin() ? (
                                         <div><span> Sign in or create account Already use Saffron? Sign in with your account. </span>
                                             <Link to="/Login"> <span className="btn btn-default mr-2">Login</span> </Link>
@@ -175,17 +184,15 @@ class BasketItemsList extends Component {
                                             onClick={this.getTimeSlots}> Next </button>
                                 }
                             </div>
-                            <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">
-                                <h5>Sub Total :&nbsp;</h5>
-                                <h5>&#8377; {subTotal} </h5>
-                            </div>
-                            <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">
-                                <h5>Discount :&nbsp;</h5>
-                                <h5>&#8377; {offerPrice} </h5>
-                            </div>
-                            <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">
-                                <h5>Total :&nbsp;</h5>
-                                <h5>&#8377; {totalPrice} </h5>
+                            <div className="d-flex flex-sm-nowrap flex-wrap">
+                                <div className="d-flex justify-content-between sub_total p-2 mr-2">
+                                    <h5>Sub Total:</h5>
+                                    <h5>&#8377; {totalPrice} </h5>
+                                </div>
+                                <div className="d-flex justify-content-between sub_total p-2 mr-2">
+                                    <h5>Discount:</h5>
+                                    <h5>&#8377; {offerPrice} </h5>
+                                </div>
                             </div>
                         </div>
                     </div>

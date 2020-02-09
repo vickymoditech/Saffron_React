@@ -34,5 +34,5 @@
 .menu-left {
     overflow: auto;
     background-color: #313131;
-    height: calc(100vh - 159px);
+    height: calc(100vh - 155px) !important;
 }

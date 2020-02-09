@@ -67,7 +67,7 @@ class Sidebar extends Component {
                                                                    style={{position: 'absolute', right: 10, top: 10}}/> </span>
                         </ListItem>
 
-                        <div className="menu-left">
+                        <div className="menu-leftfront">
                             {!isLoggedIn() && <div className="d-flex justify-content-center btns py-3">
                                 <button type="button" className="btn signup_btn mr-3" onClick={this.SignUp} >Sign Up</button>
                                 <button type="button" className="btn login_btn" onClick={this.SignIn} >Sign In</button>

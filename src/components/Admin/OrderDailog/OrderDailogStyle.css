@@ -1,5 +1,5 @@
 .main_box .data {
-    height: 170px;
+    height: 130px;
     overflow-y: scroll;
 }
 
@@ -16,7 +16,15 @@
 .main_box .btns button:focus {
     box-shadow: none;
 }
-
+.total_price{ 
+font-size: 18px;
+    font-weight: 600;
+    color: #bf925d;
+}
+.total_price .totalTag{
+    margin-right: 10px;
+}
+.total_price .priceTag{}
 ::-webkit-scrollbar {
     width: 10px;
 }

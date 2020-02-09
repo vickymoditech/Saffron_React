@@ -68,8 +68,8 @@
     position: absolute;
     width: 100%;
 }
-.menu-left {
+.menu-leftfront {
     overflow: auto;
     background-color: #313131;
-    height: calc(100vh - 165px);
+    height: calc(100vh - 81px) !important;
 }
