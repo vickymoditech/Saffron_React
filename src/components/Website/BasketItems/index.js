@@ -86,12 +86,14 @@ class BasketItemsList extends Component {
         let visible = false;
         let totalPrice = 0;
         let offerPrice = 0;
+        let subTotal = 0;
         this.props.BasketGeneratorProducts.map((singleProduct) => {
             totalPrice += singleProduct.product.price;
-            offerPrice += singleProduct.product.offerPrice;
+            subTotal += singleProduct.product.offerPrice;
+            if(singleProduct.product.offerPrice !== 0)
+                offerPrice += singleProduct.product.offerPrice - singleProduct.product.price;
             visible = true;
         });
-        let discount = Math.abs(offerPrice - totalPrice);
 
         const defaultOptions = {
             loop: true,
@@ -170,16 +172,20 @@ class BasketItemsList extends Component {
                                             <Link to="/Registration"> <span className="btn btn-primary mr-2">Sing up</span>
                                             </Link></div>) :
                                     <button type="button" className="btn btn-success"
-                                            onClick={this.getTimeSlots}> Choose Your Time </button>
+                                            onClick={this.getTimeSlots}> Next </button>
                                 }
                             </div>
                             <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">
                                 <h5>Sub Total :&nbsp;</h5>
-                                <h5>&#8377; {totalPrice} </h5>
+                                <h5>&#8377; {subTotal} </h5>
                             </div>
                             <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">
                                 <h5>Discount :&nbsp;</h5>
                                 <h5>&#8377; {offerPrice} </h5>
+                            </div>
+                            <div className="d-flex justify-content-between sub_total w-25 p-2 mr-2">
+                                <h5>Total :&nbsp;</h5>
+                                <h5>&#8377; {totalPrice} </h5>
                             </div>
                         </div>
                     </div>

@@ -116,55 +116,27 @@ class OrderDialog extends Component {
                                     <div className="d-flex justify-content-center btns">
                                         {this.state.role.toLowerCase() !== "admin" && (this.state.column && (this.state.column === "running late" || this.state.column === "recent orders") ?
                                             < button type="button"
-                                                     style={{
-                                                         padding: '10px',
-                                                         marginRight: '10px',
-                                                         borderRadius: '5px',
-                                                         border: '0px',
-                                                         backgroundColor: '#bf925d',
-                                                         color: '#000000'
-                                                     }}
-                                                     onClick={this.handleMoveToProgress}>Move to
-                                                Progress
+                                                     className="btn button_main"
+                                                     onClick={this.handleMoveToProgress}>Progress
                                             </button> :
                                             !(this.state.column === "finish") &&
                                             < button type="button"
-                                                     style={{
-                                                         padding: '10px',
-                                                         borderRadius: '5px',
-                                                         border: '0px',
-                                                         backgroundColor: '#bf925d',
-                                                         color: '#000000'
-                                                     }}
+                                                     className="btn button_main"
                                                      onClick={this.handleDone}>Finish
                                             </button>)}
                                         &nbsp; &nbsp;
                                         <button type="button"
-                                                /*style={{
-                                                    padding: '10px',
-                                                    borderRadius: '5px',
-                                                    border: '0px',
-                                                    backgroundColor: '#bf925d',
-                                                    color: '#000000'
-                                                }}*/
-className="btn button_main"
+                                                className="btn button_main"
                                                 onClick={this.props.handleClose}>Close
                                         </button>
                                         &nbsp; &nbsp;
                                         {(this.state.role.toLowerCase() === "admin" && (this.state.column && this.state.column === "finish" && !(order.paymentComplete))) &&
                                         < button type="button"
-                                                 style={{
-                                                     padding: '10px',
-                                                     borderRadius: '5px',
-                                                     border: '0px',
-                                                     backgroundColor: '#bf925d',
-                                                     color: '#000000'
-                                                 }}
+                                                 className="btn button_main"
                                                  onClick={this.handleFinishPayment}>Finish Payment
                                         </button>
                                         }
                                     </div>
-
                                 </div>
                             </div>
                         </div>

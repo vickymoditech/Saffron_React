@@ -14,7 +14,7 @@ class TimeSlotDialog extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {selectedTime: null, orderType: 0};
+        this.state = {selectedTime: null, orderType: 0, visible: false};
     }
 
     TimeSelectedClick = (selectedTime) => {
@@ -26,7 +26,7 @@ class TimeSlotDialog extends Component {
     };
 
     onChange = (event) => {
-        this.setState({orderType: event.target.value});
+        this.setState({orderType: event.target.value, visible: true});
     };
 
     render() {
@@ -74,7 +74,7 @@ class TimeSlotDialog extends Component {
                                             <input type="radio" name="orderType" value="ASAP"
                                                    className="form-check-input"
                                                    onClick={this.onChange}
-                                                   checked={ orderType === 'ASAP'}/> <b
+                                                   checked={orderType === 'ASAP'}/> <b
                                             style={{'cursor': 'default'}}> ASAP </b>
                                         </label>
                                     </div>
@@ -83,7 +83,7 @@ class TimeSlotDialog extends Component {
                                             <input type="radio" name="orderType" value="10"
                                                    className="form-check-input"
                                                    onClick={this.onChange}
-                                                   checked={ orderType === '10'}/> <b
+                                                   checked={orderType === '10'}/> <b
                                             style={{'cursor': 'default'}}> After 10 Minutes </b>
                                         </label>
                                     </div>
@@ -92,12 +92,16 @@ class TimeSlotDialog extends Component {
                                             <input type="radio" name="orderType" value="15"
                                                    className="form-check-input"
                                                    onClick={this.onChange}
-                                                   checked={ orderType === '15'}/> <b
+                                                   checked={orderType === '15'}/> <b
                                             style={{'cursor': 'default'}}> After 15 Minutes </b>
                                         </label>
                                     </div>
                                 </div>
-                                {this.state.selectedTime && <button onClick={this.placeOrder}> Place Order</button>}
+                                <div className="text-center">
+                                    <button className="btn addtocartbtn" onClick={this.placeOrder}
+                                            disabled={!this.state.visible}> Place Order
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
