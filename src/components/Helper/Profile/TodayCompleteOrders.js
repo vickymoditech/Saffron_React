@@ -33,7 +33,7 @@ class TodayCompleteOrders extends Component {
 
         return (
             <div>
-                <p> User SaffronPoint {this.props.SaffronPoint} </p>
+                <p className="saffronTitle mb-4 pt-3"> User SaffronPoint {this.props.SaffronPoint} </p>
                 <div>
                     {this.props.RecentCompleteOrder && this.props.RecentCompleteOrder.length > 0 && <Collapse accordion>
                         {this.props.RecentCompleteOrder.map((singleCompletedOrder, index) => (
@@ -42,7 +42,7 @@ class TodayCompleteOrders extends Component {
                                     <div className="d-flex align-items-center justify-content-between">
                                         <p>Date
                                             : {moment.tz(singleCompletedOrder.bookingDateTime, 'Asia/Kolkata').format("DD-MM-YYYY HH:mm a")}</p>
-                                        <p style={{"textTransform": "capitalize"}} className="status p-2">{singleCompletedOrder.column}</p>
+                                        <p style={{"textTransform": "capitalize"}} className="orderStatus p-2">{singleCompletedOrder.column}</p>
                                     </div>
                                     <p>Total &#8377;. {singleCompletedOrder.total}</p>
                                 </div>}

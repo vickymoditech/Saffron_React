@@ -7,12 +7,18 @@
     position: relative;
     text-align: right;
     height: 500px;
-    width: 600px;
+    width: 100%;
 }
 
 .gmap_canvas {
     overflow: hidden;
     background: none !important;
     height: 500px;
-    width: 600px;
+    width: 100%;
+}
+.address_box{
+    box-shadow: 0px 0px 7px 2px #c1c1c1;
+    border-radius:5px;
+    width:300px;
+    height: 300px;
 }

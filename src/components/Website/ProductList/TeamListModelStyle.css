@@ -16,9 +16,10 @@
 }
 .addtocartbtn{
     width: 50%;
-    background-color: #c1c1c1;
     padding: 10px;
     transition:all .5s;
+    background-color: green;
+    color: white;
 }
 .addtocartbtn:active{
     background-color: green;
@@ -26,7 +27,7 @@
 }
 .product .products .product_details {
     cursor: pointer;
-    background-color: #f1f1f1;
+    background-color: #bf925d;
     transition:all .5s;
 }
 
