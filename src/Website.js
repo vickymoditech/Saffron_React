@@ -127,12 +127,14 @@ class App extends Component {
                 </header>
                 {this.state.open && <SidebarComponent closeNav={this.closeNav} open={this.state.open} logout={this.handleLogout}/>}
                 {this.props.children}
-                {(this.props.BasketVisible === true && BasketProductCount > 0) && <div id="ex3" onClick={this.BasketClick}>
-                    <span className="p1 fa-stack fa-5x has-badge" data-count={BasketProductCount}>
-                    <i className="p2 fa fa-circle fa-stack-2x"></i>
-                    <i className="p3 fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                    </span>
+
+                {(this.props.BasketVisible === true && BasketProductCount > 0) && <div className="fixed_position" onClick={this.BasketClick}>
+                    <div className="icon_position">
+                        <i className="fa fa-shopping-cart p-3"></i>
+                        <span className="notification badge badge-danger">{BasketProductCount}</span>
+                    </div>
                 </div>}
+
                 <Footer/>
                 {this.props.Loading && <Loader/>}
                 {this.state.orderPlace && <SuccessLoader/>}

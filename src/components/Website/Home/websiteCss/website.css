@@ -462,6 +462,34 @@ header .video {
 }
 
 
+.icon_position {
+    position: relative;
+    cursor: pointer;
+}
+
+.icon_position i {
+    font-size: 50px;
+    color: white;
+    background-color: #bf925d;
+    border-radius: 50%;
+}
+
+.icon_position .notification {
+    position: absolute;
+    border-radius: 50%;
+    top: 5px;
+    left: 30px;
+    font-size: 18px;
+}
+
+.fixed_position {
+    position: fixed;
+    bottom: 4%;
+    right: 3%;
+}
+
+
+
 /*footer end*/
 
 /*media query start*/

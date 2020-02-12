@@ -4,6 +4,8 @@ import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 import {Dropdown} from 'semantic-ui-react';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
+import ImageLoader from 'react-load-image';
+import './videoStyle.css';
 
 class VideoGalleryMain extends Component {
 
@@ -22,7 +24,7 @@ class VideoGalleryMain extends Component {
     handleChangeService = (event, {value}) => {
         this.setState({current_service: value});
         if (value !== null) {
-            alert(value);
+            console.log(value);
         }
     };
 
@@ -47,6 +49,51 @@ class VideoGalleryMain extends Component {
                             <Dropdown style={{width: '60%', margin: '0 auto', marginBottom: '10px'}}
                                       placeholder={placeHolder} fluid selection options={options}
                                       onChange={this.handleChangeService}/>
+
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <div className="video_box m-3">
+                                            <ImageLoader src="/assets/Images/NoImages.png">
+                                                <img className="img-fluid" alt="Video Image"/>
+                                                <img src="/assets/Images/NoImages.png" alt="Gallery Image"/>
+                                                <img src="/assets/Images/s_loader.gif" alt="Gallery Image"/>
+                                            </ImageLoader>
+                                            <div className="video_content">
+                                                <span>Name</span>
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <div className="video_box m-3">
+                                            <ImageLoader src="/assets/Images/NoImages.png">
+                                                <img className="img-fluid" alt="Video Image"/>
+                                                <img src="/assets/Images/NoImages.png" alt="Gallery Image"/>
+                                                <img src="/assets/Images/s_loader.gif" alt="Gallery Image"/>
+                                            </ImageLoader>
+                                            <div className="video_content">
+                                                <span>Name</span>
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <div className="video_box m-3">
+                                            <ImageLoader src="/assets/Images/NoImages.png">
+                                                <img className="img-fluid" alt="Video Image"/>
+                                                <img src="/assets/Images/NoImages.png" alt="Gallery Image"/>
+                                                <img src="/assets/Images/s_loader.gif" alt="Gallery Image"/>
+                                            </ImageLoader>
+                                            <div className="video_content">
+                                                <span>Name</span>
+                                                <p>Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </section>
