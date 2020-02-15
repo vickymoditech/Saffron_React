@@ -80,6 +80,10 @@ class BasketItemsList extends Component {
             return true;
     };
 
+    checkLoader = () => {
+        const {Loading} = this.state;
+        this.setState({Loading: !Loading});
+    };
 
     render() {
         const {Loading} = this.state;
@@ -177,16 +181,6 @@ class BasketItemsList extends Component {
 
                         <div
                             className="second_part d-flex flex-sm-nowrap flex-wrap justify-content-between px-2 py-2 w-100">
-                            {/*<div className="d-flex my-sm-0 my-2">
-                                {this.checkLogin() ? (
-                                        <div><span> Sign in or create account Already use Saffron? Sign in with your account. </span>
-                                            <Link to="/Login"> <span className="btn btn-default mr-2">Login</span> </Link>
-                                            <Link to="/Registration"> <span className="btn btn-primary mr-2">Sing up</span>
-                                            </Link></div>) :
-                                    <button type="button" className="btn btn-success"
-                                            onClick={this.getTimeSlots}> Next </button>
-                                }
-                            </div>*/}
                             <div className="d-flex flex-column flex-sm-nowrap flex-wrap">
                                 <div className="d-flex sub_total">
                                     <h5 className="mr-5">Sub Total:</h5>
@@ -204,7 +198,8 @@ class BasketItemsList extends Component {
                         </div>
                         <div className="d-flex my-sm-0 my-2">
                             {this.checkLogin() ? (
-                                    <div><span> Sign in or create account Already use Saffron? Sign in with your account. </span>
+                                    <div>
+                                        <span> Sign in or create account Already use Saffron? Sign in with your account. </span>
                                         <Link to="/Login"> <span className="btn btn-default mr-2">Login</span> </Link>
                                         <Link to="/Registration"> <span className="btn btn-primary mr-2">Sing up</span>
                                         </Link></div>) :
@@ -221,6 +216,8 @@ class BasketItemsList extends Component {
                 }
 
                 {Loading && <Loader/>}
+
+                <button onClick={this.checkLoader}> check loader</button>
 
             </div>
 

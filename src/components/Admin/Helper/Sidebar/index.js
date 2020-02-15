@@ -70,7 +70,7 @@ class Sidebar extends Component {
                     open={this.state.open} containerStyle={stylesDrawer.containerStyle} docked={false}
                     onRequestChange={this.props.closeNav}>
                     <List style={{padding: 0}}>
-                        <ListItem className="text-center" style={{color: "#fff", backgroundColor: "#bf925d"}}
+                        <ListItem className="text-center" style={{color: "#fff", backgroundColor: "#000000"}}
                                   innerDivStyle={stylesMenu.innerDivStyle}>
                             <span><img src="/assets/Images/DB_Logo.png" alt="" style={{width: 120}}/></span>
                             <span onClick={this.props.closeNav}><i className="fa fa-times"

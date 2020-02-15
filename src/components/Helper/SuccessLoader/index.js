@@ -23,8 +23,8 @@ export default class Loader extends Component {
         };
 
         return (
-            <div className="loadingPanel">
-                <Lottie options={defaultOptions} height={400} width={400}/>
+            <div className="loadingPanel d-flex align-items-center h-100">
+                <Lottie options={defaultOptions} height={250} width={250}/>
             </div>
         )
     }

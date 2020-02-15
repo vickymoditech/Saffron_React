@@ -6,7 +6,8 @@ import {isLoggedIn} from "../../../index";
 
 const stylesDrawer = {
     containerStyle: {
-        backgroundColor: '#bf925d',
+        backgroundColor: '#313131',
+        paddingBottom:'3px',
         color: "#fff"
     }
 };
@@ -60,7 +61,7 @@ class Sidebar extends Component {
                     open={this.state.open} containerStyle={stylesDrawer.containerStyle} docked={false}
                     onRequestChange={this.props.closeNav}>
                     <List style={{padding: 0}}>
-                        <ListItem className="text-center" style={{color: "#fff", backgroundColor: "#bf925d"}}
+                        <ListItem className="text-center" style={{color: "#fff", backgroundColor: "#000000"}}
                                   innerDivStyle={stylesMenu.innerDivStyle}>
                             <span><img src="/assets/Images/DB_Logo.png" alt="" style={{width: 120}}/></span>
                             <span onClick={this.props.closeNav}><i className="fa fa-times"
@@ -75,27 +76,27 @@ class Sidebar extends Component {
                             <Link onClick={this.props.closeNav} to="/" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <div style={{marginTop: 10}}><i className="fa fa-home"><span
-                                        className="link-hover">Home</span></i></div>
+                                        className="link-hover pl-2">Home</span></i></div>
                                 </ListItem>
                             </Link><Divider/>
 
                             <Link onClick={this.props.closeNav} to="/" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
-                                    <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-tags"><span className="link-hover">Offer Zone</span></i></div>
+                                    <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-tags"><span className="link-hover pl-2">Offer Zone</span></i></div>
                                 </ListItem>
                             </Link><Divider/>
 
                             <Link onClick={this.props.closeNav} to="/ProductList" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <div style={{marginTop: 10}} className="link-hover"><i
-                                        className="fa fa-shopping-bag"><span className="link-hover">Shop</span></i></div>
+                                        className="fa fa-shopping-bag"><span className="link-hover pl-2">Shop</span></i></div>
                                 </ListItem>
                             </Link><Divider/>
 
                             <Link onClick={this.props.closeNav} to="/Gallery" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-picture-o"><span
-                                        className="link-hover">Photos</span></i></div>
+                                        className="link-hover pl-2">Photos</span></i></div>
                                 </ListItem>
                             </Link><Divider/>
 
@@ -103,7 +104,7 @@ class Sidebar extends Component {
                             <Link onClick={this.props.closeNav} to="/VideoGallery" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <div style={{marginTop: 10}} className="link-hover"><i
-                                        className="fa fa-video-camera"><span className="link-hover">Videos</span></i></div>
+                                        className="fa fa-video-camera"><span className="link-hover pl-2">Videos</span></i></div>
                                 </ListItem>
                             </Link><Divider/>
 
@@ -111,7 +112,7 @@ class Sidebar extends Component {
                                                           className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                              <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-shopping-basket"><span
-                                 className="link-hover">Your Past Orders</span></i></div>
+                                 className="link-hover pl-2">Your Past Orders</span></i></div>
                                 </ListItem>
                             </Link><Divider/> </span>}
 
@@ -120,7 +121,7 @@ class Sidebar extends Component {
                             <span><Link onClick={this.props.closeNav} to="/Profile/UserProfile" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-cogs"><span
-                                        className="link-hover">Settings</span></i></div>
+                                        className="link-hover pl-2">Settings</span></i></div>
                                 </ListItem>
                             </Link><Divider/></span>}
 
@@ -128,7 +129,7 @@ class Sidebar extends Component {
                             <span><Link onClick={this.props.closeNav} to="/About" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-cogs"><span
-                                        className="link-hover">Contact Us</span></i></div>
+                                        className="link-hover pl-2">Contact Us</span></i></div>
                                 </ListItem>
                             </Link><Divider/></span>
 

@@ -10,11 +10,15 @@
     color: #ffffff;
 }
 .side-menu .link:hover .sidebar-list .link-hover{
+    padding-left: 0px;
     color: #bf925d;
 }
 .side-menu .link .sidebar-list .link-hover{
+    padding-left: 0px;
     color: #ffffff;
+    font-family:'Josefin Sans';
 }
+
 .menu-drawer {
 
 }
