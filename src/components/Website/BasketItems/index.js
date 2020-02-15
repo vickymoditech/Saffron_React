@@ -80,11 +80,6 @@ class BasketItemsList extends Component {
             return true;
     };
 
-    checkLoader = () => {
-        const {Loading} = this.state;
-        this.setState({Loading: !Loading});
-    };
-
     render() {
         const {Loading} = this.state;
         let visible = false;
@@ -214,11 +209,7 @@ class BasketItemsList extends Component {
                     <Link to="/ProductList"><span> Your Booking Cart is Empty.. Continue Shopping </span></Link>
                 </div>
                 }
-
                 {Loading && <Loader/>}
-
-                <button onClick={this.checkLoader}> check loader</button>
-
             </div>
 
         );
