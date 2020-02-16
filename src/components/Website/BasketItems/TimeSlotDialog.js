@@ -14,11 +14,15 @@ class TimeSlotDialog extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {selectedTime: null, orderType: 0, visible: false};
+        this.state = {selectedTime: null, orderType: 0, visible: false, selectedItem: null};
     }
 
-    TimeSelectedClick = (selectedTime) => {
-        this.setState({selectedTime: selectedTime});
+    TimeSelectedClick = (singleData) => {
+        const selectedTime = {
+            start_time: singleData.start_time,
+            end_time: singleData.end_time
+        };
+        this.setState({selectedTime: selectedTime, selectedItem: singleData.id});
     };
 
     placeOrder = () => {
@@ -57,11 +61,8 @@ class TimeSlotDialog extends Component {
 
                                     <div className="products p-2">
                                         {this.props.TimeSlots.map((singleData, index) => (
-                                            <div className="product_details d-flex align-items-center p-2 m-2"
-                                                 onClick={() => this.TimeSelectedClick({
-                                                     start_time: singleData.start_time,
-                                                     end_time: singleData.end_time
-                                                 })} key={index}>
+                                            <div className= {this.state.selectedItem === singleData.id ? "product-select d-flex align-items-center p-2" : "product_details d-flex align-items-center p-2"}
+                                                 onClick={() => this.TimeSelectedClick(singleData)} key={index}>
                                                 <h5 className="ml-2"
                                                     style={{"textTransform": "capitalize"}}>{singleData.start_time} - {singleData.end_time}</h5>
                                             </div>

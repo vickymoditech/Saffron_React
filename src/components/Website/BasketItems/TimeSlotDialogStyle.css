@@ -14,13 +14,16 @@
     height: 200px;
     overflow-y: scroll;
 }
-
-.product .products .product_details {
+.product .products .product-select{
     background-color: #bf925d;
     margin-bottom:10px;
 }
+.product .products .product_details {
+    background-color: #c1c1c18a;
+    margin-bottom:10px;
+}
 
-.product .products .product_details img {
+.product .products img {
     height: 50px;
     width: 50px;
     border-radius: 50%;

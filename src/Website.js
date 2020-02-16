@@ -129,10 +129,8 @@ class App extends Component {
                 {this.props.children}
 
                 {(this.props.BasketVisible === true && BasketProductCount > 0) && <div className="fixed_position" onClick={this.BasketClick}>
-                    <div className="icon_position">
                         <i className="fa fa-shopping-cart p-3"></i>
                         <span className="notification badge badge-danger">{BasketProductCount}</span>
-                    </div>
                 </div>}
 
                 <Footer/>

@@ -461,20 +461,22 @@ header .video {
     transform: translate(-50%, -50%);
 }
 
-
-.icon_position {
-    position: relative;
-    cursor: pointer;
+.fixed_position {
+    position: fixed;
+    bottom: 4%;
+    right: 3%;
+    z-index:9999;
+    cursor:pointer;
 }
 
-.icon_position i {
+.fixed_position i {
     font-size: 50px;
     color: white;
     background-color: #bf925d;
     border-radius: 50%;
 }
 
-.icon_position .notification {
+.fixed_position .notification {
     position: absolute;
     border-radius: 50%;
     top: 5px;
@@ -482,11 +484,7 @@ header .video {
     font-size: 18px;
 }
 
-.fixed_position {
-    position: fixed;
-    bottom: 4%;
-    right: 3%;
-}
+
 
 
 

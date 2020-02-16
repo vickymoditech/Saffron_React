@@ -33,7 +33,7 @@ class TodayCompleteOrders extends Component {
 
         return (
             <div>
-                <p className="saffronTitle mb-4 pt-3"> User SaffronPoint {this.props.SaffronPoint} </p>
+                <p className="saffronTitle"> User SaffronPoint {this.props.SaffronPoint} </p>
                 <div>
                     {this.props.RecentCompleteOrder && this.props.RecentCompleteOrder.length > 0 && <Collapse accordion>
                         {this.props.RecentCompleteOrder.map((singleCompletedOrder, index) => (
@@ -50,7 +50,7 @@ class TodayCompleteOrders extends Component {
                                 <div>
                                     <div className="collapse_data p-2">
                                         <div className="text-center">
-                                            <h6>Your Arrival
+                                            <h6 className="oreder_title_style">Your Arrival
                                                 time: {moment.tz(singleCompletedOrder.bookingStartTime, 'Asia/Kolkata').format("DD-MM-YYYY HH:mm a")}</h6>
                                         </div>
                                         <div className="product_box pr-3">

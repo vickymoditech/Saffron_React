@@ -17,12 +17,12 @@ class TeamListModel extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {selectedTeamId: null};
+        this.state = {selectedItem: null};
     }
 
+
     SelectTeamMember = (team) => {
-        console.log(team.id);
-        this.setState({selectedTeamId: team.id}, () => {
+        this.setState({selectedItem: team.id}, () => {
             this.props.SelectTeamMember(team);
         });
     };
@@ -52,8 +52,9 @@ class TeamListModel extends Component {
                                     </div>
                                     <div className="products p-2">
                                         {this.props.TeamList.map((team, index) => (
-                                            <div className={this.state.selectedTeamId === team.id ? "product_details d-flex align-items-center p-2 active" : "product_details d-flex align-items-center p-2"}
-                                                 onClick={() => this.SelectTeamMember(team)} key={index}>
+                                            <div
+                                                className={this.state.selectedItem === team.id ? "product-select d-flex align-items-center p-2" : "product_details d-flex align-items-center p-2"}
+                                                onClick={() => this.SelectTeamMember(team)} key={index}>
                                                 <ImageLoader
                                                     src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url}>
                                                     <img className="img-fluid" alt="team1"/>
