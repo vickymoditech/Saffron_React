@@ -61,6 +61,12 @@ export default {
         error_msg: null,
         success_msg: null,
     },
+    manageCouponReducer: {
+        Loading: false,
+        couponList: [],
+        error_msg: null,
+        success_msg: null,
+    },
     manageTeamReducer: {
         Loading: false,
         teamList: [],
@@ -83,6 +89,7 @@ export default {
         galleryList: [],
         serviceList: [],
         allGalleryList: [],
+        allVideoList: [],
         sliderList: [],
         AllProductsList: [],
         BasketGeneratorProducts: BasketGeneratorProducts,

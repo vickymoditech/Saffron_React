@@ -2,8 +2,13 @@ import React, {Component} from 'react';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import './websiteCss/serviceStyle.css';
 import ImageLoader from 'react-load-image';
+import {browserHistory} from "react-router";
 
 class ServiceGrid extends Component {
+
+    moveToProductList = () => {
+        browserHistory.push("/ProductList");
+    };
 
     render() {
         return (
@@ -25,7 +30,7 @@ class ServiceGrid extends Component {
                                     <div className="row">
                                         {this.props.serviceList.map((service, index) => (
                                             <div key={index} className="col-md-6">
-                                                <div className="main_box d-flex p-2 m-2">
+                                                <div className="main_box d-flex p-2 m-2" onClick={this.moveToProductList}>
                                                     <ImageLoader
                                                         src={ENVIRONMENT_VARIABLES.PHOTO_URL + service.image_url}>
                                                         <img className="img-fluid" alt={service.title}/>

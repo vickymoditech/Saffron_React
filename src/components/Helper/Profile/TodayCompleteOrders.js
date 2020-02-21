@@ -33,7 +33,7 @@ class TodayCompleteOrders extends Component {
 
         return (
             <div>
-                <p className="saffronTitle"> User SaffronPoint {this.props.SaffronPoint} </p>
+                <p className="saffronTitle"> Your SaffronPoint : {this.props.SaffronPoint} </p>
                 <div>
                     {this.props.RecentCompleteOrder && this.props.RecentCompleteOrder.length > 0 && <Collapse accordion>
                         {this.props.RecentCompleteOrder.map((singleCompletedOrder, index) => (

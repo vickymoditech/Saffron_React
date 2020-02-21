@@ -3,7 +3,6 @@ import * as websiteAction from "../../../actions/websiteAction";
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 import {Dropdown} from 'semantic-ui-react';
-import ImageLoader from 'react-load-image';
 import './videoStyle.css';
 import YouTube from 'react-youtube';
 
@@ -20,7 +19,7 @@ class VideoGalleryMain extends Component {
 
     componentWillMount() {
         if (this.props.serviceList.length > 0) {
-            this.props.actions.websiteAction.getAllGallerys(this.props.serviceList[0].id);
+            this.props.actions.websiteAction.getAllVideos(this.props.serviceList[0].id);
         } else {
             this.setState({loadThisPage: true}, () => {
                 this.props.actions.websiteAction.getWebsiteHome();
@@ -33,10 +32,19 @@ class VideoGalleryMain extends Component {
         window.scrollTo(0, 0);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.serviceList.length > 0 && this.state.loadThisPage) {
+            this.setState({loadThisPage: false}, () => {
+                this.props.actions.websiteAction.getAllVideos(this.props.serviceList[0].id);
+            });
+        }
+        this.setState({videos: nextProps.allVideoList});
+    }
+
     handleChangeService = (event, {value}) => {
         this.setState({current_service: value});
         if (value !== null) {
-            this.props.actions.websiteAction.getAllGallerys(value);
+            this.props.actions.websiteAction.getAllVideos(value);
         }
     };
 
@@ -46,6 +54,8 @@ class VideoGalleryMain extends Component {
     };
 
     render() {
+
+        const {videos} = this.state;
 
         let options = [];
         this.props.serviceList.map((service, index) => {
@@ -60,8 +70,8 @@ class VideoGalleryMain extends Component {
         const opts = {
             height: '390',
             width: '640',
-            playerVars: { // https://developers.google.com/youtube/player_parameters
-                autoplay: 1
+            playerVars: {
+                autoplay: 0
             }
         };
 
@@ -78,47 +88,18 @@ class VideoGalleryMain extends Component {
                             <div className="container">
                                 <div className="row">
                                     <div className="col-sm-6">
-                                        <div className="video_box m-3">
-                                            <YouTube
-                                                videoId="2g811Eo7K8U"
-                                                opts={opts}
-                                                onReady={this._onReady}
-                                            />
-                                            <div className="video_content">
-                                                <span>Name</span>
-                                                <p>Description</p>
+                                        {videos.map((video, index) => (
+                                            <div className="video_box m-1" key={index}>
+                                                <YouTube
+                                                    videoId={video.video_url}
+                                                    opts={opts}
+                                                    onReady={this._onReady}
+                                                />
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <div className="video_box m-3">
-                                            <ImageLoader src="/assets/Images/NoImages.png">
-                                                <img className="img-fluid" alt="Video Image"/>
-                                                <img src="/assets/Images/NoImages.png" alt="Gallery Image"/>
-                                                <img src="/assets/Images/s_loader.gif" alt="Gallery Image"/>
-                                            </ImageLoader>
-                                            <div className="video_content">
-                                                <span>Name</span>
-                                                <p>Description</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <div className="video_box m-3">
-                                            <ImageLoader src="/assets/Images/NoImages.png">
-                                                <img className="img-fluid" alt="Video Image"/>
-                                                <img src="/assets/Images/NoImages.png" alt="Gallery Image"/>
-                                                <img src="/assets/Images/s_loader.gif" alt="Gallery Image"/>
-                                            </ImageLoader>
-                                            <div className="video_content">
-                                                <span>Name</span>
-                                                <p>Description</p>
-                                            </div>
-                                        </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </section>
@@ -131,8 +112,8 @@ class VideoGalleryMain extends Component {
 const mapStateToProps = (state) => {
     const {websiteReducer} = state;
     return {
-        serviceList: websiteReducer.serviceList,
-
+        allVideoList: websiteReducer.allVideoList,
+        serviceList: websiteReducer.serviceList
     };
 };
 

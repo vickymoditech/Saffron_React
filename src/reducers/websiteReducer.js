@@ -9,7 +9,7 @@ import {
     ADDPRODUCTTOCART,
     REMOVEPRODUCTTOCART,
     WEBSITE_HOME,
-    LOGOUT_USER, BASKETVISIBLE, ORDER_PLACE, COMPLETED_ORDER_LIST
+    LOGOUT_USER, BASKETVISIBLE, ORDER_PLACE, COMPLETED_ORDER_LIST, ALL_VIDEOS_SUCCESS
 } from '../constants/actionTypes';
 import {disconnect} from '../socket';
 
@@ -42,6 +42,14 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
                 Loading: false,
                 error_msg: null
             });
+
+        case ALL_VIDEOS_SUCCESS:
+            return Object.assign({}, state, {
+                allVideoList: action.data,
+                Loading: false,
+                error_msg: null
+            });
+
 
         case ALL_PRODUCTS_SUCCESS:
             return Object.assign({}, state, {
@@ -120,7 +128,7 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
             browserHistory.push('/');
             return Object.assign({}, state, {
                 Loading: false,
-                BasketGeneratorProducts:[]
+                BasketGeneratorProducts: []
             });
 
         default:

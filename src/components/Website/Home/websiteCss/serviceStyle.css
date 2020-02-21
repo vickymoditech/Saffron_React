@@ -4,6 +4,7 @@
 }
 
 .services_main_box {
+    cursor: pointer;
     height: 310px;
     overflow-y: scroll;
     overflow-x: hidden;
