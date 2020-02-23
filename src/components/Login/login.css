@@ -10,7 +10,13 @@ h2 {
 .icon_color{
     color:#bf925b;
 }
-
+.login_sub_link {
+    color:#bf925d;
+    font-weight: 600;
+}
+.login_Link:hover{
+    color:#bf925d;
+}
 .button_main{
     background-color: #000000 !important;
     border:2px solid #000000 !important;
@@ -475,7 +481,7 @@ body .modal-dialog .form-control:focus {
         z-index: 6;
     }*/
     nav {
-        height: 92px;
+
         font-weight: 100;
         border-bottom: 1px solid #4d4d4d;
     }

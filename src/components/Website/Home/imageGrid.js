@@ -18,7 +18,7 @@ class ImageGrid extends React.Component {
                         <div className="row">
                             {this.props.galleryList.map((gallery, index) => (
                                 <div className="col-md-3 px-0" key={index}>
-                                    <div className="main_img_box">
+                                    <div className="main_img_box wow fadeIn">
                                         <ImageLoader
                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url}>
                                             <img className="img-fluid" alt="image"/>

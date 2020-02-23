@@ -40,6 +40,17 @@ export const ServiceList = () => {
     }
 };
 
+export const CheckLoader = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: SERVICE_INPROGRESS});
+        }
+    } catch (error) {
+        console.log(error.message.toString());
+    }
+};
+
+
 export const ServiceDelete = (ServiceId) => {
     try {
         return (dispatch) => {

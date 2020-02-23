@@ -14,12 +14,12 @@ class Team extends Component {
                 <section className="team_section py-5">
                     <div className="container">
                         <div className="text-center">
-                            <span className="main_title1">Our Team</span>
+                            <span className="main_title1 wow zoomIn">Our Team</span>
                         </div>
                         <div className="row">
                             {this.props.teamList.map((team, index) => (
                                 <div className="col-xl-3 col-md-3 col-sm-6 col-12 team_position mt-3" key={index}>
-                                    <div className="team">
+                                    <div className="team wow zoomIn">
 
                                         <ImageLoader
                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + team.image_url}>

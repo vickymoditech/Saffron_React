@@ -89,12 +89,16 @@ class VideoGalleryMain extends Component {
                                 <div className="row">
                                     <div className="col-sm-6">
                                         {videos.map((video, index) => (
-                                            <div className="video_box m-1" key={index}>
-                                                <YouTube
+                                            <div className="video_box" key={index}>
+                                                <YouTube className="w-100"
                                                     videoId={video.video_url}
                                                     opts={opts}
                                                     onReady={this._onReady}
                                                 />
+                                                <div className="video_content">
+                                                    <span>Name</span>
+                                                    <p>Description</p>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>

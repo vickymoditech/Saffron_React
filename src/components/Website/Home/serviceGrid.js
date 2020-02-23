@@ -15,18 +15,18 @@ class ServiceGrid extends Component {
             <div>
                 <section className="service pt-5 pb-5">
                     <div className="container-fluid">
-                        <div className="title_content text-center mb-5">
+                        <div className="title_content wow fadeIn text-center mb-5">
                             <span className="title">Our Services</span>
                         </div>
 
                         <div className="row">
                             <div className="col-md-4 col-sm-5 pr-0">
-                                <div className="d-none d-md-flex flex-column align-items-center ml-xl-5 pl-xl-5">
+                                <div className="d-none wow fadeInLeft d-md-flex flex-column align-items-center ml-xl-5 pl-xl-5">
                                     <img src="assets/Images/work-7.jpg" className="img-fluid" alt="service image"/>
                                 </div>
                             </div>
                             <div className="col-md-8 col-sm-5">
-                                <div className="services_main_box">
+                                <div className="services_main_box wow fadeInRight">
                                     <div className="row">
                                         {this.props.serviceList.map((service, index) => (
                                             <div key={index} className="col-md-6">

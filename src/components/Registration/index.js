@@ -169,15 +169,15 @@ class Registration extends Component {
                                                                    className="form-control"
                                                                    onChange={this.handleChange}/>
                                                         </div>
-                                                        <div className="forgot-link text-center mt-3">
-                                                            <p> Do have an account? <Link to="/Login" style={{textDecoration: 'underline',color:'#000000',textDecoration:'none', fontFamily:'Josefin Sans'}}> Sign In </Link></p>
-                                                        </div>
                                                         <div className="form-group text-center justify-content-center row mt-2">
                                                             <div className="col-xs-12 text-center">
                                                             </div>
                                                             <button type="submit" className="button_main"
                                                                     onClick={this.handleSubmit}>Sign Up
                                                             </button>
+                                                        </div>
+                                                        <div className="forgot-link text-center mt-3">
+                                                            <p> Do have an account? <Link to="/Login" style={{textDecoration: 'underline',color:'#000000',textDecoration:'none', fontFamily:'Josefin Sans'}}> Sign In </Link></p>
                                                         </div>
                                                     </div>
                                                 </div>

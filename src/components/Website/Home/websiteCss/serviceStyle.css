@@ -5,7 +5,7 @@
 
 .services_main_box {
     cursor: pointer;
-    height: 310px;
+    height: 420px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -17,7 +17,6 @@
 .services_main_box .main_box img {
     height: 50px;
     width: 50px;
-    border-radius: 50%;
 }
 
 ::-webkit-scrollbar {

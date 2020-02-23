@@ -10,11 +10,11 @@ class HappyClient extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-5">
-                                <img className="img-fluid d-md-block d-none testi_img" src="assets/Images/work-7.jpg"
+                                <img className="img-fluid d-md-block d-none testi_img wow fadeInLeft" src="assets/Images/work-7.jpg"
                                      alt="testimonial image"/>
                             </div>
                             <div className="col-md-7">
-                                <div className="d-flex justify-content-center py-md-0 py-3 flex-column h-100">
+                                <div className="d-flex justify-content-center py-md-0 py-3 flex-column h-100 wow fadeInRight">
                                     <div className="mt-3 text-center"><span className="title">Happy Customers</span>
                                     </div>
                                     <div id="customers-testimonials" className="owl-carousel d-flex">

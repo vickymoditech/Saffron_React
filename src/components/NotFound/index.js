@@ -24,7 +24,9 @@ export default class NotFound extends Component {
         return (
             <div>
                 <Lottie options={defaultOptions} height={400} width={400}/>
-                <button onClick={this.moveHome}>Go to Homepage</button>
+                <div className="text-center">
+                <button className="btn button_main2" onClick={this.moveHome}>Go to Homepage</button>
+                </div>
             </div>
         );
     }

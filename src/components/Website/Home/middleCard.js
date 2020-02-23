@@ -13,13 +13,13 @@ class MiddleCard extends Component {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-md-4 pl-0 pr-0">
-                                <div className="img1">
+                                <div className="img1 wow fadeInLeft">
                                     <div className="main_text"></div>
                                 </div>
                             </div>
                             <div className="col-md-4 pl-0 pr-0">
                                 <div
-                                    className="d-flex flex-column justify-content-center align-items-center h-100 text-center p-4 welcome_content">
+                                    className="d-flex wow zoomIn flex-column justify-content-center align-items-center h-100 text-center p-4 welcome_content">
                                     <div className="text-center d-flex flex-column logo_area mb-3">
                                         <i className="fa fa-camera"></i>
                                         <span>Saffron</span>
@@ -33,7 +33,7 @@ class MiddleCard extends Component {
                                 </div>
                             </div>
                             <div className="col-md-4 pl-0 pr-0">
-                                <div className="img2">
+                                <div className="img2 wow fadeInRight">
                                     <div className="main_text"></div>
                                 </div>
                             </div>

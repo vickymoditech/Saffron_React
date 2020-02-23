@@ -24,7 +24,10 @@ h2 {
 .title {
     margin: 50px auto 25px;
 }
-
+.forgot-link{
+    font-weight: 600;
+    color:#bf925d;
+}
 .back_color{
     background-image: linear-gradient(to bottom right, black, #3e3e3e);
     height: 100vh;
@@ -475,7 +478,7 @@ body .modal-dialog .form-control:focus {
         z-index: 6;
     }*/
     nav {
-        height: 92px;
+
         font-weight: 100;
         border-bottom: 1px solid #4d4d4d;
     }

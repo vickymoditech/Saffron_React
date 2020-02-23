@@ -112,16 +112,19 @@ class Login extends Component {
                                                                    className="form-control"
                                                                    onChange={this.handleChange}/>
                                                         </div>
-                                                        <div className="forgot-link pt-4 d-flex justify-content-between">
-                                                            <p>Don't have an account? <Link to="/Registration" style={{color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Sign Up</Link></p>
-                                                        </div>
-                                                        <div className="form-group text-center">
+
+                                                        <div className="form-group pt-4  text-center">
                                                             <button type="submit" className="button_main" onClick={this.handleSubmit}>Sign In
                                                             </button>
                                                         </div>
-                                                        <Link to="/forgot-password"
+                                                        <div className="d-flex flex-wrap justify-content-sm-between justify-content-center mt-4 login_sub_link">
+                                                        <div className="forgot-link d-flex justify-content-between">
+                                                            <p>Don't have an account? <Link className="login_Link" to="/Registration" style={{color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Sign Up</Link></p>
+                                                        </div>
+                                                        <Link className="login_Link" to="/forgot-password"
                                                               style={{textDecoration: 'underline',color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Forgot
                                                             Password?</Link>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>
