@@ -114,7 +114,7 @@ class ManageVideo extends Component {
         this.setState({isEditDialogOpen: false});
     };
 
-    handleChangeStore = (event, {value}) => {
+    handleChangeService = (event, {value}) => {
         this.setState({selectedServiceId: value});
         if (value !== null) {
             //Todo ChangeList
@@ -157,7 +157,7 @@ class ManageVideo extends Component {
                         <div className="w-25">
                         <Dropdown placeholder={"Select Service"} fluid selection defaultValue={defaultValue}
                                   options={options}
-                                  onChange={this.handleChangeStore} classname="pr-2"/>
+                                  onChange={this.handleChangeService} classname="pr-2"/>
                         </div>
                     </div>
                     {options.length > 0 && <div>
