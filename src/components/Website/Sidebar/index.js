@@ -80,7 +80,7 @@ class Sidebar extends Component {
                                 </ListItem>
                             </Link><Divider/>
 
-                            <Link onClick={this.props.closeNav} to="/" className="link">
+                            <Link onClick={this.props.closeNav} to="/OfferZone" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-tags"><span className="link-hover pl-2">Offer Zone</span></i></div>
                                 </ListItem>

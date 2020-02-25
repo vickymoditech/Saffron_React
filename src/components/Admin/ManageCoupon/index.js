@@ -7,7 +7,7 @@ import Loader from '../../Helper/Loader';
 import {confirmAlert} from 'react-confirm-alert';
 import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import AddDialog from './addDialog';
-import './manage-video.css';
+import './manage-coupon.css';
 
 class ManageCoupon extends Component {
 
@@ -79,7 +79,6 @@ class ManageCoupon extends Component {
 
     render() {
         const {couponList} = this.state;
-        //let selected_video = videoList.find((gallery) => gallery.id === this.state.selectedVideoId);
         return (
             <div className="bg-burrito-image autofill-background">
                 <NotificationSystem ref="notificationSystem"/>
@@ -89,7 +88,7 @@ class ManageCoupon extends Component {
 
                 <div className="container tab-bg-container">
                     <div className="d-flex justify-content-between">
-                        <h2 className="text-white"> Manage Coupon </h2>
+                        <h2 className="text-white"> Manage Coupons </h2>
                         <button type="button" className="w-25 mr-4 button_main2"
                                 onClick={this.addNewVideo}>Add New Coupon
                         </button>
