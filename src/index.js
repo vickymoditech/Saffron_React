@@ -29,6 +29,7 @@ import TodayCompleteOrders from './components/Helper/Profile/TodayCompleteOrders
 import BasketItemsList from './components/Website/BasketItems/index';
 import Contact from './components/Website/Contact';
 import OfferZone from './components/Website/OfferZone';
+import Invoice from './components/Website/Invoice';
 
 
 //Admin
@@ -267,6 +268,7 @@ ReactDOM.render(<Provider store={store}>
                 </Route>
                 <Route path="/ProductList" component={ProductList} exact={true}/>
                 <Route path="/BasketItems" component={BasketItemsList} exact={true}/>
+                <Route path="/Invoice" component={Invoice} exact={true}/>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}/>
                 <Route path="/OfferZone" component={OfferZone} exact={true}/>
                 <Route path="/About" component={Contact} exact={true}/>

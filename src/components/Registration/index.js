@@ -177,7 +177,7 @@ class Registration extends Component {
                                                             </button>
                                                         </div>
                                                         <div className="forgot-link text-center mt-3">
-                                                            <p> Do have an account? <Link to="/Login" style={{textDecoration: 'underline',color:'#000000',textDecoration:'none', fontFamily:'Josefin Sans'}}> Sign In </Link></p>
+                                                            <p> Do have an account? <Link to="/Login" style={{textDecoration: 'underline',textDecoration:'none', fontFamily:'Josefin Sans'}}> Sign In </Link></p>
                                                         </div>
                                                     </div>
                                                 </div>

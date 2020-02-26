@@ -1,0 +1,48 @@
+.message_box{
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+.message_box span{
+    font-weight: 600;
+}
+
+.main_review_box{
+    height: 380px;
+    overflow-y: scroll;
+}
+
+.main_review_box .review_order_box{
+    background-color: #f1f1f1;
+    font-weight: 600;
+}
+
+.main_review_box .review_order_box img{
+    height: 100px;
+    width: 100px;
+}
+
+.sub_total_box{
+    background-color: #f1f1f1;
+    font-weight: 600;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #c1c1c1;
+}

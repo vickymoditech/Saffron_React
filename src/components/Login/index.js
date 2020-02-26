@@ -119,10 +119,10 @@ class Login extends Component {
                                                         </div>
                                                         <div className="d-flex flex-wrap justify-content-sm-between justify-content-center mt-4 login_sub_link">
                                                         <div className="forgot-link d-flex justify-content-between">
-                                                            <p>Don't have an account? <Link className="login_Link" to="/Registration" style={{color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Sign Up</Link></p>
+                                                            <p>Don't have an account? <Link className="login_Link" to="/Registration" style={{textDecoration:'none',fontFamily:'Josefin Sans'}}>Sign Up</Link></p>
                                                         </div>
                                                         <Link className="login_Link" to="/forgot-password"
-                                                              style={{textDecoration: 'underline',color:'black',textDecoration:'none',fontFamily:'Josefin Sans'}}>Forgot
+                                                              style={{textDecoration: 'underline',textDecoration:'none',fontFamily:'Josefin Sans'}}>Forgot
                                                             Password?</Link>
                                                         </div>
                                                     </div>

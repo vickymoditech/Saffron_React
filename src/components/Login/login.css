@@ -14,8 +14,11 @@ h2 {
     color:#bf925d;
     font-weight: 600;
 }
-.login_Link:hover{
+.login_Link{
     color:#bf925d;
+}
+.login_Link:hover{
+    color:#000000;
 }
 .button_main{
     background-color: #000000 !important;

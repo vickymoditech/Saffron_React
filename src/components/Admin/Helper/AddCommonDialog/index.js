@@ -83,10 +83,6 @@ class ProductDialog extends Component {
         }
     };
 
-    checkLoader = () =>{
-        this.props.actions.serviceAction.CheckLoader();
-    };
-
     render() {
         return (
             <div>
@@ -214,7 +210,6 @@ class ProductDialog extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <button onClick={this.checkLoader}> check loader </button>
                         </div>
                     </div>
                 </Dialog>

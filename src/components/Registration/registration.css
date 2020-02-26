@@ -28,6 +28,16 @@ h2 {
     font-weight: 600;
     color:#bf925d;
 }
+.forgot-link a:hover{
+    font-weight: 600;
+    color:#000000;
+}
+.forgot-link p{
+    color: #000000;
+}
+.forgot-link a{
+    color: #bf925d;
+}
 .back_color{
     background-image: linear-gradient(to bottom right, black, #3e3e3e);
     height: 100vh;

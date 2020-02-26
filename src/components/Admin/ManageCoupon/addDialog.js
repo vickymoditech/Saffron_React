@@ -81,7 +81,7 @@ class AddDialog extends Component {
                                                         <div id="loginForm">
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="text" name="name"
@@ -94,7 +94,7 @@ class AddDialog extends Component {
                                                             </div>
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="text" name="info"
@@ -107,7 +107,7 @@ class AddDialog extends Component {
                                                             </div>
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="percentage"
@@ -121,7 +121,7 @@ class AddDialog extends Component {
 
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="minPrice"
@@ -135,7 +135,7 @@ class AddDialog extends Component {
 
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="maxPrice"
@@ -149,7 +149,7 @@ class AddDialog extends Component {
 
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="maxDiscount"
@@ -166,15 +166,20 @@ class AddDialog extends Component {
                                                                 labelPosition="left"
                                                                 checked={true}
                                                             />
-
-                                                            <DatePicker hintText="Starting Date"
-                                                                        value={this.state.selectedDate}
-                                                                        onChange={this.onChange}/>
-
-                                                            <DatePicker hintText="Ending Date"
-                                                                        value={this.state.selectedDate}
-                                                                        onChange={this.onChange}/>
-
+                                                            <div>
+                                                                <div className="d-flex align-items-center">
+                                                                    <label className="w-25">Start Date</label>
+                                                                    <DatePicker hintText="Starting Date"
+                                                                                value={this.state.selectedDate}
+                                                                                onChange={this.onChange}/>
+                                                                </div>
+                                                                <div className="d-flex align-items-center">
+                                                                    <label className="w-25">Start Date</label>
+                                                                    <DatePicker hintText="Ending Date"
+                                                                                value={this.state.selectedDate}
+                                                                                onChange={this.onChange}/>
+                                                                </div>
+                                                            </div>
                                                             <div className="form-group">
                                                                 <div className="form-group text-center row">
                                                                     <div className="col-xs-12 text-center">
