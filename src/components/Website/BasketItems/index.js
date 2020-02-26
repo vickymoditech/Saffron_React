@@ -127,10 +127,13 @@ class BasketItemsList extends Component {
                                                         <ImageLoader
                                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.product.image_url}>
                                                             <img className="img-fluid"
+                                                                 style={{height: '80px', width: '100px'}}
                                                                  alt={singleProduct.product.title}/>
                                                             <img src="/assets/Images/NoImages.png" className="img-fluid"
+                                                                 style={{height: '80px', width: '100px'}}
                                                                  alt={singleProduct.product.title}/>
                                                             <img src="/assets/Images/s_loader.gif" className="img-fluid"
+                                                                 style={{height: '80px', width: '100px'}}
                                                                  alt={singleProduct.product.title}/>
                                                         </ImageLoader>
                                                         <p style={{"textTransform": "capitalize"}}>{singleProduct.product.title}</p>
@@ -146,16 +149,28 @@ class BasketItemsList extends Component {
                                                             <ImageLoader
                                                                 src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.teamMember.image_url}>
                                                                 <img className="img-fluid"
-                                                                     alt={singleProduct.teamMember.first_name} style={{
-                                                                    height: '50px',
-                                                                    width: '50px',
-                                                                    borderRadius: '50%'
-                                                                }}/>
+                                                                     style={{
+                                                                         height: '50px',
+                                                                         width: '50px',
+                                                                         borderRadius: '50%'
+                                                                     }}
+                                                                     alt={singleProduct.teamMember.first_name}
+                                                                />
                                                                 <img src="/assets/Images/NoImages.png"
                                                                      className="img-fluid"
+                                                                     style={{
+                                                                         height: '50px',
+                                                                         width: '50px',
+                                                                         borderRadius: '50%'
+                                                                     }}
                                                                      alt={singleProduct.teamMember.first_name}/>
                                                                 <img src="/assets/Images/s_loader.gif"
                                                                      className="img-fluid"
+                                                                     style={{
+                                                                         height: '50px',
+                                                                         width: '50px',
+                                                                         borderRadius: '50%'
+                                                                     }}
                                                                      alt={singleProduct.teamMember.first_name}/>
                                                             </ImageLoader>
                                                             <p style={{
