@@ -94,6 +94,7 @@ export default {
         AllProductsList: [],
         BasketGeneratorProducts: BasketGeneratorProducts,
         RecentCompleteOrder: [],
+        RecentOrder: null,
         SaffronPoint: 0,
         TimeSlots: [],
         BasketVisible: false,

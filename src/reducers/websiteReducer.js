@@ -80,6 +80,7 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
         case ORDER_PLACE:
             localStorage.removeItem("BasketGeneratorProducts");
             return Object.assign({}, state, {
+                RecentOrder: action.data,
                 BasketGeneratorProducts: [],
                 BasketVisible: false,
                 TimeSlotVisible: false,

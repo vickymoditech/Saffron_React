@@ -17,7 +17,6 @@
 .collapse_data .product_box .product img {
     height: 50px;
     width: 50px;
-    border-radius: 50%;
 }
 .orderStatus{
     position: absolute;

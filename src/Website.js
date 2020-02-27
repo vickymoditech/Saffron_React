@@ -42,9 +42,9 @@ class App extends Component {
             this.setState({orderPlace:true},() => {
                 setTimeout(() => {
                     this.setState({orderPlace:false});
+                    browserHistory.push('/Invoice');
                 },1000);
             });
-            browserHistory.push('/ProductList');
         }
     }
 
@@ -112,7 +112,7 @@ class App extends Component {
                                     <Link to="/ProductList">SERVICES</Link>
                                 </div>
                                 <div className="col-md-2 d-md-flex d-none flex-column align-items-md-center logo1">
-                                    <Link to="/"><span>Saffron</span></Link>
+                                    <Link to="/"><span>GYG</span></Link>
                                 </div>
                                 <div className="col-md-5 menu2 d-md-block d-none pt-lg-3">
                                     <Link to="/VideoGallery">VIDEOS</Link>
