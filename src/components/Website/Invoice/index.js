@@ -8,8 +8,10 @@ import ImageLoader from 'react-load-image';
 import {Link} from 'react-router';
 import Lottie from 'react-lottie';
 import * as animationData from './empty-cart';
+let moment = require('moment-timezone');
 
 const {Panel} = Collapse;
+
 
 class Invoice extends Component {
 
@@ -53,8 +55,7 @@ class Invoice extends Component {
                                 className="d-flex message_box p-3 justify-content-center w-50 mx-auto border border-dark">
                                 <i className="fa fa-info-circle pt-1 pl-3"></i>
                                 <div className="pl-3">
-                                    <span>Import Message</span>
-                                    <p>Message</p>
+                                    <span>Your Arrival Time : {moment.tz(this.props.RecentOrder.orderPlace.arrivalTime, 'Asia/Kolkata').format("DD-MM-YYYY hh:mm A")} </span>
                                 </div>
                             </div>
                         </div>
@@ -141,11 +142,10 @@ class Invoice extends Component {
                         </div>
                         <div className="col-12">
                             <div
-                                className="d-flex message_box pt-2 mt-2 justify-content-center w-50 mx-auto border border-dark">
+                                className="d-flex message_box p-3 justify-content-center w-50 mx-auto border border-dark">
                                 <i className="fa fa-info-circle pt-1 pl-3"></i>
                                 <div className="pl-3">
-                                    <span>Import Message</span>
-                                    <p>Message</p>
+                                    <span>Your Arrival Time : {moment.tz(this.props.RecentOrder.orderPlace.arrivalTime, 'Asia/Kolkata').format("DD-MM-YYYY hh:mm A")} </span>
                                 </div>
                             </div>
                         </div>

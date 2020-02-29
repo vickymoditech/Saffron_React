@@ -26,10 +26,10 @@ class Footer extends Component {
                                     <span>Information</span>
                                     <div className="d-flex flex-column pt-3">
                                         <div><i className="fa fa-check"></i><Link to="/"> Home</Link></div>
-                                        <div><i className="fa fa-check"></i><Link to="/"> Gallery</Link></div>
-                                        <div><i className="fa fa-check"></i><Link to="/"> Service</Link></div>
-                                        <div><i className="fa fa-check"></i><Link to="/"> Videos</Link></div>
-                                        <div><i className="fa fa-check"></i><Link to="/"> Contact</Link></div>
+                                        <div><i className="fa fa-check"></i><Link to="/Gallery"> Gallery</Link></div>
+                                        <div><i className="fa fa-check"></i><Link to="/ProductList"> Service</Link></div>
+                                        <div><i className="fa fa-check"></i><Link to="/VideoGallery"> Videos</Link></div>
+                                        <div><i className="fa fa-check"></i><Link to="/About"> Contact</Link></div>
                                     </div>
                                 </div>
                             </div>

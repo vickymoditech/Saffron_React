@@ -105,7 +105,7 @@ class BasketItemsList extends Component {
                         <div className="row">
                             <div className="d-flex flex-wrap-reverse w-100">
                                 <div className="col-md-8">
-                                    <h3 class="text-center"> Review your order </h3>
+                                    <h3 className="text-center"> Review your order </h3>
                                     <div className="mt-2 main_review_box">
                                         {this.props.BasketGeneratorProducts.length > 0 && <Collapse accordion>
                                             {this.props.BasketGeneratorProducts.map((singleProduct, index) => (
@@ -172,7 +172,7 @@ class BasketItemsList extends Component {
                                 </div>
                                 <div className="col-md-4 pl-sm-0">
                                     <div className="col-md-12 main_discount_order_box overflow-hidden h-100">
-                                        <h3 class="text-center"> Coupons </h3>
+                                        <h3 className="text-center"> Coupons </h3>
                                         <div className="discount_box p-2 h-100">
                                             <div className="d-flex flex-column border border-dark p-2">
                                                     <span

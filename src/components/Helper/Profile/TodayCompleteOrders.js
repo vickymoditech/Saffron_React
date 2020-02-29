@@ -33,7 +33,7 @@ class TodayCompleteOrders extends Component {
 
         return (
             <div>
-                <p className="saffronTitle w-50 mx-auto border border-dark"> Your SaffronPoint : {this.props.SaffronPoint} </p>
+                <p className="saffronTitle w-50 mx-auto border border-dark"> SaffronPoint : {this.props.SaffronPoint} </p>
                 <div>
                     {this.props.RecentCompleteOrder && this.props.RecentCompleteOrder.length > 0 && <Collapse accordion>
                         {this.props.RecentCompleteOrder.map((singleCompletedOrder, index) => (
@@ -41,7 +41,7 @@ class TodayCompleteOrders extends Component {
                                 header={<div className="main_order_box p-2">
                                     <div className="d-flex align-items-center justify-content-between">
                                         <p>Date
-                                            : {moment.tz(singleCompletedOrder.bookingDateTime, 'Asia/Kolkata').format("DD-MM-YYYY HH:mm a")}</p>
+                                            : {moment.tz(singleCompletedOrder.bookingDateTime, 'Asia/Kolkata').format("DD-MM-YYYY hh:mm A")}</p>
                                         <p style={{"textTransform": "capitalize"}} className="orderStatus p-2">{singleCompletedOrder.column}</p>
                                     </div>
                                     <p>Total &#8377;. {singleCompletedOrder.total}</p>
@@ -51,7 +51,7 @@ class TodayCompleteOrders extends Component {
                                     <div className="collapse_data p-2">
                                         <div className="text-center">
                                             <h6 className="oreder_title_style">Your Arrival
-                                                time: {moment.tz(singleCompletedOrder.bookingStartTime, 'Asia/Kolkata').format("DD-MM-YYYY HH:mm a")}</h6>
+                                                Time: {moment.tz(singleCompletedOrder.bookingStartTime, 'Asia/Kolkata').format("DD-MM-YYYY hh:mm A")}</h6>
                                         </div>
                                         <div className="product_box pr-3">
                                             {singleCompletedOrder && singleCompletedOrder.basket.map((singleProduct, index) => (

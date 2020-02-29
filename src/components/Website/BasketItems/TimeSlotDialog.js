@@ -83,7 +83,7 @@ class TimeSlotDialog extends Component {
                                         <label className="form-check-label">
                                             <input type="radio" name="orderType" value="ASAP"
                                                    className="form-check-input"
-                                                   onClick={this.onChange}
+                                                   onChange={this.onChange}
                                                    checked={orderType === 'ASAP'}/> <b
                                             style={{'cursor': 'default'}}> ASAP </b>
                                         </label>
@@ -92,7 +92,7 @@ class TimeSlotDialog extends Component {
                                         <label className="form-check-label">
                                             <input type="radio" name="orderType" value="10"
                                                    className="form-check-input"
-                                                   onClick={this.onChange}
+                                                   onChange={this.onChange}
                                                    checked={orderType === '10'}/> <b
                                             style={{'cursor': 'default'}}> After 10 Minutes </b>
                                         </label>
@@ -101,7 +101,7 @@ class TimeSlotDialog extends Component {
                                         <label className="form-check-label">
                                             <input type="radio" name="orderType" value="15"
                                                    className="form-check-input"
-                                                   onClick={this.onChange}
+                                                   onChange={this.onChange}
                                                    checked={orderType === '15'}/> <b
                                             style={{'cursor': 'default'}}> After 15 Minutes </b>
                                         </label>
