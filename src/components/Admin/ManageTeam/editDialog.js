@@ -98,7 +98,7 @@ class EditDialog extends Component {
                                                     <div id="loginForm">
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="first_name"
@@ -111,7 +111,7 @@ class EditDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="last_name"
@@ -124,7 +124,7 @@ class EditDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="description"

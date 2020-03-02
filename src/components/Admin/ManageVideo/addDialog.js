@@ -115,7 +115,7 @@ class AddDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="title"
@@ -128,7 +128,7 @@ class AddDialog extends Component {
                                                         </div>
                                                         <div className="form-group">
                                                             <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                 <input type="text" name="description"

@@ -104,7 +104,7 @@ class ChangePasswordModal extends Component {
                                                         <div id="loginForm">
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-lock icon_color"/>
                                                                 </span>
                                                                     <input type="password" name="currentPassword"
@@ -117,7 +117,7 @@ class ChangePasswordModal extends Component {
                                                             </div>
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-key icon_color"/>
                                                                 </span>
                                                                     <input type="password" name="newPassword"
@@ -129,7 +129,7 @@ class ChangePasswordModal extends Component {
                                                             </div>
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon">
+                                                                <span className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-key icon_color"/>
                                                                 </span>
                                                                     <input type="password" name="confirmPassword"

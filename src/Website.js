@@ -12,6 +12,7 @@ import '././components/Website/Home/websiteCss/website.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Website/Footer';
 import SidebarComponent from './components/Website/Sidebar';
+import swal from 'sweetalert';
 
 class App extends Component {
 
@@ -35,7 +36,8 @@ class App extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
-            this.addNotifications(nextProps.error_msg, "error");
+            //this.addNotifications(nextProps.error_msg, "error");
+            swal('Oops...', nextProps.error_msg, 'error');
         }
         if(nextProps.success_msg){
             this.props.actions.websiteAction.basketVisible(false);

@@ -93,7 +93,7 @@ class Login extends Component {
                                                 <div id="loginForm">
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon">
+                                                        <span className="input-group-addon d-flex justify-content-center">
                                                             <i className="fa fa-user icon_color"></i>
                                                         </span>
                                                             <input type="number" value={this.state.credentials.email}
@@ -104,7 +104,7 @@ class Login extends Component {
                                                     </div>
                                                     <div className="form-group">
                                                         <div className="input-group">
-                                                        <span className="input-group-addon">
+                                                        <span className="input-group-addon d-flex justify-content-center">
                                                             <i className="fa fa-lock icon_color"></i></span>
                                                             <input type="password"
                                                                    value={this.state.credentials.password}
