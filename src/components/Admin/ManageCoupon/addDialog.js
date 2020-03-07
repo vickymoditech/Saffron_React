@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Dialog} from 'material-ui';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as videoAction from '../../../actions/videoAction';
+import * as CouponAction from '../../../actions/couponAction';
 import DatePicker from 'material-ui/DatePicker';
 import Checkbox from 'material-ui/Checkbox';
 
@@ -19,7 +19,6 @@ class AddDialog extends Component {
         super(props);
         this.state = {
             isOpen: props.isOpen,
-            selectedDate: new Date(),
             commonData: {
                 name: "",
                 info: "",
@@ -27,8 +26,8 @@ class AddDialog extends Component {
                 minPrice: "",
                 maxPrice: "",
                 maxDiscount: "",
-                startDate: "",
-                endDate: "",
+                startDate: new Date(),
+                endDate: new Date(),
             }
         };
     }
@@ -41,16 +40,24 @@ class AddDialog extends Component {
     };
 
     handleSave = () => {
-        alert("save button Login here");
-        // if (this.state.commonData.image_url !== "" && this.state.commonData.image_url !== null && this.state.commonData.description !== "" && this.state.commonData.title !== "" && this.state.commonData.service_id !== null && this.state.commonData.sex !== null) {
-        //     this.props.actions.videoAction.AddVideo(this.state.commonData);
-        // } else {
-        //     this.props.notify("All the fields are required", 'error');
-        // }
+        if (this.state.commonData.name !== "" && this.state.commonData.info !== "" && this.state.commonData.percentage !== "" && this.state.commonData.minPrice !== "" && this.state.commonData.maxPrice !== "" && this.state.commonData.maxDiscount !== "" && this.state.commonData.startDate !== "" && this.state.commonData.endDate !== null) {
+            this.props.actions.CouponAction.AddCoupon(this.state.commonData);
+        } else {
+            console.log(this.state.commonData);
+            this.props.notify("All fields are required", 'error');
+        }
     };
 
-    onChange = (event, date) => {
-        alert(date);
+    onChangeStartTime = (event, date) => {
+        const commonData = this.state.commonData;
+        commonData["startDate"] = date;
+        return this.setState({commonData: commonData});
+    };
+
+    onChangeEndTime = (event, date) => {
+        const commonData = this.state.commonData;
+        commonData["endDate"] = date;
+        return this.setState({commonData: commonData});
     };
 
     render() {
@@ -81,7 +88,8 @@ class AddDialog extends Component {
                                                         <div id="loginForm">
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon d-flex justify-content-center">
+                                                                <span
+                                                                    className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="text" name="name"
@@ -94,7 +102,8 @@ class AddDialog extends Component {
                                                             </div>
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon d-flex justify-content-center">
+                                                                <span
+                                                                    className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="text" name="info"
@@ -107,7 +116,8 @@ class AddDialog extends Component {
                                                             </div>
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon d-flex justify-content-center">
+                                                                <span
+                                                                    className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="percentage"
@@ -121,7 +131,8 @@ class AddDialog extends Component {
 
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon d-flex justify-content-center">
+                                                                <span
+                                                                    className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="minPrice"
@@ -135,7 +146,8 @@ class AddDialog extends Component {
 
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon d-flex justify-content-center">
+                                                                <span
+                                                                    className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="maxPrice"
@@ -149,7 +161,8 @@ class AddDialog extends Component {
 
                                                             <div className="form-group">
                                                                 <div className="input-group">
-                                                                <span className="input-group-addon d-flex justify-content-center">
+                                                                <span
+                                                                    className="input-group-addon d-flex justify-content-center">
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="maxDiscount"
@@ -170,14 +183,14 @@ class AddDialog extends Component {
                                                                 <div className="d-flex align-items-center">
                                                                     <label className="w-25">Start Date</label>
                                                                     <DatePicker hintText="Starting Date"
-                                                                                value={this.state.selectedDate}
-                                                                                onChange={this.onChange}/>
+                                                                                value={this.state.commonData.startDate}
+                                                                                onChange={this.onChangeStartTime}/>
                                                                 </div>
                                                                 <div className="d-flex align-items-center">
                                                                     <label className="w-25">Start Date</label>
                                                                     <DatePicker hintText="Ending Date"
-                                                                                value={this.state.selectedDate}
-                                                                                onChange={this.onChange}/>
+                                                                                value={this.state.commonData.endDate}
+                                                                                onChange={this.onChangeEndTime}/>
                                                                 </div>
                                                             </div>
                                                             <div className="form-group">
@@ -212,7 +225,7 @@ class AddDialog extends Component {
 
 const mapDispatchToProps = dispatch => ({
     actions: {
-        videoAction: bindActionCreators(videoAction, dispatch),
+        CouponAction: bindActionCreators(CouponAction, dispatch),
     }
 });
 

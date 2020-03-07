@@ -3,6 +3,7 @@ import {Drawer, List, ListItem, Divider} from 'material-ui';
 import {browserHistory, Link} from 'react-router';
 import './Sidebar.css';
 import {isLoggedIn} from "../../../index";
+import decode from "jwt-decode";
 
 const stylesDrawer = {
     containerStyle: {
@@ -54,6 +55,9 @@ class Sidebar extends Component {
     };
 
     render() {
+        const decodeProfile = localStorage.getItem("accessToken");
+        const userProfile = decodeProfile && decode(localStorage.getItem("accessToken"));
+        const userRole = userProfile && userProfile.user && userProfile.user.role;
         return (
             <div className="side-menu">
                 <Drawer
@@ -68,10 +72,10 @@ class Sidebar extends Component {
                                                                    style={{position: 'absolute', right: 10, top: 10}}/> </span>
                         </ListItem>
 
-                        <div className="menu-leftfront">
+                        <div className="menu-left">
                             {!isLoggedIn() && <div className="d-flex justify-content-center btns py-3">
-                                <button type="button" className="btn signup_btn mr-3" onClick={this.SignUp} >Sign Up</button>
-                                <button type="button" className="btn login_btn" onClick={this.SignIn} >Sign In</button>
+                                <button type="button" className="btn login_btn mr-3" onClick={this.SignIn} >Sign In</button>
+                                <button type="button" className="btn signup_btn" onClick={this.SignUp} >Sign Up</button>
                             </div>}
                             <Link onClick={this.props.closeNav} to="/" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
@@ -126,6 +130,14 @@ class Sidebar extends Component {
                             </Link><Divider/></span>}
 
 
+                            {isLoggedIn() && (userRole.toLowerCase() === "admin" || userRole.toLowerCase() === "employee") &&
+                            <span><Link onClick={this.props.closeNav} to="/Dashboard" className="link">
+                                <ListItem className="sidebar-list" style={ListStyles.style}>
+                                    <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-cogs"><span
+                                        className="link-hover pl-2">SOD</span></i></div>
+                                </ListItem>
+                            </Link><Divider/></span>}
+
                             <span><Link onClick={this.props.closeNav} to="/About" className="link">
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <div style={{marginTop: 10}} className="link-hover"><i className="fa fa-cogs"><span
@@ -136,7 +148,6 @@ class Sidebar extends Component {
 
                         </div>
                     </List>
-                    <Divider/>
                     {isLoggedIn() && <List className="logout-list">
                         <Link onClick={this.props.logout} className="link" to="/">
                             <ListItem className="sidebar-list bg_color_logout" style={ListStyles.style}>

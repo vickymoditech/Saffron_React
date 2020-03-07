@@ -14,7 +14,7 @@ import {
     COMPLETED_ORDER_LIST,
     ORDER_PLACE,
     WEBSITE_HOME,
-    LOGOUT_USER
+    LOGOUT_USER, ALL_COUPON_SUCCESS
 } from '../constants/actionTypes';
 
 export const getWebsiteHome = () => {
@@ -100,6 +100,33 @@ export const getAllVideos = (ServiceId) => {
         alert(error.message.toString());
     }
 
+};
+
+export const getAllCoupon = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: WEBSITE_INPROGRESS});
+
+            let api = {
+                method: 'GET',
+                url: ENVIRONMENT_VARIABLES.API_URL + "/coupons"
+            };
+
+            axios(api).then((response) => {
+                if (response.status === 200) {
+                    dispatch({type: ALL_COUPON_SUCCESS, data: response.data});
+                }
+            }).catch((error) => {
+                if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {
+                    dispatch({type: WEBSITE_NOT_SUCCESS, data: {error_msg: error.response.data.user_msg}});
+                } else {
+                    dispatch({type: WEBSITE_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
+                }
+            });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
 };
 
 export const getAllProducts = () => {

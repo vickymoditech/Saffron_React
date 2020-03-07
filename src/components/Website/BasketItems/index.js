@@ -30,6 +30,7 @@ class BasketItemsList extends Component {
             this.setState({Loading: false});
         }, 1000);
         if (this.props.BasketGeneratorProducts.length > 0) {
+            this.props.actions.websiteAction.getAllCoupon();
             this.props.actions.websiteAction.basketVisible(false);
         } else {
             browserHistory.push('/ProductList');
@@ -270,7 +271,8 @@ const mapStateToProps = (state) => {
     return {
         BasketGeneratorProducts: websiteReducer.BasketGeneratorProducts,
         TimeSlots: websiteReducer.TimeSlots,
-        TimeSlotVisible: websiteReducer.TimeSlotVisible
+        TimeSlotVisible: websiteReducer.TimeSlotVisible,
+        allCouponsList: websiteReducer.allCouponsList
     };
 };
 

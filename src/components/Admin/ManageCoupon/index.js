@@ -8,6 +8,7 @@ import {confirmAlert} from 'react-confirm-alert';
 import '../Helper/DeleteAlertCss/react-confirm-alert.css';
 import AddDialog from './addDialog';
 import './manage-coupon.css';
+let moment = require('moment-timezone');
 
 class ManageCoupon extends Component {
 
@@ -101,18 +102,24 @@ class ManageCoupon extends Component {
                                     <tr>
                                         <th style={{cursor: 'context-menu'}}>Title</th>
                                         <th style={{cursor: 'context-menu'}}>Description</th>
+                                        <th style={{cursor: 'context-menu'}}>Percentage</th>
+                                        <th style={{cursor: 'context-menu'}}>MinPrice</th>
+                                        <th style={{cursor: 'context-menu'}}>MaxPrice</th>
+                                        <th style={{cursor: 'context-menu'}}>maxDiscount</th>
                                         <th style={{cursor: 'context-menu'}}>Start Date</th>
                                         <th style={{cursor: 'context-menu'}}>End Date</th>
-                                        <th style={{cursor: 'context-menu'}}>User List</th>
                                         <th style={{cursor: 'context-menu'}}>Action</th>
                                     </tr>
                                     {couponList && couponList.map((value, index) => (
                                         <tr key={index}>
                                             <td style={{"textTransform": "capitalize"}}>{value.name}</td>
                                             <td style={{"textTransform": "capitalize"}}>{value.info}</td>
-                                            <td style={{"textTransform": "capitalize"}}>{value.startDate}</td>
-                                            <td style={{"textTransform": "capitalize"}}>{value.endDate}</td>
-                                            <th style={{cursor: 'context-menu'}}>User List</th>
+                                            <th style={{cursor: 'context-menu'}}>{value.percentage}</th>
+                                            <th style={{cursor: 'context-menu'}}>{value.minPrice}</th>
+                                            <th style={{cursor: 'context-menu'}}>{value.maxPrice}</th>
+                                            <th style={{cursor: 'context-menu'}}>{value.maxDiscount}</th>
+                                            <td style={{"textTransform": "capitalize"}}>{moment.tz(value.startDate, 'Asia/Kolkata').format("DD-MM-YYYY")}</td>
+                                            <td style={{"textTransform": "capitalize"}}>{moment.tz(value.endDate, 'Asia/Kolkata').format("DD-MM-YYYY")}</td>
                                             <td style={{textAlign: "center"}}>
                                                 <button type="button" className="btn btn-danger" key={value.id}
                                                         onClick={event => {

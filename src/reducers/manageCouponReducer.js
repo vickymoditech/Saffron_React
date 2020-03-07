@@ -56,26 +56,22 @@ export default function manageCouponReducer(state = initialState.manageCouponRed
                 success_msg: action.data.result
             });
 
-        // case COUPON_ADD_SUCCESS:
-        //     let videoList = state.videoList;
-        //     if (action.selectedServiceId === action.data.data.service_id) {
-        //         let video = {
-        //             id: action.data.data.id,
-        //             video_url: action.data.data.video_url,
-        //             title: action.data.data.title,
-        //             description: action.data.data.description,
-        //             service_id: action.data.data.service_id,
-        //             sex: action.data.data.sex
-        //         };
-        //         videoList = [video, ...state.videoList];
-        //     }
-        //
-        //     return Object.assign({}, state, {
-        //         videoList: videoList,
-        //         Loading: false,
-        //         error_msg: null,
-        //         success_msg: action.data.result
-        //     });
+        case COUPON_ADD_SUCCESS:
+            let coupon = {
+                id: action.data.data.id,
+                name: action.data.data.name,
+                info: action.data.data.info,
+                minPrice: action.data.data.minPrice,
+                maxDiscount: action.data.data.maxDiscount,
+                startDate: action.data.data.startDate,
+                endDate: action.data.data.endDate
+            };
+            return Object.assign({}, state, {
+                couponList: [...state.couponList, coupon],
+                Loading: false,
+                error_msg: null,
+                success_msg: action.data.result
+            });
 
 
         default:

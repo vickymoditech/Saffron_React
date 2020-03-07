@@ -68,48 +68,49 @@ export const CouponDelete = (CouponId) => {
     }
 };
 
-//
-// export const AddCOUPON = (COUPON) => {
-//     try {
-//         return (dispatch) => {
-//             dispatch({type: COUPON_INPROGRESS});
-//             const token = "Bearer " + localStorage.getItem('accessToken');
-//
-//             let request = {
-//                 service_id: COUPON.service_id,
-//                 COUPON_url: COUPON.COUPON_url,
-//                 title: COUPON.title,
-//                 description: COUPON.description,
-//                 sex: COUPON.sex
-//             };
-//
-//             let api = {
-//                 method: 'POST',
-//                 headers: {'Authorization': token},
-//                 url: ENVIRONMENT_VARIABLES.API_URL + "/COUPONs",
-//                 data: request,
-//             };
-//
-//             axios(api).then((response) => {
-//                 if (response.status === 200) {
-//                     dispatch({
-//                         type: COUPON_ADD_SUCCESS,
-//                         data: response.data,
-//                         selectedServiceId: COUPON.selectedServiceId
-//                     });
-//                 }
-//             }).catch((error) => {
-//                 if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {
-//                     dispatch({type: COUPON_NOT_SUCCESS, data: {error_msg: error.response.data.user_msg}});
-//                 } else {
-//                     dispatch({type: COUPON_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
-//                 }
-//             });
-//         }
-//     } catch (error) {
-//         alert(error.message.toString());
-//     }
-// };
+
+export const AddCoupon = (Coupon) => {
+    try {
+        return (dispatch) => {
+            dispatch({type: COUPON_INPROGRESS});
+            const token = "Bearer " + localStorage.getItem('accessToken');
+
+            let request = {
+                name: Coupon.name,
+                info: Coupon.info,
+                minPrice: Coupon.minPrice,
+                maxDiscount: Coupon.maxDiscount,
+                percentage: Coupon.percentage,
+                startDate: Coupon.startDate,
+                endDate: Coupon.endDate
+            };
+
+            let api = {
+                method: 'POST',
+                headers: {'Authorization': token},
+                url: ENVIRONMENT_VARIABLES.API_URL + "/coupons",
+                data: request,
+            };
+
+            axios(api).then((response) => {
+                if (response.status === 200) {
+                    dispatch({
+                        type: COUPON_ADD_SUCCESS,
+                        data: response.data,
+                    });
+                }
+            }).catch((error) => {
+                if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {
+                    dispatch({type: COUPON_NOT_SUCCESS, data: {error_msg: error.response.data.user_msg}});
+                } else {
+                    dispatch({type: COUPON_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
+                }
+            });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
 
 export const DefaultMessageClear = () => {
     try {

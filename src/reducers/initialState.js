@@ -92,6 +92,7 @@ export default {
         allVideoList: [],
         sliderList: [],
         AllProductsList: [],
+        allCouponsList: [],
         BasketGeneratorProducts: BasketGeneratorProducts,
         RecentCompleteOrder: [],
         RecentOrder: null,
