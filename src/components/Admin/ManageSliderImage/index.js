@@ -114,16 +114,18 @@ class ManageSliderImage extends Component {
                                             <ImageLoader
                                                 src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}>
                                                 <img className="img-fluid" style={{height: '150px', width: '150px'}}
-                                                     alt={value.title}/>
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.title}/>
                                                 <img src="/assets/Images/NoImages.png" style={{height: '150px', width: '150px'}}
-                                                     alt={value.title} />
+                                                     className="img-fluid"
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.title} />
                                                 <img src="/assets/Images/s_loader.gif" style={{height: '150px', width: '150px'}}
-                                                     alt={value.title} />
+                                                     className="img-fluid"
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.title} />
                                             </ImageLoader>
                                         </td>
                                         <td style={{textAlign: "center"}}>
                                             <button type="button" className="btn btn-danger" key={value.id}
-                                                    onClick={event => {
+                                                    onClick={() => {
                                                         this.removeSpecificSlider(value.id)
                                                     }}>Delete
                                             </button>

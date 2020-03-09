@@ -22,7 +22,11 @@ class ServiceGrid extends Component {
                         <div className="row">
                             <div className="col-md-4 col-sm-5 pr-0">
                                 <div className="d-none wow fadeInLeft d-md-flex flex-column align-items-center ml-xl-5 pl-xl-5">
-                                    <img src="assets/Images/work-7.jpg" className="img-fluid" alt="service image"/>
+                                    <ImageLoader src="assets/Images/work-7.jpg">
+                                        <img className="img-fluid" alt="unisex saffron service"/>
+                                        <img className="img-fluid" src="/assets/Images/NoImages.png" alt="unisex saffron service"/>
+                                        <img className="img-fluid" src="/assets/Images/s_loader.gif" alt="unisex saffron service"/>
+                                    </ImageLoader>
                                 </div>
                             </div>
                             <div className="col-md-8 col-sm-5">

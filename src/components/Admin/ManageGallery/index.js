@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
 import NotificationSystem from 'react-notification-system';
 import * as serviceAction from '../../../actions/serviceAction';
 import * as galleryAction from '../../../actions/galleryAction';
@@ -12,7 +11,6 @@ import AddDialog from './addDialog';
 import EditDialog from './editDialog';
 import {Dropdown} from 'semantic-ui-react';
 import ImageLoader from 'react-load-image';
-
 import './manage-gallery.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
@@ -179,11 +177,11 @@ class ManageGallery extends Component {
                                                 <ImageLoader
                                                     src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}>
                                                     <img className="img-fluid" style={{height: '150px', width: '150px'}}
-                                                         alt={value.title}/>
+                                                         alt={ENVIRONMENT_VARIABLES.PREFIX + value.title}/>
                                                     <img src="/assets/Images/NoImages.png" style={{height: '150px', width: '150px'}}
-                                                         alt={value.title} />
+                                                         alt={ENVIRONMENT_VARIABLES.PREFIX + value.title} />
                                                     <img src="/assets/Images/s_loader.gif" style={{height: '150px', width: '150px'}}
-                                                         alt={value.title} />
+                                                         alt={ENVIRONMENT_VARIABLES.PREFIX + value.title} />
                                                 </ImageLoader>
                                             </td>
                                             <td style={{"textTransform": "capitalize"}}>{value.title}</td>

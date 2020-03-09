@@ -10,8 +10,11 @@ class HappyClient extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-5">
-                                <img className="img-fluid d-md-block d-none testi_img wow fadeInLeft" src="assets/Images/work-7.jpg"
-                                     alt="testimonial image"/>
+                                <ImageLoader src="assets/Images/work-7.jpg">
+                                    <img className="img-fluid d-md-block d-none testi_img wow fadeInLeft" alt={ENVIRONMENT_VARIABLES.PREFIX}/>
+                                    <img className="img-fluid d-md-block d-none testi_img wow fadeInLeft" src="/assets/Images/NoImages.png" alt={ENVIRONMENT_VARIABLES.PREFIX}/>
+                                    <img className="img-fluid d-md-block d-none testi_img wow fadeInLeft" src="/assets/Images/s_loader.gif" alt={ENVIRONMENT_VARIABLES.PREFIX}/>
+                                </ImageLoader>
                             </div>
                             <div className="col-md-7">
                                 <div className="d-flex justify-content-center py-md-0 py-3 flex-column h-100 wow fadeInRight">
@@ -28,11 +31,13 @@ class HappyClient extends Component {
                                                         borderRadius: '50%'
                                                     }}/>
                                                     <img src="/assets/Images/NoImages.png"
-                                                         style={{height: '50px', width: '50px'}}
-                                                         alt="image"/>
+                                                         className="img-fluid"
+                                                         style={{height: '100px', width: '100px',borderRadius: '50%'}}
+                                                         alt={ENVIRONMENT_VARIABLES.PREFIX}/>
                                                     <img src="/assets/Images/s_loader.gif"
-                                                         style={{height: '50px', width: '50px'}}
-                                                         alt="image"/>
+                                                         className="img-fluid"
+                                                         style={{height: '100px', width: '100px',borderRadius: '50%'}}
+                                                         alt={ENVIRONMENT_VARIABLES.PREFIX}/>
                                                 </ImageLoader>
                                                 <div className="d-flex flex-column text-center mt-3 mb-3">
                                                     <span className="cutsomer_title">Jeff Nucci</span>

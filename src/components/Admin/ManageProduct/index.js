@@ -176,7 +176,7 @@ class ManageProduct extends Component {
                     <Switch classname="" value={isOfferProduct}
                                 circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
                                 switchStyles={{width:95}}
-                                onChange={(e) => {
+                                onChange={() => {
                                     this.onchangeBlock(!isOfferProduct);
                                 }}/>
                         </div>
@@ -209,11 +209,13 @@ class ManageProduct extends Component {
                                                 <ImageLoader
                                                     src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}>
                                                     <img className="img-fluid" style={{height: '150px', width: '150px'}}
-                                                         alt={value.title}/>
+                                                         alt={ENVIRONMENT_VARIABLES.PREFIX + value.title}/>
                                                     <img src="/assets/Images/NoImages.png" style={{height: '150px', width: '150px'}}
-                                                         alt={value.title} />
+                                                         className="img-fluid"
+                                                         alt={ENVIRONMENT_VARIABLES.PREFIX + value.title} />
                                                     <img src="/assets/Images/s_loader.gif" style={{height: '150px', width: '150px'}}
-                                                         alt={value.title} />
+                                                         className="img-fluid"
+                                                         alt={ENVIRONMENT_VARIABLES.PREFIX + value.title} />
                                                 </ImageLoader>
                                             </td>
                                             <td style={{"textTransform": "capitalize"}}>{value.title}</td>

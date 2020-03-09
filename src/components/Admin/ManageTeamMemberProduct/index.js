@@ -283,20 +283,25 @@ class ManageTeamMemberProduct extends Component {
                                                         <ImageLoader
                                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}>
                                                             <img className="img-fluid" style={{height: '50px', width: '50px'}}
-                                                                 alt={item.title}/>
+                                                                 alt={ENVIRONMENT_VARIABLES.PREFIX + item.title}/>
                                                             <img src="/assets/Images/NoImages.png" style={{height: '50px', width: '50px'}}
-                                                                 alt={item.title} />
+                                                                 alt={ENVIRONMENT_VARIABLES.PREFIX + item.title} />
                                                             <img src="/assets/Images/s_loader.gif" style={{height: '50px', width: '50px'}}
-                                                                 alt={item.title} />
+                                                                 alt={ENVIRONMENT_VARIABLES.PREFIX + item.title} />
                                                         </ImageLoader>
-<div style={{width: '100%',marginLeft: '10px'}}>
-                                                        <p style={{"textTransform": "capitalize",fontWeight:'600',color:'black',marginBottom:'5px'}}>{item.title}</p>
-                                                        <Dropdown placeholder="Select" fluid
-                                                                  selection
-                                                                  options={(minutes.find((data) => data.productId === item.id)).minute}
-                                                                  key={item.id}
-                                                                  onChange={this.handleChangeServiceM}/>
-                                                                      </div>
+                                                        <div style={{width: '100%', marginLeft: '10px'}}>
+                                                            <p style={{
+                                                                "textTransform": "capitalize",
+                                                                fontWeight: '600',
+                                                                color: 'black',
+                                                                marginBottom: '5px'
+                                                            }}>{item.title}</p>
+                                                            <Dropdown placeholder="Select" fluid
+                                                                      selection
+                                                                      options={(minutes.find((data) => data.productId === item.id)).minute}
+                                                                      key={item.id}
+                                                                      onChange={this.handleChangeServiceM}/>
+                                                        </div>
                                                     </div>
                                                 )}
                                             </Draggable>
@@ -329,11 +334,11 @@ class ManageTeamMemberProduct extends Component {
                                                         <ImageLoader
                                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + item.image_url}>
                                                             <img className="img-fluid" style={{height: '50px', width: '50px'}}
-                                                                 alt={item.title}/>
+                                                                 alt={ENVIRONMENT_VARIABLES.PREFIX + item.title}/>
                                                             <img src="/assets/Images/NoImages.png" style={{height: '50px', width: '50px'}}
-                                                                 alt={item.title} />
+                                                                 alt={ENVIRONMENT_VARIABLES.PREFIX + item.title}/>
                                                             <img src="/assets/Images/s_loader.gif" style={{height: '50px', width: '50px'}}
-                                                                 alt={item.title} />
+                                                                 alt={ENVIRONMENT_VARIABLES.PREFIX + item.title}/>
                                                         </ImageLoader>
                                                        <div className="pl-2"> <p style={{"textTransform": "capitalize",color:'black',fontWeight:'600'}}>{item.title}</p>
                                                         {(minutes.find((data) => data.productId === item.id)) ? (minutes.find((data) => data.productId === item.id)).approxTime : (item.approxTime)}mins

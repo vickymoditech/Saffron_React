@@ -67,7 +67,7 @@ class Sidebar extends Component {
                     <List style={{padding: 0}}>
                         <ListItem className="text-center" style={{color: "#fff", backgroundColor: "#000000"}}
                                   innerDivStyle={stylesMenu.innerDivStyle}>
-                            <span><img src="/assets/Images/DB_Logo.png" alt="" style={{width: 120}}/></span>
+                            <span><img src="/assets/Images/Logo.png" alt="unisex saffron" style={{width: 120}}/></span>
                             <span onClick={this.props.closeNav}><i className="fa fa-times"
                                                                    style={{position: 'absolute', right: 10, top: 10}}/> </span>
                         </ListItem>

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
 import NotificationSystem from 'react-notification-system';
 import * as serviceAction from '../../../actions/serviceAction';
 import Loader from '../../Helper/Loader';
@@ -11,7 +10,6 @@ import ProductDialog from '../Helper/AddCommonDialog';
 import EditDialog from './editDialog';
 import '../Helper/AddCommonDialog/index';
 import ImageLoader from 'react-load-image';
-
 import './manage-service.css';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 
@@ -131,11 +129,11 @@ class ManageService extends Component {
                                             <ImageLoader
                                                 src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}>
                                                 <img className="img-fluid" style={{height: '150px', width: '150px'}}
-                                                     alt={value.title}/>
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.title}/>
                                                 <img src="/assets/Images/NoImages.png" style={{height: '150px', width: '150px'}}
-                                                     alt={value.title} />
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.title} />
                                                 <img src="/assets/Images/s_loader.gif" style={{height: '150px', width: '150px'}}
-                                                     alt={value.title} />
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.title} />
                                             </ImageLoader>
                                         </td>
                                         <td style={{"textTransform": "capitalize"}}>{value.title}</td>
@@ -148,7 +146,7 @@ class ManageService extends Component {
                                             </button>
                                             &nbsp;
                                             <button type="button" className="btn btn-danger" key={value.id}
-                                                    onClick={event => {
+                                                    onClick={() => {
                                                         this.removeSpecificService(value.id)
                                                     }}>Delete
                                             </button>

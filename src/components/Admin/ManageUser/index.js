@@ -130,11 +130,11 @@ class ManageUser extends Component {
                                             <ImageLoader
                                                 src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}>
                                                 <img className="img-fluid" style={{height: '150px', width: '150px'}}
-                                                     alt={value.title}/>
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.title}/>
                                                 <img src="/assets/Images/NoImages.png" style={{height: '150px', width: '150px'}}
-                                                     alt={value.title} />
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.title} />
                                                 <img src="/assets/Images/s_loader.gif" style={{height: '150px', width: '150px'}}
-                                                     alt={value.title} />
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.title} />
                                             </ImageLoader>
                                         </td>
                                         <td style={{"textTransform": "capitalize"}}>{value.first_name} {value.last_name}</td>
@@ -145,13 +145,13 @@ class ManageUser extends Component {
                                             <Switch value={value.block}
                                                     circleStyles={{onColor: 'green', offColor: 'red', diameter: 25}}
                                                     switchStyles={{width: 95}}
-                                                    onChange={(e) => {
+                                                    onChange={() => {
                                                         this.onchangeBlock(!value.block, value.contact_no);
                                                     }}/>
                                         </td>
                                         <td style={{textAlign: "center"}}>
                                             <button type="button" className="btn btn-danger" key={value.id}
-                                                    onClick={event => {
+                                                    onClick={() => {
                                                         this.deleteUser(value.id)
                                                     }}>Delete
                                             </button>

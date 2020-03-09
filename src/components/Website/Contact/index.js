@@ -1,6 +1,9 @@
 import React,{Component} from 'react';
 import Loader from '../../Helper/Loader';
+import * as websiteAction from "../../../actions/websiteAction";
 import './contactStyle.css';
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
 
 class Contact extends Component{
 
@@ -11,6 +14,7 @@ class Contact extends Component{
 
     componentDidMount() {
         window.scrollTo(0, 0);
+        this.props.actions.websiteAction.basketVisible(true);
         setTimeout(() => {
             this.setState({Loading: false});
         }, 3000);
@@ -46,9 +50,13 @@ class Contact extends Component{
                 {Loading && <Loader/>}
             </div>
         );
-
     }
-
 }
 
-export default Contact;
+const mapDispatchToProps = dispatch => ({
+    actions: {
+        websiteAction: bindActionCreators(websiteAction, dispatch)
+    }
+});
+
+export default connect(null, mapDispatchToProps)(Contact);

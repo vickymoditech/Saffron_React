@@ -76,9 +76,9 @@ class Gallery extends Component {
                                     <div className="main_img_box">
                                         <ImageLoader
                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + gallery.image_url}>
-                                            <img className="img-fluid" alt="Gallery Image"/>
-                                            <img src="/assets/Images/NoImages.png" alt="Gallery Image" />
-                                            <img src="/assets/Images/s_loader.gif" alt="Gallery Image" />
+                                            <img className="img-fluid" alt="Saffron Gallery Image"/>
+                                            <img className="img-fluid" src="/assets/Images/NoImages.png" alt="Saffron Gallery Image" />
+                                            <img className="img-fluid" src="/assets/Images/s_loader.gif" alt="Saffron Gallery Image" />
                                         </ImageLoader>
                                     </div>
                                 </div>

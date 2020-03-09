@@ -130,11 +130,13 @@ class ManageTeam extends Component {
                                             <ImageLoader
                                                 src={ENVIRONMENT_VARIABLES.PHOTO_URL + value.image_url}>
                                                 <img className="img-fluid" style={{height: '150px', width: '150px'}}
-                                                     alt={value.first_name}/>
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.first_name}/>
                                                 <img src="/assets/Images/NoImages.png" style={{height: '150px', width: '150px'}}
-                                                     alt={value.first_name} />
+                                                     className="img-fluid"
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.first_name}/>
                                                 <img src="/assets/Images/s_loader.gif" style={{height: '150px', width: '150px'}}
-                                                     alt={value.first_name} />
+                                                     className="img-fluid"
+                                                     alt={ENVIRONMENT_VARIABLES.PREFIX + value.first_name}/>
                                             </ImageLoader>
                                         </td>
                                         <td style={{"textTransform": "capitalize"}}>{value.first_name + " " + value.last_name}</td>
