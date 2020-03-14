@@ -78,11 +78,12 @@ export const AddCoupon = (Coupon) => {
             let request = {
                 name: Coupon.name,
                 info: Coupon.info,
-                minPrice: Coupon.minPrice,
-                maxDiscount: Coupon.maxDiscount,
                 percentage: Coupon.percentage,
-                startDate: Coupon.startDate,
-                endDate: Coupon.endDate
+                minPrice: Coupon.minPrice,
+                maxPrice: Coupon.maxPrice,
+                maxDiscount: Coupon.maxDiscount,
+                startDate: Coupon.startDate.toString(),
+                endDate: Coupon.endDate.toString()
             };
 
             let api = {

@@ -61,10 +61,13 @@ export default function manageCouponReducer(state = initialState.manageCouponRed
                 id: action.data.data.id,
                 name: action.data.data.name,
                 info: action.data.data.info,
+                percentage:action.data.data.percentage,
                 minPrice: action.data.data.minPrice,
+                maxPrice: action.data.data.maxPrice,
                 maxDiscount: action.data.data.maxDiscount,
                 startDate: action.data.data.startDate,
-                endDate: action.data.data.endDate
+                endDate: action.data.data.endDate,
+                userId: action.data.data.userId,
             };
             return Object.assign({}, state, {
                 couponList: [...state.couponList, coupon],

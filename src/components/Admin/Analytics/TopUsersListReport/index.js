@@ -28,7 +28,7 @@ export default class TopUsersListReport extends Component {
         };
 
         this.props.topUsers.map((options) => {
-            data.labels.push(`${options.user.first_name} ${options.user.last_name}`);
+            data.labels.push(`${options.user.first_name} ${options.user.last_name} (${options.user.contact_no})`);
             data.datasets[0].data.push(options.totalOrder);
         });
 

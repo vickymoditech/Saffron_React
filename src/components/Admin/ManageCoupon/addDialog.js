@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as CouponAction from '../../../actions/couponAction';
 import DatePicker from 'material-ui/DatePicker';
 import Checkbox from 'material-ui/Checkbox';
+let moment = require('moment-timezone');
 
 const style = {
     titleStyle: {
@@ -17,6 +18,7 @@ const style = {
 class AddDialog extends Component {
     constructor(props) {
         super(props);
+        let currentDate = moment().tz('Asia/Kolkata').format();
         this.state = {
             isOpen: props.isOpen,
             commonData: {
@@ -26,8 +28,8 @@ class AddDialog extends Component {
                 minPrice: "",
                 maxPrice: "",
                 maxDiscount: "",
-                startDate: new Date(),
-                endDate: new Date(),
+                startDate: new Date(currentDate),
+                endDate: new Date(currentDate),
             }
         };
     }

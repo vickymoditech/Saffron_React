@@ -125,8 +125,8 @@ class BasketItemsList extends Component {
                                                              alt={singleProduct.product.title}/>
                                                     </ImageLoader>
                                                     <p style={{"textTransform": "capitalize"}}>{singleProduct.product.title}</p>
-                                                    <p>₹ {singleProduct.product.offerPrice !== 0 ? singleProduct.product.offerPrice : singleProduct.product.price}</p>
-                                                    <p>₹ {singleProduct.product.price}</p>
+                                                    <p>₹. {singleProduct.product.offerPrice !== 0 ? singleProduct.product.offerPrice : singleProduct.product.price}</p>
+                                                    <p>₹. {singleProduct.product.price}</p>
                                                     <button type="button" className="btn btn-danger"
                                                             onClick={() => this.deleteProductFromCart(singleProduct.product.id, singleProduct.teamMember.id)}>Delete
                                                     </button>
@@ -178,7 +178,7 @@ class BasketItemsList extends Component {
                                             {this.props.allCouponsList.length > 0 && this.props.allCouponsList.map((singleCoupon,index) => (
                                                 <div className="d-flex flex-column border border-dark p-2">
                                                     <span className="discount_value">{singleCoupon.name} : {singleCoupon.info}</span>
-                                                    <span>Your Savings: up to &#8377;{singleCoupon.minPrice} (18% off), {singleCoupon.info} </span>
+                                                    <span>Your Savings: (18% off) up to &#8377;.{singleCoupon.minPrice}</span>
                                                 </div>
                                             ))}
                                         </div>
@@ -211,22 +211,22 @@ class BasketItemsList extends Component {
                                         <div
                                             className="sub_total_box1 d-flex justify-content-between border border-dark p-2">
                                             <span>Sub Total</span>
-                                            <span>&#8377; {subTotal}</span>
+                                            <span>&#8377;. {subTotal}</span>
                                         </div>
                                         <div
                                             className="sub_total_box1 d-flex justify-content-between border border-dark p-2 mt-2">
                                             <span>Discount</span>
-                                            <span>&#8377; {offerPrice}</span>
+                                            <span>(-) &#8377;. {offerPrice}</span>
                                         </div>
                                         <div
                                             className="sub_total_box1 d-flex justify-content-between border border-dark p-2 mt-2">
-                                            <span>Coupon</span>
-                                            <span>&#8377; {0}</span>
+                                            <span>Coupon Discount</span>
+                                            <span>(-) &#8377;. {0}</span>
                                         </div>
                                         <div
                                             className="sub_total_box1 d-flex justify-content-between border border-dark p-2 mt-2">
                                             <span>Total</span>
-                                            <span>&#8377; {totalPrice}</span>
+                                            <span>&#8377;. {totalPrice}</span>
                                         </div>
                                         <div className="d-flex justify-content-between px-2 mt-2">
                                             <input type="text"

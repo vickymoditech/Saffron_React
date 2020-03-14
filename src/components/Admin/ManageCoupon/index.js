@@ -114,7 +114,7 @@ class ManageCoupon extends Component {
                                         <tr key={index}>
                                             <td style={{"textTransform": "capitalize"}}>{value.name}</td>
                                             <td style={{"textTransform": "capitalize"}}>{value.info}</td>
-                                            <th style={{cursor: 'context-menu'}}>{value.percentage}</th>
+                                            <th style={{cursor: 'context-menu'}}>{value.percentage} %</th>
                                             <th style={{cursor: 'context-menu'}}>{value.minPrice}</th>
                                             <th style={{cursor: 'context-menu'}}>{value.maxPrice}</th>
                                             <th style={{cursor: 'context-menu'}}>{value.maxDiscount}</th>
