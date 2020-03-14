@@ -109,7 +109,7 @@ export const getAllCoupon = () => {
 
             let api = {
                 method: 'GET',
-                url: ENVIRONMENT_VARIABLES.API_URL + "/coupons"
+                url: ENVIRONMENT_VARIABLES.API_URL + "/coupons/all"
             };
 
             axios(api).then((response) => {

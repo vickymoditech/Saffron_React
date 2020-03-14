@@ -175,31 +175,12 @@ class BasketItemsList extends Component {
                                     <div className="col-md-12 main_discount_order_box overflow-hidden h-100">
                                         <h3 className="text-center"> Coupons </h3>
                                         <div className="discount_box p-2 h-100">
-                                            <div className="d-flex flex-column border border-dark p-2">
-                                                    <span
-                                                        className="discount_value">Your Savings: &#8377;2,000 (18%)</span>
-                                                <span>Item Discount</span>
-                                            </div>
-                                            <div className="d-flex flex-column border border-dark p-2">
-                                                    <span
-                                                        className="discount_value">Your Savings: &#8377;2,000 (18%)</span>
-                                                <span>Item Discount</span>
-                                            </div>
-                                            <div className="d-flex flex-column border border-dark p-2">
-                                                    <span
-                                                        className="discount_value">Your Savings: &#8377;2,000 (18%)</span>
-                                                <span>Item Discount</span>
-                                            </div>
-                                            <div className="d-flex flex-column border border-dark p-2">
-                                                    <span
-                                                        className="discount_value">Your Savings: &#8377;2,000 (18%)</span>
-                                                <span>Item Discount</span>
-                                            </div>
-                                            <div className="d-flex flex-column border border-dark p-2">
-                                                    <span
-                                                        className="discount_value">Your Savings: &#8377;2,000 (18%)</span>
-                                                <span>Item Discount</span>
-                                            </div>
+                                            {this.props.allCouponsList.length > 0 && this.props.allCouponsList.map((singleCoupon,index) => (
+                                                <div className="d-flex flex-column border border-dark p-2">
+                                                    <span className="discount_value">{singleCoupon.name} : {singleCoupon.info}</span>
+                                                    <span>Your Savings: up to &#8377;{singleCoupon.minPrice} (18% off), {singleCoupon.info} </span>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
