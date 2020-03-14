@@ -44,8 +44,8 @@ class App extends Component {
             this.setState({orderPlace:true},() => {
                 setTimeout(() => {
                     this.setState({orderPlace:false});
-                    browserHistory.push('/Invoice');
                 },1000);
+                browserHistory.push('/Invoice');
             });
         }
     }

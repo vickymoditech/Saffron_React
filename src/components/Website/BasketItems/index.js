@@ -9,6 +9,8 @@ import '../../Admin/Helper/DeleteAlertCss/react-confirm-alert.css';
 import {isLoggedIn} from '../../../index';
 import {Link} from 'react-router';
 import Loader from '../../Helper/Loader';
+import Lottie from 'react-lottie';
+import * as animationData from './empty-cart';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import ImageLoader from 'react-load-image';
 import {Collapse} from 'antd';
@@ -94,6 +96,15 @@ class BasketItemsList extends Component {
             }
         });
 
+        const defaultOptions = {
+            loop: true,
+            autoplay: true,
+            animationData: animationData,
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
+
         return (
             <div style={{paddingTop: '100px', backgroundColor: '#f5f2ea'}}>
 
@@ -103,7 +114,7 @@ class BasketItemsList extends Component {
 
                 <div>
                     <div className="container-fluid">
-                        <div className="row">
+                        {this.props.BasketGeneratorProducts.length > 0 ? <div className="row">
                             <div className="d-flex flex-wrap-reverse w-100">
                                 <div className="col-md-8">
                                     <h3 className="text-center"> Review your order </h3>
@@ -178,7 +189,7 @@ class BasketItemsList extends Component {
                                             {this.props.allCouponsList.length > 0 && this.props.allCouponsList.map((singleCoupon,index) => (
                                                 <div className="d-flex flex-column border border-dark p-2">
                                                     <span className="discount_value">{singleCoupon.name} : {singleCoupon.info}</span>
-                                                    <span>Your Savings: (18% off) up to &#8377;.{singleCoupon.minPrice}</span>
+                                                    <span>Your Savings: ({singleCoupon.percentage}% Off) up to &#8377;.{singleCoupon.minPrice}</span>
                                                 </div>
                                             ))}
                                         </div>
@@ -236,9 +247,11 @@ class BasketItemsList extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="text-center w-100 my-3">
-                            </div>
-                        </div>
+                            <div className="text-center w-100 my-3"></div>
+                        </div> : <div>
+                            <Lottie options={defaultOptions} height={400} width={400}/>
+                            <Link to="/ProductList"><span> Your Booking Cart is Empty.. Continue Shopping </span></Link>
+                        </div>}
                     </div>
                 </div>
                 {Loading && <Loader/>}
