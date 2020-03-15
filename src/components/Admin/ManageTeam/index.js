@@ -121,6 +121,7 @@ class ManageTeam extends Component {
                                 <tr>
                                     <th style={{cursor: 'context-menu'}}>Member Profile</th>
                                     <th style={{cursor: 'context-menu'}}>Name</th>
+                                    <th style={{cursor: 'context-menu'}}>Contact</th>
                                     <th style={{cursor: 'context-menu'}}>Description</th>
                                     <th style={{cursor: 'context-menu'}}>Action</th>
                                 </tr>
@@ -140,6 +141,7 @@ class ManageTeam extends Component {
                                             </ImageLoader>
                                         </td>
                                         <td style={{"textTransform": "capitalize"}}>{value.first_name + " " + value.last_name}</td>
+                                        <td>{value.userId}</td>
                                         <td style={{"textTransform": "capitalize"}}>{value.description}</td>
                                         <td style={{textAlign: "center"}}>
                                             <button type="button" className="btn btn-primary" key={index}

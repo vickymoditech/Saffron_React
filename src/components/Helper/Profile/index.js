@@ -9,7 +9,7 @@ import ChangePasswordModal from '../ChangePasswordModal';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import SuccessLoader from '../SuccessLoader/index';
 import ImageLoader from 'react-load-image';
-import button from './profile.css';
+import './profile.css';
 
 class Profile extends Component {
 
@@ -30,7 +30,7 @@ class Profile extends Component {
                 image_url: userProfile.image_url,
                 role: userProfile.role
             },
-            image_url: userProfile.image_url !== "" && userProfile.image_url !== null ? ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url : "",
+            image_url: userProfile.image_url !== "" || userProfile.image_url !== null ? ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url : "",
             notificationSystem: null,
             successLoader: false,
         };
@@ -52,7 +52,7 @@ class Profile extends Component {
                 image_url: userProfile.image_url,
                 role: userProfile.role
             },
-            image_url: userProfile.image_url !== "" && userProfile.image_url !== null ? ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url : "",
+            image_url: userProfile.image_url !== "" || userProfile.image_url !== null ? ENVIRONMENT_VARIABLES.PHOTO_URL + userProfile.image_url : "",
             changePasswordDialog: false
         });
     };

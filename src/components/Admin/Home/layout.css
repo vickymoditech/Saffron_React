@@ -605,7 +605,7 @@ nav.parking-status ul {
 .status.in-progress {
     color: #fff;
     background-color: pink;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .small-box {
