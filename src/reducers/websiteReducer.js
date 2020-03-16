@@ -9,7 +9,8 @@ import {
     ADDPRODUCTTOCART,
     REMOVEPRODUCTTOCART,
     WEBSITE_HOME,
-    LOGOUT_USER, BASKETVISIBLE, ORDER_PLACE, COMPLETED_ORDER_LIST, ALL_VIDEOS_SUCCESS, ALL_COUPON_SUCCESS
+    LOGOUT_USER, BASKETVISIBLE, ORDER_PLACE, COMPLETED_ORDER_LIST, ALL_VIDEOS_SUCCESS, ALL_COUPON_SUCCESS,
+    APPLY_COUPON_SUCCESS, APPLY_COUPON_REMOVE, WEBSITE_DEFAULT_CLEAR
 } from '../constants/actionTypes';
 import {disconnect} from '../socket';
 
@@ -18,6 +19,9 @@ import initialState from './initialState';
 
 export default function websiteReducer(state = initialState.websiteReducer, action) {
     switch (action.type) {
+
+        case WEBSITE_DEFAULT_CLEAR:
+            return Object.assign({}, state, {error_msg: null, success_msg: null});
 
         case WEBSITE_INPROGRESS:
             return Object.assign({}, state, {
@@ -57,6 +61,23 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
                 error_msg: null
             });
 
+        case APPLY_COUPON_REMOVE:
+            return Object.assign({}, state, {
+                selectedCoupon: null,
+                TimeSlotVisible: false,
+                Loading: false,
+                error_msg: null
+            });
+
+        case APPLY_COUPON_SUCCESS:
+            return Object.assign({}, state, {
+                selectedCoupon: action.data.couponDetail,
+                TimeSlotVisible: false,
+                success_msg: action.data.result,
+                Loading: false,
+                error_msg: null
+            });
+
         case ALL_PRODUCTS_SUCCESS:
             return Object.assign({}, state, {
                 AllProductsList: action.data,
@@ -91,6 +112,7 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
                 BasketVisible: false,
                 TimeSlotVisible: false,
                 success_msg: "your order successfully has been placed",
+                selectedCoupon: null,
                 Loading: false,
                 error_msg: null
             });

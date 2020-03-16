@@ -18,7 +18,8 @@ const style = {
 class AddDialog extends Component {
     constructor(props) {
         super(props);
-        let currentDate = moment().tz('Asia/Kolkata').format();
+        let currentStartDate = moment().tz('Asia/Kolkata').startOf('day').format();
+        let currentEndDate = moment().tz('Asia/Kolkata').endOf('day').format();
         this.state = {
             isOpen: props.isOpen,
             commonData: {
@@ -28,8 +29,8 @@ class AddDialog extends Component {
                 minPrice: "",
                 maxPrice: "",
                 maxDiscount: "",
-                startDate: new Date(currentDate),
-                endDate: new Date(currentDate),
+                startDate: new Date(currentStartDate),
+                endDate: new Date(currentEndDate),
             }
         };
     }
@@ -95,7 +96,7 @@ class AddDialog extends Component {
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="text" name="name"
-                                                                           placeholder="Title"
+                                                                           placeholder="Coupon Name"
                                                                            className="form-control"
                                                                            style={{borderBottom: '0'}}
                                                                            onChange={this.handleChange}
@@ -138,7 +139,7 @@ class AddDialog extends Component {
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="minPrice"
-                                                                           placeholder="MinPrice"
+                                                                           placeholder="Minimum Price"
                                                                            className="form-control"
                                                                            style={{borderBottom: '0'}}
                                                                            onChange={this.handleChange}
@@ -153,7 +154,7 @@ class AddDialog extends Component {
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="maxPrice"
-                                                                           placeholder="MaxPrice"
+                                                                           placeholder="Maximum Price"
                                                                            className="form-control"
                                                                            style={{borderBottom: '0'}}
                                                                            onChange={this.handleChange}
@@ -168,7 +169,7 @@ class AddDialog extends Component {
                                                                     <i className="fa fa-pencil icon_color"/>
                                                                 </span>
                                                                     <input type="number" name="maxDiscount"
-                                                                           placeholder="MaxDiscount"
+                                                                           placeholder="Maximum Discount"
                                                                            className="form-control"
                                                                            style={{borderBottom: '0'}}
                                                                            onChange={this.handleChange}

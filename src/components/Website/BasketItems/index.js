@@ -14,8 +14,12 @@ import * as animationData from './empty-cart';
 import ENVIRONMENT_VARIABLES from "../../../environment.config";
 import ImageLoader from 'react-load-image';
 import {Collapse} from 'antd';
+import Checkbox from 'material-ui/Checkbox';
+import Chip from 'material-ui/Chip';
+import swal from 'sweetalert';
 import './BasketItemsList.css';
 import 'antd/dist/antd.css';
+
 
 const {Panel} = Collapse;
 
@@ -23,7 +27,36 @@ class BasketItemsList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {isDialogOpen: false, Loading: true};
+        this.state = {isDialogOpen: false, Loading: true, couponName: "", chipData: []};
+        this.styles = {
+            chip: {
+                margin: 4,
+            },
+            wrapper: {
+                display: 'flex',
+                flexWrap: 'wrap',
+            },
+        };
+    }
+
+    handleRequestDelete = (key) => {
+        this.props.actions.websiteAction.applyCouponRemove();
+        this.chipData = this.state.chipData;
+        const chipToDelete = this.chipData.map((chip) => chip.key).indexOf(key);
+        this.chipData.splice(chipToDelete, 1);
+        this.setState({chipData: this.chipData});
+    };
+
+    renderChip(data) {
+        return (
+            <Chip
+                key={data.key}
+                onRequestDelete={() => this.handleRequestDelete(data.key)}
+                style={this.styles.chip}
+            >
+                {data.label}
+            </Chip>
+        );
     }
 
     componentDidMount() {
@@ -41,6 +74,11 @@ class BasketItemsList extends Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({isDialogOpen: nextProps.TimeSlotVisible});
+        if(nextProps.selectedCoupon){
+            this.setState({
+                chipData: [{key: 0, label: nextProps.selectedCoupon.name}]
+            });
+        }
     }
 
     getTimeSlots = () => {
@@ -56,7 +94,6 @@ class BasketItemsList extends Component {
     };
 
     deleteProductFromCart = (product_id, teamMember_id) => {
-
         confirmAlert({
             key: product_id,
             message: 'Are you sure you want to Delete?',
@@ -79,6 +116,19 @@ class BasketItemsList extends Component {
             return false;
         else
             return true;
+    };
+
+    onChange = (event) => {
+      this.setState({couponName:event.target.value});
+    };
+
+    applyCoupon = () => {
+        if(this.state.couponName !== ""){
+            this.props.actions.websiteAction.applyCoupon(this.state.couponName);
+            this.setState({couponName: ""});
+        }else{
+            swal('Oops...', "Invalid Coupon", 'error');
+        }
     };
 
     render() {
@@ -239,10 +289,19 @@ class BasketItemsList extends Component {
                                             <span>Total</span>
                                             <span>&#8377;. {totalPrice}</span>
                                         </div>
+                                        <div style={this.styles.wrapper}>
+                                            {this.state.chipData.map(this.renderChip, this)}
+                                        </div>
+                                        <div>
+                                            <Checkbox
+                                                label="Do you want to use your Saffron Points"
+                                                labelPosition="right"
+                                                checked={false}
+                                            />
+                                        </div>
                                         <div className="d-flex justify-content-between px-2 mt-2">
-                                            <input type="text"
-                                                   className="form-control w-100 border border-dark mb-0 mr-2"/>
-                                            <button type="button" className="btn button_main">Check</button>
+                                            <input type="text" className="form-control w-100 border border-dark mb-0 mr-2" value={this.state.couponName} name="couponName" onChange={this.onChange} />
+                                            <button type="button" className="btn button_main" onClick={this.applyCoupon} >Apply</button>
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +325,8 @@ const mapStateToProps = (state) => {
         BasketGeneratorProducts: websiteReducer.BasketGeneratorProducts,
         TimeSlots: websiteReducer.TimeSlots,
         TimeSlotVisible: websiteReducer.TimeSlotVisible,
-        allCouponsList: websiteReducer.allCouponsList
+        allCouponsList: websiteReducer.allCouponsList,
+        selectedCoupon: websiteReducer.selectedCoupon
     };
 };
 

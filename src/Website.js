@@ -36,17 +36,21 @@ class App extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (!nextProps.Loading && nextProps.error_msg) {
-            //this.addNotifications(nextProps.error_msg, "error");
             swal('Oops...', nextProps.error_msg, 'error');
+            this.props.actions.websiteAction.DefaultMessageClear();
         }
         if(nextProps.success_msg){
             this.props.actions.websiteAction.basketVisible(false);
-            this.setState({orderPlace:true},() => {
-                setTimeout(() => {
-                    this.setState({orderPlace:false});
-                },1000);
-                browserHistory.push('/Invoice');
-            });
+            if(nextProps.success_msg.toString().includes("placed")){
+                this.setState({orderPlace:true},() => {
+                    setTimeout(() => {
+                        this.setState({orderPlace:false});
+                    },1000);
+                    browserHistory.push('/Invoice');
+                });
+            }else{
+                swal(nextProps.selectedCoupon.name,"Coupon Successfully Applied", 'success');
+            }
         }
     }
 
@@ -151,6 +155,7 @@ const mapStateToProps = (state) => {
         success_msg:websiteReducer.success_msg,
         userAvatar: authReducer.userAvatar,
         BasketGeneratorProducts: websiteReducer.BasketGeneratorProducts,
+        selectedCoupon: websiteReducer.selectedCoupon,
         BasketVisible: websiteReducer.BasketVisible
     };
 };

@@ -93,6 +93,7 @@ export default {
         sliderList: [],
         AllProductsList: [],
         allCouponsList: [],
+        selectedCoupon: null,
         BasketGeneratorProducts: BasketGeneratorProducts,
         RecentCompleteOrder: [],
         RecentOrder: null,
