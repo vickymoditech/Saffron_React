@@ -66,8 +66,10 @@ class BasketItemsList extends Component {
         }, 1000);
         if (this.props.BasketGeneratorProducts.length > 0) {
             this.props.actions.websiteAction.getAllCoupon();
-            this.props.actions.websiteAction.getSaffronPoint();
             this.props.actions.websiteAction.basketVisible(false);
+            if(!this.checkLogin()){
+                this.props.actions.websiteAction.getSaffronPoint();
+            }
         } else {
             browserHistory.push('/ProductList');
         }

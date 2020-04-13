@@ -58,6 +58,7 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
         case ALL_COUPON_SUCCESS:
             return Object.assign({}, state, {
                 allCouponsList: action.data,
+                TimeSlotVisible: false,
                 Loading: false,
                 error_msg: null
             });
