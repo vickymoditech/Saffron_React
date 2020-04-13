@@ -179,7 +179,6 @@ const mapStateToProps = (state) => {
         error_msg: manageTeamReducer.error_msg,
         success_msg: manageTeamReducer.success_msg,
         teamList: manageTeamReducer.teamList,
-        reRender: true
     };
 };
 

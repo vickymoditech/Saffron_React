@@ -58,7 +58,7 @@ class Gallery extends Component {
             };
             options.push(option);
         });
-        let placeHolder = options.length > 1 ? options[0].text : "Service Loading...";
+        let defaultValue = options.length > 0 ? options[0].value : "";
 
         return (
             <div>
@@ -67,7 +67,8 @@ class Gallery extends Component {
                         <div className="title_content text-center">
                             <span className="title">Gallery</span>
                             <Dropdown style={{width: '60%', margin: '0 auto', marginBottom: '10px'}}
-                                      placeholder={placeHolder} fluid selection options={options}
+                                      placeholder={"Select Service"} fluid selection options={options}
+                                      defaultValue={defaultValue}
                                       onChange={this.handleChangeService}/>
                         </div>
                         <div className="row">

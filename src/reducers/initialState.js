@@ -98,6 +98,7 @@ export default {
         RecentCompleteOrder: [],
         RecentOrder: null,
         SaffronPoint: 0,
+        saffronPointUse: 0,
         TimeSlots: [],
         BasketVisible: false,
         TimeSlotVisible: false,

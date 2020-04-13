@@ -27,7 +27,7 @@ class BasketItemsList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {isDialogOpen: false, Loading: true, couponName: "", chipData: []};
+        this.state = {isDialogOpen: false, Loading: true, couponName: "", chipData: [], saffronPointCheck: false};
         this.styles = {
             chip: {
                 margin: 4,
@@ -66,6 +66,7 @@ class BasketItemsList extends Component {
         }, 1000);
         if (this.props.BasketGeneratorProducts.length > 0) {
             this.props.actions.websiteAction.getAllCoupon();
+            this.props.actions.websiteAction.getSaffronPoint();
             this.props.actions.websiteAction.basketVisible(false);
         } else {
             browserHistory.push('/ProductList');
@@ -90,7 +91,7 @@ class BasketItemsList extends Component {
     };
 
     placeOrder = (timeSlot, orderType) => {
-        this.props.actions.websiteAction.placeOrder(timeSlot, orderType);
+        this.props.actions.websiteAction.placeOrder(timeSlot, orderType, this.state.saffronPointCheck);
     };
 
     deleteProductFromCart = (product_id, teamMember_id) => {
@@ -120,6 +121,11 @@ class BasketItemsList extends Component {
 
     onChange = (event) => {
       this.setState({couponName:event.target.value});
+    };
+
+    onCheck = (event) => {
+        const {saffronPointCheck} = this.state;
+        this.setState({saffronPointCheck: !saffronPointCheck});
     };
 
     applyCoupon = () => {
@@ -233,26 +239,24 @@ class BasketItemsList extends Component {
                                     </div>
                                 </div>
                                 <div className="col-md-4 pl-sm-0">
-                                    <div className="col-md-12 main_discount_order_box overflow-hidden h-100">
+                                    {this.props.allCouponsList.length > 0 && <div className="col-md-12 main_discount_order_box overflow-hidden h-100">
                                         <h3 className="text-center"> Coupons </h3>
                                         <div className="discount_box p-2 h-100">
-                                            {this.props.allCouponsList.length > 0 && this.props.allCouponsList.map((singleCoupon,index) => (
-                                                <div className="d-flex flex-column border border-dark p-2">
+                                            {this.props.allCouponsList.map((singleCoupon,index) => (
+                                                <div className="d-flex flex-column border border-dark p-2" key={index}>
                                                     <span className="discount_value">{singleCoupon.name} : {singleCoupon.info}</span>
                                                     <span>Your Savings: ({singleCoupon.percentage}% Off) up to &#8377;.{singleCoupon.minPrice}</span>
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
+                                    </div>}
                                 </div>
                             </div>
                             <div className="d-flex flex-wrap-reverse w-100">
                                 {this.checkLogin() ? (<div className="col-md-8">
                                         <div
                                             className="text-center d-flex flex-column justify-content-center h-100 mt-3">
-                                            <p className="signinOrCreate">Sign in or create account Already use Saffron?
-                                                Sign in with your
-                                                account.</p>
+                                            <p className="signinOrCreate">Sign in or Create account! if you already have Saffron account? Then Sign in with your account.</p>
                                             <div className="d-flex justify-content-center">
                                                 <Link to="/Login"><p className="loginBtn btn button_main mr-3">Login</p>
                                                 </Link>
@@ -292,17 +296,26 @@ class BasketItemsList extends Component {
                                         <div style={this.styles.wrapper}>
                                             {this.state.chipData.map(this.renderChip, this)}
                                         </div>
+                                        {!this.checkLogin() && <div>
                                         <div>
                                             <Checkbox
-                                                label="Do you want to use your Saffron Points"
+                                                label={`(${this.props.SaffronPoint}) - Do you want to use your Saffron Points?`}
                                                 labelPosition="right"
-                                                checked={false}
+                                                onCheck={this.onCheck}
+                                                disabled={!this.props.SaffronPoint > 0}
+                                                //style={}
+                                                checked={this.state.saffronPointCheck}
                                             />
                                         </div>
                                         <div className="d-flex justify-content-between px-2 mt-2">
-                                            <input type="text" className="form-control w-100 border border-dark mb-0 mr-2" value={this.state.couponName} name="couponName" onChange={this.onChange} />
-                                            <button type="button" className="btn button_main" onClick={this.applyCoupon} >Apply</button>
+                                            <input type="text"
+                                                   className="form-control w-100 border border-dark mb-0 mr-2"
+                                                   value={this.state.couponName} name="couponName"
+                                                   onChange={this.onChange}/>
+                                            <button type="button" className="btn button_main"
+                                                    onClick={this.applyCoupon}>Apply</button>
                                         </div>
+                                            </div>}
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +339,8 @@ const mapStateToProps = (state) => {
         TimeSlots: websiteReducer.TimeSlots,
         TimeSlotVisible: websiteReducer.TimeSlotVisible,
         allCouponsList: websiteReducer.allCouponsList,
-        selectedCoupon: websiteReducer.selectedCoupon
+        selectedCoupon: websiteReducer.selectedCoupon,
+        SaffronPoint: websiteReducer.SaffronPoint
     };
 };
 

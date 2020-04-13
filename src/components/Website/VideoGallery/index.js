@@ -65,7 +65,7 @@ class VideoGalleryMain extends Component {
             };
             options.push(option);
         });
-        let placeHolder = options.length > 1 ? options[0].text : "Service Loading...";
+        let defaultValue = options.length > 0 ? options[0].value : "";
 
         const opts = {
             height: '390',
@@ -82,7 +82,8 @@ class VideoGalleryMain extends Component {
                         <div className="title_content text-center">
                             <span className="title">Videos</span>
                             <Dropdown style={{width: '60%', margin: '0 auto', marginBottom: '10px'}}
-                                      placeholder={placeHolder} fluid selection options={options}
+                                      placeholder={"Select Service"} fluid selection options={options}
+                                      defaultValue={defaultValue}
                                       onChange={this.handleChangeService}/>
 
                             <div className="container">

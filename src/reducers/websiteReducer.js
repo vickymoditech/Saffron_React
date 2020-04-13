@@ -9,6 +9,7 @@ import {
     ADDPRODUCTTOCART,
     REMOVEPRODUCTTOCART,
     WEBSITE_HOME,
+    GET_SAFFRON_POINTS,
     LOGOUT_USER, BASKETVISIBLE, ORDER_PLACE, COMPLETED_ORDER_LIST, ALL_VIDEOS_SUCCESS, ALL_COUPON_SUCCESS,
     APPLY_COUPON_SUCCESS, APPLY_COUPON_REMOVE, WEBSITE_DEFAULT_CLEAR
 } from '../constants/actionTypes';
@@ -147,6 +148,14 @@ export default function websiteReducer(state = initialState.websiteReducer, acti
         case COMPLETED_ORDER_LIST:
             return Object.assign({}, state, {
                 RecentCompleteOrder: [...action.data.TodayOrders],
+                SaffronPoint: action.data.UserPoints.saffronPoint,
+                saffronPointUse: action.data.UserPoints.saffronPointUse,
+                Loading: false,
+                error_msg: null
+            });
+
+        case GET_SAFFRON_POINTS:
+            return Object.assign({}, state, {
                 SaffronPoint: action.data.UserPoints.saffronPoint,
                 Loading: false,
                 error_msg: null

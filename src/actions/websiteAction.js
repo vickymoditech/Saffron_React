@@ -12,6 +12,7 @@ import {
     REMOVEPRODUCTTOCART,
     BASKETVISIBLE,
     COMPLETED_ORDER_LIST,
+    GET_SAFFRON_POINTS,
     ORDER_PLACE,
     WEBSITE_HOME,
     LOGOUT_USER, ALL_COUPON_SUCCESS, APPLY_COUPON_SUCCESS, APPLY_COUPON_REMOVE, WEBSITE_DEFAULT_CLEAR,
@@ -231,7 +232,7 @@ export const basketVisible = (value) => {
     }
 };
 
-export const placeOrder = (TimeSlot, orderType) => {
+export const placeOrder = (TimeSlot, orderType, saffronPoint) => {
     try {
         return (dispatch) => {
             dispatch({type: WEBSITE_INPROGRESS});
@@ -242,6 +243,7 @@ export const placeOrder = (TimeSlot, orderType) => {
 
             let data = {
                 orderType: orderType,
+                saffronPoint: saffronPoint,
                 startTime: {
                     hours: startTime[0],
                     minutes: startTime[1]
@@ -298,6 +300,34 @@ export const getCompletedOrder = () => {
             axios(api).then((response) => {
                 if (response.status === 200) {
                     dispatch({type: COMPLETED_ORDER_LIST, data: response.data});
+                }
+            }).catch((error) => {
+                if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {
+                    dispatch({type: WEBSITE_NOT_SUCCESS, data: {error_msg: error.response.data.user_msg}});
+                } else {
+                    dispatch({type: WEBSITE_CONNECTION_ERROR, data: {error_msg: error.message.toString()}});
+                }
+            });
+        }
+    } catch (error) {
+        alert(error.message.toString());
+    }
+};
+
+export const getSaffronPoint = () => {
+    try {
+        return (dispatch) => {
+            dispatch({type: WEBSITE_INPROGRESS});
+
+            const token = "Bearer " + localStorage.getItem('accessToken');
+            const api = {
+                method: 'GET',
+                headers: {'Authorization': token},
+                url: ENVIRONMENT_VARIABLES.API_URL + "/oauths/getSaffronPoint"
+            };
+            axios(api).then((response) => {
+                if (response.status === 200) {
+                    dispatch({type: GET_SAFFRON_POINTS, data: response.data});
                 }
             }).catch((error) => {
                 if (error && error.response && (error.response.status === 400 || error.response.status === 403 || error.response.status === 401)) {

@@ -33,14 +33,14 @@ class TodayCompleteOrders extends Component {
 
         return (
             <div>
-                <p className="saffronTitle w-50 mx-auto border border-dark"> SaffronPoint : {this.props.SaffronPoint} </p>
+                <p className="saffronTitle w-50 mx-auto border border-dark"> SaffronPoint : {this.props.SaffronPoint} (Spent SaffronPoint : {this.props.saffronPointUse}) </p>
                 <div>
                     {this.props.RecentCompleteOrder && this.props.RecentCompleteOrder.length > 0 && <Collapse accordion>
                         {this.props.RecentCompleteOrder.map((singleCompletedOrder, index) => (
                             <Panel
                                 header={<div className="main_order_box p-2">
                                     <div className="d-flex align-items-center justify-content-between">
-                                        <p>Date
+                                        <p>Booking Date
                                             : {moment.tz(singleCompletedOrder.bookingDateTime, 'Asia/Kolkata').format("DD-MM-YYYY hh:mm A")}</p>
                                         <p style={{"textTransform": "capitalize"}} className="orderStatus p-2">{singleCompletedOrder.column}</p>
                                     </div>
@@ -99,7 +99,8 @@ const mapStateToProps = (state) => {
     const {websiteReducer} = state;
     return {
         RecentCompleteOrder: websiteReducer.RecentCompleteOrder,
-        SaffronPoint: websiteReducer.SaffronPoint
+        SaffronPoint: websiteReducer.SaffronPoint,
+        saffronPointUse: websiteReducer.saffronPointUse,
     };
 };
 
