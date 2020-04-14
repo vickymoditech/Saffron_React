@@ -84,10 +84,6 @@ class Registration extends Component {
         }
     }
 
-    homePage = () => {
-        browserHistory.push('/');
-    };
-
     render() {
         return (
             <div className="back_color">
@@ -103,8 +99,8 @@ class Registration extends Component {
                 <div className="modal-dialog d-flex m-0 mt-4 align-items-center w-75">
                     <div className="modal-content">
                         {/*<Link to="/" className="logo"/>*/}
-                        <div className="mainWrapp pt-3" onClick={this.homePage}>
-                            <img src="/assets/Images/SAFFRON_logo.png" alt="saffron" style={{width: 130}}/>
+                        <div className="mainWrapp pt-3">
+                            <Link to="/"><span><img src="/assets/Images/SAFFRON_logo.png" alt="saffron" style={{width: 130}}/></span></Link>
                         </div>
                         <div className="modal-body">
                             <div className="row login-form">

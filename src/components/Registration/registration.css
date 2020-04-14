@@ -601,4 +601,5 @@ body .modal-dialog .form-control:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 9;
 }
