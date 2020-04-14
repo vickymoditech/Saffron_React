@@ -21,8 +21,7 @@ class MiddleCard extends Component {
                                 <div
                                     className="d-flex wow zoomIn flex-column justify-content-center align-items-center h-100 text-center p-4 welcome_content">
                                     <div className="text-center d-flex flex-column logo_area mb-3">
-                                        <i className="fa fa-camera"></i>
-                                        <span>Saffron</span>
+                                        <img src="/assets/Images/SAFFRON_logo.png" alt="" style={{width:120}}/>
                                     </div>
                                     <span className="welcome_text">Welcome to our salon</span>
                                     <p className="mt-3">A small river named Duden flows by their place and supplies it

@@ -65,6 +65,10 @@ class Login extends Component {
         }
     }
 
+    homePage = () => {
+        browserHistory.push('/');
+    };
+
     render() {
         return (
             <div className="back_color">
@@ -79,7 +83,9 @@ class Login extends Component {
                 />
                 <div className="modal-dialog vertical-alignment-center w-75">
                     <div className="modal-content">
-                        <Link to="/" className="logo"/>
+                        <div className="mainWrapp pt-3" onClick={this.homePage}>
+                            <img src="/assets/Images/SAFFRON_logo.png" alt="saffron" style={{width:130}}/>
+                        </div>
                         <div className="modal-body">
                             <div className="row login-form">
                                 <div className="col-xs-12 text-center">

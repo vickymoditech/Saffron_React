@@ -103,7 +103,7 @@ class App extends Component {
                         <i className="fa fa-bars" style={{fontSize:'25px'}}></i>
                         </button>
                         <div className="col-2 d-flex flex-column text-center d-md-none d-block align-items-md-center first_logo logo1">
-                            <i className="fa fa-camera"></i><span>Saffron</span>
+                            <img src="/assets/Images/saffronLight.png" alt="saffron" style={{width:130}}/>
                         </div>
                         <div className="container main_menu d-flex justify-content-end">
                             <button className="navbar-toggler text-right" data-toggle="collapse"
@@ -118,7 +118,7 @@ class App extends Component {
                                     <Link to="/ProductList">SERVICES</Link>
                                 </div>
                                 <div className="col-md-2 d-md-flex d-none flex-column align-items-md-center logo1">
-                                    <Link to="/"><span>Saffron</span></Link>
+                                    <img src="/assets/Images/saffronLight.png" alt="saffron" style={{width:130}}/>
                                 </div>
                                 <div className="col-md-5 menu2 d-md-block d-none pt-lg-3">
                                     <Link to="/VideoGallery">VIDEOS</Link>

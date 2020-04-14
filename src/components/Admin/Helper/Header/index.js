@@ -56,7 +56,7 @@ export default class Header extends Component {
                             <div className="header-logo d-flex justify-content-between">
                                 <div>
                                 {!this.props.isNotFound && <a onClick={this.openNav}><i className="fa fa-bars fa-2x" style={{color: '#fff', padding: '5px 10px', verticalAlign: 'middle',cursor: 'pointer'}}/></a>}
-                                <img src="/assets/Images/DB_Logo.png" alt="" style={{width:120}}/>
+                                <img src="/assets/Images/saffronLight.png" alt="saffron" style={{width:120}}/>
                                 </div>
                                 <ul className="nav navbar-nav navbar-right pr-4" style={{color:'#fff',fontSize:'2vw'}}>
                                     <li className="sub-title">Time - {this.state.time} </li>

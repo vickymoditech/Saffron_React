@@ -591,3 +591,10 @@ body .modal-dialog .form-control:focus {
     margin: 30px auto;
     align-self: center;
 }
+.mainWrapp{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
