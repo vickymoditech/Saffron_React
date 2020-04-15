@@ -154,7 +154,7 @@ class Invoice extends Component {
                     <Lottie options={defaultOptions} height={400} width={400}/>
                 </div>}
                 <div className="text-center">
-                    <Link className="shopingBtn loginBtn btn button_main mb-3" to="/ProductList"><p> Continue Shopping </p></Link>
+                    <Link className="shopingBtn loginBtn btn button_main mb-3" to="/ProductList"><p> Continue Booking </p></Link>
                 </div>
             </div>
         );

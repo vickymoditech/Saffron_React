@@ -324,7 +324,9 @@ class BasketItemsList extends Component {
                             <div className="text-center w-100 my-3"></div>
                         </div> : <div>
                             <Lottie options={defaultOptions} height={400} width={400}/>
-                            <Link to="/ProductList"><span> Your Booking Cart is Empty.. Continue Shopping </span></Link>
+                            <div className="text-center">
+                                <Link className="shopingBtn loginBtn btn button_main mb-3" to="/ProductList"><p> Your Booking Cart is Empty.. Continue Booking.</p></Link>
+                            </div>
                         </div>}
                     </div>
                 </div>

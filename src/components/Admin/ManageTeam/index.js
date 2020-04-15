@@ -119,7 +119,7 @@ class ManageTeam extends Component {
                             <table width="100%" className="table">
                                 <tbody>
                                 <tr>
-                                    <th style={{cursor: 'context-menu'}}>Member Profile</th>
+                                    <th style={{cursor: 'context-menu',width:'170px'}}>Member Profile</th>
                                     <th style={{cursor: 'context-menu'}}>Name</th>
                                     <th style={{cursor: 'context-menu'}}>Contact</th>
                                     <th style={{cursor: 'context-menu'}}>Description</th>

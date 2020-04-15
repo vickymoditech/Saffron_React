@@ -4,6 +4,7 @@ import * as websiteAction from "../../../actions/websiteAction";
 import './contactStyle.css';
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {Link} from 'react-router';
 
 class Contact extends Component{
 
@@ -25,6 +26,9 @@ class Contact extends Component{
         return(
             <div style={{marginTop: '120px',paddingBottom:'20px', backgroundColor: '#f5f2ea'}}>
                 <div className="container">
+                    <div className="text-center">
+                        <span className="title">CONTACT INFO</span>
+                    </div>
                     <div className="row">
                         <div className="col-sm-6">
                             <div className="map">
@@ -37,11 +41,15 @@ class Contact extends Component{
                         </div>
                         <div className="col-sm-6">
                             <div className="d-flex flex-column align-items-center justify-content-center h-100">
-                            <div className="address_box d-flex flex-column align-items-center justify-content-center">
-                                <span>Logo</span>
-                                <p>Address</p>
-                                <span>Phone Number</span>
-                                <span>Email Id</span>
+                            <div className="address_box d-flex flex-column align-items-center justify-content-center my-5">
+                                <Link to="/"><span><img src="/assets/Images/SAFFRON_logo.png" alt="saffron" style={{width:130}}/></span></Link>
+                                <br/>
+                                <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                                <p>4/3648 abc xyz surat adajan hajira road</p>
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <p>+(91) 8401060120</p>
+                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                <p>vicky123modi@gmail.com</p>
                             </div>
                             </div>
                         </div>

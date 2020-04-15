@@ -77,7 +77,7 @@ class Sidebar extends Component {
                                                                    style={{position: 'absolute', right: 10, top: 10}}/> </span>
                         </ListItem>
                         <div className="menu-left">
-                            <Link to="/Dashboard" className="link">
+                            <Link to="/Dashboard" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-home"/>
                                     <div style={{marginTop: 10}} className="link-hover">Home</div>
@@ -85,74 +85,74 @@ class Sidebar extends Component {
                             </Link><Divider/>
                             {userRole.toLowerCase() === "admin" &&
                             <span>
-                                <Link to="/Dashboard/ManageService" className="link">
+                                <Link to="/Dashboard/ManageService" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-cog"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Services</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                <Link to="/Dashboard/ManageGallery" className="link">
+                                <Link to="/Dashboard/ManageGallery" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-cogs"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Gallery's</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                <Link to="/Dashboard/ManageVideo" className="link">
+                                <Link to="/Dashboard/ManageVideo" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-film"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Videos</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                <Link to="/Dashboard/ManageProducts" className="link">
+                                <Link to="/Dashboard/ManageProducts" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-database"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Products</div>
                                 </ListItem>
                             </Link><Divider/>
-                                <Link to="/Dashboard/ManageTeamMemberProduct" className="link">
+                                <Link to="/Dashboard/ManageTeamMemberProduct" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-database"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage TeamMember Products</div>
                                 </ListItem>
                             </Link><Divider/>
-                                <Link to="/Dashboard/ManageTeam" className="link">
+                                <Link to="/Dashboard/ManageTeam" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-users"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Teams</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                <Link to="/Dashboard/ManageUser" className="link">
+                                <Link to="/Dashboard/ManageUser" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-user"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Users</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                <Link to="/Dashboard/ManageSliderImage" className="link">
+                                <Link to="/Dashboard/ManageSliderImage" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-file-image-o"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Sliders</div>
                                 </ListItem>
                             </Link> <Divider/>
-                                <Link to="/Dashboard/ManageTimeSlot" className="link">
+                                <Link to="/Dashboard/ManageTimeSlot" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-calendar"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Time Slots</div>
                                 </ListItem>
                                 </Link> <Divider/>
-                                <Link to="/Dashboard/ManageCoupon" className="link">
+                                <Link to="/Dashboard/ManageCoupon" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-percent"/>
                                     <div style={{marginTop: 10}} className="link-hover">Manage Coupons</div>
                                 </ListItem>
                                 </Link> <Divider/>
-                                <Link to="/Dashboard/Analytics" className="link">
+                                <Link to="/Dashboard/Analytics" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-pie-chart"/>
                                     <div style={{marginTop: 10}} className="link-hover">Analisys</div>
                                 </ListItem>
                                 </Link><Divider/>
                             </span>}
-                            <Link to="/Dashboard/Profile" className="link">
+                            <Link to="/Dashboard/Profile" className="link" onClick={this.props.closeNav}>
                                 <ListItem className="sidebar-list" style={ListStyles.style}>
                                     <i className="fa fa-user-circle-o"/>
                                     <div style={{marginTop: 10}} className="link-hover">Setting</div>

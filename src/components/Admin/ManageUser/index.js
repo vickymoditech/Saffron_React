@@ -116,7 +116,7 @@ class ManageUser extends Component {
                             <table width="100%" className="table">
                                 <tbody>
                                 <tr>
-                                    <th style={{cursor: 'context-menu'}}>Profile</th>
+                                    <th style={{cursor: 'context-menu',width: '170px'}}>Profile</th>
                                     <th style={{cursor: 'context-menu'}}>Name</th>
                                     <th style={{cursor: 'context-menu'}}>Contact</th>
                                     <th style={{cursor: 'context-menu'}}>Role</th>

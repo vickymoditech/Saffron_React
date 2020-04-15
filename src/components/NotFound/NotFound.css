@@ -1,0 +1,12 @@
+.button_error{
+    background-color: #bf925b !important;
+    border: 2px solid #000000 !important;
+    color: #ffffff !important;
+    transition: all .5s !important;
+    font-family: "Josefin Sans", Arial, sans-serif;
+    padding: 3px 20px !important;
+}
+.button_error:hover{
+    background-color: #000000 !important;
+    border: 2px solid  #bf925b !important;
+}

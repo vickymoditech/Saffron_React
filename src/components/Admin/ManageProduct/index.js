@@ -195,7 +195,7 @@ class ManageProduct extends Component {
                                 <table width="100%" className="table">
                                     <tbody>
                                     <tr>
-                                        <th style={{cursor: 'context-menu'}}>Product Image</th>
+                                        <th style={{cursor: 'context-menu',width: '170px'}}>Product Image</th>
                                         <th style={{cursor: 'context-menu'}}>Title</th>
                                         <th style={{cursor: 'context-menu'}}>Description</th>
                                         <th style={{cursor: 'context-menu'}}>Price</th>
