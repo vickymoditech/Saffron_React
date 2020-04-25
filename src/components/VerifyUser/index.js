@@ -9,11 +9,11 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import Loader from '../Helper/Loader';
 import * as authAction from '../../actions/authAction';
 
-import './login.css';
+import './VerifyUser.css';
 import decode from "jwt-decode";
 
 
-class Login extends Component {
+class ForgotPassword extends Component {
     constructor(props) {
         super(props);
         this.state = {credentials: {mobile_number: '', password: ''}, isEmpty: false, invalidUser: false, toastId: ""}
@@ -85,7 +85,7 @@ class Login extends Component {
                         <div className="modal-body">
                             <div className="row login-form">
                                 <div className="col-xs-12 text-center">
-                                    <h2 style={{margin: '10px'}} className="title1">User Authentication</h2>
+                                    <h2 style={{margin: '10px'}} className="title1">User Verification</h2>
                                 </div>
                                 <div className="panel-body w-100">
                                     <div className="container">
@@ -105,27 +105,23 @@ class Login extends Component {
                                                         </div>
                                                     </div>
                                                     <div className="form-group">
-                                                        <div className="input-group">
+                                                        <div className="input-group" hidden={true}>
                                                         <span className="input-group-addon d-flex justify-content-center">
-                                                            <i className="fa fa-lock icon_color"></i></span>
-                                                            <input type="password"
+                                                            <i className="fa fa-handshake-o icon_color"></i>
+                                                        </span>
+                                                            <input type="number"
                                                                    value={this.state.credentials.password}
-                                                                   name="password" placeholder="Password"
+                                                                   name="otp" placeholder="OTP"
                                                                    className="form-control"
                                                                    onChange={this.handleChange}/>
                                                         </div>
-
                                                         <div className="form-group pt-4  text-center">
-                                                            <button type="submit" className="button_main" onClick={this.handleSubmit}>Sign In
+                                                            <button type="submit" className="button_main" onClick={this.handleSubmit}>Send OTP
                                                             </button>
                                                         </div>
-                                                        <div className="d-flex flex-wrap justify-content-sm-between justify-content-center mt-4 login_sub_link">
-                                                        <div className="forgot-link d-flex justify-content-between">
-                                                            <p>Don't have an account? <Link className="login_Link" to="/Registration" style={{textDecoration:'none',fontFamily:'Josefin Sans'}}>Sign Up</Link></p>
-                                                        </div>
-                                                        <Link className="login_Link" to="/ForgotPassword"
-                                                              style={{textDecoration: 'underline',textDecoration:'none',fontFamily:'Josefin Sans'}}>Forgot
-                                                            Password?</Link>
+                                                        <div className="form-group pt-4  text-center">
+                                                            <button type="submit" className="button_main" onClick={this.handleSubmit}>Submit
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -161,6 +157,6 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword);
 
 

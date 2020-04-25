@@ -86,12 +86,14 @@ class ProductList extends Component {
                                selectedProduct={this.state.selectedProduct}
                                SelectTeamMember={this.SelectTeamMember} AddCart={this.AddCart}/>}
 
+                {/* issue1 */}
                 <div className="d-flex align-items-center pl-md-3 service_menu">
                     {this.props.serviceList.map((singleService, i) => (
                         <a href={"#" + singleService.title} key={i}>{singleService.title}</a>
                     ))}
                 </div>
 
+                {/* issue2 */}
                 {this.props.AllProductsList.AllProducts && this.props.AllProductsList.AllProducts.map((singleService) => (
                     <div id={singleService.title} className="service_1" key={singleService.service_id}>
                         <div className="container">
@@ -115,10 +117,12 @@ class ProductList extends Component {
                                                              style={{height: '80px', width: '150px'}}
                                                              alt={singleProduct.title}/>
                                                         <img src="/assets/Images/NoImages.png"
-                                                             style={{height: '50px', width: '50px'}}
+                                                             className="img-fluid"
+                                                             style={{height: '80px', width: '150px'}}
                                                              alt={singleProduct.title}/>
                                                         <img src="/assets/Images/s_loader.gif"
-                                                             style={{height: '50px', width: '50px'}}
+                                                             className="img-fluid"
+                                                             style={{height: '80px', width: '150px'}}
                                                              alt={singleProduct.title}/>
                                                     </ImageLoader>
                                                 </div>

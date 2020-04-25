@@ -30,6 +30,7 @@ import BasketItemsList from './components/Website/BasketItems/index';
 import Contact from './components/Website/Contact';
 import OfferZone from './components/Website/OfferZone';
 import Invoice from './components/Website/Invoice';
+import ForgotPassword from './components/VerifyUser';
 
 
 //Admin
@@ -272,6 +273,7 @@ ReactDOM.render(<Provider store={store}>
                 <Route path="/VideoGallery" component={VideoGalleryMain} exact={true}/>
                 <Route path="/OfferZone" component={OfferZone} exact={true}/>
                 <Route path="/About" component={Contact} exact={true}/>
+                <Route path="/ForgotPassword" component={ForgotPassword} exact={true}/>
             </Route>
             <Route path="*" component={NotFound} exact={true}/>
         </Router>

@@ -86,6 +86,7 @@ class VideoGalleryMain extends Component {
                                       defaultValue={defaultValue}
                                       onChange={this.handleChangeService}/>
 
+                            {/* issue4 */}
                             <div className="container">
                                 <div className="row">
                                     <div className="col-sm-6">

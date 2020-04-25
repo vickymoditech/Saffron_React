@@ -80,6 +80,7 @@ class OrderDialog extends Component {
                                 <div style={{"width": "100%"}} className="main_box">
                                     <h5 className="text-center my-2">{order.customerName} ({order.customer_id})</h5>
                                     {this.state.role.toLowerCase() === "admin" ? <div>
+                                        {/* issue3 */}
                                         <div className="d-flex justify-content-between p-3">
                                             <h5>Product</h5>
                                             <h5>Team</h5>

@@ -65,6 +65,7 @@ class Invoice extends Component {
                                     {this.props.RecentOrder.orderPlace.productList.map((singleProduct, index) => (
                                         <Panel header={<div
                                             className="orders d-flex justify-content-between align-items-center m-sm-2 p-2">
+                                            {/* issue5 */}
                                             <ImageLoader
                                                 src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.productItem.image_url}>
                                                 <img className="img-fluid"

@@ -181,16 +181,19 @@ class BasketItemsList extends Component {
                                             {this.props.BasketGeneratorProducts.map((singleProduct, index) => (
                                                 <Panel header={<div
                                                     className="orders d-flex justify-content-between align-items-center m-sm-2 p-2">
+                                                    {/* issue5 */}
                                                     <ImageLoader
                                                         src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.product.image_url}>
                                                         <img className="img-fluid"
-                                                             style={{height: '80px', width: '100px'}}
+                                                             style={{height: '80px', width: '90px'}}
                                                              alt={singleProduct.product.title}/>
-                                                        <img src="/assets/Images/NoImages.png" className="img-fluid"
-                                                             style={{height: '80px', width: '100px'}}
+                                                        <img src="/assets/Images/NoImages.png"
+                                                             className="img-fluid"
+                                                             style={{height: '80px', width: '90px'}}
                                                              alt={singleProduct.product.title}/>
-                                                        <img src="/assets/Images/s_loader.gif" className="img-fluid"
-                                                             style={{height: '80px', width: '100px'}}
+                                                        <img src="/assets/Images/s_loader.gif"
+                                                             className="img-fluid"
+                                                             style={{height: '80px', width: '90px'}}
                                                              alt={singleProduct.product.title}/>
                                                     </ImageLoader>
                                                     <p style={{"textTransform": "capitalize"}}>{singleProduct.product.title}</p>
@@ -206,28 +209,16 @@ class BasketItemsList extends Component {
                                                         <ImageLoader
                                                             src={ENVIRONMENT_VARIABLES.PHOTO_URL + singleProduct.teamMember.image_url}>
                                                             <img className="img-fluid"
-                                                                 style={{
-                                                                     height: '50px',
-                                                                     width: '50px',
-                                                                     borderRadius: '50%'
-                                                                 }}
+                                                                 style={{height: '50px', width: '50px', borderRadius: '50%'}}
                                                                  alt={singleProduct.teamMember.first_name}
                                                             />
                                                             <img src="/assets/Images/NoImages.png"
                                                                  className="img-fluid"
-                                                                 style={{
-                                                                     height: '50px',
-                                                                     width: '50px',
-                                                                     borderRadius: '50%'
-                                                                 }}
+                                                                 style={{height: '50px', width: '50px', borderRadius: '50%'}}
                                                                  alt={singleProduct.teamMember.first_name}/>
                                                             <img src="/assets/Images/s_loader.gif"
                                                                  className="img-fluid"
-                                                                 style={{
-                                                                     height: '50px',
-                                                                     width: '50px',
-                                                                     borderRadius: '50%'
-                                                                 }}
+                                                                 style={{height: '50px', width: '50px', borderRadius: '50%'}}
                                                                  alt={singleProduct.teamMember.first_name}/>
                                                         </ImageLoader>
                                                         <p style={{
